@@ -1,0 +1,216 @@
+(footprint "CardBracket"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 1 0 90)
+		(unlocked yes)
+		(layer "F.SilkS" knockout)
+		(hide yes)
+		(uuid "0f54abe2-b9b9-4715-82b1-0f590bbb6ece")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "CardBracket"
+		(at 1.27 0 90)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "125a082b-d563-4204-89a2-33bc6ffa43b0")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 2 49 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "dccfe24c-e109-4eb1-967a-9d6c607fe36c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 2 49 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a8b63a2e-8f48-4120-818b-43f8e7c012ac")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr exclude_from_pos_files exclude_from_bom)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_poly
+		(pts
+			(xy 0.254 -48.26) (xy 3.5 -48.26) (xy 3.5 -47) (xy 6.5 -47) (xy 7 -46.5) (xy 7 -43) (xy 5.75 -40.5)
+			(xy 0.254 -40.5)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill yes)
+		(layer "F.SilkS")
+		(uuid "51d2fae4-41b1-4f60-ad7f-11b45a725537")
+	)
+	(fp_poly
+		(pts
+			(xy 0.254 48.26) (xy 3.5 48.26) (xy 3.5 47) (xy 6.5 47) (xy 7 46.5) (xy 7 43) (xy 5.75 40.5) (xy 0.254 40.5)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill yes)
+		(layer "F.SilkS")
+		(uuid "56dfedab-351b-4437-86b7-f419b58b97bc")
+	)
+	(fp_poly
+		(pts
+			(xy 0 -50) (xy 3.5 -50) (xy 7 -50) (xy 7 -40.5) (xy 0 -40.5)
+		)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "1d1e28b0-62e9-467d-9ad1-06b7e22a77b2")
+	)
+	(fp_poly
+		(pts
+			(xy 0 40.5) (xy 5.75 40.5) (xy 7 43) (xy 7 50) (xy 0 50)
+		)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "887cb35a-f615-49aa-8dc4-9a2803fdde88")
+	)
+	(fp_line
+		(start 0 -50)
+		(end 0 50)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "ab876d13-9b1a-440c-bcac-68342a01cb2f")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 1.27 0 90)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "67f7176b-c9d3-4429-b5f7-be670504de9d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "" np_thru_hole circle
+		(at 3.57 -44.45)
+		(size 2.7 2.7)
+		(drill 2.7)
+		(layers "*.Cu")
+		(uuid "0b5d232a-035d-4b9a-a01e-3713d7df4618")
+	)
+	(pad "" np_thru_hole circle
+		(at 3.57 44.45)
+		(size 2.7 2.7)
+		(drill 2.7)
+		(layers "*.Cu")
+		(uuid "bcd8b52c-9b6b-46ad-8278-ab965ab26e5f")
+	)
+	(zone
+		(layer "F.Cu")
+		(uuid "c8ab4a72-4dcd-4e17-9a11-e02063f0bbe2")
+		(hatch edge 0.5)
+		(connect_pads
+			(clearance 0)
+		)
+		(min_thickness 0.25)
+		(keepout
+			(tracks not_allowed)
+			(vias not_allowed)
+			(pads allowed)
+			(copperpour allowed)
+			(footprints allowed)
+		)
+		(placement
+			(enabled no)
+			(sheetname "")
+		)
+		(fill
+			(thermal_gap 0.5)
+			(thermal_bridge_width 0.5)
+			(island_removal_mode 0)
+		)
+		(polygon
+			(pts
+				(xy 0 -50) (xy 3.5 -50) (xy 3.5 -47) (xy 6.5 -47) (xy 7 -46.5) (xy 7 -43) (xy 5.75 -40.5) (xy 0 -40.5)
+			)
+		)
+	)
+	(zone
+		(layer "F.Cu")
+		(uuid "42cfac5a-3300-4ec1-8a2f-08fd331831ec")
+		(hatch edge 0.5)
+		(connect_pads
+			(clearance 0)
+		)
+		(min_thickness 0.25)
+		(keepout
+			(tracks not_allowed)
+			(vias not_allowed)
+			(pads allowed)
+			(copperpour allowed)
+			(footprints allowed)
+		)
+		(placement
+			(enabled no)
+			(sheetname "")
+		)
+		(fill
+			(thermal_gap 0.5)
+			(thermal_bridge_width 0.5)
+			(island_removal_mode 0)
+		)
+		(polygon
+			(pts
+				(xy 0 40.5) (xy 5.75 40.5) (xy 7 43) (xy 7 46.5) (xy 6.5 47) (xy 3.5 47) (xy 3.5 50) (xy 0 50)
+			)
+		)
+	)
+	(embedded_fonts no)
+	(model "${FORMANTKO_3DMODEL_DIR}/60807011.stp"
+		(offset
+			(xyz -2.5 0 -3)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -180 90 -180)
+		)
+	)
+)
