@@ -1,11 +1,17 @@
-	.org	$C000
+.segment "VIA"
+via_portb:		.res	1
+via_porta:		.res	1
+via_ddrb:		.res	1
+via_ddra:		.res	1
 
-ACIA_DATA	= $8010
-ACIA_STATUS	= $8011
-ACIA_CMD	= $8012
-ACIA_CTRL	= $8013
+.segment "ACIA"
+acia_data:		.res	1
+acia_status:	.res	1
+acia_cmd:		.res	1
+acia_ctrl:		.res	1
 
-RESET:
+.segment "CODE"
+reset:
 	sei
 	cld
 	ldx	#$ff
@@ -13,9 +19,9 @@ RESET:
 
 	; ACIA Init
 	lda	#$1F		; 8-N-1, 19200 baud
-	sta	ACIA_CTRL
+	sta	acia_ctrl
 	lda	#$0B		; No parity, no echo, no interrupts.
-	sta	ACIA_CMD
+	sta	acia_cmd
 
 	ldx #$00
 print:
@@ -37,7 +43,7 @@ crlf:
 	rts
 
 print_chr:
-	sta	ACIA_DATA	; Output character.
+	sta	acia_data	; Output character.
 	phx
 	ldx	#$66
 print_delay:
@@ -49,7 +55,7 @@ print_delay:
 message:
 	.asciiz	"Hello, World!"
 
-	.org	$FFFA
-	.word	$0F00		; NMI vector
-	.word	$RESET		; RESET vector
-	.word 	$0000		; IRQ vector
+.segment "VECTORS"
+	.word	0			; NMI vector address
+	.word	reset		; RESET vector address
+	.word	0			; IRQ/BRK vector address

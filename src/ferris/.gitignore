@@ -1,1 +1,4 @@
 *.bin
+*.map
+*.lbl
+obj/
