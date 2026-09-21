@@ -1,0 +1,36 @@
+; Build the demo using Joshua's ad-hoc monitor assembler.
+; Run from the project directory:
+;   build/gcc14/joshua --script examples/echo.mon
+; Echo each byte immediately; expand keyboard Enter (CR) to CR/LF.
+; The ACIA and host serial transport still pass bytes unchanged.
+asm C000 SEI
+asm C001 CLD
+asm C002 LDX #$FF
+asm C004 TXS
+asm C005 LDA #$1F
+asm C007 STA $8013
+asm C00A LDA #$0B
+asm C00C STA $8012
+asm C00F LDA #$3E
+asm C011 JSR $C030
+asm C014 LDA $8011
+asm C017 AND #$08
+asm C019 BEQ $C014
+asm C01B LDA $8010
+asm C01E JSR $C030
+asm C021 CMP #$0D
+asm C023 BNE $C014
+asm C025 LDA #$0A
+asm C027 JSR $C030
+asm C02A BRA $C014
+asm C02C RTI
+asm C030 STA $8010
+asm C033 PHX
+asm C034 LDX #$66
+asm C036 DEX
+asm C037 BNE $C036
+asm C039 PLX
+asm C03A RTS
+write FFFA 2C C0 00 C0 2C C0
+save examples/echo.bin C000 4000
+quit

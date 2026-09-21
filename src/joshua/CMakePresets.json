@@ -1,0 +1,42 @@
+{
+  "version": 5,
+  "configurePresets": [
+    {
+      "name": "default",
+      "displayName": "Native C++23 debug build",
+      "binaryDir": "${sourceDir}/build/default",
+      "cacheVariables": {"CMAKE_BUILD_TYPE": "Debug", "BUILD_TESTING": "ON"}
+    },
+    {
+      "name": "release",
+      "inherits": "default",
+      "binaryDir": "${sourceDir}/build/release",
+      "cacheVariables": {"CMAKE_BUILD_TYPE": "Release"}
+    },
+    {
+      "name": "gcc14",
+      "inherits": "default",
+      "binaryDir": "${sourceDir}/build/gcc14",
+      "cacheVariables": {"CMAKE_CXX_COMPILER": "g++-14"}
+    },
+    {
+      "name": "ucrt64",
+      "inherits": "default",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/ucrt64",
+      "cacheVariables": {"CMAKE_CXX_COMPILER": "g++"}
+    }
+  ],
+  "buildPresets": [
+    {"name": "release", "configurePreset": "release"},
+    {"name": "default", "configurePreset": "default"},
+    {"name": "gcc14", "configurePreset": "gcc14"},
+    {"name": "ucrt64", "configurePreset": "ucrt64"}
+  ],
+  "testPresets": [
+    {"name": "release", "configurePreset": "release", "output": {"outputOnFailure": true}},
+    {"name": "default", "configurePreset": "default", "output": {"outputOnFailure": true}},
+    {"name": "gcc14", "configurePreset": "gcc14", "output": {"outputOnFailure": true}},
+    {"name": "ucrt64", "configurePreset": "ucrt64", "output": {"outputOnFailure": true}}
+  ]
+}

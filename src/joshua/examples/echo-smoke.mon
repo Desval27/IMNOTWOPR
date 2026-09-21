@@ -1,0 +1,6 @@
+; Requires --profile profiles/echo.profile --cycles 20000 --unthrottled
+; Queue ASCII input ending with Enter (CR); the demo emits CR/LF.
+send 48 65 6C 6C 6F 0D
+run
+regs
+quit

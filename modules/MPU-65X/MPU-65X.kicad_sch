@@ -484,6 +484,310 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Device:LED_Dual_Bidirectional"
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "D"
+				(at 0 5.715 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "LED_Dual_Bidirectional"
+				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Dual LED, bidirectional"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "LED diode bicolor dual"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "LED* LED_SMD:* LED_THT:*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "LED_Dual_Bidirectional_0_1"
+				(polyline
+					(pts
+						(xy -4.572 0) (xy -2.54 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center -2.032 0)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 0) (xy -2.54 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.016 3.81) (xy -1.016 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.016 -1.27) (xy -1.016 -3.81) (xy 1.27 -2.54) (xy -1.016 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 0 0)
+					(radius 4.572)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 3.81) (xy 1.27 1.27) (xy -1.016 2.54) (xy 1.27 3.81)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy 1.27 -3.81)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.286 2.54) (xy -2.032 2.54) (xy -2.032 -2.54) (xy 2.286 -2.54) (xy 2.286 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.286 0)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.794 4.318) (xy 4.318 5.842) (xy 3.556 5.842)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 4.064 3.048) (xy 5.588 4.572) (xy 4.826 4.572)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 4.064 0) (xy 2.286 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 4.318 5.842) (xy 4.318 5.08)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.588 4.572) (xy 5.588 3.81)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "LED_Dual_Bidirectional_1_1"
+				(pin input line
+					(at 7.62 0 180)
+					(length 3.81)
+					(name "KA"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 0 0)
+					(length 3.048)
+					(name "AK"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "IMNOTWOPR:7400"
 			(body_styles demorgan)
 			(pin_names
@@ -1473,6 +1777,159 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "IMNOTWOPR:C"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at -2.032 2.286 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "C"
+				(at 2.032 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "IMNOTWOPR:C_Rect_P200mil"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Unpolarized capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "cap capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "C_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "C_0_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "C_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "IMNOTWOPR:MAX232"
 			(pin_names
 				(offset 1.016)
@@ -2061,6 +2518,146 @@
 						)
 					)
 					(number "16"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "IMNOTWOPR:R"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 0 2.032 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "R"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.016 1.016)
+					)
+				)
+			)
+			(property "Footprint" "IMNOTWOPR:R_Axial_DIN0207_P400mil"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "R res resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "R_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "R_0_1"
+				(rectangle
+					(start 2.54 -1.016)
+					(end -2.54 1.016)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "R_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 1.27)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 1.27)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -5958,6 +6555,66 @@
 		)
 		(uuid "ab702723-36a8-4042-9683-416a06a702b3")
 	)
+	(junction
+		(at 285.75 133.35)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "040e1ab6-11f4-404e-ac61-a1e992c6e7b0")
+	)
+	(junction
+		(at 345.44 92.71)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0b8c51e7-c7c6-46ba-ab97-e1c026d34ae8")
+	)
+	(junction
+		(at 285.75 194.31)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "16ceaefb-3954-4429-82b7-77f6e607dc99")
+	)
+	(junction
+		(at 285.75 153.67)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "245b0e32-0972-4615-98c5-e8843db9c820")
+	)
+	(junction
+		(at 285.75 184.15)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "27d80d56-1a7a-4adf-82ac-aaf961cdb90a")
+	)
+	(junction
+		(at 285.75 173.99)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2c492c6d-6070-4b93-88e5-4b5fda8cb815")
+	)
+	(junction
+		(at 285.75 163.83)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "54d0ecd7-ec15-4841-97bf-af29346e451b")
+	)
+	(junction
+		(at 318.77 92.71)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "bd3d6be6-6e10-49ae-9bd0-0acb46f9cc38")
+	)
+	(junction
+		(at 285.75 204.47)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ed48c375-7ea2-4590-bd5b-9eeadf28ee8d")
+	)
+	(junction
+		(at 285.75 143.51)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ff8fc902-da92-4c73-9abd-40827bfdf4ad")
+	)
 	(no_connect
 		(at 116.84 115.57)
 		(uuid "0221689c-4dc8-42ce-a09c-a63ed47418cf")
@@ -6031,8 +6688,16 @@
 		(uuid "5891bbb2-abeb-4048-8fbb-1d7477f29e64")
 	)
 	(no_connect
+		(at 339.09 68.58)
+		(uuid "646f1644-bb33-40ad-a3df-dded5384c42b")
+	)
+	(no_connect
 		(at 177.8 110.49)
 		(uuid "65ec004f-1bdf-4890-9f88-7f275f50056f")
+	)
+	(no_connect
+		(at 339.09 78.74)
+		(uuid "67502dd3-b1ae-488f-91fd-160d8f5c8194")
 	)
 	(no_connect
 		(at 177.8 90.17)
@@ -6057,6 +6722,10 @@
 	(no_connect
 		(at 177.8 77.47)
 		(uuid "85c70d3a-e504-4e65-accc-c7483f9f40b3")
+	)
+	(no_connect
+		(at 298.45 68.58)
+		(uuid "86e77d26-57b3-4655-848b-8013101d7dbc")
 	)
 	(no_connect
 		(at 137.16 82.55)
@@ -6095,6 +6764,10 @@
 		(uuid "cd7524c4-3f02-4c09-b3b5-51c90091f478")
 	)
 	(no_connect
+		(at 298.45 78.74)
+		(uuid "d2fa7228-dfd0-4916-838b-a5ad75df04d9")
+	)
+	(no_connect
 		(at 177.8 95.25)
 		(uuid "dbfce4d9-3522-4f4a-b0e2-74bbab3ab412")
 	)
@@ -6109,6 +6782,762 @@
 	(no_connect
 		(at 177.8 97.79)
 		(uuid "fb6b6b78-b983-4ddb-92ca-970745dfbf75")
+	)
+	(wire
+		(pts
+			(xy 285.75 163.83) (xy 292.1 163.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0148bd24-c365-4e8a-97bd-03d57c323efb")
+	)
+	(wire
+		(pts
+			(xy 345.44 92.71) (xy 356.87 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "023a3680-2c8e-422e-a6da-bae0cee3ba16")
+	)
+	(wire
+		(pts
+			(xy 323.85 123.19) (xy 349.25 123.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "08a2be24-fd5f-4d93-8995-3f44c377e9c7")
+	)
+	(wire
+		(pts
+			(xy 285.75 163.83) (xy 285.75 173.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "13b1c191-9793-48f8-8c31-75a2811e865d")
+	)
+	(wire
+		(pts
+			(xy 323.85 204.47) (xy 349.25 204.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1483136b-17ee-4baf-9c5c-2ab8fe04f214")
+	)
+	(wire
+		(pts
+			(xy 316.23 204.47) (xy 307.34 204.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "15d6a143-3106-413c-bae0-f51c5cd67eab")
+	)
+	(wire
+		(pts
+			(xy 285.75 38.1) (xy 298.45 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1d6b3b19-4a21-4046-abad-de2fabd76908")
+	)
+	(wire
+		(pts
+			(xy 323.85 194.31) (xy 349.25 194.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1e6a5da7-f530-4b76-80c8-6c845eb9de13")
+	)
+	(wire
+		(pts
+			(xy 285.75 184.15) (xy 292.1 184.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "21ac6673-337c-4280-aebf-24fcff608b8d")
+	)
+	(wire
+		(pts
+			(xy 285.75 133.35) (xy 292.1 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "223366a7-facb-4c71-bde3-4917575a31d9")
+	)
+	(wire
+		(pts
+			(xy 360.68 63.5) (xy 339.09 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2cdb9241-8877-48cd-9914-17f95024aff8")
+	)
+	(wire
+		(pts
+			(xy 285.75 153.67) (xy 292.1 153.67)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2f4442fd-7519-46dc-8ce1-d6dd77c3852a")
+	)
+	(wire
+		(pts
+			(xy 285.75 143.51) (xy 285.75 153.67)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "33d278a5-6975-434f-afd1-230bbf090555")
+	)
+	(wire
+		(pts
+			(xy 285.75 173.99) (xy 285.75 184.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "38ab8d9e-7e33-47e3-b792-efcca2e35245")
+	)
+	(wire
+		(pts
+			(xy 360.68 71.12) (xy 360.68 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3b4efd2d-fa83-47e1-9068-41de6e7309b5")
+	)
+	(wire
+		(pts
+			(xy 373.38 71.12) (xy 360.68 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3bd4b4dc-3d95-4f96-8470-df304a696276")
+	)
+	(wire
+		(pts
+			(xy 285.75 45.72) (xy 298.45 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3c5304e9-7814-4c67-b9e7-b967b51373fe")
+	)
+	(wire
+		(pts
+			(xy 318.77 96.52) (xy 318.77 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "412f2252-05fc-4d52-a804-8de218162814")
+	)
+	(wire
+		(pts
+			(xy 285.75 173.99) (xy 292.1 173.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "42b872ba-4646-4072-a90c-d9db9153d02b")
+	)
+	(wire
+		(pts
+			(xy 316.23 143.51) (xy 307.34 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "49d2faed-9d45-40e6-99e4-b5001641f27c")
+	)
+	(wire
+		(pts
+			(xy 345.44 58.42) (xy 339.09 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4d472200-4248-4ff9-9a18-846667ba7ea9")
+	)
+	(wire
+		(pts
+			(xy 360.68 66.04) (xy 360.68 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4d5d0f8e-ee84-45f3-9048-ddf547370ff7")
+	)
+	(wire
+		(pts
+			(xy 316.23 184.15) (xy 307.34 184.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "57dfffd4-421d-4e49-830c-3a6386f8500b")
+	)
+	(wire
+		(pts
+			(xy 318.77 92.71) (xy 318.77 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "619108d7-4572-4bbc-b947-19ac0ecdbbc9")
+	)
+	(wire
+		(pts
+			(xy 323.85 173.99) (xy 349.25 173.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6543724e-19b9-478d-a213-031f11a1d529")
+	)
+	(wire
+		(pts
+			(xy 356.87 50.8) (xy 339.09 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "688d4af2-bc25-4744-b603-069c509c0b53")
+	)
+	(wire
+		(pts
+			(xy 316.23 153.67) (xy 307.34 153.67)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6a0d266c-6430-40f6-99ba-4e45697b4823")
+	)
+	(wire
+		(pts
+			(xy 316.23 123.19) (xy 307.34 123.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7e961a2b-e89f-4207-a9b7-6a857dbd5f83")
+	)
+	(wire
+		(pts
+			(xy 316.23 163.83) (xy 307.34 163.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7f48d2ae-f07a-4cec-ade8-a28314554468")
+	)
+	(wire
+		(pts
+			(xy 285.75 133.35) (xy 285.75 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "840d2807-3e76-4323-b427-8823ba64f36d")
+	)
+	(wire
+		(pts
+			(xy 323.85 163.83) (xy 349.25 163.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "85610786-8379-48a0-97e0-7117b6d65765")
+	)
+	(wire
+		(pts
+			(xy 316.23 173.99) (xy 307.34 173.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "87c64347-7007-43cc-af38-746728da89f1")
+	)
+	(wire
+		(pts
+			(xy 323.85 133.35) (xy 349.25 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "89a94ed0-1b8a-496d-a8c2-0f6ce600e766")
+	)
+	(wire
+		(pts
+			(xy 285.75 143.51) (xy 292.1 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8b066549-17f9-404f-a471-59c89e6c518c")
+	)
+	(wire
+		(pts
+			(xy 339.09 38.1) (xy 347.98 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9b7e4b5b-6856-413b-81e5-b36afb0a028b")
+	)
+	(wire
+		(pts
+			(xy 360.68 66.04) (xy 373.38 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a349551e-98a9-447e-9d9b-3c431f6586f6")
+	)
+	(wire
+		(pts
+			(xy 316.23 194.31) (xy 307.34 194.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a6bcc2f0-0422-40cf-830e-2f83ec9f83c3")
+	)
+	(wire
+		(pts
+			(xy 292.1 123.19) (xy 285.75 123.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a7435902-51c7-4f5a-82b2-284fc9b3cf51")
+	)
+	(wire
+		(pts
+			(xy 285.75 184.15) (xy 285.75 194.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a89c14e8-1b85-441c-9b8e-ffb2974966f1")
+	)
+	(wire
+		(pts
+			(xy 285.75 204.47) (xy 292.1 204.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b54b959e-1ece-4fdb-a187-15a289a193e5")
+	)
+	(wire
+		(pts
+			(xy 285.75 204.47) (xy 285.75 209.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b6eb31c2-8867-4984-9910-758586d6eb80")
+	)
+	(wire
+		(pts
+			(xy 323.85 184.15) (xy 349.25 184.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b75a0f25-aed1-4de1-93d8-beca96b6ffd3")
+	)
+	(wire
+		(pts
+			(xy 285.75 194.31) (xy 292.1 194.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b86dc7a9-01dc-44fe-8fab-c6004c47a36d")
+	)
+	(wire
+		(pts
+			(xy 316.23 133.35) (xy 307.34 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bf0d4c63-9a4d-44a0-8f95-8a63c9e191cb")
+	)
+	(wire
+		(pts
+			(xy 285.75 194.31) (xy 285.75 204.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c689305b-21de-45cd-9248-cb4061b5465e")
+	)
+	(wire
+		(pts
+			(xy 318.77 92.71) (xy 345.44 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c73634f0-3e4e-4fca-be0b-d606647f488e")
+	)
+	(wire
+		(pts
+			(xy 323.85 143.51) (xy 349.25 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c92a397c-495f-46e9-9836-520f166ff5ce")
+	)
+	(wire
+		(pts
+			(xy 285.75 153.67) (xy 285.75 163.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cf3e56ac-7f74-4dae-8367-4c5bc93e1595")
+	)
+	(wire
+		(pts
+			(xy 339.09 45.72) (xy 347.98 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e2f97b52-7fd1-46a4-b1e7-e21b75a00754")
+	)
+	(wire
+		(pts
+			(xy 356.87 85.09) (xy 356.87 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e748d98b-4c32-4723-b924-c21923ba4d7a")
+	)
+	(wire
+		(pts
+			(xy 323.85 153.67) (xy 349.25 153.67)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ee14149d-6566-4ebb-989f-fbeb4857ddfc")
+	)
+	(wire
+		(pts
+			(xy 345.44 85.09) (xy 345.44 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f68aa175-1b64-4c67-a4e4-4d2ebcfa37e1")
+	)
+	(wire
+		(pts
+			(xy 285.75 123.19) (xy 285.75 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "faf469ce-1439-4596-b8de-7aebed973b26")
+	)
+	(wire
+		(pts
+			(xy 360.68 73.66) (xy 339.09 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fcd573a2-2f65-44ea-903c-a1f514f1fe23")
+	)
+	(global_label "R_{X}D"
+		(shape passive)
+		(at 349.25 204.47 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "1833a23a-7c09-4c00-84eb-53c6741da836")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 354.8219 204.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "DSR"
+		(shape passive)
+		(at 349.25 143.51 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "3265ee0f-da0c-431b-8379-2e5a8798f4f4")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 355.0638 143.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "CTS"
+		(shape passive)
+		(at 349.25 184.15 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "6768a7c9-973a-475c-ae9d-1bbeb48cedab")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 354.7614 184.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "RTS"
+		(shape passive)
+		(at 349.25 163.83 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "90861a8c-1723-4a92-bb26-81d69d05cc25")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 354.7614 163.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "DCD"
+		(shape passive)
+		(at 349.25 133.35 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "999e37c7-7560-497e-be4e-86ac9f6111e1")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 355.1243 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "DTR"
+		(shape passive)
+		(at 349.25 123.19 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "b2c9ec63-b3b8-4418-ad45-9351817c2f5e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 354.8219 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "RI"
+		(shape passive)
+		(at 349.25 153.67 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "e1a1f2e5-f3d6-4081-99ee-14a8ed1ef69c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 353.1891 153.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "RTR"
+		(shape passive)
+		(at 349.25 173.99 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "e2ce1562-2432-4f47-ba3c-bff924a940db")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 354.8219 173.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "T_{X}D"
+		(shape passive)
+		(at 349.25 194.31 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "f5a29326-9d18-4d8a-92c5-59ae865a38cf")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 354.5195 194.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
 	)
 	(symbol
 		(lib_id "power:VCC")
@@ -6381,6 +7810,86 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 255.27 90.17 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "0be8184e-b697-4458-b254-b4e6d9776ca7")
+		(property "Reference" "#PWR011"
+			(at 255.27 96.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 257.81 91.4399 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 255.27 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 255.27 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 255.27 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "334265ae-bcfd-4147-8193-4c4c74f8de15")
+		)
+		(instances
+			(project "MPU-65X"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
+					(reference "#PWR011")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "IMNOTWOPR:W65C22")
 		(at 256.54 156.21 0)
 		(unit 1)
@@ -6571,6 +8080,168 @@
 			(project "MPU-65X"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
 					(reference "U6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED_Dual_Bidirectional")
+		(at 299.72 143.51 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "108a8e80-a431-4675-ad92-f8be1f1b92ef")
+		(property "Reference" "D4"
+			(at 308.61 139.954 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "DSR"
+			(at 308.61 142.494 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "LED_THT:LED_D5.0mm_Horizontal_O1.27mm_Z9.0mm"
+			(at 299.72 143.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 299.72 143.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Dual LED, bidirectional"
+			(at 299.72 143.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "a53e8f49-082e-495f-8bb9-a3b4584adc78")
+		)
+		(pin "2"
+			(uuid "2273087c-4e85-4ac9-b348-861da3c49fe5")
+		)
+		(instances
+			(project "MPU-65X"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
+					(reference "D4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "IMNOTWOPR:C")
+		(at 345.44 88.9 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1ab10300-9d93-4636-b144-bddec1f2986c")
+		(property "Reference" "C1"
+			(at 349.25 87.6299 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1µF"
+			(at 349.25 90.1699 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "IMNOTWOPR:C_Rect_P200mil"
+			(at 345.44 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 345.44 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 345.44 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "c31b2da2-c4b5-4459-bc35-896163871733")
+		)
+		(pin "1"
+			(uuid "8d448920-7196-4377-99f6-3328057afa56")
+		)
+		(instances
+			(project "MPU-65X"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
+					(reference "C1")
 					(unit 1)
 				)
 			)
@@ -6918,51 +8589,210 @@
 			)
 		)
 		(pin "10"
-			(uuid "50a35213-9b1d-49ec-bf57-8f4a57bdc82f")
+			(uuid "50a35213-9b1d-49ec-bf57-8f4a57bdc830")
 		)
 		(pin "13"
-			(uuid "c6506d6c-defe-4963-b527-5f6ee2cca148")
+			(uuid "c6506d6c-defe-4963-b527-5f6ee2cca149")
 		)
 		(pin "12"
-			(uuid "8ed84541-fef2-435c-840d-64f83e71831a")
+			(uuid "8ed84541-fef2-435c-840d-64f83e71831b")
 		)
 		(pin "11"
-			(uuid "c3804a66-9069-4c12-bf40-b8eca8d88480")
+			(uuid "c3804a66-9069-4c12-bf40-b8eca8d88481")
 		)
 		(pin "4"
-			(uuid "250d05ee-6547-4062-a064-e8e2001bc4d3")
+			(uuid "250d05ee-6547-4062-a064-e8e2001bc4d4")
 		)
 		(pin "3"
-			(uuid "2d24b6ad-962a-42c6-bde3-c56bad2f4dd7")
+			(uuid "2d24b6ad-962a-42c6-bde3-c56bad2f4dd8")
 		)
 		(pin "6"
-			(uuid "c183cc18-0b76-4f21-a0e6-1785751a8f2b")
+			(uuid "c183cc18-0b76-4f21-a0e6-1785751a8f2c")
 		)
 		(pin "2"
-			(uuid "12a7eb03-2c21-4b66-b38e-b3acdc775487")
+			(uuid "12a7eb03-2c21-4b66-b38e-b3acdc775488")
 		)
 		(pin "1"
-			(uuid "6b551501-98ef-4c50-998f-af53a179232c")
+			(uuid "6b551501-98ef-4c50-998f-af53a179232d")
 		)
 		(pin "5"
-			(uuid "229d6230-93dc-4b44-ad2c-fc6468ad66ea")
+			(uuid "229d6230-93dc-4b44-ad2c-fc6468ad66eb")
 		)
 		(pin "7"
-			(uuid "a834e2a9-49c1-4e6b-aad1-6718aa9654c3")
+			(uuid "a834e2a9-49c1-4e6b-aad1-6718aa9654c4")
 		)
 		(pin "9"
-			(uuid "fef015cf-9053-46a8-b04a-be95810681a3")
+			(uuid "fef015cf-9053-46a8-b04a-be95810681a4")
 		)
 		(pin "14"
-			(uuid "f97aa70f-f75e-455a-a55d-ca1af446f1e9")
+			(uuid "f97aa70f-f75e-455a-a55d-ca1af446f1ea")
 		)
 		(pin "8"
-			(uuid "f2779de3-7b36-47a3-b167-7cf37945a2e7")
+			(uuid "f2779de3-7b36-47a3-b167-7cf37945a2e8")
 		)
 		(instances
 			(project "MPU-65X"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
 					(reference "U4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "IMNOTWOPR:R")
+		(at 320.04 163.83 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "33d7f3c1-9166-4780-92a1-0892367d21b8")
+		(property "Reference" "R2"
+			(at 320.04 161.29 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1kΩ"
+			(at 320.04 163.83 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.016 1.016)
+				)
+			)
+		)
+		(property "Footprint" "IMNOTWOPR:R_Axial_DIN0207_P400mil"
+			(at 320.04 163.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 320.04 163.83 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 320.04 163.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "5fa54239-82fd-4b92-9735-96fb33096b97")
+		)
+		(pin "1"
+			(uuid "9f0f48fb-a2f0-4a2d-817a-1ce1598b5c50")
+		)
+		(instances
+			(project "MPU-65X"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
+					(reference "R2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED_Dual_Bidirectional")
+		(at 299.72 194.31 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "38822f49-9f74-4dab-b71a-2c5ed8f02055")
+		(property "Reference" "D8"
+			(at 308.61 190.754 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "T_{X}D"
+			(at 308.61 193.294 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "LED_THT:LED_D5.0mm_Horizontal_O1.27mm_Z3.0mm"
+			(at 299.72 194.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 299.72 194.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Dual LED, bidirectional"
+			(at 299.72 194.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "8a5c78fe-d010-4a77-9f62-417499c0ff93")
+		)
+		(pin "2"
+			(uuid "e24c0362-fa01-4b38-8dc4-c5a75e9415ce")
+		)
+		(instances
+			(project "MPU-65X"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
+					(reference "D8")
 					(unit 1)
 				)
 			)
@@ -7192,46 +9022,46 @@
 			)
 		)
 		(pin "10"
-			(uuid "50a35213-9b1d-49ec-bf57-8f4a57bdc82f")
+			(uuid "50a35213-9b1d-49ec-bf57-8f4a57bdc831")
 		)
 		(pin "13"
-			(uuid "c6506d6c-defe-4963-b527-5f6ee2cca148")
+			(uuid "c6506d6c-defe-4963-b527-5f6ee2cca14a")
 		)
 		(pin "12"
-			(uuid "8ed84541-fef2-435c-840d-64f83e71831a")
+			(uuid "8ed84541-fef2-435c-840d-64f83e71831c")
 		)
 		(pin "11"
-			(uuid "c3804a66-9069-4c12-bf40-b8eca8d88480")
+			(uuid "c3804a66-9069-4c12-bf40-b8eca8d88482")
 		)
 		(pin "4"
-			(uuid "250d05ee-6547-4062-a064-e8e2001bc4d3")
+			(uuid "250d05ee-6547-4062-a064-e8e2001bc4d5")
 		)
 		(pin "3"
-			(uuid "2d24b6ad-962a-42c6-bde3-c56bad2f4dd7")
+			(uuid "2d24b6ad-962a-42c6-bde3-c56bad2f4dd9")
 		)
 		(pin "6"
-			(uuid "c183cc18-0b76-4f21-a0e6-1785751a8f2b")
+			(uuid "c183cc18-0b76-4f21-a0e6-1785751a8f2d")
 		)
 		(pin "2"
-			(uuid "12a7eb03-2c21-4b66-b38e-b3acdc775487")
+			(uuid "12a7eb03-2c21-4b66-b38e-b3acdc775489")
 		)
 		(pin "1"
-			(uuid "6b551501-98ef-4c50-998f-af53a179232c")
+			(uuid "6b551501-98ef-4c50-998f-af53a179232e")
 		)
 		(pin "5"
-			(uuid "229d6230-93dc-4b44-ad2c-fc6468ad66ea")
+			(uuid "229d6230-93dc-4b44-ad2c-fc6468ad66ec")
 		)
 		(pin "7"
-			(uuid "a834e2a9-49c1-4e6b-aad1-6718aa9654c3")
+			(uuid "a834e2a9-49c1-4e6b-aad1-6718aa9654c5")
 		)
 		(pin "9"
-			(uuid "fef015cf-9053-46a8-b04a-be95810681a3")
+			(uuid "fef015cf-9053-46a8-b04a-be95810681a5")
 		)
 		(pin "14"
-			(uuid "f97aa70f-f75e-455a-a55d-ca1af446f1e9")
+			(uuid "f97aa70f-f75e-455a-a55d-ca1af446f1eb")
 		)
 		(pin "8"
-			(uuid "f2779de3-7b36-47a3-b167-7cf37945a2e7")
+			(uuid "f2779de3-7b36-47a3-b167-7cf37945a2e9")
 		)
 		(instances
 			(project "MPU-65X"
@@ -7244,7 +9074,7 @@
 	)
 	(symbol
 		(lib_id "IMNOTWOPR:W65C51")
-		(at 255.27 58.42 0)
+		(at 255.27 68.58 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7252,32 +9082,29 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "4ca586b2-5e2f-4322-b37f-d4d1346152cd")
 		(property "Reference" "U5"
-			(at 257.4133 35.56 0)
+			(at 255.27 68.58 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
 		(property "Value" "W65C51"
-			(at 257.4133 38.1 0)
+			(at 255.27 70.358 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" "IMNOTWOPR:DIP-28W"
-			(at 255.27 58.42 0)
+			(at 255.27 68.58 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7288,7 +9115,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 255.27 58.42 0)
+			(at 255.27 68.58 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7299,7 +9126,7 @@
 			)
 		)
 		(property "Description" "Asynchronous Communications Interface Adapter (ACIA)"
-			(at 255.27 58.42 0)
+			(at 255.27 68.58 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7403,6 +9230,168 @@
 		)
 	)
 	(symbol
+		(lib_id "IMNOTWOPR:C")
+		(at 347.98 41.91 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "4d5ec448-f430-461c-a16b-48307c1d8c1f")
+		(property "Reference" "C4"
+			(at 351.79 40.6399 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1µF"
+			(at 351.79 43.1799 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "IMNOTWOPR:C_Rect_P200mil"
+			(at 347.98 41.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 347.98 41.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 347.98 41.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "84bd135f-bb33-4d01-8e59-6c8bce2e2e8d")
+		)
+		(pin "1"
+			(uuid "6caf9a70-2f76-4a81-b310-7bc6c2b60fe9")
+		)
+		(instances
+			(project "MPU-65X"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
+					(reference "C4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED_Dual_Bidirectional")
+		(at 299.72 163.83 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "508eab97-9bc9-4624-ae5b-eb93edb721fc")
+		(property "Reference" "D5"
+			(at 308.61 160.274 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "RTS"
+			(at 308.61 162.814 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "LED_THT:LED_D5.0mm_Horizontal_O1.27mm_Z3.0mm"
+			(at 299.72 163.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 299.72 163.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Dual LED, bidirectional"
+			(at 299.72 163.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "793a62aa-e58d-4cc9-beb9-72789ba2b681")
+		)
+		(pin "2"
+			(uuid "5db89bdc-61af-4a59-8fc0-dfd7441ce703")
+		)
+		(instances
+			(project "MPU-65X"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
+					(reference "D5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 190.5 118.11 0)
 		(unit 1)
@@ -7482,6 +9471,165 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:LED_Dual_Bidirectional")
+		(at 299.72 184.15 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "578d31e2-573a-4a47-9f61-3ea2fbb99c2b")
+		(property "Reference" "D7"
+			(at 308.61 180.594 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "CTS"
+			(at 308.61 183.134 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "LED_THT:LED_D5.0mm_Horizontal_O1.27mm_Z3.0mm"
+			(at 299.72 184.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 299.72 184.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Dual LED, bidirectional"
+			(at 299.72 184.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "9de31d50-e8af-4f90-9aee-ea48c048e8fc")
+		)
+		(pin "2"
+			(uuid "297dcfef-6e79-4c2b-b58c-f6a6c20cec8c")
+		)
+		(instances
+			(project "MPU-65X"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
+					(reference "D7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:VCC")
+		(at 318.77 30.48 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6950e873-9365-4d8e-ab39-041ab0796c28")
+		(property "Reference" "#PWR013"
+			(at 318.77 34.29 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "VCC"
+			(at 321.31 29.2099 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 318.77 30.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 318.77 30.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VCC\""
+			(at 318.77 30.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "7b0d637f-3272-473b-8244-e5f8065d4986")
+		)
+		(instances
+			(project "MPU-65X"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
+					(reference "#PWR013")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "IMNOTWOPR:7400")
 		(at 158.75 237.49 0)
 		(unit 5)
@@ -7549,52 +9697,210 @@
 			)
 		)
 		(pin "10"
-			(uuid "50a35213-9b1d-49ec-bf57-8f4a57bdc82f")
+			(uuid "50a35213-9b1d-49ec-bf57-8f4a57bdc832")
 		)
 		(pin "13"
-			(uuid "c6506d6c-defe-4963-b527-5f6ee2cca148")
+			(uuid "c6506d6c-defe-4963-b527-5f6ee2cca14b")
 		)
 		(pin "12"
-			(uuid "8ed84541-fef2-435c-840d-64f83e71831a")
+			(uuid "8ed84541-fef2-435c-840d-64f83e71831d")
 		)
 		(pin "11"
-			(uuid "c3804a66-9069-4c12-bf40-b8eca8d88480")
+			(uuid "c3804a66-9069-4c12-bf40-b8eca8d88483")
 		)
 		(pin "4"
-			(uuid "250d05ee-6547-4062-a064-e8e2001bc4d3")
+			(uuid "250d05ee-6547-4062-a064-e8e2001bc4d6")
 		)
 		(pin "3"
-			(uuid "2d24b6ad-962a-42c6-bde3-c56bad2f4dd7")
+			(uuid "2d24b6ad-962a-42c6-bde3-c56bad2f4dda")
 		)
 		(pin "6"
-			(uuid "c183cc18-0b76-4f21-a0e6-1785751a8f2b")
+			(uuid "c183cc18-0b76-4f21-a0e6-1785751a8f2e")
 		)
 		(pin "2"
-			(uuid "12a7eb03-2c21-4b66-b38e-b3acdc775487")
+			(uuid "12a7eb03-2c21-4b66-b38e-b3acdc77548a")
 		)
 		(pin "1"
-			(uuid "6b551501-98ef-4c50-998f-af53a179232c")
+			(uuid "6b551501-98ef-4c50-998f-af53a179232f")
 		)
 		(pin "5"
-			(uuid "229d6230-93dc-4b44-ad2c-fc6468ad66ea")
+			(uuid "229d6230-93dc-4b44-ad2c-fc6468ad66ed")
 		)
 		(pin "7"
-			(uuid "a834e2a9-49c1-4e6b-aad1-6718aa9654c3")
+			(uuid "a834e2a9-49c1-4e6b-aad1-6718aa9654c6")
 		)
 		(pin "9"
-			(uuid "fef015cf-9053-46a8-b04a-be95810681a3")
+			(uuid "fef015cf-9053-46a8-b04a-be95810681a6")
 		)
 		(pin "14"
-			(uuid "f97aa70f-f75e-455a-a55d-ca1af446f1e9")
+			(uuid "f97aa70f-f75e-455a-a55d-ca1af446f1ec")
 		)
 		(pin "8"
-			(uuid "f2779de3-7b36-47a3-b167-7cf37945a2e7")
+			(uuid "f2779de3-7b36-47a3-b167-7cf37945a2ea")
 		)
 		(instances
 			(project "MPU-65X"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
 					(reference "U4")
 					(unit 5)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "IMNOTWOPR:R")
+		(at 320.04 204.47 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "752dab6f-b2f1-48b8-85fb-13ca2c94839c")
+		(property "Reference" "R9"
+			(at 320.04 201.93 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1kΩ"
+			(at 320.04 204.47 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.016 1.016)
+				)
+			)
+		)
+		(property "Footprint" "IMNOTWOPR:R_Axial_DIN0207_P400mil"
+			(at 320.04 204.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 320.04 204.47 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 320.04 204.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "3d7da5cf-f489-46d6-97dc-81c3452aaed7")
+		)
+		(pin "1"
+			(uuid "1f6cc550-30d8-492b-9f13-fed7e01689d5")
+		)
+		(instances
+			(project "MPU-65X"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
+					(reference "R9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "IMNOTWOPR:R")
+		(at 320.04 184.15 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "7777275a-8a01-410c-98ce-eb5bb8f3d77d")
+		(property "Reference" "R7"
+			(at 320.04 181.61 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1kΩ"
+			(at 320.04 184.15 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.016 1.016)
+				)
+			)
+		)
+		(property "Footprint" "IMNOTWOPR:R_Axial_DIN0207_P400mil"
+			(at 320.04 184.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 320.04 184.15 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 320.04 184.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "84b308c6-3b26-4b0c-a5e0-c52bc0d854db")
+		)
+		(pin "1"
+			(uuid "6f6677c5-94b8-45f5-a8b7-36209de4cf15")
+		)
+		(instances
+			(project "MPU-65X"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
+					(reference "R7")
+					(unit 1)
 				)
 			)
 		)
@@ -7845,8 +10151,8 @@
 		)
 	)
 	(symbol
-		(lib_id "IMNOTWOPR:MAX232")
-		(at 318.77 60.96 0)
+		(lib_id "power:GND")
+		(at 318.77 96.52 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7855,9 +10161,21 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "993d7f25-0689-4d30-bc7a-257ab4c246cb")
-		(property "Reference" "U8"
-			(at 320.9133 30.48 0)
+		(uuid "912ce39f-dec0-48f7-aded-7a676461015d")
+		(property "Reference" "#PWR012"
+			(at 318.77 102.87 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 321.31 97.7899 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7867,15 +10185,80 @@
 				(justify left)
 			)
 		)
-		(property "Value" "MAX232"
-			(at 320.9133 33.02 0)
+		(property "Footprint" ""
+			(at 318.77 96.52 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+			)
+		)
+		(property "Datasheet" ""
+			(at 318.77 96.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 318.77 96.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "5d8d3893-69d0-4ed1-b345-66903b057adc")
+		)
+		(instances
+			(project "MPU-65X"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
+					(reference "#PWR012")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "IMNOTWOPR:MAX232")
+		(at 318.77 60.96 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "993d7f25-0689-4d30-bc7a-257ab4c246cb")
+		(property "Reference" "U8"
+			(at 318.77 45.72 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MAX232"
+			(at 318.77 48.006 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(property "Footprint" "IMNOTWOPR:DIP-16N"
@@ -7970,8 +10353,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:DE9_Socket")
-		(at 381 63.5 0)
+		(lib_id "IMNOTWOPR:R")
+		(at 320.04 123.19 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7979,32 +10362,29 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "c0de2b2a-ed3d-4089-ab97-1d85a238a58f")
-		(property "Reference" "J2"
-			(at 386.08 62.2299 0)
+		(uuid "a4be0b53-404c-424c-b084-465b3d132b94")
+		(property "Reference" "R6"
+			(at 320.04 120.65 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
-		(property "Value" "DE9_Socket"
-			(at 386.08 64.7699 0)
+		(property "Value" "1kΩ"
+			(at 320.04 123.19 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1.27 1.27)
+					(size 1.016 1.016)
 				)
-				(justify left)
 			)
 		)
-		(property "Footprint" ""
-			(at 381 63.5 0)
+		(property "Footprint" "IMNOTWOPR:R_Axial_DIN0207_P400mil"
+			(at 320.04 123.19 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8015,7 +10395,329 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 381 63.5 0)
+			(at 320.04 123.19 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 320.04 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "5d439322-ba45-4fe5-a1ec-0cecb9a191c2")
+		)
+		(pin "1"
+			(uuid "57f587ea-253b-4db4-bbca-0bfb27df8694")
+		)
+		(instances
+			(project "MPU-65X"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
+					(reference "R6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "IMNOTWOPR:C")
+		(at 285.75 41.91 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a7c15b4d-a174-492f-a16e-91775b772f9d")
+		(property "Reference" "C3"
+			(at 289.56 40.6399 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1µF"
+			(at 289.56 43.1799 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "IMNOTWOPR:C_Rect_P200mil"
+			(at 285.75 41.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 285.75 41.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 285.75 41.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "125b2a28-9132-416b-aef2-3724c94ab01d")
+		)
+		(pin "1"
+			(uuid "8aa705f1-2e94-4f97-9fc8-c38e1c6b435f")
+		)
+		(instances
+			(project "MPU-65X"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
+					(reference "C3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 285.75 209.55 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ae0285bc-9e2f-40f3-b525-6665ad45709d")
+		(property "Reference" "#PWR08"
+			(at 285.75 215.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 285.75 214.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 285.75 209.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 285.75 209.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 285.75 209.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "c78d9907-1c78-44d5-a8bc-568e81731334")
+		)
+		(instances
+			(project "MPU-65X"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
+					(reference "#PWR08")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "IMNOTWOPR:R")
+		(at 320.04 143.51 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "aeeafd00-851f-435f-8a7b-2cb9d9341cfb")
+		(property "Reference" "R4"
+			(at 320.04 140.97 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1kΩ"
+			(at 320.04 143.51 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.016 1.016)
+				)
+			)
+		)
+		(property "Footprint" "IMNOTWOPR:R_Axial_DIN0207_P400mil"
+			(at 320.04 143.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 320.04 143.51 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 320.04 143.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "bcc80b8b-1070-44f2-9a32-25af03bae17d")
+		)
+		(pin "1"
+			(uuid "26721d95-4d84-44e7-b99c-c2257cb6f2e1")
+		)
+		(instances
+			(project "MPU-65X"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
+					(reference "R4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:DE9_Socket")
+		(at 381 71.12 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c0de2b2a-ed3d-4089-ab97-1d85a238a58f")
+		(property "Reference" "J2"
+			(at 386.08 69.8499 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "DE9_Socket"
+			(at 386.08 72.3899 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_Dsub:DSUB-9_Socket_Horizontal_P2.77x2.54mm_EdgePinOffset9.40mm"
+			(at 381 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 381 71.12 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8026,7 +10728,7 @@
 			)
 		)
 		(property "Description" "9-pin D-SUB connector, socket (female)"
-			(at 381 63.5 0)
+			(at 381 71.12 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8139,52 +10841,373 @@
 			)
 		)
 		(pin "10"
-			(uuid "50a35213-9b1d-49ec-bf57-8f4a57bdc82f")
+			(uuid "50a35213-9b1d-49ec-bf57-8f4a57bdc833")
 		)
 		(pin "13"
-			(uuid "c6506d6c-defe-4963-b527-5f6ee2cca148")
+			(uuid "c6506d6c-defe-4963-b527-5f6ee2cca14c")
 		)
 		(pin "12"
-			(uuid "8ed84541-fef2-435c-840d-64f83e71831a")
+			(uuid "8ed84541-fef2-435c-840d-64f83e71831e")
 		)
 		(pin "11"
-			(uuid "c3804a66-9069-4c12-bf40-b8eca8d88480")
+			(uuid "c3804a66-9069-4c12-bf40-b8eca8d88484")
 		)
 		(pin "4"
-			(uuid "250d05ee-6547-4062-a064-e8e2001bc4d3")
+			(uuid "250d05ee-6547-4062-a064-e8e2001bc4d7")
 		)
 		(pin "3"
-			(uuid "2d24b6ad-962a-42c6-bde3-c56bad2f4dd7")
+			(uuid "2d24b6ad-962a-42c6-bde3-c56bad2f4ddb")
 		)
 		(pin "6"
-			(uuid "c183cc18-0b76-4f21-a0e6-1785751a8f2b")
+			(uuid "c183cc18-0b76-4f21-a0e6-1785751a8f2f")
 		)
 		(pin "2"
-			(uuid "12a7eb03-2c21-4b66-b38e-b3acdc775487")
+			(uuid "12a7eb03-2c21-4b66-b38e-b3acdc77548b")
 		)
 		(pin "1"
-			(uuid "6b551501-98ef-4c50-998f-af53a179232c")
+			(uuid "6b551501-98ef-4c50-998f-af53a1792330")
 		)
 		(pin "5"
-			(uuid "229d6230-93dc-4b44-ad2c-fc6468ad66ea")
+			(uuid "229d6230-93dc-4b44-ad2c-fc6468ad66ee")
 		)
 		(pin "7"
-			(uuid "a834e2a9-49c1-4e6b-aad1-6718aa9654c3")
+			(uuid "a834e2a9-49c1-4e6b-aad1-6718aa9654c7")
 		)
 		(pin "9"
-			(uuid "fef015cf-9053-46a8-b04a-be95810681a3")
+			(uuid "fef015cf-9053-46a8-b04a-be95810681a7")
 		)
 		(pin "14"
-			(uuid "f97aa70f-f75e-455a-a55d-ca1af446f1e9")
+			(uuid "f97aa70f-f75e-455a-a55d-ca1af446f1ed")
 		)
 		(pin "8"
-			(uuid "f2779de3-7b36-47a3-b167-7cf37945a2e7")
+			(uuid "f2779de3-7b36-47a3-b167-7cf37945a2eb")
 		)
 		(instances
 			(project "MPU-65X"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
 					(reference "U4")
 					(unit 4)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:VCC")
+		(at 255.27 49.53 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "cbededac-47d6-4c15-9e0a-ece9278b847f")
+		(property "Reference" "#PWR09"
+			(at 255.27 53.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "VCC"
+			(at 257.81 48.2599 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 255.27 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 255.27 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VCC\""
+			(at 255.27 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "870be9ee-2eaf-4f35-86ee-7abe408696b8")
+		)
+		(instances
+			(project "MPU-65X"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
+					(reference "#PWR09")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED_Dual_Bidirectional")
+		(at 299.72 204.47 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "ccc2f090-7d83-4052-b613-d302267604f3")
+		(property "Reference" "D9"
+			(at 308.61 200.914 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "R_{X}D"
+			(at 308.61 203.454 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "LED_THT:LED_D5.0mm_Horizontal_O1.27mm_Z3.0mm"
+			(at 299.72 204.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 299.72 204.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Dual LED, bidirectional"
+			(at 299.72 204.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "7cb078f4-b423-4b8f-8c86-b147204da5d9")
+		)
+		(pin "2"
+			(uuid "2ea28338-c443-4c1a-9bf4-1fa23ad35770")
+		)
+		(instances
+			(project "MPU-65X"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
+					(reference "D9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "IMNOTWOPR:C")
+		(at 356.87 88.9 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "cf044c25-8922-41c4-a21e-95a4a9cb6121")
+		(property "Reference" "C2"
+			(at 360.68 87.6299 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1µF"
+			(at 360.68 90.1699 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "IMNOTWOPR:C_Rect_P200mil"
+			(at 356.87 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 356.87 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 356.87 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "3c66cde8-6d2e-4c25-9c07-3bea5b8d6ab0")
+		)
+		(pin "1"
+			(uuid "13d09d7a-a7a7-4662-a006-f4adc43bd0fd")
+		)
+		(instances
+			(project "MPU-65X"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
+					(reference "C2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED_Dual_Bidirectional")
+		(at 299.72 153.67 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "d08e95ae-150c-4ddf-bce1-d0f28970e523")
+		(property "Reference" "D1"
+			(at 308.61 150.114 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "RI"
+			(at 308.61 152.654 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "LED_THT:LED_D5.0mm_Horizontal_O1.27mm_Z9.0mm"
+			(at 299.72 153.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 299.72 153.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Dual LED, bidirectional"
+			(at 299.72 153.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "ddc948e3-f803-42cc-9687-a67d3ae1b60d")
+		)
+		(pin "2"
+			(uuid "d932f916-055c-4351-a9aa-cd4897a0505c")
+		)
+		(instances
+			(project "MPU-65X"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
+					(reference "D1")
+					(unit 1)
 				)
 			)
 		)
@@ -8263,6 +11286,482 @@
 			(project "MPU-65X"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
 					(reference "#PWR010")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "IMNOTWOPR:R")
+		(at 320.04 173.99 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "d4913dbf-be13-44f6-83d0-d1a265bb7836")
+		(property "Reference" "R3"
+			(at 320.04 171.45 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1kΩ"
+			(at 320.04 173.99 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.016 1.016)
+				)
+			)
+		)
+		(property "Footprint" "IMNOTWOPR:R_Axial_DIN0207_P400mil"
+			(at 320.04 173.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 320.04 173.99 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 320.04 173.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "19664e51-0b82-4194-a8ca-4dc567298a74")
+		)
+		(pin "1"
+			(uuid "07ee4450-034a-42e4-9ad9-612a7017dd9a")
+		)
+		(instances
+			(project "MPU-65X"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
+					(reference "R3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED_Dual_Bidirectional")
+		(at 299.72 173.99 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "d71e8bce-fed9-4d3c-9696-0365c8d46aee")
+		(property "Reference" "D6"
+			(at 308.61 170.434 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "RTR"
+			(at 308.61 172.974 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "LED_THT:LED_D5.0mm_Horizontal_O1.27mm_Z3.0mm"
+			(at 299.72 173.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 299.72 173.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Dual LED, bidirectional"
+			(at 299.72 173.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "e801d61b-f2ca-4df9-a173-17de21348091")
+		)
+		(pin "2"
+			(uuid "5f59ebad-b955-48f7-8d6c-d03fb7a37fa1")
+		)
+		(instances
+			(project "MPU-65X"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
+					(reference "D6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "IMNOTWOPR:R")
+		(at 320.04 153.67 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "dec78ea8-dd09-448a-b8d0-1dc91be6d86d")
+		(property "Reference" "R1"
+			(at 320.04 151.13 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1kΩ"
+			(at 320.04 153.67 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.016 1.016)
+				)
+			)
+		)
+		(property "Footprint" "IMNOTWOPR:R_Axial_DIN0207_P400mil"
+			(at 320.04 153.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 320.04 153.67 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 320.04 153.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "1632725f-11e0-452e-8228-c68151bf1d8f")
+		)
+		(pin "1"
+			(uuid "b5859bd6-a787-4b5f-bb07-941e04753008")
+		)
+		(instances
+			(project "MPU-65X"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
+					(reference "R1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "IMNOTWOPR:R")
+		(at 320.04 194.31 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "df8e14a9-a19a-4c00-add8-8e7df4a47eb7")
+		(property "Reference" "R8"
+			(at 320.04 191.77 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1kΩ"
+			(at 320.04 194.31 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.016 1.016)
+				)
+			)
+		)
+		(property "Footprint" "IMNOTWOPR:R_Axial_DIN0207_P400mil"
+			(at 320.04 194.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 320.04 194.31 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 320.04 194.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "08dd77b7-3076-4c25-8f9e-58dc315e845b")
+		)
+		(pin "1"
+			(uuid "140116d0-9c74-45bc-a568-84a4d45daba9")
+		)
+		(instances
+			(project "MPU-65X"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
+					(reference "R8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "IMNOTWOPR:R")
+		(at 320.04 133.35 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "e5510b53-3d3f-4c31-bac0-308aa80d2504")
+		(property "Reference" "R5"
+			(at 320.04 130.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1kΩ"
+			(at 320.04 133.35 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.016 1.016)
+				)
+			)
+		)
+		(property "Footprint" "IMNOTWOPR:R_Axial_DIN0207_P400mil"
+			(at 320.04 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 320.04 133.35 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 320.04 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "81df4170-68cd-4f99-a210-79dd7f82559b")
+		)
+		(pin "1"
+			(uuid "50842702-d2b5-41f1-bf54-22eb4479f1ac")
+		)
+		(instances
+			(project "MPU-65X"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
+					(reference "R5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED_Dual_Bidirectional")
+		(at 299.72 123.19 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "e7bec8d3-3949-487f-82ed-6d30b4beed26")
+		(property "Reference" "D2"
+			(at 308.61 119.634 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "DTR"
+			(at 308.61 122.174 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "LED_THT:LED_D5.0mm_Horizontal_O1.27mm_Z9.0mm"
+			(at 299.72 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 299.72 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Dual LED, bidirectional"
+			(at 299.72 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "6ac330a3-cbbe-4b73-b3ac-97ef8e8bbb84")
+		)
+		(pin "2"
+			(uuid "cf593b19-7443-4c83-ac1a-cb5036602f9e")
+		)
+		(instances
+			(project "MPU-65X"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
+					(reference "D2")
 					(unit 1)
 				)
 			)
@@ -8498,6 +11997,86 @@
 			(project "MPU-65X"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
 					(reference "#PWR04")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED_Dual_Bidirectional")
+		(at 299.72 133.35 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "fe80f1ce-afbd-4e3f-b02c-240997130388")
+		(property "Reference" "D3"
+			(at 308.61 129.794 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "DCD"
+			(at 308.61 132.334 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "LED_THT:LED_D5.0mm_Horizontal_O1.27mm_Z9.0mm"
+			(at 299.72 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 299.72 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Dual LED, bidirectional"
+			(at 299.72 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "0db31afe-93cb-4c1a-bd94-d09150a7262c")
+		)
+		(pin "2"
+			(uuid "f0f261cc-18b7-4d78-b45d-d98338b32b8f")
+		)
+		(instances
+			(project "MPU-65X"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
+					(reference "D3")
 					(unit 1)
 				)
 			)
