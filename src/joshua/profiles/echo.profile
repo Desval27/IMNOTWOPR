@@ -7,4 +7,5 @@ serial-baud = 19200
 serial-data-bits = 8
 serial-parity = none
 serial-stop-bits = 1
+console-newline = raw
 rom = $C000:$4000:../examples/echo.bin

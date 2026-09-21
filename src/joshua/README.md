@@ -114,8 +114,9 @@ Joshua starts paused unless `--run` is specified. CPU status appears above each
 interactive prompt. Memory views show hexadecimal bytes and printable ASCII.
 
 ```text
-mem C000 40
-dis C000 10
+mem C000 C03F
+mem C000 L 40
+dis C000 L 10
 asm 0200 LDA #$41
 asm 0202 STA $8010
 write 0205 EA EA
@@ -128,9 +129,9 @@ run C000
 
 | Command | Operation |
 | --- | --- |
-| `mem ADDRESS [COUNT]` | Inspect bytes without device side effects |
+| `mem ADDRESS\|N [END \| L COUNT]` | Inspect bytes through inclusive END or COUNT bytes; N continues the prior memory display |
 | `write ADDRESS BYTE ...` | Patch RAM or ROM |
-| `dis [ADDRESS [COUNT]]` | Disassemble instructions; omitted address defaults to PC |
+| `dis [ADDRESS\|N [END \| L COUNT]]` | Disassemble through inclusive END or COUNT instructions; N continues the prior disassembly; omitted address defaults to PC |
 | `asm ADDRESS INSTRUCTION` | Assemble one instruction and report the next address |
 | `regs [REGISTER VALUE]` | Inspect/edit PC, A, X, Y, SP, P |
 | `break [ADDRESS]` | List/add execution breakpoints |
@@ -149,6 +150,26 @@ run C000
 | `help` / `quit` | Command help or exit |
 
 Short forms include `m`, `w`, `d`, `a`, `r`, `b`, `s`, `g`, `c`, `q`, and `?`.
+`mem ADDRESS` defaults to 128 bytes, clipped at `$FFFF`; `dis [ADDRESS]`
+defaults to 16 instructions. `dis N` (or `dis n`) starts immediately after the
+last instruction shown by a prior disassembly; before any disassembly it uses PC.
+It also accepts ranges: `dis N 03FF` or `dis N L 10`. The saved next address wraps
+at `$FFFF`; empty or invalid requests leave it unchanged. Omitting the address
+still starts at PC.
+`mem N` (or `mem n`) similarly continues after the last byte displayed, using
+PC before the first memory display. It accepts `mem N END` and `mem N L COUNT`,
+and defaults to 128 bytes, clipped at `$FFFF`. Memory and disassembly keep
+independent next addresses. The memory next address also wraps at `$FFFF`,
+and empty or invalid requests leave it unchanged.
+
+A bare second number is an inclusive ending address;
+use `L COUNT` (or `l COUNT`) for a length. Counts remain hexadecimal by default:
+`mem 0300 03FF` and `mem 0300 L 100` both display 256 bytes.
+Disassembly displays complete instructions whose starting addresses fall within
+the requested range, even when the final instruction extends beyond END.
+Ending addresses before the start are rejected. Existing scripts using a bare
+count must insert `L` before that count.
+
 `deposit` and `deposite` alias `write`. Commands accept `;` comments; quote filenames
 containing spaces. Instruction mnemonics are case insensitive.
 
@@ -171,6 +192,24 @@ again. Reset retains loaded memory and breakpoints. STP requires reset; changing
 PC alone does not restart a stopped CPU.
 
 ## Serial I/O and automation
+
+Use `--console-newline MODE`, a profile entry `console-newline = MODE`, or
+the monitor command `console-newline MODE` to configure guest output newlines.
+The monitor command without a mode shows the current setting. Changes take effect
+immediately and persist through reset; CLI values override profile values.
+
+| Mode | Output behavior |
+| --- | --- |
+| `raw` (default) | Preserve every byte |
+| `cr` | Expand CR to CR/LF; suppress an immediately following LF |
+| `lf` | Expand lone LF to CR/LF; preserve CR and existing CR/LF pairs |
+| `auto` | Convert CR, LF, and CR/LF to one CR/LF newline each |
+
+The included `wozmon.profile` selects `cr`, so memory dumps such as `0300.03FF`
+advance lines. The echo profile uses `raw` because its firmware already sends
+CR/LF. Repeated CRs or LFs retain blank lines. Only host presentation changes:
+keyboard input, `send`, and emulated serial framing remain unchanged. Conversion
+also applies to redirected stdout; select `raw` for byte-exact binary captures.
 
 The ACIA connects to the host terminal as a byte stream. Completed serial output
 goes to stdout; monitor output and diagnostics go to stderr. Host input is queued,

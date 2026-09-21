@@ -1,6 +1,7 @@
 #pragma once
 #include "joshua/machine.hpp"
 #include <iosfwd>
+#include <optional>
 
 namespace joshua {
 enum class MonitorAction { prompt, run, quit };
@@ -12,5 +13,7 @@ public:
 private:
     Machine& machine_;
     std::ostream& out_;
+    std::optional<Word> nextDisassembly_;
+    std::optional<Word> nextMemory_;
 };
 }

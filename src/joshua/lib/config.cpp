@@ -45,6 +45,7 @@ struct Settings {
         else if (key == "serial-data-bits") config.serial.dataBits = number(value, 8, 10);
         else if (key == "serial-parity") config.serial.parity = parseParity(value);
         else if (key == "serial-stop-bits") config.serial.stopHalfBits = parseStopBits(value);
+        else if (key == "console-newline") config.consoleNewline = parseConsoleNewline(value);
         else if (key == "escape") {
             config.escape = static_cast<Byte>(number(value, 31));
             if (!config.escape || config.escape == 10 || config.escape == 13)
@@ -86,7 +87,7 @@ Config parseArguments(int argc, char** argv) {
         else if (arg == "--unthrottled") result.throttle = false;
         else {
             static const std::set<std::string> options{"--profile", "--ram", "--rom", "--via", "--acia", "--clock-hz", "--escape", "--pc", "--script", "--cycles",
-                "--serial-baud", "--serial-data-bits", "--serial-parity", "--serial-stop-bits"};
+                "--serial-baud", "--serial-data-bits", "--serial-parity", "--serial-stop-bits", "--console-newline"};
             if (!options.contains(arg)) throw std::runtime_error("unknown option: " + arg);
             if (++i == argc) throw std::runtime_error("missing value for " + arg);
             std::string value = argv[i];
@@ -132,6 +133,7 @@ Usage: joshua [options]
   --serial-data-bits BITS  Console data bits, 5..8 (default 8)
   --serial-parity MODE     none, even, odd, mark, space (default none)
   --serial-stop-bits BITS  1, 1.5 (5 data bits only), or 2 (default 1)
+  --console-newline MODE   Output newline handling: raw, cr, lf, auto (default raw)
   --pc ADDRESS             Override PC after reset
   --escape BYTE            Console escape byte (default $1D, Ctrl-])
   --run                    Start in serial console mode

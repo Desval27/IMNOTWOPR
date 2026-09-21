@@ -34,6 +34,59 @@ class Integration(unittest.TestCase):
             self.assertNotEqual(result.returncode, 0)
             self.assertEqual(pathlib.Path(directory, "result.bin").read_bytes(), bytes(16))
 
+    def test_console_newlines(self):
+        # Drain each byte separately to exercise CR/LF pairs across drain calls.
+        setup = "asm 200 BRA 200\nregs pc 200\nio write 8013 1F\nio write 8012 0B\n"
+        data = b"A\rB\nC\r\nD\r\rE\n\n\x00\xff"
+        output = "".join(f"io write 8010 {byte:02X}\nstep 300\n" for byte in data)
+        expected = {
+            "raw": data,
+            "cr": b"A\r\nB\nC\r\nD\r\n\r\nE\n\n\x00\xff",
+            "lf": b"A\rB\r\nC\r\nD\r\rE\r\n\r\n\x00\xff",
+            "auto": b"A\r\nB\r\nC\r\nD\r\n\r\nE\r\n\r\n\x00\xff",
+        }
+        for mode, wanted in expected.items():
+            with self.subTest(mode=mode):
+                result = self.run_script(setup + output + "quit\n", "--console-newline", mode)
+                self.assertEqual(result.returncode, 0, result.stderr)
+                self.assertEqual(result.stdout, wanted)
+                result = self.run_script(f"console-newline {mode}\nreset\nconsole-newline\n" + setup + output + "quit\n")
+                self.assertEqual(result.returncode, 0, result.stderr)
+                self.assertEqual(result.stdout, wanted)
+                self.assertEqual(result.stderr.count(f"Console newline: {mode}".encode()), 2)
+
+        with tempfile.TemporaryDirectory() as directory:
+            profile = pathlib.Path(directory, "newline.profile")
+            profile.write_text("console-newline = cr\n")
+            result = self.run_script(setup + output + "quit\n", "--profile", str(profile))
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(result.stdout, expected["cr"])
+            for args in (("--console-newline", "raw", "--profile", str(profile)),
+                         ("--profile", str(profile), "--console-newline", "raw")):
+                result = self.run_script(setup + output + "quit\n", *args)
+                self.assertEqual(result.returncode, 0, result.stderr)
+                self.assertEqual(result.stdout, data)
+            profile.write_text("console-newline = invalid\n")
+            result = self.run_script("quit\n", "--profile", str(profile))
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn(b"newline.profile:1:", result.stderr)
+        for commands, args in (("quit\n", ("--console-newline", "invalid")),
+                               ("console-newline invalid\nquit\n", ())):
+            result = self.run_script(commands, *args)
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn(b"console-newline must be", result.stderr)
+
+    def test_wozmon_dump_newlines(self):
+        # Let firmware initialize, then type slowly enough for its polling receiver.
+        commands = "run\n" + "".join(f"send {byte:02X}\nrun\n" for byte in b"0300.03FF\r") + "quit\n"
+        result = self.run_script(commands, "--profile", "profiles/wozmon.profile",
+                                 "--cycles", "2000000", "--unthrottled")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn(b"\r\n0300:", result.stdout)
+        self.assertIn(b"\r\n03F8:", result.stdout)
+        self.assertNotIn(b"\r\r\n", result.stdout)
+        self.assertNotIn(b"\r", result.stdout.replace(b"\r\n", b""))
+
     def test_profile_relative_paths_and_cli_precedence(self):
         with tempfile.TemporaryDirectory() as directory:
             root = pathlib.Path(directory)

@@ -20,7 +20,7 @@ void signalHandler(int) { interrupted = 1; }
 void drain(joshua::Machine& machine) {
     if (machine.acia) {
         bool wrote = false;
-        while (auto value = machine.acia->takeTransmitted()) { std::cout.put(static_cast<char>(*value)); wrote = true; }
+        while (auto value = machine.acia->takeTransmitted()) { machine.consoleOutput.write(std::cout, *value); wrote = true; }
         if (wrote) std::cout.flush();
     }
 }

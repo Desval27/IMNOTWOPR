@@ -4,7 +4,7 @@
 #include <stdexcept>
 
 namespace joshua {
-Machine::Machine(const Config& config) : cpu(bus) {
+Machine::Machine(const Config& config) : cpu(bus), consoleOutput(config.consoleNewline) {
     auto add = [&](const auto& regions, bool rom) {
         unsigned index = 0;
         for (const auto& region : regions) {

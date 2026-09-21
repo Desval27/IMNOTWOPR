@@ -12,6 +12,7 @@ public:
     Cpu cpu;
     std::shared_ptr<Via> via;
     std::shared_ptr<Acia> acia;
+    ConsoleOutput consoleOutput;
     std::map<Word, bool> breakpoints;
     void reset();
     void load(Word address, const std::filesystem::path& file);

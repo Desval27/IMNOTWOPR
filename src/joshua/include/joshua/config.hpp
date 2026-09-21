@@ -1,6 +1,7 @@
 #pragma once
 #include "joshua/memory.hpp"
 #include "joshua/serial.hpp"
+#include "joshua/console.hpp"
 #include <filesystem>
 #include <optional>
 
@@ -15,6 +16,7 @@ struct Config {
     std::optional<Word> via = 0x8000, acia = 0x8010, pc;
     std::uint32_t clockHz = 1'000'000;
     SerialSettings serial;
+    ConsoleNewline consoleNewline = ConsoleNewline::raw;
     Byte escape = 0x1d;
     std::uint64_t cycleLimit = 0;
     bool run = false, throttle = true, help = false, version = false;

@@ -1,5 +1,6 @@
 #include "joshua/monitor.hpp"
 #include "joshua/instruction.hpp"
+#include <algorithm>
 #include <iostream>
 #include <sstream>
 #include <stdexcept>
@@ -119,6 +120,76 @@ void monitorTests() {
     monitor.execute("break delete 300"); check(m.breakpoints.empty(), "breakpoint deletion");
     check(monitor.execute("run 200") == MonitorAction::run, "run action");
     rejects([&] { monitor.execute("save \"unterminated 0 10"); });
+
+    auto capture = [&](const std::string& command) {
+        output.str(""); output.clear(); monitor.execute(command); return output.str();
+    };
+    auto lines = [&](const std::string& command) {
+        auto text = capture(command); return std::count(text.begin(), text.end(), '\n');
+    };
+    m.cpu.r.pc = 0x300;
+    check(capture("mem N L 1").starts_with("0300  "), "initial memory N uses PC");
+    check(capture("dis N L 1").starts_with("0300  "), "initial N uses PC");
+    check(capture("mem 300 3FF") == capture("m 300 L 100"), "inclusive memory range equals byte count");
+    check(lines("mem 300 3FF") == 16, "memory range has 256 bytes");
+    check(capture("mem 300 300") == capture("mem 300 l 1"), "single-byte inclusive range");
+    check(capture("mem 300") == capture("mem 300 L 80"), "default memory count");
+    check(capture("mem FFFF") == capture("mem FFFF FFFF"), "default memory clips at FFFF");
+    check(capture("mem 300 L 0").empty(), "zero memory count");
+    check(capture("mem 300 L 0d16") == capture("mem 300 30F"), "explicit decimal count");
+    check(lines("mem 0 FFFF") == 4096, "full address space memory range");
+    check(capture("mem N L 1").starts_with("0000  "), "memory continuation wraps after full range");
+    capture("mem 300 30A");
+    check(capture("m n l 2").starts_with("030B  "), "memory N follows partial row and supports aliases");
+    check(capture("mem N 30F").starts_with("030D  "), "memory N supports inclusive end");
+    auto nextMemory = capture("mem N");
+    check(nextMemory.starts_with("0310  ") && std::count(nextMemory.begin(), nextMemory.end(), '\n') == 8,
+          "memory N defaults to 128 bytes");
+    check(capture("mem N L 1").starts_with("0390  "), "default memory continuation updates next address");
+    capture("mem 400 L 0");
+    capture("dis 500 L 1");
+    rejects([&] { monitor.execute("mem N 100"); });
+    rejects([&] { monitor.execute("mem N L"); });
+    rejects([&] { monitor.execute("mem N L 10000"); });
+    check(capture("mem N L 1").starts_with("0391  "), "empty, invalid and disassembly requests preserve memory continuation");
+    capture("mem FFFD L 1");
+    check(capture("mem N").starts_with("FFFE  "), "memory N clips default at FFFF");
+    check(capture("mem N L 1").starts_with("0000  "), "memory N wraps after clipped default");
+
+    monitor.execute("write 300 A9 42 8D 00 04 EA");
+    capture("dis 300 L 1");
+    check(capture("dis N L 1").starts_with("0302  "), "N follows two-byte instruction");
+    check(capture("d n 305").starts_with("0305  "), "lowercase N follows three-byte instruction with end address");
+    capture("dis 300 303");
+    auto continued = capture("dis N");
+    check(continued.starts_with("0305  ") && std::count(continued.begin(), continued.end(), '\n') == 16,
+          "N uses complete final instruction and default count");
+    capture("dis 300 L 1");
+    capture("mem 400 L 1");
+    capture("dis 400 L 0");
+    rejects([&] { monitor.execute("dis N 100"); });
+    check(capture("dis N L 1").starts_with("0302  "), "empty, unrelated and invalid requests preserve continuation");
+    capture("dis");
+    check(capture("dis N L 1").starts_with("0313  "), "dis without address updates continuation");
+    check(lines("dis 300 305") == 3, "range covers mixed-length instructions");
+    check(capture("dis 300 302") == capture("d 300 l 2"), "inclusive final instruction start");
+    check(capture("dis 300 303") == capture("dis 300 L 2"), "partial final instruction shown whole");
+    check(capture("dis 300 300") == capture("dis 300 L 1"), "single-address disassembly");
+    check(lines("dis 300") == 16, "default disassembly count");
+    m.cpu.r.pc = 0x300;
+    check(capture("dis") == capture("dis 300"), "default disassembly address is PC");
+    check(capture("dis 300 L 0").empty(), "zero instruction count");
+    monitor.execute("write FFFE EA EA");
+    check(lines("dis FFFE FFFF") == 2, "ending at FFFF does not wrap");
+    check(capture("dis N L 1").starts_with("0000  "), "N wraps after FFFF");
+    monitor.execute("write FFFF A9");
+    check(lines("dis FFFF FFFF") == 1, "multi-byte final instruction does not wrap range");
+    check(capture("dis N L 1").starts_with("0001  "), "N wraps after multi-byte instruction at FFFF");
+    for (const auto& command : {"mem", "mem 300 2FF", "dis 300 2FF", "mem 300 L", "dis 300 L",
+                               "mem 300 X 2", "dis 300 X 2", "mem 300 301 302", "dis 300 301 302",
+                               "mem FFFF L 2", "mem 300 10000", "dis 300 10000",
+                               "mem 300 L 10001", "dis 300 L 10001"})
+        rejects([&] { monitor.execute(command); });
 }
 }
 int main() {

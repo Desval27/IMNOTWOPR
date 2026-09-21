@@ -33,10 +33,23 @@ MonitorAction Monitor::execute(const std::string& line) {
         if (args.size() < min || args.size() > max) throw std::runtime_error("wrong number of arguments; type help");
     };
     auto n = [&](std::size_t index, std::uint32_t max = 65535) { return number(args.at(index), max); };
+    // A bare second address is inclusive; only L introduces a count.
+    auto range = [&](std::uint32_t address, std::uint32_t defaultCount) {
+        struct Range { bool ending; std::uint32_t value; };
+        if (args.size() <= 2) return Range{false, defaultCount};
+        if (args[2] == "L" || args[2] == "l") {
+            if (args.size() != 4) throw std::runtime_error("expected L COUNT");
+            return Range{false, n(3, 65536)};
+        }
+        if (args.size() != 3) throw std::runtime_error("expected END or L COUNT");
+        auto end = n(2);
+        if (end < address) throw std::runtime_error("ending address precedes starting address");
+        return Range{true, end};
+    };
     auto& bus = machine_.bus;
     auto& cpu = machine_.cpu;
     if (command == "help" || command == "?") { arity(1, 1); out_ << help(); }
-    else if (command == "quit" || command == "q") { arity(1, 1); return MonitorAction::quit; }
+    else if (command == "quit" || command == "exit" || command == "q") { arity(1, 1); return MonitorAction::quit; }
     else if (command == "regs" || command == "r") {
         arity(1, 3);
         if (args.size() == 2) throw std::runtime_error("usage: regs [pc|a|x|y|sp|p VALUE]");
@@ -54,7 +67,11 @@ MonitorAction Monitor::execute(const std::string& line) {
         }
         out_ << machine_.status() << '\n';
     } else if (command == "mem" || command == "m") {
-        arity(2, 3); auto address = n(1); auto size = args.size() > 2 ? n(2, 65536) : std::min(128u, 65536 - address);
+        arity(2, 4);
+        const bool next = args[1] == "N" || args[1] == "n";
+        auto address = next ? nextMemory_.value_or(cpu.r.pc) : n(1);
+        auto requested = range(address, std::min(128u, 65536 - address));
+        auto size = requested.ending ? requested.value - address + 1 : requested.value;
         if (size > 65536 - address) throw std::runtime_error("memory range exceeds $FFFF");
         for (std::uint32_t pos = 0; pos < size; pos += 16) {
             out_ << hex(address + pos) << "  ";
@@ -66,22 +83,27 @@ MonitorAction Monitor::execute(const std::string& line) {
             }
             out_ << "|\n";
         }
+        if (size) nextMemory_ = static_cast<Word>(address + size);
     } else if (command == "write" || command == "deposit" || command == "deposite" || command == "w") {
         arity(3, 65538); auto address = n(1);
         std::vector<Byte> values;
         for (std::size_t i = 2; i < args.size(); ++i) values.push_back(static_cast<Byte>(n(i, 255)));
         bus.patch(address, values);
     } else if (command == "dis" || command == "d") {
-        arity(1, 3);
-        Word address = args.size() > 1 ? static_cast<Word>(n(1)) : cpu.r.pc;
-        auto count = args.size() == 3 ? n(2, 65536) : 16;
-        for (std::uint32_t i = 0; i < count; ++i) {
+        arity(1, 4);
+        const bool next = args.size() > 1 && (args[1] == "N" || args[1] == "n");
+        std::uint32_t position = next ? nextDisassembly_.value_or(cpu.r.pc)
+                                     : args.size() > 1 ? n(1) : cpu.r.pc;
+        auto requested = range(position, 16);
+        for (std::uint32_t i = 0; requested.ending ? position <= requested.value : i < requested.value; ++i) {
+            Word address = static_cast<Word>(position);
             auto opcode = bus.peek(address); const auto& instruction = instructions()[opcode];
             unsigned size = instruction.nopCycles && opcode != 0xea ? 1 : instruction.bytes;
             out_ << hex(address) << "  ";
             for (unsigned j = 0; j < 3; ++j) out_ << (j < size ? hex(bus.peek(static_cast<Word>(address + j)), 2) + " " : "   ");
             out_ << " " << disassemble(bus, address) << '\n';
-            address = static_cast<Word>(address + size);
+            position += size;
+            nextDisassembly_ = static_cast<Word>(position);
         }
     } else if (command == "asm" || command == "a") {
         arity(3, 10); Word address = static_cast<Word>(n(1));
@@ -150,6 +172,10 @@ MonitorAction Monitor::execute(const std::string& line) {
             machine_.acia->setPeerSettings(settings);
         }
         out_ << "Console serial: " << machine_.acia->peerSettings().description() << '\n';
+    } else if (command == "console-newline") {
+        arity(1, 2);
+        if (args.size() == 2) machine_.consoleOutput.setMode(parseConsoleNewline(args[1]));
+        out_ << "Console newline: " << consoleNewlineName(machine_.consoleOutput.mode()) << '\n';
     } else if (command == "send") {
         arity(2, 65537);
         if (!machine_.acia) throw std::runtime_error("no ACIA configured");
@@ -162,31 +188,36 @@ MonitorAction Monitor::execute(const std::string& line) {
 std::string Monitor::help() {
     return R"(Monitor numbers default to hexadecimal, including counts; serial settings use decimal.
 Use $/0x hex, 0d decimal, 0o octal, or 0b binary. Quote paths with spaces.
-  mem ADDRESS [COUNT]           Hex bytes and printable ASCII (m)
-  write ADDRESS BYTE ...        Patch RAM/ROM bytes (w, deposit, deposite)
-  dis [ADDRESS [COUNT]]         Disassemble; default address is PC (d)
-  asm ADDRESS INSTRUCTION       Assemble one instruction (a); no symbols/macros
-  regs [REGISTER VALUE]         Show/edit pc,a,x,y,sp,p (r)
-  break [ADDRESS]               List/set execution breakpoints (b)
-  break delete ADDRESS          Delete a breakpoint
-  break enable|disable ADDRESS  Enable/disable a breakpoint
-  break move OLD NEW            Change breakpoint address
-  step [COUNT]                  Step instructions; WAI advances one idle cycle (s)
-  trace [COUNT]                 Step and print individual bus accesses
-  run [ADDRESS]                 Resume serial console (go,g,continue,c)
-  reset                        Reset CPU/devices, retain RAM/ROM/breakpoints
-  nmi                          Latch NMI for the next step/run
-  load FILE ADDRESS            Load a raw binary into RAM/ROM
-  save FILE ADDRESS COUNT      Save bytes to raw binary (replaces FILE)
-  map                          Display configured regions
-  io read ADDRESS              Perform a real bus read, including side effects
-  io write ADDRESS BYTE        Perform a real bus write, including side effects
-  send BYTE ...                Queue received serial bytes (also the escape byte)
-  serial [BAUD DATA PARITY STOP] Show/change console settings (default 19200 8 none 1)
-  help                         Show this help (?)
-  quit                         Exit (q)
+  mem ADDRESS|N [END | L COUNT]   Hex bytes and printable ASCII (m)
+  write ADDRESS BYTE ...          Patch RAM/ROM bytes (w, deposit, deposite)
+  dis [ADDRESS|N [END | L COUNT]] Disassemble; default address is PC (d)
+  asm ADDRESS INSTRUCTION         Assemble one instruction (a); no symbols/macros
+  regs [REGISTER VALUE]           Show/edit pc,a,x,y,sp,p (r)
+  break [ADDRESS]                 List/set execution breakpoints (b)
+  break delete ADDRESS            Delete a breakpoint
+  break enable|disable ADDRESS    Enable/disable a breakpoint
+  break move OLD NEW              Change breakpoint address
+  step [COUNT]                    Step instructions; WAI advances one idle cycle (s)
+  trace [COUNT]                   Step and print individual bus accesses
+  run [ADDRESS]                   Resume serial console (go,g,continue,c)
+  reset                           Reset CPU/devices, retain RAM/ROM/breakpoints
+  nmi                             Latch NMI for the next step/run
+  load FILE ADDRESS               Load a raw binary into RAM/ROM
+  save FILE ADDRESS COUNT         Save bytes to raw binary (replaces FILE)
+  map                             Display configured regions
+  io read ADDRESS                 Perform a real bus read, including side effects
+  io write ADDRESS BYTE           Perform a real bus write, including side effects
+  send BYTE ...                   Queue received serial bytes (also the escape byte)
+  serial [BAUD DATA PARITY STOP]  Show/change console settings (default 19200 8 none 1)
+  console-newline [MODE]          Show/change output newlines: raw, cr, lf, auto
+  help                            Show this help (?)
+  quit | exit                     Exit (q)
 Examples:
-  mem $0200 40
+  mem $0200 $023F
+  mem $0200 L 40
+  mem N L 40
+  dis $0200 L 10
+  dis N L 10
   write $0200 A9 41 8D 10 80
   asm $0200 LDA #$41
   asm $0202 STA $8010
@@ -194,6 +225,13 @@ Examples:
   load "my firmware.bin" $C000
   save "snapshot.bin" $0000 0d32768
   serial 9600 7 even 1
+Ranges: END is inclusive. L COUNT counts bytes for mem, instructions for dis.
+Defaults: mem shows 128 bytes (up to $FFFF); dis shows 16 instructions.
+Disassembly includes the whole instruction starting at or before END.
+dis N continues after the last instruction shown (PC if none); n also works.
+mem N continues after the last byte shown (PC if none); n also works.
+Memory and disassembly keep separate next addresses.
+The next address wraps at $FFFF. Empty/invalid requests leave it unchanged.
 Serial: baud 1..4000000, data 5..8, parity none/even/odd/mark/space,
 stop 1/1.5/2 (1.5 requires 5 data bits). Changes affect new frames and
 persist through reset; guest firmware still programs the ACIA registers.
