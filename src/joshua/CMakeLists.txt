@@ -8,7 +8,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_library(joshua_core
     lib/memory.cpp lib/devices.cpp lib/cpu.cpp lib/instruction.cpp
-    lib/config.cpp lib/machine.cpp lib/monitor.cpp)
+    lib/config.cpp lib/machine.cpp lib/monitor.cpp lib/serial.cpp)
 target_include_directories(joshua_core PUBLIC include)
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     target_compile_options(joshua_core PRIVATE -Wall -Wextra -Wpedantic)

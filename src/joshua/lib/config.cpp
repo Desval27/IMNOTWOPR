@@ -41,7 +41,11 @@ struct Settings {
         } else if (key == "clock-hz") {
             config.clockHz = number(value, 100'000'000, 10);
             if (!config.clockHz) throw std::runtime_error("clock-hz must be positive");
-        } else if (key == "escape") {
+        } else if (key == "serial-baud") config.serial.baud = number(value, 4'000'000, 10);
+        else if (key == "serial-data-bits") config.serial.dataBits = number(value, 8, 10);
+        else if (key == "serial-parity") config.serial.parity = parseParity(value);
+        else if (key == "serial-stop-bits") config.serial.stopHalfBits = parseStopBits(value);
+        else if (key == "escape") {
             config.escape = static_cast<Byte>(number(value, 31));
             if (!config.escape || config.escape == 10 || config.escape == 13)
                 throw std::runtime_error("escape must be a control byte other than NUL, LF or CR");
@@ -81,7 +85,8 @@ Config parseArguments(int argc, char** argv) {
         else if (arg == "--run") result.run = true;
         else if (arg == "--unthrottled") result.throttle = false;
         else {
-            static const std::set<std::string> options{"--profile", "--ram", "--rom", "--via", "--acia", "--clock-hz", "--escape", "--pc", "--script", "--cycles"};
+            static const std::set<std::string> options{"--profile", "--ram", "--rom", "--via", "--acia", "--clock-hz", "--escape", "--pc", "--script", "--cycles",
+                "--serial-baud", "--serial-data-bits", "--serial-parity", "--serial-stop-bits"};
             if (!options.contains(arg)) throw std::runtime_error("unknown option: " + arg);
             if (++i == argc) throw std::runtime_error("missing value for " + arg);
             std::string value = argv[i];
@@ -99,6 +104,7 @@ Config parseArguments(int argc, char** argv) {
     if (profilePath) profile(result, *profilePath);
     Settings settings{result, {}};
     for (const auto& [key, value] : overrides) settings.apply(key, value);
+    result.serial.validate();
     return result;
 }
 std::vector<Byte> readBinary(const std::filesystem::path& path) {
@@ -122,6 +128,10 @@ Usage: joshua [options]
   --acia BASE              Map 4 ACIA registers
                            Use 'none' to omit RAM, ROM, VIA or ACIA
   --clock-hz HZ            CPU clock in decimal (default 1000000)
+  --serial-baud RATE       Console baud rate in decimal (default 19200)
+  --serial-data-bits BITS  Console data bits, 5..8 (default 8)
+  --serial-parity MODE     none, even, odd, mark, space (default none)
+  --serial-stop-bits BITS  1, 1.5 (5 data bits only), or 2 (default 1)
   --pc ADDRESS             Override PC after reset
   --escape BYTE            Console escape byte (default $1D, Ctrl-])
   --run                    Start in serial console mode

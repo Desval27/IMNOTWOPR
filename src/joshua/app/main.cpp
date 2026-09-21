@@ -31,6 +31,7 @@ void run(joshua::Machine& machine, const joshua::Config& config, std::optional<j
     std::optional<Terminal> terminal;
     if (consoleInput) terminal.emplace();
     std::cerr << "Running; console escape=$" << joshua::hex(config.escape, 2) << ".\n";
+    if (machine.acia) std::cerr << "Console serial: " << machine.acia->peerSettings().description() << '\n';
     bool bypass = lastBreakpoint && *lastBreakpoint == machine.cpu.r.pc;
     lastBreakpoint.reset();
     std::uint64_t nextPoll = 0;

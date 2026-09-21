@@ -91,6 +91,13 @@ void Via::reset() {
     pb7_ = true;
 }
 
+Acia::Acia(std::uint32_t clockHz, SerialSettings peer) : clockHz_(clockHz), peer_(peer) {
+    peer_.validate();
+}
+void Acia::setPeerSettings(const SerialSettings& settings) {
+    settings.validate();
+    peer_ = settings;
+}
 Byte Acia::peek(Word offset) const {
     switch (offset & 3) {
     case 0: return received_;
@@ -109,9 +116,11 @@ void Acia::write(Word offset, Byte value) {
     switch (offset & 3) {
     case 0:
         if (txRemaining_) ++overwritten_;
-        transmit_ = value;
+        // Latch both endpoint widths for this frame; later reconfiguration
+        // affects subsequent frames, not a byte already being transmitted.
+        transmit_ = value & (0xff >> ((control_ >> 5) & 3)) & peer_.dataMask();
         // Bus ticks after writes: do not count that same edge as a bit interval.
-        txRemaining_ = frameCycles(false) + 1;
+        txRemaining_ = transmitFrameCycles() + 1;
         break;
     case 1:
         command_ &= 0xe0; overrun_ = interrupt_ = false; break;
@@ -123,12 +132,12 @@ void Acia::write(Word offset, Byte value) {
     case 3: control_ = value; break;
     }
 }
-std::uint64_t Acia::frameCycles(bool receive) const {
+std::uint64_t Acia::transmitFrameCycles() const {
     static constexpr double baud[] = {115200, 50, 75, 109.92, 134.58, 150, 300, 600,
                                       1200, 1800, 2400, 3600, 4800, 7200, 9600, 19200};
     int bits = 8 - ((control_ >> 5) & 3);
     double stop = (control_ & 0x80) ? (bits == 5 ? 1.5 : 2.0) : 1.0;
-    double rate = baud[receive && !(control_ & 0x10) ? 0 : control_ & 15];
+    double rate = baud[control_ & 15];
     return std::max<std::uint64_t>(1, static_cast<std::uint64_t>(std::ceil(clockHz_ * (1 + bits + stop) / rate)));
 }
 void Acia::receive(Byte value) {
@@ -137,13 +146,18 @@ void Acia::receive(Byte value) {
 }
 void Acia::tick() {
     if (txRemaining_ && (command_ & 1) && (command_ & 0x0c) == 8 && --txRemaining_ == 0)
-        output_.push_back(transmit_ & (0xff >> ((control_ >> 5) & 3)));
+        output_.push_back(transmit_);
     if (!(command_ & 1)) return;
-    if (!rxRemaining_ && !input_.empty()) rxRemaining_ = frameCycles(true);
+    if (!rxRemaining_ && !input_.empty()) {
+        // The connected terminal clocks its own transmitted frames. Keep the
+        // guest's receiver width independent, and snapshot an in-flight byte.
+        rxRemaining_ = peer_.frameCycles(clockHz_);
+        incoming_ = input_.front() & peer_.dataMask() & (0xff >> ((control_ >> 5) & 3));
+        input_.pop_front();
+    }
     if (rxRemaining_ && --rxRemaining_ == 0) {
         if (full_) overrun_ = true;
-        else { received_ = input_.front() & (0xff >> ((control_ >> 5) & 3)); full_ = true; }
-        input_.pop_front();
+        else { received_ = incoming_; full_ = true; }
         if (!(command_ & 2)) interrupt_ = true;
     }
 }
@@ -152,7 +166,7 @@ std::optional<Byte> Acia::takeTransmitted() {
     Byte value = output_.front(); output_.pop_front(); return value;
 }
 void Acia::reset() {
-    command_ = control_ = received_ = transmit_ = 0;
+    command_ = control_ = received_ = transmit_ = incoming_ = 0;
     full_ = overrun_ = interrupt_ = false;
     txRemaining_ = rxRemaining_ = overwritten_ = 0; input_.clear(); output_.clear();
 }

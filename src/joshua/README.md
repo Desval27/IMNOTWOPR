@@ -130,7 +130,7 @@ run C000
 | --- | --- |
 | `mem ADDRESS [COUNT]` | Inspect bytes without device side effects |
 | `write ADDRESS BYTE ...` | Patch RAM or ROM |
-| `dis ADDRESS [COUNT]` | Disassemble instructions |
+| `dis [ADDRESS [COUNT]]` | Disassemble instructions; omitted address defaults to PC |
 | `asm ADDRESS INSTRUCTION` | Assemble one instruction and report the next address |
 | `regs [REGISTER VALUE]` | Inspect/edit PC, A, X, Y, SP, P |
 | `break [ADDRESS]` | List/add execution breakpoints |

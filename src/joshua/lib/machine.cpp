@@ -19,7 +19,7 @@ Machine::Machine(const Config& config) : cpu(bus) {
     };
     add(config.ram, false); add(config.rom, true);
     if (config.via) { via = std::make_shared<Via>(); bus.map({"VIA", *config.via, 16, via}); }
-    if (config.acia) { acia = std::make_shared<Acia>(config.clockHz); bus.map({"ACIA", *config.acia, 4, acia}); }
+    if (config.acia) { acia = std::make_shared<Acia>(config.clockHz, config.serial); bus.map({"ACIA", *config.acia, 4, acia}); }
     reset();
     if (config.pc) cpu.r.pc = *config.pc;
 }

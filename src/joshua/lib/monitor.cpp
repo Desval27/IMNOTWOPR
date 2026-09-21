@@ -72,7 +72,9 @@ MonitorAction Monitor::execute(const std::string& line) {
         for (std::size_t i = 2; i < args.size(); ++i) values.push_back(static_cast<Byte>(n(i, 255)));
         bus.patch(address, values);
     } else if (command == "dis" || command == "d") {
-        arity(2, 3); Word address = static_cast<Word>(n(1)); auto count = args.size() == 3 ? n(2, 65536) : 16;
+        arity(1, 3);
+        Word address = args.size() > 1 ? static_cast<Word>(n(1)) : cpu.r.pc;
+        auto count = args.size() == 3 ? n(2, 65536) : 16;
         for (std::uint32_t i = 0; i < count; ++i) {
             auto opcode = bus.peek(address); const auto& instruction = instructions()[opcode];
             unsigned size = instruction.nopCycles && opcode != 0xea ? 1 : instruction.bytes;
@@ -137,6 +139,17 @@ MonitorAction Monitor::execute(const std::string& line) {
         else if (args[1] == "write" && args.size() == 4) {
             Word address = static_cast<Word>(n(2)); Byte value = static_cast<Byte>(n(3, 255)); bus.write(address, value);
         } else throw std::runtime_error("usage: io read ADDRESS | io write ADDRESS BYTE");
+    } else if (command == "serial") {
+        arity(1, 5);
+        if (args.size() != 1 && args.size() != 5)
+            throw std::runtime_error("usage: serial [BAUD DATA PARITY STOP] (decimal settings)");
+        if (!machine_.acia) throw std::runtime_error("no ACIA configured");
+        if (args.size() == 5) {
+            SerialSettings settings{number(args[1], 4'000'000, 10), number(args[2], 8, 10),
+                parseParity(args[3]), parseStopBits(args[4])};
+            machine_.acia->setPeerSettings(settings);
+        }
+        out_ << "Console serial: " << machine_.acia->peerSettings().description() << '\n';
     } else if (command == "send") {
         arity(2, 65537);
         if (!machine_.acia) throw std::runtime_error("no ACIA configured");
@@ -147,11 +160,11 @@ MonitorAction Monitor::execute(const std::string& line) {
     return MonitorAction::prompt;
 }
 std::string Monitor::help() {
-    return R"(Monitor numbers default to hexadecimal, including counts.
+    return R"(Monitor numbers default to hexadecimal, including counts; serial settings use decimal.
 Use $/0x hex, 0d decimal, 0o octal, or 0b binary. Quote paths with spaces.
   mem ADDRESS [COUNT]           Hex bytes and printable ASCII (m)
   write ADDRESS BYTE ...        Patch RAM/ROM bytes (w, deposit, deposite)
-  dis ADDRESS [COUNT]           Disassemble COUNT instructions (d)
+  dis [ADDRESS [COUNT]]         Disassemble; default address is PC (d)
   asm ADDRESS INSTRUCTION       Assemble one instruction (a); no symbols/macros
   regs [REGISTER VALUE]         Show/edit pc,a,x,y,sp,p (r)
   break [ADDRESS]               List/set execution breakpoints (b)
@@ -169,6 +182,7 @@ Use $/0x hex, 0d decimal, 0o octal, or 0b binary. Quote paths with spaces.
   io read ADDRESS              Perform a real bus read, including side effects
   io write ADDRESS BYTE        Perform a real bus write, including side effects
   send BYTE ...                Queue received serial bytes (also the escape byte)
+  serial [BAUD DATA PARITY STOP] Show/change console settings (default 19200 8 none 1)
   help                         Show this help (?)
   quit                         Exit (q)
 Examples:
@@ -179,6 +193,10 @@ Examples:
   break $C020
   load "my firmware.bin" $C000
   save "snapshot.bin" $0000 0d32768
+  serial 9600 7 even 1
+Serial: baud 1..4000000, data 5..8, parity none/even/odd/mark/space,
+stop 1/1.5/2 (1.5 requires 5 data bits). Changes affect new frames and
+persist through reset; guest firmware still programs the ACIA registers.
 Inspection never clears I/O flags. Edits/load/assembly require a complete
 RAM/ROM range and bypass ROM write protection. Use io for device registers.
 )";

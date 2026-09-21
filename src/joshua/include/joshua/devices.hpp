@@ -1,5 +1,6 @@
 #pragma once
 #include "joshua/memory.hpp"
+#include "joshua/serial.hpp"
 #include <array>
 #include <deque>
 #include <optional>
@@ -28,7 +29,7 @@ private:
 // Byte endpoint with emulated frame duration; the N variant's TDRE is always set.
 class Acia final : public Device {
 public:
-    explicit Acia(std::uint32_t clockHz) : clockHz_(clockHz) {}
+    explicit Acia(std::uint32_t clockHz, SerialSettings peer = {});
     Byte peek(Word offset) const override;
     Byte read(Word offset) override;
     void write(Word offset, Byte value) override;
@@ -38,10 +39,14 @@ public:
     void receive(Byte value);
     std::optional<Byte> takeTransmitted();
     std::uint64_t overwrittenTransmits() const { return overwritten_; }
+    const SerialSettings& peerSettings() const { return peer_; }
+    void setPeerSettings(const SerialSettings& settings);
 private:
-    std::uint64_t frameCycles(bool receive) const;
+    std::uint64_t transmitFrameCycles() const;
     std::uint32_t clockHz_;
+    SerialSettings peer_;
     Byte command_ = 0, control_ = 0, received_ = 0, transmit_ = 0;
+    Byte incoming_ = 0;
     bool full_ = false, overrun_ = false, interrupt_ = false;
     std::uint64_t txRemaining_ = 0, rxRemaining_ = 0, overwritten_ = 0;
     std::deque<Byte> input_, output_;
