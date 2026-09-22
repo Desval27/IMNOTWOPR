@@ -2546,7 +2546,7 @@
 				(pin passive line
 					(at -10.16 -7.62 0)
 					(length 3.81)
-					(name "~{HALT-REQ}"
+					(name "~{HALT_REQ}"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2564,7 +2564,7 @@
 				(pin passive line
 					(at -10.16 -10.16 0)
 					(length 3.81)
-					(name "~{HALT-ACK}"
+					(name "~{HALT_ACK}"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2582,7 +2582,7 @@
 				(pin passive line
 					(at -10.16 -12.7 0)
 					(length 3.81)
-					(name "~{BUS-REQ}"
+					(name "~{BUS_REQ}"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2600,7 +2600,7 @@
 				(pin passive line
 					(at -10.16 -15.24 0)
 					(length 3.81)
-					(name "~{BUS-ACK}"
+					(name "~{BUS_ACK}"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -3271,7 +3271,7 @@
 				(pin passive line
 					(at -10.16 22.86 0)
 					(length 3.81)
-					(name "RESERVED"
+					(name "I2C_SCL"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -3289,7 +3289,7 @@
 				(pin passive line
 					(at -10.16 20.32 0)
 					(length 3.81)
-					(name "RESERVED"
+					(name "I2C_SDA"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -3307,7 +3307,7 @@
 				(pin passive line
 					(at -10.16 17.78 0)
 					(length 3.81)
-					(name "RESERVED"
+					(name "SPI_SCK"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -3325,7 +3325,7 @@
 				(pin passive line
 					(at -10.16 15.24 0)
 					(length 3.81)
-					(name "RESERVED"
+					(name "SPI_MOSI"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -3343,7 +3343,7 @@
 				(pin passive line
 					(at -10.16 12.7 0)
 					(length 3.81)
-					(name "RESERVED"
+					(name "SPI_MISO"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -3379,7 +3379,7 @@
 				(pin passive line
 					(at -10.16 7.62 0)
 					(length 3.81)
-					(name "RESERVED"
+					(name "SPI_ID0"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -3397,7 +3397,7 @@
 				(pin passive line
 					(at -10.16 5.08 0)
 					(length 3.81)
-					(name "RESERVED"
+					(name "SPI_ID1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -3415,7 +3415,7 @@
 				(pin passive line
 					(at -10.16 2.54 0)
 					(length 3.81)
-					(name "RESERVED"
+					(name "SPI_ID2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -3433,7 +3433,7 @@
 				(pin passive line
 					(at -10.16 0 0)
 					(length 3.81)
-					(name "RESERVED"
+					(name "SPI_ID3"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -3451,7 +3451,7 @@
 				(pin passive line
 					(at -10.16 -2.54 0)
 					(length 3.81)
-					(name "RESERVED"
+					(name "~{SPI_SEL}"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -3487,7 +3487,7 @@
 				(pin passive line
 					(at -10.16 -7.62 0)
 					(length 3.81)
-					(name "RESERVED"
+					(name "~{SERIRQ}"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -3739,6 +3739,451 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "IMNOTWOPR:R"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 0 2.032 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "R"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.016 1.016)
+					)
+				)
+			)
+			(property "Footprint" "IMNOTWOPR:R_Axial_DIN0207_P400mil"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "R res resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "R_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "R_0_1"
+				(rectangle
+					(start 2.54 -1.016)
+					(end -2.54 1.016)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "R_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 1.27)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 1.27)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Jumper:Jumper_2_Bridged"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "JP"
+				(at 0 1.905 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Jumper_2_Bridged"
+				(at 0 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 -5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Jumper, 2-pole, closed/bridged"
+				(at 0 -7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "Jumper SPST"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Jumper* TestPoint*2Pads* TestPoint*Bridge*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Jumper_2_Bridged_0_0"
+				(circle
+					(center -2.032 0)
+					(radius 0.508)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.032 0)
+					(radius 0.508)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Jumper_2_Bridged_0_1"
+				(arc
+					(start -1.524 0.254)
+					(mid 0 0.762)
+					(end 1.524 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Jumper_2_Bridged_1_1"
+				(pin passive line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 0 180)
+					(length 2.54)
+					(name "B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "power:+5V"
+			(power global)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#PWR"
+				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "+5V"
+				(at 0 3.556 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"+5V\""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "+5V_0_1"
+				(polyline
+					(pts
+						(xy -0.762 1.27) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "+5V_1_1"
+				(pin power_in line
+					(at 0 0 90)
+					(length 0)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "power:GND"
 			(power global)
 			(pin_numbers
@@ -3855,9 +4300,127 @@
 			(embedded_fonts no)
 		)
 	)
+	(text "SCL"
+		(exclude_from_sim no)
+		(at 436.88 317.5 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify bottom)
+		)
+		(uuid "0f944674-7c30-46df-bd39-ce8c7d7b7e3b")
+	)
+	(text "SDA"
+		(exclude_from_sim no)
+		(at 437.134 323.85 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify bottom)
+		)
+		(uuid "70a028dc-9ed9-44fc-ab15-8022a280af6a")
+	)
+	(junction
+		(at 453.39 304.8)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "87af71ec-85f1-49ed-b221-54c6342c4ef6")
+	)
 	(no_connect
 		(at 516.89 326.39)
 		(uuid "d19fa796-60e4-45e2-a652-6bdb7a03a442")
+	)
+	(wire
+		(pts
+			(xy 431.8 317.5) (xy 453.39 317.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "07c3f779-19cb-429f-a976-4811ebec209c")
+	)
+	(wire
+		(pts
+			(xy 449.58 304.8) (xy 453.39 304.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "25c701bc-8269-4390-93c3-6e55204a23b5")
+	)
+	(wire
+		(pts
+			(xy 461.01 323.85) (xy 461.01 314.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2a77cc6e-ab1a-4a2b-9920-d8cc4287932a")
+	)
+	(wire
+		(pts
+			(xy 453.39 314.96) (xy 453.39 317.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2fe93d17-82ee-4007-98a6-5e93307ec75e")
+	)
+	(wire
+		(pts
+			(xy 453.39 304.8) (xy 453.39 307.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3a91945e-d263-44b3-853c-62c3687195dc")
+	)
+	(wire
+		(pts
+			(xy 453.39 304.8) (xy 461.01 304.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "492c6bc1-4c47-4220-9155-962819315bc9")
+	)
+	(wire
+		(pts
+			(xy 461.01 304.8) (xy 461.01 307.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b8214a93-dfd8-4471-81ff-74b6bbd2ef0b")
+	)
+	(wire
+		(pts
+			(xy 431.8 323.85) (xy 461.01 323.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cb37be9f-ef1b-404e-a6b0-82f78e433de9")
+	)
+	(wire
+		(pts
+			(xy 431.8 304.8) (xy 439.42 304.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f087542a-bb7e-437b-937c-e744c6b4e56e")
 	)
 	(global_label "GND"
 		(shape passive)
@@ -44059,6 +44622,30 @@
 			)
 		)
 	)
+	(global_label "c7"
+		(shape passive)
+		(at 431.8 317.5 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "a91358e1-4122-4146-8246-2f26fc337b0d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 427.628 317.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
 	(global_label "b23"
 		(shape passive)
 		(at 320.04 259.08 180)
@@ -58616,6 +59203,30 @@
 		(uuid "e9858628-c4e9-4e97-a580-33ff0947e4b2")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 493.6076 132.08 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "c8"
+		(shape passive)
+		(at 431.8 323.85 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "e98dbd2b-2c7e-4d94-9bad-f0cc9a6da8aa")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 427.628 323.85 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -77263,6 +77874,86 @@
 		)
 	)
 	(symbol
+		(lib_id "IMNOTWOPR:R")
+		(at 461.01 311.15 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "567b5163-906e-4ab2-b3ff-23b56cd2d5bc")
+		(property "Reference" "R2"
+			(at 462.28 311.15 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "4k7Ω"
+			(at 461.01 311.15 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.016 1.016)
+				)
+			)
+		)
+		(property "Footprint" "IMNOTWOPR:R_Axial_DIN0207_P400mil"
+			(at 461.01 311.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 461.01 311.15 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 461.01 311.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "1d1e562f-2240-4644-a435-b3ff37979f3f")
+		)
+		(pin "1"
+			(uuid "ee1e2b58-3d36-4662-a9b2-07da818d4cb5")
+		)
+		(instances
+			(project "BACKPLANE"
+				(path "/ad2d789c-a8c8-48c5-8f34-468c01c0c6c9"
+					(reference "R2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "IMNOTWOPR:BusConnector")
 		(at 535.94 63.5 0)
 		(unit 3)
@@ -82692,6 +83383,84 @@
 				(path "/ad2d789c-a8c8-48c5-8f34-468c01c0c6c9"
 					(reference "J8")
 					(unit 3)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+5V")
+		(at 431.8 304.8 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "7c419c35-d5cd-4513-96d1-3810e04349f9")
+		(property "Reference" "#PWR02"
+			(at 431.8 308.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "+5V"
+			(at 431.8 299.72 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 431.8 304.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 431.8 304.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+5V\""
+			(at 431.8 304.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "95a8ec1d-10ab-41f7-8bbb-f6545cde762f")
+		)
+		(instances
+			(project "BACKPLANE"
+				(path "/ad2d789c-a8c8-48c5-8f34-468c01c0c6c9"
+					(reference "#PWR02")
+					(unit 1)
 				)
 			)
 		)
@@ -92833,6 +93602,86 @@
 		)
 	)
 	(symbol
+		(lib_id "IMNOTWOPR:R")
+		(at 453.39 311.15 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "f5091e87-1353-48e3-b2b2-1f87f0623359")
+		(property "Reference" "R1"
+			(at 454.66 311.15 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "4k7Ω"
+			(at 453.39 311.15 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.016 1.016)
+				)
+			)
+		)
+		(property "Footprint" "IMNOTWOPR:R_Axial_DIN0207_P400mil"
+			(at 453.39 311.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 453.39 311.15 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 453.39 311.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "597fb251-142d-47e5-96ec-9c5415df48c1")
+		)
+		(pin "1"
+			(uuid "9c1ec8c7-6d66-44c0-909d-2e3919584f75")
+		)
+		(instances
+			(project "BACKPLANE"
+				(path "/ad2d789c-a8c8-48c5-8f34-468c01c0c6c9"
+					(reference "R1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "IMNOTWOPR:BusConnector")
 		(at 269.24 152.4 0)
 		(unit 3)
@@ -93189,6 +94038,86 @@
 				(path "/ad2d789c-a8c8-48c5-8f34-468c01c0c6c9"
 					(reference "J11")
 					(unit 3)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:Jumper_2_Bridged")
+		(at 444.5 304.8 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f864cd79-c9f8-401e-a41a-3067cd13c018")
+		(property "Reference" "JP1"
+			(at 444.5 299.72 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "I2C PULLUPS"
+			(at 444.5 302.26 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "FormantKO:Jumper_1x02"
+			(at 444.5 304.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 444.5 309.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Jumper, 2-pole, closed/bridged"
+			(at 444.5 312.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "a9d10a5d-9ea0-4bc9-af45-9facc7ab6861")
+		)
+		(pin "1"
+			(uuid "693d10d0-68d6-4215-afa8-7fa90a47850b")
+		)
+		(instances
+			(project "BACKPLANE"
+				(path "/ad2d789c-a8c8-48c5-8f34-468c01c0c6c9"
+					(reference "JP1")
+					(unit 1)
 				)
 			)
 		)
