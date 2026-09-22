@@ -510,14 +510,14 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "MPU-65X.kicad_pro",
+    "filename": "MSD-65.kicad_pro",
     "version": 3
   },
   "net_settings": {
     "classes": [
       {
         "bus_width": 12,
-        "clearance": 0.2032,
+        "clearance": 0.2,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
@@ -528,7 +528,7 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 2147483647,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.254,
+        "track_width": 0.25,
         "tuning_profile": "",
         "via_diameter": 0.8,
         "via_drill": 0.4,
@@ -678,8 +678,8 @@
     "subpart_id_separator": 0,
     "top_level_sheets": [
       {
-        "filename": "MPU-65X.kicad_sch",
-        "name": "MPU-65X",
+        "filename": "MSD-65.kicad_sch",
+        "name": "MSD-65",
         "uuid": "e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
       },
       {
@@ -688,13 +688,13 @@
         "uuid": "1bc24577-9a03-4fc2-ac64-d8d0370a6427"
       }
     ],
-    "used_designators": "IC1,U1-8,MH1,Y1-3,A1,#PWR1-20,D1-9,C1-12,J1-2,#FLG1-2,R1-9",
+    "used_designators": "R1-2,#FLG1-2,J1-3,MH1,U1-3,#PWR1-12,C1-4",
     "variants": []
   },
   "sheets": [
     [
       "e63e39d7-6ac0-4ffd-8aa3-1841a4541b55",
-      "MPU-65X"
+      "MSD-65"
     ],
     [
       "1bc24577-9a03-4fc2-ac64-d8d0370a6427",
