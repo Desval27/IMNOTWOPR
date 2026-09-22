@@ -4758,10 +4758,6 @@
 		(uuid "5622c4e7-5db8-4866-809a-273c2289c641")
 	)
 	(no_connect
-		(at 63.5 60.96)
-		(uuid "5adda82c-ad41-4b75-a6ab-3bdf87667eed")
-	)
-	(no_connect
 		(at 63.5 88.9)
 		(uuid "5cc9e105-bd33-456e-8956-b54f7b147493")
 	)
@@ -5610,6 +5606,30 @@
 		(uuid "7cb5b697-fa69-4d22-a985-d20794ceb8f3")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 93.4743 30.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "~{RESET}"
+		(shape passive)
+		(at 63.5 60.96 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "916ac446-33c6-44d1-949a-0b485d803102")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 55.6906 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)

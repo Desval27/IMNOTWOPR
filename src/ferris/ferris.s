@@ -4,26 +4,26 @@ USE_EXTENDED_TEXT = 1	; Set to 1 to allow for text strings longer than 255 bytes
 PRINT_CHR_DELAY = $FF	; Set to a value that will give the ACIA time to send a character before the next one is sent.  This is a crude way to do it, but it works for now.
 
 .segment "ZEROPAGE"
-print_text_ptr:	.res	2
-read_text_ptr:	.res	2
+print_text_ptr:		.res	2
+read_text_ptr:		.res	2
 compare_text_left:	.res	2
 compare_text_right:	.res	2
 
 .segment "BSS"
-input_buffer:	.res	256	; Up to 255 characters followed by NUL.
-skip_lf:		.res	1	; Suppress the LF half of a CR/LF pair.
+input_buffer:		.res	256	; Up to 255 characters followed by NUL.
+skip_lf:			.res	1	; Suppress the LF half of a CR/LF pair.
 
 .segment "VIA"
-via_portb:		.res	1
-via_porta:		.res	1
-via_ddrb:		.res	1
-via_ddra:		.res	1
+via_portb:			.res	1
+via_porta:			.res	1
+via_ddrb:			.res	1
+via_ddra:			.res	1
 
 .segment "ACIA"
-acia_data:		.res	1
-acia_status:	.res	1
-acia_cmd:		.res	1
-acia_ctrl:		.res	1
+acia_data:			.res	1
+acia_status:		.res	1
+acia_cmd:			.res	1
+acia_ctrl:			.res	1
 
 .segment "CODE"
 reset:

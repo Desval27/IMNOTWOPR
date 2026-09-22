@@ -1,21 +1,12 @@
 # joshua
 
-Joshua is a console development machine for IMNOTWOPR system software. It runs
-W65C02 programs against configurable RAM, ROM, a W65C22 VIA, and a W65C51N ACIA.
-Use your preferred external assembler/compiler to build firmware, load the binary,
-and debug it in Joshua's monitor.
+Joshua is a console development machine for IMNOTWOPR system software. It runs W65C02 programs against configurable RAM, ROM, a W65C22 VIA, and a W65C51N ACIA. Use your preferred external assembler/compiler to build firmware, load the binary, and debug it in Joshua's monitor.
 
-**Version 0.1 is an initial implementation, not yet a fully validated hardware
-replacement.** The CPU performs individual bus accesses and advances peripherals
-on every cycle. Its instruction behavior has substantial independent test coverage.
-Peripheral coverage and interrupt/pin timing are still incomplete; see
-[accuracy and validation](docs/accuracy.md) before using it to verify hardware timing.
+**Version 0.1 is an initial implementation, not yet a fully validated hardware replacement.** The CPU performs individual bus accesses and advances peripherals on every cycle. Its instruction behavior has substantial independent test coverage. Peripheral coverage and interrupt/pin timing are still incomplete; see [accuracy and validation](docs/accuracy.md) before using it to verify hardware timing.
 
 ## Build and try it
 
-Requirements: a C++23-capable GCC toolchain and CMake 3.24 or newer. There are no
-third-party runtime dependencies. Python 3 is optional for integration tests and
-the external instruction-vector runner.
+Requirements: a C++23-capable GCC toolchain and CMake 3.24 or newer. There are no third-party runtime dependencies. Python 3 is optional for integration tests and the external instruction-vector runner.
 
 On Linux, from this directory:
 
@@ -26,18 +17,11 @@ ctest --preset gcc14
 ./build/gcc14/joshua --profile profiles/echo.profile --run
 ```
 
-The included ROM prints `>` and immediately echoes each typed character through
-the emulated ACIA. Those visible characters are the guest's echo; Enter does not
-repeat the whole line. The demo expands Enter (CR) to CR/LF to advance to the next
-line. It leaves other bytes unchanged, so send CR alone for a newline when using
-this demo with scripted input. This conversion belongs to the demo firmware;
-the serial transport itself passes bytes unchanged.
+The included ROM prints `>` and immediately echoes each typed character through the emulated ACIA. Those visible characters are the guest's echo; Enter does not repeat the whole line. The demo expands Enter (CR) to CR/LF to advance to the next line. It leaves other bytes unchanged, so send CR alone for a newline when using this demo with scripted input. This conversion belongs to the demo firmware; the serial transport itself passes bytes unchanged.
 
-Press **Ctrl-]** to enter the monitor; enter **`run`** to return to the serial
-console. In serial mode Ctrl-C is delivered to the guest. `quit` exits the monitor.
+Press **Ctrl-]** to enter the monitor; enter **`run`** to return to the serial console. In serial mode Ctrl-C is delivered to the guest. `quit` exits the monitor.
 
-On Windows, use a native console launched from an **MSYS2 UCRT64** environment
-with GCC, CMake and Ninja available:
+On Windows, use a native console launched from an **MSYS2 UCRT64** environment with GCC, CMake and Ninja available:
 
 ```sh
 cmake --preset ucrt64
@@ -46,14 +30,9 @@ ctest --preset ucrt64
 ./build/ucrt64/joshua.exe --profile profiles/echo.profile --run
 ```
 
-The Windows console implementation is included but has not been run on Windows
-yet. Windows Terminal or a native console is required for direct key input;
-MSYS/mintty pipes use the batch-monitor behavior. Native Windows console testing
-is an outstanding validation task.
+The Windows console implementation is included but has not been run on Windows yet. Windows Terminal or a native console is required for direct key input; MSYS/mintty pipes use the batch-monitor behavior. Native Windows console testing is an outstanding validation task.
 
-The `default` preset uses the active C++ compiler. `release` provides an optimized
-build, useful for large test ROMs and `--unthrottled` runs. All presets require
-C++23; none silently falls back to an older language standard.
+The `default` preset uses the active C++ compiler. `release` provides an optimized build, useful for large test ROMs and `--unthrottled` runs. All presets require C++23; none silently falls back to an older language standard.
 
 ## Machine configuration
 
@@ -67,9 +46,7 @@ The starting profile is deliberately generic:
 | Unmapped | `$8014–$BFFF` | Reads return `$FF`; writes are ignored |
 | ROM | `$C000–$FFFF` | 16 KiB, initially `$FF` |
 
-CPU clock defaults to 1 MHz. Reset reads `$FFFC/$FFFD`; NMI and IRQ/BRK use their
-normal vectors. An empty ROM has no useful boot program. Supply an image or use
-the monitor to load/assemble code and set PC.
+CPU clock defaults to 1 MHz. Reset reads `$FFFC/$FFFD`; NMI and IRQ/BRK use their normal vectors. An empty ROM has no useful boot program. Supply an image or use the monitor to load/assemble code and set PC.
 
 Profiles are small text files, with one `key = value` entry per line:
 
@@ -82,15 +59,9 @@ rom = $C000:$4000:firmware.bin
 escape = $1D
 ```
 
-Blank lines and whole-line `#` or `;` comments are allowed. Paths in profiles are
-relative to the profile's directory. Image paths can contain spaces and may be
-quoted. Paths passed on the command line are relative to the working directory.
+Blank lines and whole-line `#` or `;` comments are allowed. Paths in profiles are relative to the profile's directory. Image paths can contain spaces and may be quoted. Paths passed on the command line are relative to the working directory.
 
-RAM/ROM entries use `BASE:SIZE[:IMAGE]`. Repeat them for multiple regions. The first
-entry for a type replaces that type's default regions. Images start at the region's
-base; shorter images leave the remaining bytes at the RAM/ROM fill value. Images
-larger than the region are rejected. Use `none` to omit a component. Maps that
-overlap, are empty, or extend beyond `$FFFF` are rejected.
+RAM/ROM entries use `BASE:SIZE[:IMAGE]`. Repeat them for multiple regions. The first entry for a type replaces that type's default regions. Images start at the region's base; shorter images leave the remaining bytes at the RAM/ROM fill value. Images larger than the region are rejected. Use `none` to omit a component. Maps that overlap, are empty, or extend beyond `$FFFF` are rejected.
 
 Command-line overrides take precedence regardless of where `--profile` appears:
 
@@ -99,10 +70,7 @@ Command-line overrides take precedence regardless of where `--profile` appears:
 ./build/gcc14/joshua --ram 0:10000 --rom none --via none --acia none
 ```
 
-Quote `$` on shells that expand it, or omit the prefix. Addresses, sizes and monitor
-counts default to hexadecimal. `$` or `0x` explicitly selects hex; `0d`, `0o`, and
-`0b` select decimal, octal, and binary. `clock-hz` and CLI `--cycles` default to
-decimal. Leading zeroes alone do not change the default base.
+Quote `$` on shells that expand it, or omit the prefix. Addresses, sizes and monitor counts default to hexadecimal. `$` or `0x` explicitly selects hex; `0d`, `0o`, and `0b` select decimal, octal, and binary. `clock-hz` and CLI `--cycles` default to decimal. Leading zeroes alone do not change the default base.
 
 `--pc ADDRESS` overrides PC after reset. `--escape 1C` chooses Ctrl-\ instead.
 The escape byte is intercepted immediately; use monitor `send 1D` when the guest
@@ -110,8 +78,7 @@ needs a literal Ctrl-]. `--help` lists all options.
 
 ## Monitor
 
-Joshua starts paused unless `--run` is specified. CPU status appears above each
-interactive prompt. Memory views show hexadecimal bytes and printable ASCII.
+Joshua starts paused unless `--run` is specified. CPU status appears above each interactive prompt. Memory views show hexadecimal bytes and printable ASCII.
 
 ```text
 mem C000 C03F
@@ -151,52 +118,24 @@ run C000
 
 Short forms include `m`, `w`, `d`, `a`, `r`, `b`, `s`, `g`, `c`, `q`, and `?`.
 `mem ADDRESS` defaults to 128 bytes, clipped at `$FFFF`; `dis [ADDRESS]`
-defaults to 16 instructions. `dis N` (or `dis n`) starts immediately after the
-last instruction shown by a prior disassembly; before any disassembly it uses PC.
-It also accepts ranges: `dis N 03FF` or `dis N L 10`. The saved next address wraps
-at `$FFFF`; empty or invalid requests leave it unchanged. Omitting the address
-still starts at PC.
-`mem N` (or `mem n`) similarly continues after the last byte displayed, using
-PC before the first memory display. It accepts `mem N END` and `mem N L COUNT`,
-and defaults to 128 bytes, clipped at `$FFFF`. Memory and disassembly keep
-independent next addresses. The memory next address also wraps at `$FFFF`,
-and empty or invalid requests leave it unchanged.
+defaults to 16 instructions. `dis N` (or `dis n`) starts immediately after the last instruction shown by a prior disassembly; before any disassembly it uses PC. It also accepts ranges: `dis N 03FF` or `dis N L 10`. The saved next address wraps at `$FFFF`; empty or invalid requests leave it unchanged. Omitting the address still starts at PC.
+`mem N` (or `mem n`) similarly continues after the last byte displayed, using PC before the first memory display. It accepts `mem N END` and `mem N L COUNT`, and defaults to 128 bytes, clipped at `$FFFF`. Memory and disassembly keep independent next addresses. The memory next address also wraps at `$FFFF`, and empty or invalid requests leave it unchanged.
 
-A bare second number is an inclusive ending address;
-use `L COUNT` (or `l COUNT`) for a length. Counts remain hexadecimal by default:
-`mem 0300 03FF` and `mem 0300 L 100` both display 256 bytes.
-Disassembly displays complete instructions whose starting addresses fall within
-the requested range, even when the final instruction extends beyond END.
-Ending addresses before the start are rejected. Existing scripts using a bare
+A bare second number is an inclusive ending address; use `L COUNT` (or `l COUNT`) for a length. Counts remain hexadecimal by default: `mem 0300 03FF` and `mem 0300 L 100` both display 256 bytes. Disassembly displays complete instructions whose starting addresses fall within the requested range, even when the final instruction extends beyond END. Ending addresses before the start are rejected. Existing scripts using a bare
 count must insert `L` before that count.
 
-`deposit` and `deposite` alias `write`. Commands accept `;` comments; quote filenames
-containing spaces. Instruction mnemonics are case insensitive.
+`deposit` and `deposite` alias `write`. Commands accept `;` comments; quote filenames containing spaces. Instruction mnemonics are case insensitive.
 
-The assembler supports the documented W65C02 instruction set, numeric operands,
-all addressing modes, and `.byte`. Four-digit `$` operands force absolute
-addressing: `LDA $0012` differs from `LDA $12`. Branch operands are destination
-addresses and must be in range. There are no labels, expressions, macros, object
-files or project builds inside the monitor. Reserved NOP encodings disassemble as
-`.BYTE` so the actual bytes remain visible and round-trip correctly.
+The assembler supports the documented W65C02 instruction set, numeric operands, all addressing modes, and `.byte`. Four-digit `$` operands force absolute addressing: `LDA $0012` differs from `LDA $12`. Branch operands are destination addresses and must be in range. There are no labels, expressions, macros, object files or project builds inside the monitor. Reserved NOP encodings disassemble as `.BYTE` so the actual bytes remain visible and round-trip correctly.
 
-Debugger patches bypass ROM protection but cannot target I/O or unmapped memory.
-The entire input/range is validated before any bytes are changed. CPU writes still
-obey ROM protection. Inspection, disassembly, and saving never consume serial data
-or clear interrupt flags. `io` explicitly performs a bus transaction and advances
-the machine by one cycle.
+Debugger patches bypass ROM protection but cannot target I/O or unmapped memory. The entire input/range is validated before any bytes are changed. CPU writes still obey ROM protection. Inspection, disassembly, and saving never consume serial data or clear interrupt flags. `io` explicitly performs a bus transaction and advances the machine by one cycle.
 
-Breakpoints stop before instruction execution and do not patch guest memory.
-Continuing from a hit executes past that breakpoint once; a later visit stops
-again. Reset retains loaded memory and breakpoints. STP requires reset; changing
-PC alone does not restart a stopped CPU.
+Breakpoints stop before instruction execution and do not patch guest memory. Continuing from a hit executes past that breakpoint once; a later visit stops again. Reset retains loaded memory and breakpoints. STP requires reset; changing PC alone does not restart a stopped CPU.
 
 ## Serial I/O and automation
 
 Use `--console-newline MODE`, a profile entry `console-newline = MODE`, or
-the monitor command `console-newline MODE` to configure guest output newlines.
-The monitor command without a mode shows the current setting. Changes take effect
-immediately and persist through reset; CLI values override profile values.
+the monitor command `console-newline MODE` to configure guest output newlines. The monitor command without a mode shows the current setting. Changes take effect immediately and persist through reset; CLI values override profile values.
 
 | Mode | Output behavior |
 | --- | --- |
@@ -205,46 +144,23 @@ immediately and persist through reset; CLI values override profile values.
 | `lf` | Expand lone LF to CR/LF; preserve CR and existing CR/LF pairs |
 | `auto` | Convert CR, LF, and CR/LF to one CR/LF newline each |
 
-The included `wozmon.profile` selects `cr`, so memory dumps such as `0300.03FF`
-advance lines. The echo profile uses `raw` because its firmware already sends
-CR/LF. Repeated CRs or LFs retain blank lines. Only host presentation changes:
-keyboard input, `send`, and emulated serial framing remain unchanged. Conversion
-also applies to redirected stdout; select `raw` for byte-exact binary captures.
+The included `wozmon.profile` selects `cr`, so memory dumps such as `0300.03FF` advance lines. The echo profile uses `raw` because its firmware already sends CR/LF. Repeated CRs or LFs retain blank lines. Only host presentation changes: keyboard input, `send`, and emulated serial framing remain unchanged. Conversion also applies to redirected stdout; select `raw` for byte-exact binary captures.
 
-The ACIA connects to the host terminal as a byte stream. Completed serial output
-goes to stdout; monitor output and diagnostics go to stderr. Host input is queued,
-then delivered over emulated frame durations. The model uses a fixed 1.8432 MHz
-ACIA clock source. This is a virtual serial endpoint, not a connection to a host
-`/dev/tty*` or COM port.
+The ACIA connects to the host terminal as a byte stream. Completed serial output goes to stdout; monitor output and diagnostics go to stderr. Host input is queued, then delivered over emulated frame durations. The model uses a fixed 1.8432 MHz ACIA clock source. This is a virtual serial endpoint, not a connection to a host `/dev/tty*` or COM port.
 
-The W65C51N model has its hardware's always-set TDRE bit: polling bit 4 is **not** a
-safe way to wait for transmission. Writing too soon replaces the ongoing byte.
-The demo uses a firmware delay for 1 MHz / 19200 baud and is intended for typing,
-not as a production interrupt-buffered serial driver. Sustained pasted input can
-overrun a polling guest exactly as an unbuffered serial receiver can.
+The W65C51N model has its hardware's always-set TDRE bit: polling bit 4 is **not** a safe way to wait for transmission. Writing too soon replaces the ongoing byte. The demo uses a firmware delay for 1 MHz / 19200 baud and is intended for typing, not as a production interrupt-buffered serial driver. Sustained pasted input can overrun a polling guest exactly as an unbuffered serial receiver can.
 
-In monitor mode the emulated clock is paused. In run mode host pacing attempts to
-track `clock-hz`; `--unthrottled` changes host pacing, not emulated device time.
-`--cycles N` limits each run, checked at instruction boundaries, so the last
-instruction may take the count slightly beyond N.
+In monitor mode the emulated clock is paused. In run mode host pacing attempts to track `clock-hz`; `--unthrottled` changes host pacing, not emulated device time. `--cycles N` limits each run, checked at instruction boundaries, so the last instruction may take the count slightly beyond N.
 
 ```sh
 ./build/gcc14/joshua --profile profiles/echo.profile \
   --script examples/echo-smoke.mon --cycles 20000 --unthrottled > serial.log
 ```
 
-This produces `>Hello` followed by CR/LF. `--script` disables live terminal input
-and stops on the first command error with a nonzero exit code. Redirected stdin
-also accepts monitor commands; it is not interpreted as a live serial stream.
-Use `send` for deterministic scripted input. A scripted `run` needs a breakpoint,
-STP, or a cycle limit to return to subsequent commands.
+This produces `>Hello` followed by CR/LF. `--script` disables live terminal input and stops on the first command error with a nonzero exit code. Redirected stdin also accepts monitor commands; it is not interpreted as a live serial stream. Use `send` for deterministic scripted input. A scripted `run` needs a breakpoint, STP, or a cycle limit to return to subsequent commands.
 
-`examples/echo.mon` recreates the included ROM entirely through the ad-hoc monitor
-assembler. Run it from this directory to regenerate `examples/echo.bin`.
+`examples/echo.mon` recreates the included ROM entirely through the ad-hoc monitor assembler. Run it from this directory to regenerate `examples/echo.bin`.
 
 ## Development
 
-See [architecture](docs/architecture.md) for ownership, timing boundaries and the
-extension points, and [accuracy](docs/accuracy.md) for test evidence and remaining
-work. Joshua is covered by the repository's MIT license, copied here so this
-directory can also be built as a standalone project.
+See [architecture](docs/architecture.md) for ownership, timing boundaries and the extension points, and [accuracy](docs/accuracy.md) for test evidence and remaining work. Joshua is covered by the repository's MIT license, copied here so this directory can also be built as a standalone project.
