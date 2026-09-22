@@ -31876,7 +31876,7 @@
 			(pin passive line
 				(at -10.16 -7.62 0)
 				(length 3.81)
-				(name "~{HALT-REQ}"
+				(name "~{HALT_REQ}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31894,7 +31894,7 @@
 			(pin passive line
 				(at -10.16 -10.16 0)
 				(length 3.81)
-				(name "~{HALT-ACK}"
+				(name "~{HALT_ACK}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31912,7 +31912,7 @@
 			(pin passive line
 				(at -10.16 -12.7 0)
 				(length 3.81)
-				(name "~{BUS-REQ}"
+				(name "~{BUS_REQ}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31930,7 +31930,7 @@
 			(pin passive line
 				(at -10.16 -15.24 0)
 				(length 3.81)
-				(name "~{BUS-ACK}"
+				(name "~{BUS_ACK}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -32601,7 +32601,7 @@
 			(pin passive line
 				(at -10.16 22.86 0)
 				(length 3.81)
-				(name "RESERVED"
+				(name "I2C_SCL"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -32619,7 +32619,7 @@
 			(pin passive line
 				(at -10.16 20.32 0)
 				(length 3.81)
-				(name "RESERVED"
+				(name "I2C_SDA"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -32637,7 +32637,7 @@
 			(pin passive line
 				(at -10.16 17.78 0)
 				(length 3.81)
-				(name "RESERVED"
+				(name "SPI_SCK"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -32655,7 +32655,7 @@
 			(pin passive line
 				(at -10.16 15.24 0)
 				(length 3.81)
-				(name "RESERVED"
+				(name "SPI_MOSI"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -32673,7 +32673,7 @@
 			(pin passive line
 				(at -10.16 12.7 0)
 				(length 3.81)
-				(name "RESERVED"
+				(name "SPI_MISO"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -32709,7 +32709,7 @@
 			(pin passive line
 				(at -10.16 7.62 0)
 				(length 3.81)
-				(name "RESERVED"
+				(name "SPI_ID0"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -32727,7 +32727,7 @@
 			(pin passive line
 				(at -10.16 5.08 0)
 				(length 3.81)
-				(name "RESERVED"
+				(name "SPI_ID1"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -32745,7 +32745,7 @@
 			(pin passive line
 				(at -10.16 2.54 0)
 				(length 3.81)
-				(name "RESERVED"
+				(name "SPI_ID2"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -32763,7 +32763,7 @@
 			(pin passive line
 				(at -10.16 0 0)
 				(length 3.81)
-				(name "RESERVED"
+				(name "SPI_ID3"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -32781,7 +32781,7 @@
 			(pin passive line
 				(at -10.16 -2.54 0)
 				(length 3.81)
-				(name "RESERVED"
+				(name "~{SPI_SEL}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -32817,7 +32817,7 @@
 			(pin passive line
 				(at -10.16 -7.62 0)
 				(length 3.81)
-				(name "RESERVED"
+				(name "~{SERIRQ}"
 					(effects
 						(font
 							(size 1.27 1.27)
