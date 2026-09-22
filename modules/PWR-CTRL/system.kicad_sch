@@ -3202,12 +3202,12 @@
 		(uuid "106e959a-99fb-4649-8df5-c16495deccf5")
 	)
 	(no_connect
-		(at 101.6 58.42)
-		(uuid "176441d1-cc38-4595-b0a4-bd0289485b0d")
+		(at 101.6 68.58)
+		(uuid "1357c9e9-4f89-4f90-bf39-d94f92906ace")
 	)
 	(no_connect
-		(at 101.6 40.64)
-		(uuid "17852e6c-47cb-4199-bd9a-a5cbfe2323d0")
+		(at 101.6 58.42)
+		(uuid "176441d1-cc38-4595-b0a4-bd0289485b0d")
 	)
 	(no_connect
 		(at 101.6 30.48)
@@ -3406,6 +3406,10 @@
 		(uuid "c1fc1814-03ec-4e59-a6c5-97fde0929e6c")
 	)
 	(no_connect
+		(at 101.6 83.82)
+		(uuid "c40186b9-5751-4edf-8b47-17b82fd97b9d")
+	)
+	(no_connect
 		(at 63.5 63.5)
 		(uuid "c43594f1-4c60-4a97-910d-78b1a9e9c13b")
 	)
@@ -3422,14 +3426,6 @@
 		(uuid "c8ee5f3f-883c-4251-ab31-7bde408e252a")
 	)
 	(no_connect
-		(at 101.6 43.18)
-		(uuid "cc2fca86-8120-47e6-96c3-cd257a111439")
-	)
-	(no_connect
-		(at 25.4 25.4)
-		(uuid "cdac2b1d-2bfe-4e10-867a-8d04bd75966c")
-	)
-	(no_connect
 		(at 101.6 76.2)
 		(uuid "d0f25335-6bd1-4e48-a9c7-68d30f301cd0")
 	)
@@ -3440,10 +3436,6 @@
 	(no_connect
 		(at 63.5 45.72)
 		(uuid "d48d84a2-66e5-4b44-921e-19cd0d6e4f1b")
-	)
-	(no_connect
-		(at 25.4 27.94)
-		(uuid "da09dc74-a742-4c41-91e7-a765796b2d58")
 	)
 	(no_connect
 		(at 101.6 78.74)
@@ -3476,6 +3468,10 @@
 	(no_connect
 		(at 25.4 38.1)
 		(uuid "f4e2aa33-e65a-48a9-9d65-51a131337115")
+	)
+	(no_connect
+		(at 101.6 53.34)
+		(uuid "fab37e18-25a2-4398-bcd9-9050e9a6b201")
 	)
 	(no_connect
 		(at 63.5 66.04)
@@ -3763,6 +3759,30 @@
 			)
 		)
 	)
+	(global_label "+5V"
+		(shape output)
+		(at 25.4 27.94 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "73ad14c2-5b91-45df-a261-8181609e7cab")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 18.4492 27.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
 	(global_label "PWROK"
 		(shape output)
 		(at 100.33 35.56 180)
@@ -3787,6 +3807,30 @@
 			)
 		)
 	)
+	(global_label "I2C_SDA"
+		(shape passive)
+		(at 101.6 43.18 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "9a5e524c-2e0c-4215-a9a5-35916a14f53f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 91.9157 43.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
 	(global_label "GND"
 		(shape output)
 		(at 100.33 27.94 180)
@@ -3800,6 +3844,30 @@
 		(uuid "bf25bd2a-3c08-4562-b004-bcd7d3481937")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 93.4743 27.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "+5V"
+		(shape output)
+		(at 25.4 25.4 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "cf7f5b0b-c148-4314-9e67-5101fb1fcfa1")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 18.4492 25.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3848,6 +3916,30 @@
 		(uuid "f0406b3f-16ec-4477-b0c4-a8d6b6e9949e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 12.1597 99.06 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "I2C_SCL"
+		(shape passive)
+		(at 101.6 40.64 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "f23b1f94-e1a4-4b4d-91d2-e4c95c81fb29")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 91.9762 40.64 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
