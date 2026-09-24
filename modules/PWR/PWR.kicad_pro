@@ -510,7 +510,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "PWR-CTRL.kicad_pro",
+    "filename": "PWR.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -678,8 +678,8 @@
     "subpart_id_separator": 0,
     "top_level_sheets": [
       {
-        "filename": "PWR-CTRL.kicad_sch",
-        "name": "PWR-CTRL",
+        "filename": "PWR.kicad_sch",
+        "name": "PWR",
         "uuid": "e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
       },
       {
@@ -694,7 +694,7 @@
   "sheets": [
     [
       "e63e39d7-6ac0-4ffd-8aa3-1841a4541b55",
-      "PWR-CTRL"
+      "PWR"
     ],
     [
       "1bc24577-9a03-4fc2-ac64-d8d0370a6427",

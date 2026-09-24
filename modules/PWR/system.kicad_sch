@@ -5,11 +5,12 @@
 	(uuid "5919a681-6213-4155-92b3-30bc1b43a353")
 	(paper "A4")
 	(title_block
-		(title "PWR-CTRL")
+		(title "PWR")
 		(rev "A")
 		(company "THE HOUSE OF GALAHAD")
 		(comment 1 "IMNOTWOPR")
 		(comment 2 "POWER CONTROL")
+		(comment 3 "75-1010-01")
 	)
 	(lib_symbols
 		(symbol "IMNOTWOPR:CardBracket"
@@ -4304,7 +4305,7 @@
 			(uuid "43bdad75-1d6a-47d8-a490-3f25577f245b")
 		)
 		(instances
-			(project "PWR-CTRL"
+			(project "PWR"
 				(path "/1bc24577-9a03-4fc2-ac64-d8d0370a6427"
 					(reference "J1")
 					(unit 2)
@@ -4389,7 +4390,7 @@
 			(uuid "aa72a02c-9c16-4227-af7a-98c9e1c337b8")
 		)
 		(instances
-			(project "PWR-CTRL"
+			(project "PWR"
 				(path "/1bc24577-9a03-4fc2-ac64-d8d0370a6427"
 					(reference "#FLG04")
 					(unit 1)
@@ -4468,7 +4469,7 @@
 			(uuid "79354dee-87a3-40b5-bb3e-42b7ad6f686f")
 		)
 		(instances
-			(project "PWR-CTRL"
+			(project "PWR"
 				(path "/1bc24577-9a03-4fc2-ac64-d8d0370a6427"
 					(reference "#FLG07")
 					(unit 1)
@@ -4829,7 +4830,7 @@
 			(uuid "43bdad75-1d6a-47d8-a490-3f25577f245c")
 		)
 		(instances
-			(project "PWR-CTRL"
+			(project "PWR"
 				(path "/1bc24577-9a03-4fc2-ac64-d8d0370a6427"
 					(reference "J1")
 					(unit 3)
@@ -4914,7 +4915,7 @@
 			(uuid "028da21f-b3aa-44d4-b8ca-2d1435a042d5")
 		)
 		(instances
-			(project "PWR-CTRL"
+			(project "PWR"
 				(path "/1bc24577-9a03-4fc2-ac64-d8d0370a6427"
 					(reference "#FLG01")
 					(unit 1)
@@ -5275,7 +5276,7 @@
 			(uuid "43bdad75-1d6a-47d8-a490-3f25577f245d")
 		)
 		(instances
-			(project "PWR-CTRL"
+			(project "PWR"
 				(path "/1bc24577-9a03-4fc2-ac64-d8d0370a6427"
 					(reference "J1")
 					(unit 1)
@@ -5357,7 +5358,7 @@
 			)
 		)
 		(instances
-			(project "PWR-CTRL"
+			(project "PWR"
 				(path "/1bc24577-9a03-4fc2-ac64-d8d0370a6427"
 					(reference "MH1")
 					(unit 1)
@@ -5442,7 +5443,7 @@
 			(uuid "c8c77a83-c1c4-477e-8a02-de0a41da275d")
 		)
 		(instances
-			(project "PWR-CTRL"
+			(project "PWR"
 				(path "/1bc24577-9a03-4fc2-ac64-d8d0370a6427"
 					(reference "#FLG03")
 					(unit 1)
@@ -5521,7 +5522,7 @@
 			(uuid "f96558b9-4140-482d-88ba-18b437bc13ae")
 		)
 		(instances
-			(project "PWR-CTRL"
+			(project "PWR"
 				(path "/1bc24577-9a03-4fc2-ac64-d8d0370a6427"
 					(reference "#FLG06")
 					(unit 1)
@@ -5600,7 +5601,7 @@
 			(uuid "7b366b32-1c24-461a-9888-eafa4b6db9bc")
 		)
 		(instances
-			(project "PWR-CTRL"
+			(project "PWR"
 				(path "/1bc24577-9a03-4fc2-ac64-d8d0370a6427"
 					(reference "#FLG05")
 					(unit 1)

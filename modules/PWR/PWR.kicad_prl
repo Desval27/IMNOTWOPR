@@ -23,9 +23,9 @@
       "keepouts": false,
       "lockedItems": false,
       "otherItems": false,
-      "pads": true,
+      "pads": false,
       "text": false,
-      "tracks": true,
+      "tracks": false,
       "vias": false,
       "zones": true
     },
@@ -53,7 +53,7 @@
       "board_outline_area",
       "ly_points"
     ],
-    "visible_layers": "ffffffff_ffffffff_fffffff7_7fffffff",
+    "visible_layers": "ffffffff_ffffffff_ffffffff_7fffffff",
     "zone_display_mode": 0
   },
   "git": {
@@ -63,7 +63,7 @@
     "ssh_key": ""
   },
   "meta": {
-    "filename": "PWR-CTRL.kicad_prl",
+    "filename": "PWR.kicad_prl",
     "version": 5
   },
   "net_inspector_panel": {

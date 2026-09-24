@@ -22,8 +22,8 @@ The power control module serves 3 purposes:
 
 ### Front
 
-![Front Panel Render](PWR_front.png)
+![Panel Front Render](PWR_front.png)
 
 ### Back
 
-![Back Panel Render](PWR_back.png)
+![Panel Back Render](PWR_back.png)
