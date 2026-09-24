@@ -510,7 +510,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "BLA-65.kicad_pro",
+    "filename": "MSD.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -678,8 +678,8 @@
     "subpart_id_separator": 0,
     "top_level_sheets": [
       {
-        "filename": "BLA-65.kicad_sch",
-        "name": "BLA-65",
+        "filename": "MSD.kicad_sch",
+        "name": "MSD",
         "uuid": "e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
       },
       {
@@ -688,13 +688,13 @@
         "uuid": "1bc24577-9a03-4fc2-ac64-d8d0370a6427"
       }
     ],
-    "used_designators": "J1-2,#FLG1-2,R1-98,U1-6,MH1,SW1-2,#PWR1-29,D1-49",
+    "used_designators": "R1-2,#FLG1-2,J1-3,MH1,U1-3,#PWR1-12,C1-4",
     "variants": []
   },
   "sheets": [
     [
       "e63e39d7-6ac0-4ffd-8aa3-1841a4541b55",
-      "BLA-65"
+      "MSD-65"
     ],
     [
       "1bc24577-9a03-4fc2-ac64-d8d0370a6427",

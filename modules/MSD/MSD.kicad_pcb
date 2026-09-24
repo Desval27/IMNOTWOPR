@@ -252,7 +252,7 @@
 		)
 		(path "/0d436284-d29f-4651-93d6-f1d39abdca2f")
 		(sheetname "/MSD-65/")
-		(sheetfile "MSD-65.kicad_sch")
+		(sheetfile "MSD.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -502,7 +502,7 @@
 		(property ki_fp_filters "CP_*")
 		(path "/e3ba5d1f-d41a-4e0b-a942-b1798020bc64")
 		(sheetname "/MSD-65/")
-		(sheetfile "MSD-65.kicad_sch")
+		(sheetfile "MSD.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -692,7 +692,7 @@
 		(property ki_fp_filters "R_*")
 		(path "/3c852938-3eaf-4fa6-b0c6-dc5abbef6545")
 		(sheetname "/MSD-65/")
-		(sheetfile "MSD-65.kicad_sch")
+		(sheetfile "MSD.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -936,7 +936,7 @@
 		(property ki_fp_filters "DIP?14*")
 		(path "/a3a30f3d-ac7d-45c6-a35b-3d4d0962149a")
 		(sheetname "/MSD-65/")
-		(sheetfile "MSD-65.kicad_sch")
+		(sheetfile "MSD.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -1281,7 +1281,7 @@
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz -0 -0 -0)
+				(xyz 0 0 0)
 			)
 		)
 	)
@@ -3280,7 +3280,7 @@
 		(property ki_fp_filters "DM3ATSFPEJM5")
 		(path "/1878fcb7-2196-4325-a0bb-2fcfdb2cf661")
 		(sheetname "/MSD-65/")
-		(sheetfile "MSD-65.kicad_sch")
+		(sheetfile "MSD.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -3638,7 +3638,7 @@
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz -0 -0 -0)
+				(xyz 0 0 0)
 			)
 		)
 	)
@@ -3695,7 +3695,7 @@
 		(property ki_fp_filters "R_*")
 		(path "/7f365995-8d4d-48d5-829b-177e7830b3a9")
 		(sheetname "/MSD-65/")
-		(sheetfile "MSD-65.kicad_sch")
+		(sheetfile "MSD.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -4099,7 +4099,7 @@
 		(property ki_fp_filters "C_*")
 		(path "/87b44046-5b8f-46bc-a3ca-266ba30690f0")
 		(sheetname "/MSD-65/")
-		(sheetfile "MSD-65.kicad_sch")
+		(sheetfile "MSD.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -4193,7 +4193,7 @@
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz -0 -0 -0)
+				(xyz 0 0 0)
 			)
 		)
 	)
@@ -4250,7 +4250,7 @@
 		(property ki_fp_filters "C_*")
 		(path "/924326be-8c1f-4b82-b852-e01940c0a6fa")
 		(sheetname "/MSD-65/")
-		(sheetfile "MSD-65.kicad_sch")
+		(sheetfile "MSD.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -4344,7 +4344,7 @@
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz -0 -0 -0)
+				(xyz 0 0 0)
 			)
 		)
 	)

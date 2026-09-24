@@ -2711,7 +2711,7 @@
 			(uuid "33ea1d04-b2dd-4886-9ff7-2fd3d4935854")
 		)
 		(instances
-			(project "MSD-65"
+			(project "MSD"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
 					(reference "#PWR06")
 					(unit 1)
@@ -2856,7 +2856,7 @@
 			(uuid "dea0063c-6ef8-4d7e-8fa5-5b847ec37369")
 		)
 		(instances
-			(project "MSD-65"
+			(project "MSD"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
 					(reference "U1")
 					(unit 1)
@@ -3033,7 +3033,7 @@
 			(uuid "38bedc5e-3f97-4a84-ace6-c3a75d34761e")
 		)
 		(instances
-			(project "MSD-65"
+			(project "MSD"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
 					(reference "J1")
 					(unit 1)
@@ -3111,7 +3111,7 @@
 			(uuid "69841f30-ba1f-4fb3-b328-e2412702d9a5")
 		)
 		(instances
-			(project "MSD-65"
+			(project "MSD"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
 					(reference "#PWR011")
 					(unit 1)
@@ -3193,7 +3193,7 @@
 			(uuid "2dd34e17-c25d-4700-9543-b4789ef0f120")
 		)
 		(instances
-			(project "MSD-65"
+			(project "MSD"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
 					(reference "R2")
 					(unit 1)
@@ -3272,7 +3272,7 @@
 			(uuid "0dbf8e98-e4ba-44e3-b95c-e09f4371bce6")
 		)
 		(instances
-			(project "MSD-65"
+			(project "MSD"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
 					(reference "#PWR07")
 					(unit 1)
@@ -3354,7 +3354,7 @@
 			(uuid "c3544bec-8559-42f5-aefb-1af5ec4bbbb8")
 		)
 		(instances
-			(project "MSD-65"
+			(project "MSD"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
 					(reference "R1")
 					(unit 1)
@@ -3435,7 +3435,7 @@
 			(uuid "7c5e5755-c7b6-4bda-bfe5-67775075bcda")
 		)
 		(instances
-			(project "MSD-65"
+			(project "MSD"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
 					(reference "C3")
 					(unit 1)
@@ -3513,7 +3513,7 @@
 			(uuid "67c67fad-0b12-4946-adff-172653f9de69")
 		)
 		(instances
-			(project "MSD-65"
+			(project "MSD"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
 					(reference "#PWR08")
 					(unit 1)
@@ -3594,7 +3594,7 @@
 			(uuid "6ccfd3ed-ec89-43cc-9721-b115b5185503")
 		)
 		(instances
-			(project "MSD-65"
+			(project "MSD"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
 					(reference "C1")
 					(unit 1)
@@ -3673,7 +3673,7 @@
 			(uuid "4e0f11c1-9174-4017-bfb3-7edeb4f3fefe")
 		)
 		(instances
-			(project "MSD-65"
+			(project "MSD"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
 					(reference "#PWR09")
 					(unit 1)
@@ -3850,7 +3850,7 @@
 			(uuid "c8aacd40-85e5-4135-a815-144de3916801")
 		)
 		(instances
-			(project "MSD-65"
+			(project "MSD"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
 					(reference "U2")
 					(unit 1)
@@ -3928,7 +3928,7 @@
 			(uuid "ac9b5bc6-b65a-4dd1-98a3-ac5c0aba3c52")
 		)
 		(instances
-			(project "MSD-65"
+			(project "MSD"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
 					(reference "#PWR012")
 					(unit 1)
@@ -4007,7 +4007,7 @@
 			(uuid "646d4eb1-f812-4d21-96b4-ac60d10d12ea")
 		)
 		(instances
-			(project "MSD-65"
+			(project "MSD"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
 					(reference "#PWR02")
 					(unit 1)
@@ -4085,7 +4085,7 @@
 			(uuid "4cc7ad86-ef3e-48b9-adb3-73aa54024939")
 		)
 		(instances
-			(project "MSD-65"
+			(project "MSD"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
 					(reference "#PWR03")
 					(unit 1)
@@ -4164,7 +4164,7 @@
 			(uuid "5e4cbb25-4ab5-45e3-88ea-ebac9e88d42c")
 		)
 		(instances
-			(project "MSD-65"
+			(project "MSD"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
 					(reference "#PWR010")
 					(unit 1)
@@ -4257,7 +4257,7 @@
 			(uuid "c5118cdd-d5dc-4415-9808-20c8beccdab5")
 		)
 		(instances
-			(project "MSD-65"
+			(project "MSD"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
 					(reference "C2")
 					(unit 1)
@@ -4335,7 +4335,7 @@
 			(uuid "e128cd27-0af6-45d6-ba7b-6209c0cbc45a")
 		)
 		(instances
-			(project "MSD-65"
+			(project "MSD"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
 					(reference "#PWR01")
 					(unit 1)

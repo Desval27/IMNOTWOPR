@@ -99,7 +99,7 @@
 		(aux_axis_origin 55 145)
 		(grid_origin 55 145)
 		(pcbplotparams
-			(layerselection 0x00000000_00000000_5555555f_555555f5)
+			(layerselection 0x00000000_00000000_5555555f_555555ff)
 			(plot_on_all_layers_selection 0x00000000_00000000_00000000_02000000)
 			(disableapertmacros no)
 			(usegerberextensions no)
@@ -687,7 +687,7 @@
 				)
 			)
 		)
-		(property "Value" "POWER ON"
+		(property "Value" "PWR ON"
 			(at 0 -3.81 270)
 			(layer "F.SilkS")
 			(uuid "950acc14-10e8-4d68-9141-3d8fb72258a1")

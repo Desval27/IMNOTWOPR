@@ -5489,7 +5489,7 @@
 				)
 			)
 		)
-		(property "Value" "POWER ON"
+		(property "Value" "PWR ON"
 			(at 77.47 35.56 0)
 			(show_name no)
 			(do_not_autoplace no)
