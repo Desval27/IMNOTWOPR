@@ -1,3 +1,5 @@
+![Header](header.png)
+
 # IMNOTWOPR
 
 **IMNOTWOPR** — *Information Management Network Operating Terminal & Wargames Optimized Planning Rig* — is a DIY-friendly, expandable 6502-family computer inspired by the architecture, modularity, and front-panel experience of classic systems such as the IMSAI 8080, while deliberately avoiding strict historical reproduction.
