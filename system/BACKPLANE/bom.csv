@@ -1,0 +1,6 @@
+"Reference","Qty","Value","DNP","Exclude from BOM","Exclude from Board","Footprint","Datasheet"
+"J1,J2,J3,J4,J5,J6,J7,J8,J9,J10,J11,J12,J13,J14,J15,J16,J17,J18,J19,J20","20","BusConnector","","","","IMNOTWOPR:SystemConnector_Female",""
+"J21","1","ATX-08","","","","IMNOTWOPR:ATX-08",""
+"J29","1","ATX-24","","","","IMNOTWOPR:ATX-24","https://www.intel.com/content/dam/www/public/us/en/documents/guides/power-supply-design-guide-june.pdf#page=33"
+"JP1","1","I2C PULLUPS","","","","FormantKO:Jumper_1x02",""
+"R1,R2","2","4k7Ω","","","","IMNOTWOPR:R_Axial_DIN0207_P400mil",""

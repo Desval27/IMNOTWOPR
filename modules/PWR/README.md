@@ -10,6 +10,8 @@ The PWR module provides power control, status indication, and manual bus reset f
 
 - [Schematic](PWR_schematic.pdf)
 - [Assembly](PWR_assembly.pdf)
+- [Bill of Materials](bom.csv)
+- [Interactive Bill of Materials](ibom.html)
 
 ## Gerber To Order
 

@@ -186,40 +186,29 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "connector/IEC_DIN"
+			(at -2.24 -39.37 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "33dcde9c-a611-4e17-8e25-616e58b82e75")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "DIN41612*3x*")
 		(path "/dc9a7c0f-8719-4082-ba93-e685b03d5340")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "a1" "a2" "a3" "a4" "a5" "a6" "a7" "a8" "a9" "a10" "a11" "a12"
-					"a13" "a14" "a15" "a16" "a17" "a18" "a19" "a20" "a21" "a22" "a23" "a24"
-					"a25" "a26" "a27" "a28" "a29" "a30" "a31" "a32"
-				)
-			)
-			(unit
-				(name "B")
-				(pins "b1" "b2" "b3" "b4" "b5" "b6" "b7" "b8" "b9" "b10" "b11" "b12"
-					"b13" "b14" "b15" "b16" "b17" "b18" "b19" "b20" "b21" "b22" "b23" "b24"
-					"b25" "b26" "b27" "b28" "b29" "b30" "b31" "b32"
-				)
-			)
-			(unit
-				(name "C")
-				(pins "c1" "c2" "c3" "c4" "c5" "c6" "c7" "c8" "c9" "c10" "c11" "c12"
-					"c13" "c14" "c15" "c16" "c17" "c18" "c19" "c20" "c21" "c22" "c23" "c24"
-					"c25" "c26" "c27" "c28" "c29" "c30" "c31" "c32"
-				)
-			)
-		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -5.98 -39.67)
 			(end -5.98 -39.07)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -229,7 +218,7 @@
 			(start -5.98 -39.07)
 			(end -5.3 -39.37)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -239,7 +228,7 @@
 			(start -5.3 -39.37)
 			(end -5.98 -39.67)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -249,7 +238,7 @@
 			(start -5.11 -47.61)
 			(end 5.71 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -259,7 +248,7 @@
 			(start -5.11 47.61)
 			(end -5.11 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -269,7 +258,7 @@
 			(start -3.95 -42.5)
 			(end 1.55 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -279,7 +268,7 @@
 			(start -3.95 42.5)
 			(end -3.95 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -289,7 +278,7 @@
 			(start 1.55 -42.5)
 			(end 1.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -299,7 +288,7 @@
 			(start 1.55 -41.5)
 			(end 4.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -309,7 +298,7 @@
 			(start 1.55 41.5)
 			(end 1.55 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -319,7 +308,7 @@
 			(start 1.55 42.5)
 			(end -3.95 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -329,7 +318,7 @@
 			(start 4.55 -41.5)
 			(end 4.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -339,7 +328,7 @@
 			(start 4.55 41.5)
 			(end 1.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -349,7 +338,7 @@
 			(start 5.71 -47.61)
 			(end 5.71 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -359,7 +348,7 @@
 			(start 5.71 47.61)
 			(end -5.11 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -1692,16 +1681,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "3074002e-91a6-4ef1-a0cd-358234c8f01c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/96f81852-2ba0-42b0-84f1-fe70dee5d544")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -1787,16 +1782,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "7991d2e8-f2ec-4ae9-b455-fce0fbf75899")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/cc02b255-a893-4f54-9c64-7056711463c6")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -1882,16 +1883,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "a53acd1d-1607-4fc9-8673-69847452c312")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/75717347-62d0-4ee1-98c1-3cb280112c67")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -1975,40 +1982,29 @@
 				)
 			)
 		)
-		(property ki_fp_filters "DIN41612*3x*")
-		(path "/c882b0f3-884e-45d1-ad53-f4f8a26c6271")
-		(sheetname "/")
-		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "a1" "a2" "a3" "a4" "a5" "a6" "a7" "a8" "a9" "a10" "a11" "a12"
-					"a13" "a14" "a15" "a16" "a17" "a18" "a19" "a20" "a21" "a22" "a23" "a24"
-					"a25" "a26" "a27" "a28" "a29" "a30" "a31" "a32"
-				)
-			)
-			(unit
-				(name "B")
-				(pins "b1" "b2" "b3" "b4" "b5" "b6" "b7" "b8" "b9" "b10" "b11" "b12"
-					"b13" "b14" "b15" "b16" "b17" "b18" "b19" "b20" "b21" "b22" "b23" "b24"
-					"b25" "b26" "b27" "b28" "b29" "b30" "b31" "b32"
-				)
-			)
-			(unit
-				(name "C")
-				(pins "c1" "c2" "c3" "c4" "c5" "c6" "c7" "c8" "c9" "c10" "c11" "c12"
-					"c13" "c14" "c15" "c16" "c17" "c18" "c19" "c20" "c21" "c22" "c23" "c24"
-					"c25" "c26" "c27" "c28" "c29" "c30" "c31" "c32"
+		(property "KiLib_Generator" "connector/IEC_DIN"
+			(at -2.24 -39.37 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "5902d245-8c5f-40e7-97fc-0eadb86584c5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
+		(property ki_fp_filters "DIN41612*3x*")
+		(path "/c66fa64c-3c8b-417c-8cc3-d94a8481d3aa")
+		(sheetname "/")
+		(sheetfile "BACKPLANE.kicad_sch")
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -5.98 -39.67)
 			(end -5.98 -39.07)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -2018,7 +2014,7 @@
 			(start -5.98 -39.07)
 			(end -5.3 -39.37)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -2028,7 +2024,7 @@
 			(start -5.3 -39.37)
 			(end -5.98 -39.67)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -2038,7 +2034,7 @@
 			(start -5.11 -47.61)
 			(end 5.71 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -2048,7 +2044,7 @@
 			(start -5.11 47.61)
 			(end -5.11 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -2058,7 +2054,7 @@
 			(start -3.95 -42.5)
 			(end 1.55 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -2068,7 +2064,7 @@
 			(start -3.95 42.5)
 			(end -3.95 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -2078,7 +2074,7 @@
 			(start 1.55 -42.5)
 			(end 1.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -2088,7 +2084,7 @@
 			(start 1.55 -41.5)
 			(end 4.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -2098,7 +2094,7 @@
 			(start 1.55 41.5)
 			(end 1.55 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -2108,7 +2104,7 @@
 			(start 1.55 42.5)
 			(end -3.95 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -2118,7 +2114,7 @@
 			(start 4.55 -41.5)
 			(end 4.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -2128,7 +2124,7 @@
 			(start 4.55 41.5)
 			(end 1.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -2138,7 +2134,7 @@
 			(start 5.71 -47.61)
 			(end 5.71 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -2148,7 +2144,7 @@
 			(start 5.71 47.61)
 			(end -5.11 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -3481,16 +3477,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "1e0e7c5c-2451-489c-9311-95613c7ad671")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/fa805cab-1816-4932-af85-89ee84cf605f")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -3576,16 +3578,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "57191a9f-cf91-4e54-ae7a-4120120eb638")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/fa0ff5bf-5147-46ce-82a9-b95ef42cc9d5")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -3671,16 +3679,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "11de82b4-4d14-4201-aec9-8d5d63abe26b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/70ef790a-1fbe-42d3-80ee-9a0037763674")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -3764,40 +3778,29 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "connector/IEC_DIN"
+			(at -2.24 -39.37 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "5ea8a1cc-8b6a-44f0-8c35-8e572e7e6fb0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "DIN41612*3x*")
 		(path "/2943eb43-baa8-456c-92ec-624f3ef0bdf5")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "a1" "a2" "a3" "a4" "a5" "a6" "a7" "a8" "a9" "a10" "a11" "a12"
-					"a13" "a14" "a15" "a16" "a17" "a18" "a19" "a20" "a21" "a22" "a23" "a24"
-					"a25" "a26" "a27" "a28" "a29" "a30" "a31" "a32"
-				)
-			)
-			(unit
-				(name "B")
-				(pins "b1" "b2" "b3" "b4" "b5" "b6" "b7" "b8" "b9" "b10" "b11" "b12"
-					"b13" "b14" "b15" "b16" "b17" "b18" "b19" "b20" "b21" "b22" "b23" "b24"
-					"b25" "b26" "b27" "b28" "b29" "b30" "b31" "b32"
-				)
-			)
-			(unit
-				(name "C")
-				(pins "c1" "c2" "c3" "c4" "c5" "c6" "c7" "c8" "c9" "c10" "c11" "c12"
-					"c13" "c14" "c15" "c16" "c17" "c18" "c19" "c20" "c21" "c22" "c23" "c24"
-					"c25" "c26" "c27" "c28" "c29" "c30" "c31" "c32"
-				)
-			)
-		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -5.98 -39.67)
 			(end -5.98 -39.07)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -3807,7 +3810,7 @@
 			(start -5.98 -39.07)
 			(end -5.3 -39.37)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -3817,7 +3820,7 @@
 			(start -5.3 -39.37)
 			(end -5.98 -39.67)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -3827,7 +3830,7 @@
 			(start -5.11 -47.61)
 			(end 5.71 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -3837,7 +3840,7 @@
 			(start -5.11 47.61)
 			(end -5.11 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -3847,7 +3850,7 @@
 			(start -3.95 -42.5)
 			(end 1.55 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -3857,7 +3860,7 @@
 			(start -3.95 42.5)
 			(end -3.95 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -3867,7 +3870,7 @@
 			(start 1.55 -42.5)
 			(end 1.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -3877,7 +3880,7 @@
 			(start 1.55 -41.5)
 			(end 4.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -3887,7 +3890,7 @@
 			(start 1.55 41.5)
 			(end 1.55 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -3897,7 +3900,7 @@
 			(start 1.55 42.5)
 			(end -3.95 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -3907,7 +3910,7 @@
 			(start 4.55 -41.5)
 			(end 4.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -3917,7 +3920,7 @@
 			(start 4.55 41.5)
 			(end 1.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -3927,7 +3930,7 @@
 			(start 5.71 -47.61)
 			(end 5.71 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -3937,7 +3940,7 @@
 			(start 5.71 47.61)
 			(end -5.11 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -5270,16 +5273,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "dcaadfdf-2afc-41eb-a3a6-ceec6c5f73c9")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/ea57e588-bfb5-4a72-94eb-c85df3fa3c90")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -5363,40 +5372,29 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "connector/IEC_DIN"
+			(at -2.24 -39.37 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "2e097435-a26f-44fd-adb7-e3fefa705900")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "DIN41612*3x*")
 		(path "/f459278e-5e12-4db3-a94a-4571630efb38")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "a1" "a2" "a3" "a4" "a5" "a6" "a7" "a8" "a9" "a10" "a11" "a12"
-					"a13" "a14" "a15" "a16" "a17" "a18" "a19" "a20" "a21" "a22" "a23" "a24"
-					"a25" "a26" "a27" "a28" "a29" "a30" "a31" "a32"
-				)
-			)
-			(unit
-				(name "B")
-				(pins "b1" "b2" "b3" "b4" "b5" "b6" "b7" "b8" "b9" "b10" "b11" "b12"
-					"b13" "b14" "b15" "b16" "b17" "b18" "b19" "b20" "b21" "b22" "b23" "b24"
-					"b25" "b26" "b27" "b28" "b29" "b30" "b31" "b32"
-				)
-			)
-			(unit
-				(name "C")
-				(pins "c1" "c2" "c3" "c4" "c5" "c6" "c7" "c8" "c9" "c10" "c11" "c12"
-					"c13" "c14" "c15" "c16" "c17" "c18" "c19" "c20" "c21" "c22" "c23" "c24"
-					"c25" "c26" "c27" "c28" "c29" "c30" "c31" "c32"
-				)
-			)
-		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -5.98 -39.67)
 			(end -5.98 -39.07)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -5406,7 +5404,7 @@
 			(start -5.98 -39.07)
 			(end -5.3 -39.37)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -5416,7 +5414,7 @@
 			(start -5.3 -39.37)
 			(end -5.98 -39.67)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -5426,7 +5424,7 @@
 			(start -5.11 -47.61)
 			(end 5.71 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -5436,7 +5434,7 @@
 			(start -5.11 47.61)
 			(end -5.11 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -5446,7 +5444,7 @@
 			(start -3.95 -42.5)
 			(end 1.55 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -5456,7 +5454,7 @@
 			(start -3.95 42.5)
 			(end -3.95 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -5466,7 +5464,7 @@
 			(start 1.55 -42.5)
 			(end 1.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -5476,7 +5474,7 @@
 			(start 1.55 -41.5)
 			(end 4.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -5486,7 +5484,7 @@
 			(start 1.55 41.5)
 			(end 1.55 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -5496,7 +5494,7 @@
 			(start 1.55 42.5)
 			(end -3.95 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -5506,7 +5504,7 @@
 			(start 4.55 -41.5)
 			(end 4.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -5516,7 +5514,7 @@
 			(start 4.55 41.5)
 			(end 1.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -5526,7 +5524,7 @@
 			(start 5.71 -47.61)
 			(end 5.71 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -5536,7 +5534,7 @@
 			(start 5.71 47.61)
 			(end -5.11 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -6869,16 +6867,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "635d31de-3f34-4dac-ac68-4e95304dfa3d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/7014924e-cab5-4944-9846-c8cdd059f350")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -6964,16 +6968,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "14b8b78c-3614-414e-8779-37df49f77802")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/fe3c5d03-1d95-4f0b-b17d-283d27896fd0")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -7059,16 +7069,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "831fe99c-5f0d-4b10-9538-e84fc12b2e99")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/07c5926c-f91f-4ed3-859d-65899180a05d")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -7152,40 +7168,29 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "connector/IEC_DIN"
+			(at -2.24 -39.37 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "4a33795d-4bcd-4a85-ba60-d048a29dd70d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "DIN41612*3x*")
 		(path "/b4d637c9-e02c-480e-8b73-2ada972596b2")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "a1" "a2" "a3" "a4" "a5" "a6" "a7" "a8" "a9" "a10" "a11" "a12"
-					"a13" "a14" "a15" "a16" "a17" "a18" "a19" "a20" "a21" "a22" "a23" "a24"
-					"a25" "a26" "a27" "a28" "a29" "a30" "a31" "a32"
-				)
-			)
-			(unit
-				(name "B")
-				(pins "b1" "b2" "b3" "b4" "b5" "b6" "b7" "b8" "b9" "b10" "b11" "b12"
-					"b13" "b14" "b15" "b16" "b17" "b18" "b19" "b20" "b21" "b22" "b23" "b24"
-					"b25" "b26" "b27" "b28" "b29" "b30" "b31" "b32"
-				)
-			)
-			(unit
-				(name "C")
-				(pins "c1" "c2" "c3" "c4" "c5" "c6" "c7" "c8" "c9" "c10" "c11" "c12"
-					"c13" "c14" "c15" "c16" "c17" "c18" "c19" "c20" "c21" "c22" "c23" "c24"
-					"c25" "c26" "c27" "c28" "c29" "c30" "c31" "c32"
-				)
-			)
-		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -5.98 -39.67)
 			(end -5.98 -39.07)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -7195,7 +7200,7 @@
 			(start -5.98 -39.07)
 			(end -5.3 -39.37)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -7205,7 +7210,7 @@
 			(start -5.3 -39.37)
 			(end -5.98 -39.67)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -7215,7 +7220,7 @@
 			(start -5.11 -47.61)
 			(end 5.71 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -7225,7 +7230,7 @@
 			(start -5.11 47.61)
 			(end -5.11 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -7235,7 +7240,7 @@
 			(start -3.95 -42.5)
 			(end 1.55 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -7245,7 +7250,7 @@
 			(start -3.95 42.5)
 			(end -3.95 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -7255,7 +7260,7 @@
 			(start 1.55 -42.5)
 			(end 1.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -7265,7 +7270,7 @@
 			(start 1.55 -41.5)
 			(end 4.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -7275,7 +7280,7 @@
 			(start 1.55 41.5)
 			(end 1.55 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -7285,7 +7290,7 @@
 			(start 1.55 42.5)
 			(end -3.95 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -7295,7 +7300,7 @@
 			(start 4.55 -41.5)
 			(end 4.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -7305,7 +7310,7 @@
 			(start 4.55 41.5)
 			(end 1.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -7315,7 +7320,7 @@
 			(start 5.71 -47.61)
 			(end 5.71 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -7325,7 +7330,7 @@
 			(start 5.71 47.61)
 			(end -5.11 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -8658,16 +8663,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "074b227d-d06a-49e3-9581-9ebbd732e74f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/8177f90f-114d-451c-a39c-72c000f30984")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -8753,16 +8764,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "bec413ad-6bb8-4173-8a51-9ad0875f895e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/fa7c4ba3-66fd-4ca9-8d84-b388a82abb8c")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -8846,40 +8863,29 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "connector/IEC_DIN"
+			(at -2.24 -39.37 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "1ae79fed-b9a5-4c20-90a7-6071fd0f00c5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "DIN41612*3x*")
 		(path "/75815874-7d95-4d8e-9cb0-4bfa4a3e0e7d")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "a1" "a2" "a3" "a4" "a5" "a6" "a7" "a8" "a9" "a10" "a11" "a12"
-					"a13" "a14" "a15" "a16" "a17" "a18" "a19" "a20" "a21" "a22" "a23" "a24"
-					"a25" "a26" "a27" "a28" "a29" "a30" "a31" "a32"
-				)
-			)
-			(unit
-				(name "B")
-				(pins "b1" "b2" "b3" "b4" "b5" "b6" "b7" "b8" "b9" "b10" "b11" "b12"
-					"b13" "b14" "b15" "b16" "b17" "b18" "b19" "b20" "b21" "b22" "b23" "b24"
-					"b25" "b26" "b27" "b28" "b29" "b30" "b31" "b32"
-				)
-			)
-			(unit
-				(name "C")
-				(pins "c1" "c2" "c3" "c4" "c5" "c6" "c7" "c8" "c9" "c10" "c11" "c12"
-					"c13" "c14" "c15" "c16" "c17" "c18" "c19" "c20" "c21" "c22" "c23" "c24"
-					"c25" "c26" "c27" "c28" "c29" "c30" "c31" "c32"
-				)
-			)
-		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -5.98 -39.67)
 			(end -5.98 -39.07)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -8889,7 +8895,7 @@
 			(start -5.98 -39.07)
 			(end -5.3 -39.37)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -8899,7 +8905,7 @@
 			(start -5.3 -39.37)
 			(end -5.98 -39.67)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -8909,7 +8915,7 @@
 			(start -5.11 -47.61)
 			(end 5.71 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -8919,7 +8925,7 @@
 			(start -5.11 47.61)
 			(end -5.11 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -8929,7 +8935,7 @@
 			(start -3.95 -42.5)
 			(end 1.55 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -8939,7 +8945,7 @@
 			(start -3.95 42.5)
 			(end -3.95 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -8949,7 +8955,7 @@
 			(start 1.55 -42.5)
 			(end 1.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -8959,7 +8965,7 @@
 			(start 1.55 -41.5)
 			(end 4.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -8969,7 +8975,7 @@
 			(start 1.55 41.5)
 			(end 1.55 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -8979,7 +8985,7 @@
 			(start 1.55 42.5)
 			(end -3.95 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -8989,7 +8995,7 @@
 			(start 4.55 -41.5)
 			(end 4.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -8999,7 +9005,7 @@
 			(start 4.55 41.5)
 			(end 1.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -9009,7 +9015,7 @@
 			(start 5.71 -47.61)
 			(end 5.71 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -9019,7 +9025,7 @@
 			(start 5.71 47.61)
 			(end -5.11 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -10352,16 +10358,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "7e6782ff-e825-46a9-934c-bdd139b943c4")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/cda784e4-52b4-4962-8c7a-d1e950fca23c")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -10447,16 +10459,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "76ed12e2-1c2b-4375-b586-08873eab910d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/12eb6cdf-8587-4a32-a2f2-b5253959735c")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -10542,16 +10560,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "2a5a24c2-9280-4115-aa67-f009eb6c204c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/d09c47e2-cdff-45b8-b235-c74e0da5c952")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -10637,16 +10661,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "831222e2-bfc6-4214-98b1-677c62c02ff8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/5ed663a3-e511-40a6-a2e5-027333adddec")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -10732,16 +10762,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "b0aba61f-a102-4221-9409-58cafbb947ef")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/4f40eec6-a1f2-4e4d-b17f-6ddd0e9c0bdd")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -10827,16 +10863,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "02aad0f9-f5bf-4718-bfb0-253557c88142")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/77f5a800-552e-4b46-aee6-7e272e4eaa7f")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -10922,16 +10964,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "9288fae1-f267-4970-ab86-3d9084ac7b2e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/9fc0145a-a27f-4fbe-a7b2-2a8bdc44029f")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -11013,16 +11061,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "connector/pin_header_socket"
+			(at 0 0 270)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "6228d8f6-f08c-4b31-b4f5-d60b57229feb")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "Jumper* TestPoint*2Pads* TestPoint*Bridge*")
 		(path "/f864cd79-c9f8-401e-a41a-3067cd13c018")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -11244,16 +11298,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "fe0ee5f8-3af0-4bd6-ae40-972d11f6c9c6")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/b948ef13-5003-4b24-aaff-cda20c814c1f")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -11339,16 +11399,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "c2606069-e423-4f95-b17f-6fe8bb5ea614")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/ba3a8a26-82ce-4a86-8f7e-4cfa22dda734")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -11434,16 +11500,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "47456ab0-3186-4221-bf91-7f83f70df975")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/b61a45b8-a03a-419a-b0aa-c183a9127026")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -11529,16 +11601,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "e9d87792-fadc-4b53-bbbc-56b3c4642ebd")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/15b355a7-e92e-40ac-aab2-37c3d42261e2")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -11624,16 +11702,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "36eb6fe6-f6cf-4de2-80f2-eda3fa77f8eb")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/4ebf00e9-2716-4df9-b21e-ebc768ef8a57")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -11719,16 +11803,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "0f304f4f-a2c6-43df-9223-a7d06366ff69")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/76727bc5-2f88-4956-b5c7-a7562be21c64")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -11812,40 +11902,29 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "connector/IEC_DIN"
+			(at -2.24 -39.37 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "6edfb9c2-b149-4e77-85d2-d455eaa14f3f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "DIN41612*3x*")
 		(path "/c8073e2d-1b18-4e86-8641-bd923a0ae7e5")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "a1" "a2" "a3" "a4" "a5" "a6" "a7" "a8" "a9" "a10" "a11" "a12"
-					"a13" "a14" "a15" "a16" "a17" "a18" "a19" "a20" "a21" "a22" "a23" "a24"
-					"a25" "a26" "a27" "a28" "a29" "a30" "a31" "a32"
-				)
-			)
-			(unit
-				(name "B")
-				(pins "b1" "b2" "b3" "b4" "b5" "b6" "b7" "b8" "b9" "b10" "b11" "b12"
-					"b13" "b14" "b15" "b16" "b17" "b18" "b19" "b20" "b21" "b22" "b23" "b24"
-					"b25" "b26" "b27" "b28" "b29" "b30" "b31" "b32"
-				)
-			)
-			(unit
-				(name "C")
-				(pins "c1" "c2" "c3" "c4" "c5" "c6" "c7" "c8" "c9" "c10" "c11" "c12"
-					"c13" "c14" "c15" "c16" "c17" "c18" "c19" "c20" "c21" "c22" "c23" "c24"
-					"c25" "c26" "c27" "c28" "c29" "c30" "c31" "c32"
-				)
-			)
-		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -5.98 -39.67)
 			(end -5.98 -39.07)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -11855,7 +11934,7 @@
 			(start -5.98 -39.07)
 			(end -5.3 -39.37)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -11865,7 +11944,7 @@
 			(start -5.3 -39.37)
 			(end -5.98 -39.67)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -11875,7 +11954,7 @@
 			(start -5.11 -47.61)
 			(end 5.71 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -11885,7 +11964,7 @@
 			(start -5.11 47.61)
 			(end -5.11 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -11895,7 +11974,7 @@
 			(start -3.95 -42.5)
 			(end 1.55 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -11905,7 +11984,7 @@
 			(start -3.95 42.5)
 			(end -3.95 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -11915,7 +11994,7 @@
 			(start 1.55 -42.5)
 			(end 1.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -11925,7 +12004,7 @@
 			(start 1.55 -41.5)
 			(end 4.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -11935,7 +12014,7 @@
 			(start 1.55 41.5)
 			(end 1.55 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -11945,7 +12024,7 @@
 			(start 1.55 42.5)
 			(end -3.95 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -11955,7 +12034,7 @@
 			(start 4.55 -41.5)
 			(end 4.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -11965,7 +12044,7 @@
 			(start 4.55 41.5)
 			(end 1.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -11975,7 +12054,7 @@
 			(start 5.71 -47.61)
 			(end 5.71 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -11985,7 +12064,7 @@
 			(start 5.71 47.61)
 			(end -5.11 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -13318,16 +13397,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "09aeb1dd-084d-4d8a-aecb-c850e818f357")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/f9b2e991-de62-4833-9d82-c9999d6b568b")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -13413,16 +13498,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "64ea849b-d81f-44fb-a231-3681bc793dec")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/f0cdd5f5-f11e-4600-bfdd-c976292d939e")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -13506,40 +13597,29 @@
 				)
 			)
 		)
-		(property ki_fp_filters "DIN41612*3x*")
-		(path "/fbec48c9-c996-43af-88e8-6d0d530d2e39")
-		(sheetname "/")
-		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "a1" "a2" "a3" "a4" "a5" "a6" "a7" "a8" "a9" "a10" "a11" "a12"
-					"a13" "a14" "a15" "a16" "a17" "a18" "a19" "a20" "a21" "a22" "a23" "a24"
-					"a25" "a26" "a27" "a28" "a29" "a30" "a31" "a32"
-				)
-			)
-			(unit
-				(name "B")
-				(pins "b1" "b2" "b3" "b4" "b5" "b6" "b7" "b8" "b9" "b10" "b11" "b12"
-					"b13" "b14" "b15" "b16" "b17" "b18" "b19" "b20" "b21" "b22" "b23" "b24"
-					"b25" "b26" "b27" "b28" "b29" "b30" "b31" "b32"
-				)
-			)
-			(unit
-				(name "C")
-				(pins "c1" "c2" "c3" "c4" "c5" "c6" "c7" "c8" "c9" "c10" "c11" "c12"
-					"c13" "c14" "c15" "c16" "c17" "c18" "c19" "c20" "c21" "c22" "c23" "c24"
-					"c25" "c26" "c27" "c28" "c29" "c30" "c31" "c32"
+		(property "KiLib_Generator" "connector/IEC_DIN"
+			(at -2.24 -39.37 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "7fa5df6c-f98f-43cb-a196-76dcab1e9766")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
+		(property ki_fp_filters "DIN41612*3x*")
+		(path "/90ca1920-779b-4ec8-92e1-28767df9a1d4")
+		(sheetname "/")
+		(sheetfile "BACKPLANE.kicad_sch")
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -5.98 -39.67)
 			(end -5.98 -39.07)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -13549,7 +13629,7 @@
 			(start -5.98 -39.07)
 			(end -5.3 -39.37)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -13559,7 +13639,7 @@
 			(start -5.3 -39.37)
 			(end -5.98 -39.67)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -13569,7 +13649,7 @@
 			(start -5.11 -47.61)
 			(end 5.71 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -13579,7 +13659,7 @@
 			(start -5.11 47.61)
 			(end -5.11 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -13589,7 +13669,7 @@
 			(start -3.95 -42.5)
 			(end 1.55 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -13599,7 +13679,7 @@
 			(start -3.95 42.5)
 			(end -3.95 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -13609,7 +13689,7 @@
 			(start 1.55 -42.5)
 			(end 1.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -13619,7 +13699,7 @@
 			(start 1.55 -41.5)
 			(end 4.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -13629,7 +13709,7 @@
 			(start 1.55 41.5)
 			(end 1.55 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -13639,7 +13719,7 @@
 			(start 1.55 42.5)
 			(end -3.95 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -13649,7 +13729,7 @@
 			(start 4.55 -41.5)
 			(end 4.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -13659,7 +13739,7 @@
 			(start 4.55 41.5)
 			(end 1.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -13669,7 +13749,7 @@
 			(start 5.71 -47.61)
 			(end 5.71 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -13679,7 +13759,7 @@
 			(start 5.71 47.61)
 			(end -5.11 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -15012,16 +15092,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "cb071e32-ad73-45fa-bde3-0ddaa2648ed3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/4ffea109-1324-4ac5-9bf9-18e98023905d")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -15107,16 +15193,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "7efea72e-b4cc-47d5-bd88-c32e38ed69fc")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/cdc9f7c8-acd2-424d-904b-0c9c8728ed8f")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -15200,40 +15292,29 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "connector/IEC_DIN"
+			(at -2.24 -39.37 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "4dec84ac-c7d2-4690-a479-2bcdb3229607")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "DIN41612*3x*")
 		(path "/140ceb80-1d4c-441f-bf13-d61451609b07")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "a1" "a2" "a3" "a4" "a5" "a6" "a7" "a8" "a9" "a10" "a11" "a12"
-					"a13" "a14" "a15" "a16" "a17" "a18" "a19" "a20" "a21" "a22" "a23" "a24"
-					"a25" "a26" "a27" "a28" "a29" "a30" "a31" "a32"
-				)
-			)
-			(unit
-				(name "B")
-				(pins "b1" "b2" "b3" "b4" "b5" "b6" "b7" "b8" "b9" "b10" "b11" "b12"
-					"b13" "b14" "b15" "b16" "b17" "b18" "b19" "b20" "b21" "b22" "b23" "b24"
-					"b25" "b26" "b27" "b28" "b29" "b30" "b31" "b32"
-				)
-			)
-			(unit
-				(name "C")
-				(pins "c1" "c2" "c3" "c4" "c5" "c6" "c7" "c8" "c9" "c10" "c11" "c12"
-					"c13" "c14" "c15" "c16" "c17" "c18" "c19" "c20" "c21" "c22" "c23" "c24"
-					"c25" "c26" "c27" "c28" "c29" "c30" "c31" "c32"
-				)
-			)
-		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -5.98 -39.67)
 			(end -5.98 -39.07)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -15243,7 +15324,7 @@
 			(start -5.98 -39.07)
 			(end -5.3 -39.37)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -15253,7 +15334,7 @@
 			(start -5.3 -39.37)
 			(end -5.98 -39.67)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -15263,7 +15344,7 @@
 			(start -5.11 -47.61)
 			(end 5.71 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -15273,7 +15354,7 @@
 			(start -5.11 47.61)
 			(end -5.11 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -15283,7 +15364,7 @@
 			(start -3.95 -42.5)
 			(end 1.55 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -15293,7 +15374,7 @@
 			(start -3.95 42.5)
 			(end -3.95 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -15303,7 +15384,7 @@
 			(start 1.55 -42.5)
 			(end 1.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -15313,7 +15394,7 @@
 			(start 1.55 -41.5)
 			(end 4.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -15323,7 +15404,7 @@
 			(start 1.55 41.5)
 			(end 1.55 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -15333,7 +15414,7 @@
 			(start 1.55 42.5)
 			(end -3.95 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -15343,7 +15424,7 @@
 			(start 4.55 -41.5)
 			(end 4.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -15353,7 +15434,7 @@
 			(start 4.55 41.5)
 			(end 1.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -15363,7 +15444,7 @@
 			(start 5.71 -47.61)
 			(end 5.71 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -15373,7 +15454,7 @@
 			(start 5.71 47.61)
 			(end -5.11 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -16706,16 +16787,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "1606552c-f873-41a2-98f9-11bf783dbcb5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/8694c548-4352-4210-bb4d-ff36c2bea1bf")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -16799,40 +16886,29 @@
 				)
 			)
 		)
-		(property ki_fp_filters "DIN41612*3x*")
-		(path "/ae2b520b-5918-4e4c-8a01-abd5e6dc7657")
-		(sheetname "/")
-		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "a1" "a2" "a3" "a4" "a5" "a6" "a7" "a8" "a9" "a10" "a11" "a12"
-					"a13" "a14" "a15" "a16" "a17" "a18" "a19" "a20" "a21" "a22" "a23" "a24"
-					"a25" "a26" "a27" "a28" "a29" "a30" "a31" "a32"
-				)
-			)
-			(unit
-				(name "B")
-				(pins "b1" "b2" "b3" "b4" "b5" "b6" "b7" "b8" "b9" "b10" "b11" "b12"
-					"b13" "b14" "b15" "b16" "b17" "b18" "b19" "b20" "b21" "b22" "b23" "b24"
-					"b25" "b26" "b27" "b28" "b29" "b30" "b31" "b32"
-				)
-			)
-			(unit
-				(name "C")
-				(pins "c1" "c2" "c3" "c4" "c5" "c6" "c7" "c8" "c9" "c10" "c11" "c12"
-					"c13" "c14" "c15" "c16" "c17" "c18" "c19" "c20" "c21" "c22" "c23" "c24"
-					"c25" "c26" "c27" "c28" "c29" "c30" "c31" "c32"
+		(property "KiLib_Generator" "connector/IEC_DIN"
+			(at -2.24 -39.37 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "213d93bd-79e6-456a-8ceb-e78efd4efdf8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
+		(property ki_fp_filters "DIN41612*3x*")
+		(path "/fce09bd9-2625-49fc-8cdd-dbb5386feb09")
+		(sheetname "/")
+		(sheetfile "BACKPLANE.kicad_sch")
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -5.98 -39.67)
 			(end -5.98 -39.07)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -16842,7 +16918,7 @@
 			(start -5.98 -39.07)
 			(end -5.3 -39.37)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -16852,7 +16928,7 @@
 			(start -5.3 -39.37)
 			(end -5.98 -39.67)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -16862,7 +16938,7 @@
 			(start -5.11 -47.61)
 			(end 5.71 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -16872,7 +16948,7 @@
 			(start -5.11 47.61)
 			(end -5.11 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -16882,7 +16958,7 @@
 			(start -3.95 -42.5)
 			(end 1.55 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -16892,7 +16968,7 @@
 			(start -3.95 42.5)
 			(end -3.95 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -16902,7 +16978,7 @@
 			(start 1.55 -42.5)
 			(end 1.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -16912,7 +16988,7 @@
 			(start 1.55 -41.5)
 			(end 4.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -16922,7 +16998,7 @@
 			(start 1.55 41.5)
 			(end 1.55 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -16932,7 +17008,7 @@
 			(start 1.55 42.5)
 			(end -3.95 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -16942,7 +17018,7 @@
 			(start 4.55 -41.5)
 			(end 4.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -16952,7 +17028,7 @@
 			(start 4.55 41.5)
 			(end 1.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -16962,7 +17038,7 @@
 			(start 5.71 -47.61)
 			(end 5.71 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -16972,7 +17048,7 @@
 			(start 5.71 47.61)
 			(end -5.11 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -18305,16 +18381,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "9fb1d6b0-f503-4759-bf4b-70a78944eeec")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/cb50dacd-c774-4ea9-9f7b-17318d12c21b")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -18398,33 +18480,39 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "resistor/THT"
+			(at -5.08 0 270)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "7f5f3cab-7c81-410b-916e-62e564f0efb9")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/f5091e87-1353-48e3-b2b2-1f87f0623359")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
-			(start -5.334 0)
+			(start -5.207 0)
 			(end -3.27 0)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
 			(uuid "d130f226-2cfb-47c6-ad17-13c9837e7692")
 		)
 		(fp_line
-			(start 5.334 0)
-			(end 3.27 0)
+			(start 5.207 0)
+			(end 3.143 0)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -18434,7 +18522,7 @@
 			(start -3.27 -1.37)
 			(end 3.27 1.37)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(fill no)
@@ -18453,7 +18541,7 @@
 			(uuid "5e25bd9f-dd81-4b91-9052-71dacd8b332b")
 		)
 		(fp_line
-			(start -5.334 0)
+			(start -5.207 0)
 			(end -3.15 0)
 			(stroke
 				(width 0.1)
@@ -18463,8 +18551,8 @@
 			(uuid "639d9ee9-853c-4f97-8f50-39f2de0fbe5c")
 		)
 		(fp_line
-			(start 5.334 0)
-			(end 3.15 0)
+			(start 5.207 0)
+			(end 3.023 0)
 			(stroke
 				(width 0.1)
 				(type solid)
@@ -18579,16 +18667,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "95f7e280-5a9a-4026-bdde-947d9e787934")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/1d8b199b-f5e6-4a78-b2d1-d061589f6982")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -18674,16 +18768,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "c46e9412-d584-476f-9970-2bc224882f87")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/200d0c3d-1974-4916-a35b-c5bff0488acc")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -18769,16 +18869,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "0655173a-7b3b-448e-a5d8-3ef8782482ff")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/de22c4b6-ded4-4ce3-8b91-98f5721fe42f")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -18864,16 +18970,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "e2b6abf7-c710-48ba-af09-d156ea917e76")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/c5fa358f-63b5-4735-9925-112a9d6de65a")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -18957,40 +19069,29 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "connector/IEC_DIN"
+			(at -2.24 -39.37 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "f22bee7f-8936-4594-8a6f-7c9c0c99a4d5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "DIN41612*3x*")
 		(path "/9fb0bc24-e0bf-469e-a56e-4337abff13c7")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "a1" "a2" "a3" "a4" "a5" "a6" "a7" "a8" "a9" "a10" "a11" "a12"
-					"a13" "a14" "a15" "a16" "a17" "a18" "a19" "a20" "a21" "a22" "a23" "a24"
-					"a25" "a26" "a27" "a28" "a29" "a30" "a31" "a32"
-				)
-			)
-			(unit
-				(name "B")
-				(pins "b1" "b2" "b3" "b4" "b5" "b6" "b7" "b8" "b9" "b10" "b11" "b12"
-					"b13" "b14" "b15" "b16" "b17" "b18" "b19" "b20" "b21" "b22" "b23" "b24"
-					"b25" "b26" "b27" "b28" "b29" "b30" "b31" "b32"
-				)
-			)
-			(unit
-				(name "C")
-				(pins "c1" "c2" "c3" "c4" "c5" "c6" "c7" "c8" "c9" "c10" "c11" "c12"
-					"c13" "c14" "c15" "c16" "c17" "c18" "c19" "c20" "c21" "c22" "c23" "c24"
-					"c25" "c26" "c27" "c28" "c29" "c30" "c31" "c32"
-				)
-			)
-		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -5.98 -39.67)
 			(end -5.98 -39.07)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -19000,7 +19101,7 @@
 			(start -5.98 -39.07)
 			(end -5.3 -39.37)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -19010,7 +19111,7 @@
 			(start -5.3 -39.37)
 			(end -5.98 -39.67)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -19020,7 +19121,7 @@
 			(start -5.11 -47.61)
 			(end 5.71 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -19030,7 +19131,7 @@
 			(start -5.11 47.61)
 			(end -5.11 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -19040,7 +19141,7 @@
 			(start -3.95 -42.5)
 			(end 1.55 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -19050,7 +19151,7 @@
 			(start -3.95 42.5)
 			(end -3.95 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -19060,7 +19161,7 @@
 			(start 1.55 -42.5)
 			(end 1.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -19070,7 +19171,7 @@
 			(start 1.55 -41.5)
 			(end 4.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -19080,7 +19181,7 @@
 			(start 1.55 41.5)
 			(end 1.55 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -19090,7 +19191,7 @@
 			(start 1.55 42.5)
 			(end -3.95 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -19100,7 +19201,7 @@
 			(start 4.55 -41.5)
 			(end 4.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -19110,7 +19211,7 @@
 			(start 4.55 41.5)
 			(end 1.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -19120,7 +19221,7 @@
 			(start 5.71 -47.61)
 			(end 5.71 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -19130,7 +19231,7 @@
 			(start 5.71 47.61)
 			(end -5.11 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -20463,16 +20564,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "86ab8dba-82f4-4566-9b0d-f1f0c3ae6365")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/09fe178f-c42a-4188-8ea3-a00cc5e0bc17")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -20556,40 +20663,29 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "connector/IEC_DIN"
+			(at -2.24 -39.37 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "477f55e7-856f-48fa-b734-d518e4216563")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "DIN41612*3x*")
 		(path "/e212cca9-d8fd-4008-ab9f-16e043973391")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "a1" "a2" "a3" "a4" "a5" "a6" "a7" "a8" "a9" "a10" "a11" "a12"
-					"a13" "a14" "a15" "a16" "a17" "a18" "a19" "a20" "a21" "a22" "a23" "a24"
-					"a25" "a26" "a27" "a28" "a29" "a30" "a31" "a32"
-				)
-			)
-			(unit
-				(name "B")
-				(pins "b1" "b2" "b3" "b4" "b5" "b6" "b7" "b8" "b9" "b10" "b11" "b12"
-					"b13" "b14" "b15" "b16" "b17" "b18" "b19" "b20" "b21" "b22" "b23" "b24"
-					"b25" "b26" "b27" "b28" "b29" "b30" "b31" "b32"
-				)
-			)
-			(unit
-				(name "C")
-				(pins "c1" "c2" "c3" "c4" "c5" "c6" "c7" "c8" "c9" "c10" "c11" "c12"
-					"c13" "c14" "c15" "c16" "c17" "c18" "c19" "c20" "c21" "c22" "c23" "c24"
-					"c25" "c26" "c27" "c28" "c29" "c30" "c31" "c32"
-				)
-			)
-		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -5.98 -39.67)
 			(end -5.98 -39.07)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -20599,7 +20695,7 @@
 			(start -5.98 -39.07)
 			(end -5.3 -39.37)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -20609,7 +20705,7 @@
 			(start -5.3 -39.37)
 			(end -5.98 -39.67)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -20619,7 +20715,7 @@
 			(start -5.11 -47.61)
 			(end 5.71 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -20629,7 +20725,7 @@
 			(start -5.11 47.61)
 			(end -5.11 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -20639,7 +20735,7 @@
 			(start -3.95 -42.5)
 			(end 1.55 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -20649,7 +20745,7 @@
 			(start -3.95 42.5)
 			(end -3.95 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -20659,7 +20755,7 @@
 			(start 1.55 -42.5)
 			(end 1.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -20669,7 +20765,7 @@
 			(start 1.55 -41.5)
 			(end 4.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -20679,7 +20775,7 @@
 			(start 1.55 41.5)
 			(end 1.55 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -20689,7 +20785,7 @@
 			(start 1.55 42.5)
 			(end -3.95 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -20699,7 +20795,7 @@
 			(start 4.55 -41.5)
 			(end 4.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -20709,7 +20805,7 @@
 			(start 4.55 41.5)
 			(end 1.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -20719,7 +20815,7 @@
 			(start 5.71 -47.61)
 			(end 5.71 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -20729,7 +20825,7 @@
 			(start 5.71 47.61)
 			(end -5.11 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -22062,16 +22158,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "e162565a-a9d5-4506-bcff-9526db267a70")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/95201ead-dc91-4e19-b123-e10f4d5e7771")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -22157,16 +22259,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "3031a72a-520e-4d8e-b66b-644dc67b84c1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/72105305-9272-42d1-96d9-e39171cd0067")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -22250,40 +22358,29 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "connector/IEC_DIN"
+			(at -2.24 -39.37 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "87d6ed83-6c51-4ae6-9def-ce95757bac7c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "DIN41612*3x*")
 		(path "/34cdcded-bf31-41ca-956f-bba0f9a93ff6")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "a1" "a2" "a3" "a4" "a5" "a6" "a7" "a8" "a9" "a10" "a11" "a12"
-					"a13" "a14" "a15" "a16" "a17" "a18" "a19" "a20" "a21" "a22" "a23" "a24"
-					"a25" "a26" "a27" "a28" "a29" "a30" "a31" "a32"
-				)
-			)
-			(unit
-				(name "B")
-				(pins "b1" "b2" "b3" "b4" "b5" "b6" "b7" "b8" "b9" "b10" "b11" "b12"
-					"b13" "b14" "b15" "b16" "b17" "b18" "b19" "b20" "b21" "b22" "b23" "b24"
-					"b25" "b26" "b27" "b28" "b29" "b30" "b31" "b32"
-				)
-			)
-			(unit
-				(name "C")
-				(pins "c1" "c2" "c3" "c4" "c5" "c6" "c7" "c8" "c9" "c10" "c11" "c12"
-					"c13" "c14" "c15" "c16" "c17" "c18" "c19" "c20" "c21" "c22" "c23" "c24"
-					"c25" "c26" "c27" "c28" "c29" "c30" "c31" "c32"
-				)
-			)
-		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -5.98 -39.67)
 			(end -5.98 -39.07)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -22293,7 +22390,7 @@
 			(start -5.98 -39.07)
 			(end -5.3 -39.37)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -22303,7 +22400,7 @@
 			(start -5.3 -39.37)
 			(end -5.98 -39.67)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -22313,7 +22410,7 @@
 			(start -5.11 -47.61)
 			(end 5.71 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -22323,7 +22420,7 @@
 			(start -5.11 47.61)
 			(end -5.11 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -22333,7 +22430,7 @@
 			(start -3.95 -42.5)
 			(end 1.55 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -22343,7 +22440,7 @@
 			(start -3.95 42.5)
 			(end -3.95 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -22353,7 +22450,7 @@
 			(start 1.55 -42.5)
 			(end 1.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -22363,7 +22460,7 @@
 			(start 1.55 -41.5)
 			(end 4.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -22373,7 +22470,7 @@
 			(start 1.55 41.5)
 			(end 1.55 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -22383,7 +22480,7 @@
 			(start 1.55 42.5)
 			(end -3.95 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -22393,7 +22490,7 @@
 			(start 4.55 -41.5)
 			(end 4.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -22403,7 +22500,7 @@
 			(start 4.55 41.5)
 			(end 1.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -22413,7 +22510,7 @@
 			(start 5.71 -47.61)
 			(end 5.71 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -22423,7 +22520,7 @@
 			(start 5.71 47.61)
 			(end -5.11 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -23756,16 +23853,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "26808e42-7540-48ce-92cf-ef6aecb220d5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/28faa53b-fefb-4668-800d-25139cd83525")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -23851,16 +23954,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "8cb11bb0-ce05-49d4-9f8d-1faf9e527fe1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/df7e27c8-5023-4013-91c2-530e57474382")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -23946,16 +24055,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "4766a2c9-1664-4572-a947-f0d9b88a4e1f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/5d1273a7-21fb-4245-843a-ac7dc96cc7e3")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -24041,16 +24156,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "f13e2146-129e-48c8-bced-4d3838d53f23")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/e59e22d2-95ce-4ea9-b042-acd1063d849f")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -24134,40 +24255,29 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "connector/IEC_DIN"
+			(at -2.24 -39.37 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "ce23b3be-7dc7-48d0-896a-1c3f3c9079f8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "DIN41612*3x*")
 		(path "/5b6f27c8-aca3-4989-8ca0-711c102e3d95")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "a1" "a2" "a3" "a4" "a5" "a6" "a7" "a8" "a9" "a10" "a11" "a12"
-					"a13" "a14" "a15" "a16" "a17" "a18" "a19" "a20" "a21" "a22" "a23" "a24"
-					"a25" "a26" "a27" "a28" "a29" "a30" "a31" "a32"
-				)
-			)
-			(unit
-				(name "B")
-				(pins "b1" "b2" "b3" "b4" "b5" "b6" "b7" "b8" "b9" "b10" "b11" "b12"
-					"b13" "b14" "b15" "b16" "b17" "b18" "b19" "b20" "b21" "b22" "b23" "b24"
-					"b25" "b26" "b27" "b28" "b29" "b30" "b31" "b32"
-				)
-			)
-			(unit
-				(name "C")
-				(pins "c1" "c2" "c3" "c4" "c5" "c6" "c7" "c8" "c9" "c10" "c11" "c12"
-					"c13" "c14" "c15" "c16" "c17" "c18" "c19" "c20" "c21" "c22" "c23" "c24"
-					"c25" "c26" "c27" "c28" "c29" "c30" "c31" "c32"
-				)
-			)
-		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -5.98 -39.67)
 			(end -5.98 -39.07)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -24177,7 +24287,7 @@
 			(start -5.98 -39.07)
 			(end -5.3 -39.37)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -24187,7 +24297,7 @@
 			(start -5.3 -39.37)
 			(end -5.98 -39.67)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -24197,7 +24307,7 @@
 			(start -5.11 -47.61)
 			(end 5.71 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -24207,7 +24317,7 @@
 			(start -5.11 47.61)
 			(end -5.11 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -24217,7 +24327,7 @@
 			(start -3.95 -42.5)
 			(end 1.55 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -24227,7 +24337,7 @@
 			(start -3.95 42.5)
 			(end -3.95 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -24237,7 +24347,7 @@
 			(start 1.55 -42.5)
 			(end 1.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -24247,7 +24357,7 @@
 			(start 1.55 -41.5)
 			(end 4.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -24257,7 +24367,7 @@
 			(start 1.55 41.5)
 			(end 1.55 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -24267,7 +24377,7 @@
 			(start 1.55 42.5)
 			(end -3.95 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -24277,7 +24387,7 @@
 			(start 4.55 -41.5)
 			(end 4.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -24287,7 +24397,7 @@
 			(start 4.55 41.5)
 			(end 1.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -24297,7 +24407,7 @@
 			(start 5.71 -47.61)
 			(end 5.71 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -24307,7 +24417,7 @@
 			(start 5.71 47.61)
 			(end -5.11 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -25640,16 +25750,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "93c4ef15-376d-4338-a8f9-e21ed5d59538")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/c6850f55-320d-4772-9094-69a47aa95adc")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -25735,16 +25851,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "70463c2e-e2c9-4c09-8e3a-718a4c25a1e1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/329babff-e308-4952-ad21-53d2a874c6de")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -25828,33 +25950,39 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "resistor/THT"
+			(at -5.08 0 270)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "f6cb2554-61a6-4f4d-afb9-58c5abb878a5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/567b5163-906e-4ab2-b3ff-23b56cd2d5bc")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
-			(start -5.334 0)
+			(start -5.207 0)
 			(end -3.27 0)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
 			(uuid "3196bf4e-50b8-472b-9533-cdb0f40e36ca")
 		)
 		(fp_line
-			(start 5.334 0)
-			(end 3.27 0)
+			(start 5.207 0)
+			(end 3.143 0)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -25864,7 +25992,7 @@
 			(start -3.27 -1.37)
 			(end 3.27 1.37)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(fill no)
@@ -25883,7 +26011,7 @@
 			(uuid "33a07957-1277-4573-92aa-5a7c5c2a32cb")
 		)
 		(fp_line
-			(start -5.334 0)
+			(start -5.207 0)
 			(end -3.15 0)
 			(stroke
 				(width 0.1)
@@ -25893,8 +26021,8 @@
 			(uuid "ecb87040-c0c1-4085-9df2-8c0dd02719e7")
 		)
 		(fp_line
-			(start 5.334 0)
-			(end 3.15 0)
+			(start 5.207 0)
+			(end 3.023 0)
 			(stroke
 				(width 0.1)
 				(type solid)
@@ -26009,16 +26137,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "e2c72e5c-7062-4cba-9ba3-e21dde719b8b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/21e6f210-a308-4f9b-aa8c-016d7efcdf28")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -26104,16 +26238,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "1ca7b25d-b66a-481f-a1cb-762596014bb4")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/c9af2d92-2d8b-420f-a134-334016d7e1d1")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -26199,16 +26339,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "59a7e3d8-813c-4394-ad42-ec8da57d0a29")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/16581b9a-4a79-4f23-8808-ad349233ec53")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -26294,16 +26440,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "bd86561a-ec48-49cb-b7c6-712cb35e2880")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/7e2d295a-3270-47d1-bbd1-c188f27f01ef")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -26389,16 +26541,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "ea1f253c-1b9d-43b3-a682-c71f9c021643")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/bf049f0f-0b89-488d-adf8-5de071b15a29")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -26482,40 +26640,29 @@
 				)
 			)
 		)
-		(property ki_fp_filters "DIN41612*3x*")
-		(path "/a2b54815-985a-4fbb-a556-dd7516411e98")
-		(sheetname "/")
-		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "a1" "a2" "a3" "a4" "a5" "a6" "a7" "a8" "a9" "a10" "a11" "a12"
-					"a13" "a14" "a15" "a16" "a17" "a18" "a19" "a20" "a21" "a22" "a23" "a24"
-					"a25" "a26" "a27" "a28" "a29" "a30" "a31" "a32"
-				)
-			)
-			(unit
-				(name "B")
-				(pins "b1" "b2" "b3" "b4" "b5" "b6" "b7" "b8" "b9" "b10" "b11" "b12"
-					"b13" "b14" "b15" "b16" "b17" "b18" "b19" "b20" "b21" "b22" "b23" "b24"
-					"b25" "b26" "b27" "b28" "b29" "b30" "b31" "b32"
-				)
-			)
-			(unit
-				(name "C")
-				(pins "c1" "c2" "c3" "c4" "c5" "c6" "c7" "c8" "c9" "c10" "c11" "c12"
-					"c13" "c14" "c15" "c16" "c17" "c18" "c19" "c20" "c21" "c22" "c23" "c24"
-					"c25" "c26" "c27" "c28" "c29" "c30" "c31" "c32"
+		(property "KiLib_Generator" "connector/IEC_DIN"
+			(at -2.24 -39.37 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "80545b37-300d-4be0-aa70-a009c8bf8a73")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
+		(property ki_fp_filters "DIN41612*3x*")
+		(path "/63e75382-deef-4fa0-a98d-dcd3a59319e4")
+		(sheetname "/")
+		(sheetfile "BACKPLANE.kicad_sch")
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -5.98 -39.67)
 			(end -5.98 -39.07)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -26525,7 +26672,7 @@
 			(start -5.98 -39.07)
 			(end -5.3 -39.37)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -26535,7 +26682,7 @@
 			(start -5.3 -39.37)
 			(end -5.98 -39.67)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -26545,7 +26692,7 @@
 			(start -5.11 -47.61)
 			(end 5.71 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -26555,7 +26702,7 @@
 			(start -5.11 47.61)
 			(end -5.11 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -26565,7 +26712,7 @@
 			(start -3.95 -42.5)
 			(end 1.55 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -26575,7 +26722,7 @@
 			(start -3.95 42.5)
 			(end -3.95 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -26585,7 +26732,7 @@
 			(start 1.55 -42.5)
 			(end 1.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -26595,7 +26742,7 @@
 			(start 1.55 -41.5)
 			(end 4.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -26605,7 +26752,7 @@
 			(start 1.55 41.5)
 			(end 1.55 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -26615,7 +26762,7 @@
 			(start 1.55 42.5)
 			(end -3.95 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -26625,7 +26772,7 @@
 			(start 4.55 -41.5)
 			(end 4.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -26635,7 +26782,7 @@
 			(start 4.55 41.5)
 			(end 1.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -26645,7 +26792,7 @@
 			(start 5.71 -47.61)
 			(end 5.71 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -26655,7 +26802,7 @@
 			(start 5.71 47.61)
 			(end -5.11 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -27986,40 +28133,29 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "connector/IEC_DIN"
+			(at -2.24 -39.37 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "972b046e-8dfc-4de3-acbd-d0e6a498d842")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "DIN41612*3x*")
 		(path "/685adec8-5653-4234-bc61-e4d9424b1f1a")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "a1" "a2" "a3" "a4" "a5" "a6" "a7" "a8" "a9" "a10" "a11" "a12"
-					"a13" "a14" "a15" "a16" "a17" "a18" "a19" "a20" "a21" "a22" "a23" "a24"
-					"a25" "a26" "a27" "a28" "a29" "a30" "a31" "a32"
-				)
-			)
-			(unit
-				(name "B")
-				(pins "b1" "b2" "b3" "b4" "b5" "b6" "b7" "b8" "b9" "b10" "b11" "b12"
-					"b13" "b14" "b15" "b16" "b17" "b18" "b19" "b20" "b21" "b22" "b23" "b24"
-					"b25" "b26" "b27" "b28" "b29" "b30" "b31" "b32"
-				)
-			)
-			(unit
-				(name "C")
-				(pins "c1" "c2" "c3" "c4" "c5" "c6" "c7" "c8" "c9" "c10" "c11" "c12"
-					"c13" "c14" "c15" "c16" "c17" "c18" "c19" "c20" "c21" "c22" "c23" "c24"
-					"c25" "c26" "c27" "c28" "c29" "c30" "c31" "c32"
-				)
-			)
-		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -5.98 -39.67)
 			(end -5.98 -39.07)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -28029,7 +28165,7 @@
 			(start -5.98 -39.07)
 			(end -5.3 -39.37)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -28039,7 +28175,7 @@
 			(start -5.3 -39.37)
 			(end -5.98 -39.67)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -28049,7 +28185,7 @@
 			(start -5.11 -47.61)
 			(end 5.71 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -28059,7 +28195,7 @@
 			(start -5.11 47.61)
 			(end -5.11 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -28069,7 +28205,7 @@
 			(start -3.95 -42.5)
 			(end 1.55 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -28079,7 +28215,7 @@
 			(start -3.95 42.5)
 			(end -3.95 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -28089,7 +28225,7 @@
 			(start 1.55 -42.5)
 			(end 1.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -28099,7 +28235,7 @@
 			(start 1.55 -41.5)
 			(end 4.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -28109,7 +28245,7 @@
 			(start 1.55 41.5)
 			(end 1.55 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -28119,7 +28255,7 @@
 			(start 1.55 42.5)
 			(end -3.95 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -28129,7 +28265,7 @@
 			(start 4.55 -41.5)
 			(end 4.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -28139,7 +28275,7 @@
 			(start 4.55 41.5)
 			(end 1.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -28149,7 +28285,7 @@
 			(start 5.71 -47.61)
 			(end 5.71 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -28159,7 +28295,7 @@
 			(start 5.71 47.61)
 			(end -5.11 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -29490,40 +29626,29 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "connector/IEC_DIN"
+			(at -2.24 -39.37 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "a2d32d95-e67e-4094-ab3e-6a9290fd4c0f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "DIN41612*3x*")
 		(path "/6c3d1e5d-4280-4e3e-89e9-b0c82ff39eb1")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "a1" "a2" "a3" "a4" "a5" "a6" "a7" "a8" "a9" "a10" "a11" "a12"
-					"a13" "a14" "a15" "a16" "a17" "a18" "a19" "a20" "a21" "a22" "a23" "a24"
-					"a25" "a26" "a27" "a28" "a29" "a30" "a31" "a32"
-				)
-			)
-			(unit
-				(name "B")
-				(pins "b1" "b2" "b3" "b4" "b5" "b6" "b7" "b8" "b9" "b10" "b11" "b12"
-					"b13" "b14" "b15" "b16" "b17" "b18" "b19" "b20" "b21" "b22" "b23" "b24"
-					"b25" "b26" "b27" "b28" "b29" "b30" "b31" "b32"
-				)
-			)
-			(unit
-				(name "C")
-				(pins "c1" "c2" "c3" "c4" "c5" "c6" "c7" "c8" "c9" "c10" "c11" "c12"
-					"c13" "c14" "c15" "c16" "c17" "c18" "c19" "c20" "c21" "c22" "c23" "c24"
-					"c25" "c26" "c27" "c28" "c29" "c30" "c31" "c32"
-				)
-			)
-		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -5.98 -39.67)
 			(end -5.98 -39.07)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -29533,7 +29658,7 @@
 			(start -5.98 -39.07)
 			(end -5.3 -39.37)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -29543,7 +29668,7 @@
 			(start -5.3 -39.37)
 			(end -5.98 -39.67)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -29553,7 +29678,7 @@
 			(start -5.11 -47.61)
 			(end 5.71 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -29563,7 +29688,7 @@
 			(start -5.11 47.61)
 			(end -5.11 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -29573,7 +29698,7 @@
 			(start -3.95 -42.5)
 			(end 1.55 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -29583,7 +29708,7 @@
 			(start -3.95 42.5)
 			(end -3.95 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -29593,7 +29718,7 @@
 			(start 1.55 -42.5)
 			(end 1.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -29603,7 +29728,7 @@
 			(start 1.55 -41.5)
 			(end 4.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -29613,7 +29738,7 @@
 			(start 1.55 41.5)
 			(end 1.55 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -29623,7 +29748,7 @@
 			(start 1.55 42.5)
 			(end -3.95 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -29633,7 +29758,7 @@
 			(start 4.55 -41.5)
 			(end 4.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -29643,7 +29768,7 @@
 			(start 4.55 41.5)
 			(end 1.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -29653,7 +29778,7 @@
 			(start 5.71 -47.61)
 			(end 5.71 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -29663,7 +29788,7 @@
 			(start 5.71 47.61)
 			(end -5.11 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -30996,16 +31121,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "528596d4-d539-4ec6-b09d-7395b0e7823a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/1655d3df-2331-4360-8554-b66439d1eae9")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -31089,40 +31220,29 @@
 				)
 			)
 		)
-		(property ki_fp_filters "DIN41612*3x*")
-		(path "/b28091cd-6bd6-4322-b6c2-123501da30e7")
-		(sheetname "/")
-		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "a1" "a2" "a3" "a4" "a5" "a6" "a7" "a8" "a9" "a10" "a11" "a12"
-					"a13" "a14" "a15" "a16" "a17" "a18" "a19" "a20" "a21" "a22" "a23" "a24"
-					"a25" "a26" "a27" "a28" "a29" "a30" "a31" "a32"
-				)
-			)
-			(unit
-				(name "B")
-				(pins "b1" "b2" "b3" "b4" "b5" "b6" "b7" "b8" "b9" "b10" "b11" "b12"
-					"b13" "b14" "b15" "b16" "b17" "b18" "b19" "b20" "b21" "b22" "b23" "b24"
-					"b25" "b26" "b27" "b28" "b29" "b30" "b31" "b32"
-				)
-			)
-			(unit
-				(name "C")
-				(pins "c1" "c2" "c3" "c4" "c5" "c6" "c7" "c8" "c9" "c10" "c11" "c12"
-					"c13" "c14" "c15" "c16" "c17" "c18" "c19" "c20" "c21" "c22" "c23" "c24"
-					"c25" "c26" "c27" "c28" "c29" "c30" "c31" "c32"
+		(property "KiLib_Generator" "connector/IEC_DIN"
+			(at -2.24 -39.37 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "1b7c9994-59d7-43d0-84f1-58232a7422bf")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
+		(property ki_fp_filters "DIN41612*3x*")
+		(path "/d296a658-1d1f-4519-a111-b1a37049f017")
+		(sheetname "/")
+		(sheetfile "BACKPLANE.kicad_sch")
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -5.98 -39.67)
 			(end -5.98 -39.07)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -31132,7 +31252,7 @@
 			(start -5.98 -39.07)
 			(end -5.3 -39.37)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -31142,7 +31262,7 @@
 			(start -5.3 -39.37)
 			(end -5.98 -39.67)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -31152,7 +31272,7 @@
 			(start -5.11 -47.61)
 			(end 5.71 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -31162,7 +31282,7 @@
 			(start -5.11 47.61)
 			(end -5.11 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -31172,7 +31292,7 @@
 			(start -3.95 -42.5)
 			(end 1.55 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -31182,7 +31302,7 @@
 			(start -3.95 42.5)
 			(end -3.95 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -31192,7 +31312,7 @@
 			(start 1.55 -42.5)
 			(end 1.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -31202,7 +31322,7 @@
 			(start 1.55 -41.5)
 			(end 4.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -31212,7 +31332,7 @@
 			(start 1.55 41.5)
 			(end 1.55 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -31222,7 +31342,7 @@
 			(start 1.55 42.5)
 			(end -3.95 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -31232,7 +31352,7 @@
 			(start 4.55 -41.5)
 			(end 4.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -31242,7 +31362,7 @@
 			(start 4.55 41.5)
 			(end 1.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -31252,7 +31372,7 @@
 			(start 5.71 -47.61)
 			(end 5.71 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -31262,7 +31382,7 @@
 			(start 5.71 47.61)
 			(end -5.11 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -32595,16 +32715,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "2e8008a8-3126-4c58-9099-2a2d3be5ec63")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/09a9fb9f-a71c-4afb-b54b-dac85fad0daf")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -32688,40 +32814,29 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "connector/IEC_DIN"
+			(at -2.24 -39.37 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "24fc25d9-6a61-40eb-8241-485874b7e1de")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "DIN41612*3x*")
 		(path "/9c6131ae-da78-405a-a23c-484eff082694")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "a1" "a2" "a3" "a4" "a5" "a6" "a7" "a8" "a9" "a10" "a11" "a12"
-					"a13" "a14" "a15" "a16" "a17" "a18" "a19" "a20" "a21" "a22" "a23" "a24"
-					"a25" "a26" "a27" "a28" "a29" "a30" "a31" "a32"
-				)
-			)
-			(unit
-				(name "B")
-				(pins "b1" "b2" "b3" "b4" "b5" "b6" "b7" "b8" "b9" "b10" "b11" "b12"
-					"b13" "b14" "b15" "b16" "b17" "b18" "b19" "b20" "b21" "b22" "b23" "b24"
-					"b25" "b26" "b27" "b28" "b29" "b30" "b31" "b32"
-				)
-			)
-			(unit
-				(name "C")
-				(pins "c1" "c2" "c3" "c4" "c5" "c6" "c7" "c8" "c9" "c10" "c11" "c12"
-					"c13" "c14" "c15" "c16" "c17" "c18" "c19" "c20" "c21" "c22" "c23" "c24"
-					"c25" "c26" "c27" "c28" "c29" "c30" "c31" "c32"
-				)
-			)
-		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -5.98 -39.67)
 			(end -5.98 -39.07)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -32731,7 +32846,7 @@
 			(start -5.98 -39.07)
 			(end -5.3 -39.37)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -32741,7 +32856,7 @@
 			(start -5.3 -39.37)
 			(end -5.98 -39.67)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -32751,7 +32866,7 @@
 			(start -5.11 -47.61)
 			(end 5.71 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -32761,7 +32876,7 @@
 			(start -5.11 47.61)
 			(end -5.11 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -32771,7 +32886,7 @@
 			(start -3.95 -42.5)
 			(end 1.55 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -32781,7 +32896,7 @@
 			(start -3.95 42.5)
 			(end -3.95 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -32791,7 +32906,7 @@
 			(start 1.55 -42.5)
 			(end 1.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -32801,7 +32916,7 @@
 			(start 1.55 -41.5)
 			(end 4.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -32811,7 +32926,7 @@
 			(start 1.55 41.5)
 			(end 1.55 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -32821,7 +32936,7 @@
 			(start 1.55 42.5)
 			(end -3.95 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -32831,7 +32946,7 @@
 			(start 4.55 -41.5)
 			(end 4.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -32841,7 +32956,7 @@
 			(start 4.55 41.5)
 			(end 1.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -32851,7 +32966,7 @@
 			(start 5.71 -47.61)
 			(end 5.71 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -32861,7 +32976,7 @@
 			(start 5.71 47.61)
 			(end -5.11 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -34194,16 +34309,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "9aee26df-29c3-48c8-8185-c05154d51062")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/2313220f-89f9-43c9-98b8-e3de343fe24f")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -34289,16 +34410,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "99b5a3f4-5792-43c9-a6b7-a484805f0418")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/a2d2b6bb-91bc-44f4-a97c-44c94fdd804a")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -34384,16 +34511,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "f35c9336-4bd6-49c9-a913-d0b7d8b06964")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/1f8f42e8-77dd-4c10-9eb7-9c16269ae044")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -34479,16 +34612,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "f2518a16-cf8c-4282-a7ca-2d6bd470e7f2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/690aeea1-b52c-4989-87c6-3647e058c86d")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -34574,16 +34713,22 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "863f4708-d69b-45ec-b7eb-360e0b2a911c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "FormantKO:MountingHole* MountingHole*")
 		(path "/5f521d2e-85d1-4f83-a5fc-6ac362bff475")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins)
-			)
-		)
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -34667,40 +34812,29 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "connector/IEC_DIN"
+			(at -2.24 -39.37 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "af1ef064-5c50-4c7f-820c-70464aed9d25")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "DIN41612*3x*")
 		(path "/d57e1a94-3de6-4876-a42e-26a7b7f5906e")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "a1" "a2" "a3" "a4" "a5" "a6" "a7" "a8" "a9" "a10" "a11" "a12"
-					"a13" "a14" "a15" "a16" "a17" "a18" "a19" "a20" "a21" "a22" "a23" "a24"
-					"a25" "a26" "a27" "a28" "a29" "a30" "a31" "a32"
-				)
-			)
-			(unit
-				(name "B")
-				(pins "b1" "b2" "b3" "b4" "b5" "b6" "b7" "b8" "b9" "b10" "b11" "b12"
-					"b13" "b14" "b15" "b16" "b17" "b18" "b19" "b20" "b21" "b22" "b23" "b24"
-					"b25" "b26" "b27" "b28" "b29" "b30" "b31" "b32"
-				)
-			)
-			(unit
-				(name "C")
-				(pins "c1" "c2" "c3" "c4" "c5" "c6" "c7" "c8" "c9" "c10" "c11" "c12"
-					"c13" "c14" "c15" "c16" "c17" "c18" "c19" "c20" "c21" "c22" "c23" "c24"
-					"c25" "c26" "c27" "c28" "c29" "c30" "c31" "c32"
-				)
-			)
-		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -5.98 -39.67)
 			(end -5.98 -39.07)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -34710,7 +34844,7 @@
 			(start -5.98 -39.07)
 			(end -5.3 -39.37)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -34720,7 +34854,7 @@
 			(start -5.3 -39.37)
 			(end -5.98 -39.67)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -34730,7 +34864,7 @@
 			(start -5.11 -47.61)
 			(end 5.71 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -34740,7 +34874,7 @@
 			(start -5.11 47.61)
 			(end -5.11 -47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -34750,7 +34884,7 @@
 			(start -3.95 -42.5)
 			(end 1.55 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -34760,7 +34894,7 @@
 			(start -3.95 42.5)
 			(end -3.95 -42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -34770,7 +34904,7 @@
 			(start 1.55 -42.5)
 			(end 1.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -34780,7 +34914,7 @@
 			(start 1.55 -41.5)
 			(end 4.55 -41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -34790,7 +34924,7 @@
 			(start 1.55 41.5)
 			(end 1.55 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -34800,7 +34934,7 @@
 			(start 1.55 42.5)
 			(end -3.95 42.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -34810,7 +34944,7 @@
 			(start 4.55 -41.5)
 			(end 4.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -34820,7 +34954,7 @@
 			(start 4.55 41.5)
 			(end 1.55 41.5)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -34830,7 +34964,7 @@
 			(start 5.71 -47.61)
 			(end 5.71 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -34840,7 +34974,7 @@
 			(start 5.71 47.61)
 			(end -5.11 47.61)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "F.SilkS")
@@ -36198,7 +36332,7 @@
 			(start -3.05 2.6)
 			(end -3.05 -0.25)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "B.SilkS")
@@ -36208,7 +36342,7 @@
 			(start -0.2 2.6)
 			(end -3.05 2.6)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "B.SilkS")
@@ -36218,7 +36352,7 @@
 			(start -2.81 2.36)
 			(end -2.81 -7.46)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "B.SilkS")
@@ -36228,7 +36362,7 @@
 			(start 6.3 2.36)
 			(end -2.81 2.36)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "B.SilkS")
@@ -36238,7 +36372,7 @@
 			(start 6.3 2.36)
 			(end 15.41 2.36)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "B.SilkS")
@@ -36248,7 +36382,7 @@
 			(start 15.41 2.36)
 			(end 15.41 -7.46)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "B.SilkS")
@@ -36258,7 +36392,7 @@
 			(start -2.81 -7.46)
 			(end 4.49 -7.46)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "B.SilkS")
@@ -36268,7 +36402,7 @@
 			(start 4.49 -7.46)
 			(end 4.49 -8.86)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "B.SilkS")
@@ -36278,7 +36412,7 @@
 			(start 8.11 -7.46)
 			(end 8.11 -8.86)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "B.SilkS")
@@ -36288,7 +36422,7 @@
 			(start 15.41 -7.46)
 			(end 8.11 -7.46)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "B.SilkS")
@@ -36298,7 +36432,7 @@
 			(start 4.49 -8.86)
 			(end 6.3 -8.86)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "B.SilkS")
@@ -36308,7 +36442,7 @@
 			(start 8.11 -8.86)
 			(end 6.3 -8.86)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "B.SilkS")
@@ -36842,21 +36976,13 @@
 		(path "/53eda639-28c8-4e5e-8a55-e76fb3a51a39")
 		(sheetname "/")
 		(sheetfile "BACKPLANE.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "16" "20" "24" "19" "18" "17" "15" "7" "5" "3" "8" "10" "11" "23"
-					"22" "21" "6" "4" "9" "13" "1" "12" "2" "14"
-				)
-			)
-		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -3.05 2.6)
 			(end -3.05 -0.25)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "B.SilkS")
@@ -36866,7 +36992,7 @@
 			(start -0.2 2.6)
 			(end -3.05 2.6)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "B.SilkS")
@@ -36876,7 +37002,7 @@
 			(start -2.81 2.36)
 			(end -2.81 -7.46)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "B.SilkS")
@@ -36886,7 +37012,7 @@
 			(start 23.1 2.36)
 			(end -2.81 2.36)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "B.SilkS")
@@ -36896,7 +37022,7 @@
 			(start 23.1 2.36)
 			(end 49.01 2.36)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "B.SilkS")
@@ -36906,7 +37032,7 @@
 			(start 49.01 2.36)
 			(end 49.01 -7.46)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "B.SilkS")
@@ -36916,7 +37042,7 @@
 			(start -2.81 -7.46)
 			(end 21.29 -7.46)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "B.SilkS")
@@ -36926,7 +37052,7 @@
 			(start 21.29 -7.46)
 			(end 21.29 -8.86)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "B.SilkS")
@@ -36936,7 +37062,7 @@
 			(start 24.91 -7.46)
 			(end 24.91 -8.86)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "B.SilkS")
@@ -36946,7 +37072,7 @@
 			(start 49.01 -7.46)
 			(end 24.91 -7.46)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "B.SilkS")
@@ -36956,7 +37082,7 @@
 			(start 21.29 -8.86)
 			(end 23.1 -8.86)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "B.SilkS")
@@ -36966,7 +37092,7 @@
 			(start 24.91 -8.86)
 			(end 23.1 -8.86)
 			(stroke
-				(width 0.12)
+				(width 0.2)
 				(type solid)
 			)
 			(layer "B.SilkS")
@@ -48724,7 +48850,7 @@
 			(extension_offset 0.5)
 			(keep_text_aligned yes)
 		)
-		(gr_text "125.6"
+		(gr_text "4944.8819"
 			(at 514.5645 196.856977 90)
 			(layer "Cmts.User")
 			(uuid "5ee36d10-2bf2-4712-87a8-e0c0e73e0e99")
@@ -48762,7 +48888,7 @@
 			(extension_offset 0.5)
 			(keep_text_aligned yes)
 		)
-		(gr_text "418.38"
+		(gr_text "16471.6535"
 			(at 295.7545 122.746977 0)
 			(layer "Cmts.User")
 			(uuid "62cd6682-b06b-4f44-b7ba-beaa41d72853")
@@ -48800,7 +48926,7 @@
 			(extension_offset 0.5)
 			(keep_text_aligned yes)
 		)
-		(gr_text "20.32"
+		(gr_text "800"
 			(at 103.6245 261.506977 0)
 			(layer "Cmts.User")
 			(uuid "677ed302-e80f-4690-844b-016a447d8014")
@@ -48838,7 +48964,7 @@
 			(extension_offset 0.5)
 			(keep_text_aligned yes)
 		)
-		(gr_text "3.1"
+		(gr_text "122.0472"
 			(at 82.4145 258.106977 90)
 			(layer "Cmts.User")
 			(uuid "6d0bb7f1-0e68-4b95-9fa0-74458f1ea119")
@@ -48876,7 +49002,7 @@
 			(extension_offset 0.5)
 			(keep_text_aligned yes)
 		)
-		(gr_text "122.5"
+		(gr_text "4822.8346"
 			(at 82.5645 195.306977 90)
 			(layer "Cmts.User")
 			(uuid "c8b54b2b-d6e0-46e8-b918-649553e2874f")
@@ -48914,7 +49040,7 @@
 			(extension_offset 0.5)
 			(keep_text_aligned yes)
 		)
-		(gr_text "6.9"
+		(gr_text "271.6535"
 			(at 90.0145 261.506977 0)
 			(layer "Cmts.User")
 			(uuid "fb92abe4-f6df-485d-ad9b-a11daee646b3")
@@ -137246,43 +137372,43 @@
 			"c40595ea-7850-407a-a46a-7085ca64f908" "c738cbdd-ddf5-4760-9ea5-3c2c893fc744"
 			"c8d9b520-f4a3-4b99-807a-0a67bb9f0fd5" "c8dc60a5-fc2c-4575-bb30-bce39d7ed7da"
 			"cac6b0d0-4d57-4caa-8924-8a3d89bd3a43" "cbd497f2-f520-4235-b612-c0388cbf7cb2"
-			"cc8c9b60-4ddb-446d-8455-6823c6f29f6e" "cca594ce-c694-4a63-90c3-619dbf4666f0"
-			"cd2ddbb8-cc48-400a-940f-809bde94f73e" "cd88452c-f2cd-498b-9e29-dfb928289b0d"
-			"ce08ffd8-3b02-45c1-90a3-3c2033d8cc06" "ce6df579-7701-460e-8efb-fe506cae0a9d"
-			"cfda9b27-aa48-43ce-ba10-262f2caa0176" "cfec359d-4913-48df-bee6-f5fb3818357c"
-			"d02a114c-1f58-4583-9a49-3c1002812402" "d07a1929-ba92-44ac-a3cb-13afb406631a"
-			"d0a20139-8f67-4a45-bc89-a252aae7bedb" "d0f2b362-3c11-4a05-b7cc-1db9f46d1d35"
-			"d25729aa-dd92-40b5-a01e-17558760e587" "d2aa368d-f5d6-4801-90cf-2422de225215"
-			"d2bed2d0-8efe-494e-8cd0-580937740d06" "d44172e4-202e-4e13-a819-8bf14d3c3697"
-			"d4508f8c-2ce7-4970-ad06-277bd9d864b0" "d4588ae6-0d17-4243-83bf-c0974583d86e"
-			"d5d8624a-3eb3-447d-8ce3-378f84af9ba8" "d609a620-a3b0-4d33-b8e2-abbfccc7ff3f"
-			"d6695080-8680-40af-8380-d80bd8b6104a" "d809e4eb-61ff-43d5-8942-c11265958204"
-			"d8f0c36d-dd71-40ad-a904-df1ebde5007a" "dbd742fc-c3c9-43c3-8fc1-77921097b6a5"
-			"dc25e41e-8738-4cb2-b374-9c4b2377670a" "dcfd2b47-411a-4c06-b200-f609700308ed"
-			"dd2d1de6-0e6a-4d93-ab23-6bbc8fa376c9" "de0368d9-6680-4d84-a7df-3791ebb70032"
-			"de46c8b6-38e5-4d03-9e44-b0712035c507" "def00b0b-b033-4c81-8562-d27de2ed148a"
-			"e184e405-ce6f-4d92-bdb7-b1dbf9faf413" "e1a86a30-ebe1-4ec9-a13b-45f73984a841"
-			"e2341033-625b-4654-b94d-44c1f7d7c30c" "e241d71b-0bee-4d39-9256-61c3f75a3e95"
-			"e2a2cf6b-ca1d-4f31-b4fb-a4dd02f2a118" "e2d51251-11a7-4571-8275-605acfd76e0d"
-			"e32f19f1-bfc5-4e24-b4c8-1acebd9f469f" "e429c87f-ebed-44fb-bc0e-5e19cfec055f"
-			"e435f7e7-585a-4836-b0b4-0d73e49ee04f" "e48ac94f-9192-483a-b9c3-7df595cb32e6"
-			"e56af22d-7cec-45f8-aaa2-a5d77fd253f8" "e6a13ffa-8554-4efe-b42e-61ebbdaf2b52"
-			"e76034c5-6693-4ce2-929f-5da972abd843" "e7e2d980-e6c0-483e-950e-7abf76494b4f"
-			"e83211ed-49a2-41f9-82f5-dde8620759c4" "e83ed167-e8d7-47bb-9474-bbaa18304561"
-			"e8bf9348-cf79-4e8d-9156-58b581d3711e" "e8ce49f0-72b3-4ad6-aa34-651c5d847e59"
-			"ea24ae7d-3dff-4229-b2f8-d32579e13734" "ea356279-7220-491f-86ef-620b467ad31a"
-			"ead029ab-a22c-40a4-bac0-a90a2d8801b1" "eb309f20-d9cd-4476-a263-f749204e75cf"
-			"eb8b84a6-f827-4f8b-a63e-04639f118a13" "ed6f7815-7b60-459c-bb0a-46fd73d252be"
-			"edfdb0e9-eec2-4e8e-a2b6-1942911e33b0" "ee46c485-b380-4bc0-b615-98e20774a374"
-			"eff9e77b-23e5-4b53-89b3-54d518d2a3b0" "f02b3618-cf9f-4633-a67e-18442ffb8216"
-			"f150a074-ac5d-4589-8dc5-7b2314952bfd" "f222f4b5-f5b5-490a-bef1-832fb0878683"
-			"f290f9f6-61c3-4e56-b1f5-795ad7289196" "f2d92309-0418-4873-8f41-e123223e4a8e"
-			"f4f8acb2-822e-452c-991a-d8881ec38b18" "f510acbb-fb62-4af5-a302-6ef2938f5a4d"
-			"f68ce8e6-3e44-4e6b-8c7c-0d9dd8f4da40" "f764f438-664b-4d51-855d-f8b2d4445f87"
-			"f8902144-5799-434b-ab69-4408b08715ae" "fa4488a3-25d7-466d-8bb1-dceccc042c8b"
-			"fad9582f-8b4b-4073-97a5-8e7b87cec545" "fc2b53f3-edb7-4586-994f-ac436376c190"
-			"fc7b10dc-284e-4b0d-b88d-870e12c26e0f" "fc975351-31e3-42cd-9691-8ebd061e825b"
-			"fdee0d5d-c089-48e2-838d-c094e1c8336f" "fe2ff70f-67e0-46c8-8135-816e0cc48296"
+			"cca594ce-c694-4a63-90c3-619dbf4666f0" "cd2ddbb8-cc48-400a-940f-809bde94f73e"
+			"cd88452c-f2cd-498b-9e29-dfb928289b0d" "ce08ffd8-3b02-45c1-90a3-3c2033d8cc06"
+			"ce6df579-7701-460e-8efb-fe506cae0a9d" "cfda9b27-aa48-43ce-ba10-262f2caa0176"
+			"cfec359d-4913-48df-bee6-f5fb3818357c" "d02a114c-1f58-4583-9a49-3c1002812402"
+			"d07a1929-ba92-44ac-a3cb-13afb406631a" "d0a20139-8f67-4a45-bc89-a252aae7bedb"
+			"d0f2b362-3c11-4a05-b7cc-1db9f46d1d35" "d25729aa-dd92-40b5-a01e-17558760e587"
+			"d2aa368d-f5d6-4801-90cf-2422de225215" "d2bed2d0-8efe-494e-8cd0-580937740d06"
+			"d44172e4-202e-4e13-a819-8bf14d3c3697" "d4508f8c-2ce7-4970-ad06-277bd9d864b0"
+			"d4588ae6-0d17-4243-83bf-c0974583d86e" "d5d8624a-3eb3-447d-8ce3-378f84af9ba8"
+			"d609a620-a3b0-4d33-b8e2-abbfccc7ff3f" "d6695080-8680-40af-8380-d80bd8b6104a"
+			"d809e4eb-61ff-43d5-8942-c11265958204" "d8f0c36d-dd71-40ad-a904-df1ebde5007a"
+			"dbd742fc-c3c9-43c3-8fc1-77921097b6a5" "dc25e41e-8738-4cb2-b374-9c4b2377670a"
+			"dcfd2b47-411a-4c06-b200-f609700308ed" "dd2d1de6-0e6a-4d93-ab23-6bbc8fa376c9"
+			"de0368d9-6680-4d84-a7df-3791ebb70032" "de46c8b6-38e5-4d03-9e44-b0712035c507"
+			"def00b0b-b033-4c81-8562-d27de2ed148a" "e184e405-ce6f-4d92-bdb7-b1dbf9faf413"
+			"e1a86a30-ebe1-4ec9-a13b-45f73984a841" "e2341033-625b-4654-b94d-44c1f7d7c30c"
+			"e241d71b-0bee-4d39-9256-61c3f75a3e95" "e2a2cf6b-ca1d-4f31-b4fb-a4dd02f2a118"
+			"e2d51251-11a7-4571-8275-605acfd76e0d" "e32f19f1-bfc5-4e24-b4c8-1acebd9f469f"
+			"e429c87f-ebed-44fb-bc0e-5e19cfec055f" "e435f7e7-585a-4836-b0b4-0d73e49ee04f"
+			"e48ac94f-9192-483a-b9c3-7df595cb32e6" "e56af22d-7cec-45f8-aaa2-a5d77fd253f8"
+			"e6a13ffa-8554-4efe-b42e-61ebbdaf2b52" "e76034c5-6693-4ce2-929f-5da972abd843"
+			"e7e2d980-e6c0-483e-950e-7abf76494b4f" "e83211ed-49a2-41f9-82f5-dde8620759c4"
+			"e83ed167-e8d7-47bb-9474-bbaa18304561" "e8bf9348-cf79-4e8d-9156-58b581d3711e"
+			"e8ce49f0-72b3-4ad6-aa34-651c5d847e59" "ea24ae7d-3dff-4229-b2f8-d32579e13734"
+			"ea356279-7220-491f-86ef-620b467ad31a" "ead029ab-a22c-40a4-bac0-a90a2d8801b1"
+			"eb309f20-d9cd-4476-a263-f749204e75cf" "eb8b84a6-f827-4f8b-a63e-04639f118a13"
+			"ed6f7815-7b60-459c-bb0a-46fd73d252be" "edfdb0e9-eec2-4e8e-a2b6-1942911e33b0"
+			"ee46c485-b380-4bc0-b615-98e20774a374" "eff9e77b-23e5-4b53-89b3-54d518d2a3b0"
+			"f02b3618-cf9f-4633-a67e-18442ffb8216" "f150a074-ac5d-4589-8dc5-7b2314952bfd"
+			"f222f4b5-f5b5-490a-bef1-832fb0878683" "f290f9f6-61c3-4e56-b1f5-795ad7289196"
+			"f2d92309-0418-4873-8f41-e123223e4a8e" "f4f8acb2-822e-452c-991a-d8881ec38b18"
+			"f510acbb-fb62-4af5-a302-6ef2938f5a4d" "f68ce8e6-3e44-4e6b-8c7c-0d9dd8f4da40"
+			"f764f438-664b-4d51-855d-f8b2d4445f87" "f8902144-5799-434b-ab69-4408b08715ae"
+			"fa4488a3-25d7-466d-8bb1-dceccc042c8b" "fad9582f-8b4b-4073-97a5-8e7b87cec545"
+			"fc2b53f3-edb7-4586-994f-ac436376c190" "fc7b10dc-284e-4b0d-b88d-870e12c26e0f"
+			"fc975351-31e3-42cd-9691-8ebd061e825b" "fdee0d5d-c089-48e2-838d-c094e1c8336f"
+			"fe2ff70f-67e0-46c8-8135-816e0cc48296"
 		)
 	)
 	(embedded_fonts no)

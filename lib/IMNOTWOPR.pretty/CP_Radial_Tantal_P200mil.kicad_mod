@@ -6,9 +6,9 @@
 	(descr "CP, Radial_Tantal series, Radial, pin pitch=5.00mm, diameter=5.0mm, height=10mm, Tantal Electrolytic Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/TANTAL-TB-Serie%23.pdf")
 	(tags "CP Radial_Tantal series Radial pin pitch 5.00mm diameter 5.0mm height 10mm Tantal Electrolytic Capacitor")
 	(property "Reference" "REF**"
-		(at 0 0 0)
+		(at 0 -3.429 0)
 		(layer "F.SilkS")
-		(uuid "b0648720-d05e-4dfd-8e89-4a2767f81fb2")
+		(uuid "7f4bf038-1bea-4e60-88e9-516f0723e43c")
 		(effects
 			(font
 				(size 1 1)
@@ -16,9 +16,9 @@
 		)
 	)
 	(property "Value" "CP_Radial_Tantal_P200mil"
-		(at 0 0 0)
+		(at -0.127 3.429 0)
 		(layer "F.Fab")
-		(uuid "88edfda7-958f-4093-8ca0-3d9eb7869651")
+		(uuid "f1e618c4-7f0b-4d89-861f-f809349dafdf")
 		(effects
 			(font
 				(size 1 1)
@@ -29,7 +29,7 @@
 		(at -2.5 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "cbad1b5b-9f0b-4dca-9d0e-d12d9fcdd19a")
+		(uuid "1056240a-1804-45f0-a38c-5a6d4ad13d30")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -40,7 +40,7 @@
 		(at -2.5 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "b99c2c15-21e7-401e-86ef-c9095000d481")
+		(uuid "737917f1-5d30-41ac-84ce-a470a616dfd4")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -51,7 +51,7 @@
 		(at -2.5 0 0)
 		(layer "F.SilkS")
 		(hide yes)
-		(uuid "34679059-c57b-445f-8938-7516e3ab7c8e")
+		(uuid "069aad92-1828-4956-a8a5-9876e681d951")
 		(effects
 			(font
 				(size 1 1)
@@ -69,7 +69,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "db14e9fb-2339-4051-af47-19f6facceef3")
+		(uuid "3eaafbf0-a3d2-4d91-93f3-e73752f946a7")
 	)
 	(fp_line
 		(start -1.27 -1.52)
@@ -79,29 +79,29 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "e36b98a4-8360-4b96-9079-c32800a1efb6")
+		(uuid "f5aadfed-72a1-4a4f-b261-c752bb5445d9")
 	)
 	(fp_arc
 		(start -2.273205 -1.133199)
 		(mid 0.0199 -2.539922)
 		(end 2.290681 -1.097442)
 		(stroke
-			(width 0.254)
+			(width 0.2)
 			(type default)
 		)
 		(layer "F.SilkS")
-		(uuid "a33588e0-5b0a-4078-a4ba-00372a0f4dae")
+		(uuid "2a04d75d-2867-4814-8487-f7e7825090fd")
 	)
 	(fp_arc
 		(start 2.273205 1.133199)
 		(mid -0.0199 2.539922)
 		(end -2.290681 1.097442)
 		(stroke
-			(width 0.254)
+			(width 0.2)
 			(type default)
 		)
 		(layer "F.SilkS")
-		(uuid "d4f5bf35-da03-4aea-9e32-60e39b377f84")
+		(uuid "3cbc44b9-e456-4232-9614-1673bf53e58a")
 	)
 	(fp_circle
 		(center 0 0)
@@ -112,7 +112,7 @@
 		)
 		(fill no)
 		(layer "F.CrtYd")
-		(uuid "4258edb8-4d58-4e55-aa17-eab464ff4258")
+		(uuid "bda01704-65f7-4ad5-bb0d-623bc5efcffe")
 	)
 	(fp_line
 		(start -1.52 -1.27)
@@ -122,7 +122,7 @@
 			(type solid)
 		)
 		(layer "F.Fab")
-		(uuid "bc9ac6be-c5f3-415e-8391-4b30aa0b6548")
+		(uuid "21bb55c7-448e-4b92-9094-c7496b828030")
 	)
 	(fp_line
 		(start -1.27 -1.52)
@@ -132,7 +132,7 @@
 			(type solid)
 		)
 		(layer "F.Fab")
-		(uuid "b3ff10a4-6e8f-4ac3-b5ca-b372353e9a30")
+		(uuid "1b8cebe5-dcb3-4f00-88fc-40702d59c436")
 	)
 	(fp_circle
 		(center 0 0)
@@ -143,12 +143,12 @@
 		)
 		(fill no)
 		(layer "F.Fab")
-		(uuid "168fcd6b-42ac-4eae-b0c0-8babfc76fdf4")
+		(uuid "fa7c91b3-82ca-4428-9dd1-92ed09fbfacd")
 	)
 	(fp_text user "${REFERENCE}"
 		(at 0 0 0)
 		(layer "F.Fab")
-		(uuid "88cad3ac-5bc7-43ec-809e-f89e3723ad09")
+		(uuid "80974660-85c3-4169-a68d-ba164ee6f19d")
 		(effects
 			(font
 				(size 1 1)
@@ -162,7 +162,7 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 		(roundrect_rratio 0.15625)
-		(uuid "6b017c5e-44c8-4b8d-bc1e-50fe69b2f68e")
+		(uuid "b5096b9a-41d2-4d90-ae93-216450038c7d")
 	)
 	(pad "2" thru_hole circle
 		(at 2.54 0)
@@ -170,7 +170,7 @@
 		(drill 0.889)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "3bff12c0-4e64-4e90-8011-026d358ff9f8")
+		(uuid "cc318a6d-5cfa-4be5-95fc-576898748d55")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/CP_Radial_Tantal_D5.0mm_P5.00mm.step"

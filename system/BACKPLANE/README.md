@@ -23,6 +23,10 @@ The BACKPLANE PCB provides the shared bus and power distribution for the IMNOTWO
 
 ## Rendered Images
 
+### Top 3D
+
+![PCB Top 3D Render](BACKPLANE_top_3d.png) 3D
+
 ### Top
 
 ![PCB Top Render](BACKPLANE_top.png)

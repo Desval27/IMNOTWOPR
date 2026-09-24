@@ -1,0 +1,121 @@
+(footprint "SW_SPDT_Toggle_1M"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 -5 0)
+		(layer "F.SilkS")
+		(uuid "7140953a-dcb6-4b6f-b83e-60c969782314")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "Val**"
+		(at 0 5 0)
+		(layer "F.SilkS")
+		(uuid "197213f8-39ee-4dd9-b9b9-919fa54086c2")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5c7b2b97-9075-4ea8-ba87-3e16d1936418")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "95f25ef1-9684-47ef-b983-ae5c1d0954f2")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_rect
+		(start -2.54 -3.81)
+		(end 2.54 3.81)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "e122559f-3edd-46db-9ff7-02477c15311c")
+	)
+	(fp_circle
+		(center 0 0)
+		(end 2.4765 0)
+		(stroke
+			(width 0.0254)
+			(type solid)
+		)
+		(fill no)
+		(layer "Cmts.User")
+		(uuid "5e578d0c-30fc-4b37-9d2a-449245affd2c")
+	)
+	(fp_rect
+		(start -2.667 -3.937)
+		(end 2.667 3.937)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "63f772be-056f-4e96-93c6-dd2b58394a49")
+	)
+	(pad "1" thru_hole circle
+		(at 0 2.54)
+		(size 1.651 1.651)
+		(drill 0.889)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "e8cabac8-f042-4dc7-a5bd-73f4a4889cd8")
+	)
+	(pad "2" thru_hole circle
+		(at 0 0)
+		(size 1.651 1.651)
+		(drill 0.889)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "2c29d34f-e563-4fc6-8a2e-00a3ed0c0260")
+	)
+	(pad "3" thru_hole circle
+		(at 0 -2.54)
+		(size 1.651 1.651)
+		(drill 0.889)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "91a8c28a-2d1c-41ba-b136-ef7588691904")
+	)
+	(embedded_fonts no)
+	(model "${FORMANTKO_3DMODEL_DIR}/SPDT-Print-Switch.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 0.5 0.5 0.5)
+		)
+		(rotate
+			(xyz -0 -0 -0)
+		)
+	)
+)
