@@ -4,11 +4,7 @@ Power Control Module Panel
 
 Status: Untested
 
-The power control module serves 3 purposes:
-
-- LED indicator to show the status of the PSU +5V standby power when the main power is **OFF**.
-- LED indicator to show when main power is **ON**.
-- Toggle switch to assert the **RESET** signal on the bus.
+The PWR panel uses a PCB as the physical front panel for the IMNOTWOPR power control module. It provides labeled openings for the power and reset switches, power and standby LEDs, and four voltage meters displaying the +5 V, +12 V, −12 V, and +12 V2 rails. Mounting holes secure the panel to the card bracket and chassis, bringing the module’s controls and indicators together in an accessible front-facing layout.
 
 ## Gerber To Order
 

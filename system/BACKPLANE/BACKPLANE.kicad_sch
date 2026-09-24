@@ -111,7 +111,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "IMNOTWOPR:ATX-04"
+		(symbol "IMNOTWOPR:ATX-08"
 			(pin_names
 				(offset 1.016)
 			)
@@ -130,7 +130,7 @@
 					)
 				)
 			)
-			(property "Value" "ATX-04"
+			(property "Value" "ATX-08"
 				(at 0 7.62 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -140,7 +140,7 @@
 					)
 				)
 			)
-			(property "Footprint" "IMNOTWOPR:ATX-04"
+			(property "Footprint" "IMNOTWOPR:ATX-08"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -195,10 +195,10 @@
 					)
 				)
 			)
-			(symbol "ATX-04_0_1"
+			(symbol "ATX-08_0_1"
 				(rectangle
 					(start -5.08 6.35)
-					(end 5.08 -8.89)
+					(end 5.08 -17.78)
 					(stroke
 						(width 0)
 						(type default)
@@ -208,7 +208,7 @@
 					)
 				)
 			)
-			(symbol "ATX-04_1_1"
+			(symbol "ATX-08_1_1"
 				(pin passive line
 					(at 8.89 3.81 180)
 					(length 3.81)
@@ -246,9 +246,9 @@
 					)
 				)
 				(pin passive line
-					(at 8.89 -3.81 180)
+					(at 8.89 -1.27 180)
 					(length 3.81)
-					(name "+12V2"
+					(name "GND"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -264,7 +264,25 @@
 					)
 				)
 				(pin passive line
-					(at 8.89 -6.35 180)
+					(at 8.89 -3.81 180)
+					(length 3.81)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 8.89 -8.89 180)
 					(length 3.81)
 					(name "+12V2"
 						(effects
@@ -273,7 +291,61 @@
 							)
 						)
 					)
-					(number "4"
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 8.89 -11.43 180)
+					(length 3.81)
+					(name "+12V2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 8.89 -13.97 180)
+					(length 3.81)
+					(name "+12V2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 8.89 -16.51 180)
+					(length 3.81)
+					(name "+12V2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -6536,7 +6608,7 @@
 	)
 	(global_label "+12V2"
 		(shape output)
-		(at 513.08 359.41 0)
+		(at 513.08 367.03 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6546,7 +6618,7 @@
 		)
 		(uuid "09e57af4-d8cf-483d-8b4e-4fc53c929a7b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 522.3547 359.41 0)
+			(at 522.3547 367.03 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9411,6 +9483,30 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+			)
+		)
+	)
+	(global_label "+12V2"
+		(shape output)
+		(at 513.08 374.65 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "1896b372-7b0e-438f-80a6-a771e6f1a776")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 522.3547 374.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 			)
 		)
 	)
@@ -22926,6 +23022,30 @@
 			)
 		)
 	)
+	(global_label "GND"
+		(shape output)
+		(at 513.08 359.41 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "68528141-ec72-4209-81e9-2d6b953f98cd")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 519.9357 359.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "+5VSB"
 		(shape input)
 		(at 259.08 25.4 180)
@@ -29192,7 +29312,7 @@
 	)
 	(global_label "GND"
 		(shape output)
-		(at 513.08 354.33 0)
+		(at 513.08 356.87 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -29202,7 +29322,7 @@
 		)
 		(uuid "88404f3a-47df-4e79-a122-2a08774b76a9")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 519.9357 354.33 0)
+			(at 519.9357 356.87 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -36631,6 +36751,30 @@
 		)
 	)
 	(global_label "GND"
+		(shape output)
+		(at 513.08 361.95 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "b08bf4b6-f783-4c96-ae48-24cdf29dd84d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 519.9357 361.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "GND"
 		(shape passive)
 		(at 703.58 116.84 180)
 		(fields_autoplaced yes)
@@ -37347,6 +37491,30 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+			)
+		)
+	)
+	(global_label "+12V2"
+		(shape output)
+		(at 513.08 372.11 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "b387ef82-4a33-4a95-b3a8-0d47e222dc2b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 522.3547 372.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 			)
 		)
 	)
@@ -40448,7 +40616,7 @@
 	)
 	(global_label "GND"
 		(shape output)
-		(at 513.08 351.79 0)
+		(at 513.08 354.33 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -40458,7 +40626,7 @@
 		)
 		(uuid "c513e07b-0fd8-4db1-bcb1-cd4e24aa3b4a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 519.9357 351.79 0)
+			(at 519.9357 354.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -43520,7 +43688,7 @@
 	)
 	(global_label "+12V2"
 		(shape output)
-		(at 513.08 361.95 0)
+		(at 513.08 369.57 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -43530,7 +43698,7 @@
 		)
 		(uuid "d978b88e-9873-4a29-ab1a-bd3ef62eb2ce")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 522.3547 361.95 0)
+			(at 522.3547 369.57 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -63294,6 +63462,104 @@
 		)
 	)
 	(symbol
+		(lib_id "IMNOTWOPR:ATX-08")
+		(at 504.19 358.14 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5dd50d05-725f-4580-bdcd-a1b45e0a51b7")
+		(property "Reference" "J21"
+			(at 504.19 346.71 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "ATX-08"
+			(at 504.19 349.25 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "IMNOTWOPR:ATX-08"
+			(at 504.19 358.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 504.19 358.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Generic connector, double row, 02x02, top/bottom pin numbering scheme (row 1: 1...pins_per_row, row2: pins_per_row+1 ... num_pins), script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 504.19 358.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "6"
+			(uuid "809484c9-eb38-40e5-b679-4f306cd25088")
+		)
+		(pin "5"
+			(uuid "f44c7d1c-1f95-495d-aa0b-2e20e98a3c87")
+		)
+		(pin "4"
+			(uuid "9ae04c92-b1a7-41e6-b0eb-806a30da8e4a")
+		)
+		(pin "1"
+			(uuid "f53a44a5-c349-4996-b5b5-77eb5a4a54a3")
+		)
+		(pin "2"
+			(uuid "08180781-b475-4c9c-9aaf-81077c25305a")
+		)
+		(pin "7"
+			(uuid "8c15eff9-248a-484d-92aa-adf397118eb1")
+		)
+		(pin "3"
+			(uuid "4700d0ff-ccc0-42bd-a13c-1640e3ddbd09")
+		)
+		(pin "8"
+			(uuid "f84a44d9-12ca-4f20-8c05-582f161cce2e")
+		)
+		(instances
+			(project "BACKPLANE"
+				(path "/ad2d789c-a8c8-48c5-8f34-468c01c0c6c9"
+					(reference "J21")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "IMNOTWOPR:BusConnector")
 		(at 124.46 241.3 0)
 		(unit 1)
@@ -75108,91 +75374,6 @@
 			(project "BACKPLANE"
 				(path "/ad2d789c-a8c8-48c5-8f34-468c01c0c6c9"
 					(reference "H47")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "IMNOTWOPR:ATX-04")
-		(at 504.19 355.6 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "e94db72c-fb46-40f7-8a06-33e1796b5906")
-		(property "Reference" "J30"
-			(at 503.936 345.44 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "ATX-04"
-			(at 504.19 347.98 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "IMNOTWOPR:ATX-04"
-			(at 504.19 355.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 504.19 355.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Generic connector, double row, 02x02, top/bottom pin numbering scheme (row 1: 1...pins_per_row, row2: pins_per_row+1 ... num_pins), script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 504.19 355.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "4"
-			(uuid "ef53f866-6489-4e01-95f1-29e05ee22eb1")
-		)
-		(pin "3"
-			(uuid "d9262077-133a-496f-be17-baaa76412cce")
-		)
-		(pin "2"
-			(uuid "2047152e-4d6b-4d86-9c4c-c765f0ba22b8")
-		)
-		(pin "1"
-			(uuid "171de5e6-173e-420e-bd95-3266b0ffe3bd")
-		)
-		(instances
-			(project "BACKPLANE"
-				(path "/ad2d789c-a8c8-48c5-8f34-468c01c0c6c9"
-					(reference "J30")
 					(unit 1)
 				)
 			)

@@ -26,6 +26,8 @@ Historical authenticity is not a primary goal. The machine should feel like a cl
 
 All modules and panels are current a work in progress and **NONE** have been tested yet.
 
+- [Backplane](system/BACKPLANE/README.md)
+- [PWR PCB](modules/PWR/README.md)
 - [PWR Panel](panels/PWR/README.md)
 
 ## Mechanical Architecture

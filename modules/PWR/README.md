@@ -4,11 +4,7 @@ Power Control Module PCB
 
 Status: Untested
 
-The power control module serves 3 purposes:
-
-- LED indicator to show the status of the PSU +5V standby power when the main power is **OFF**.
-- LED indicator to show when main power is **ON**.
-- Toggle switch to assert the **RESET** signal on the bus.
+The PWR module provides power control, status indication, and manual bus reset for the IMNOTWOPR computer. It switches the ATX power supply through the backplane power-on signal and uses separate LEDs to indicate standby power and PSU power-good status, automatically extinguishing the standby LED when main power is enabled. The board also provides connections for monitoring the +5 V, +12 V, −12 V, and +12 V2 rails with voltage meters, along with jumper-selectable I²C pull-ups.
 
 ## Documents
 
