@@ -6,6 +6,8 @@ Status: Untested
 
 The BACKPLANE PCB provides the shared bus and power distribution for the IMNOTWOPR modular computer, connecting CPU, memory, I/O, and front-panel cards through 20 96-pin DIN 41612 slots. It carries the 24-bit address bus, 8-bit data bus, clock and control signals, and auxiliary I²C and SPI interfaces. ATX power connectors supply the system power rails, with standby power and power-control signals available to the cards. The passive design also includes jumper-selectable I²C pull-ups.
 
+The PWR module and the BACKPLANE both provide the option for I²C pull-ups for convenience.  Only on should be enabled at a time.
+
 ## Documents
 
 - [Schematic](BACKPLANE_schematic.pdf)
