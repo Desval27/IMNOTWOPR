@@ -21,6 +21,10 @@ The PWR module provides power control, status indication, and manual bus reset f
 
 ## Rendered Images
 
+### Top 3D
+
+![PCB Top 3D Render](PWR_top_3d.png)
+
 ### Top
 
 ![PCB Top Render](PWR_top.png)
