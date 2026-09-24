@@ -9,6 +9,7 @@
 	(paper "A2")
 	(title_block
 		(title "BACKPLANE")
+		(date "2026-09-24")
 		(rev "A")
 		(company "THE HOUSE OF GALAHAD")
 		(comment 1 "IMNOTWOPR")
