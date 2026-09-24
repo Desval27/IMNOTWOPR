@@ -22,6 +22,12 @@ The primary goals of IMNOTWOPR are:
 
 Historical authenticity is not a primary goal. The machine should feel like a classic expandable microcomputer while benefiting from several decades of hindsight.
 
+## Current Status
+
+All modules and panels are current a work in progress and **NONE** have been tested yet.
+
+- [PWR Panel](panels/PWR/README.md)
+
 ## Mechanical Architecture
 
 IMNOTWOPR uses the **3U Eurocard format**, with typical cards measuring approximately:
