@@ -10,6 +10,7 @@
 		(company "THE HOUSE OF GALAHAD")
 		(comment 1 "IMNOTWOPR")
 		(comment 2 "CARD TEMPLATE")
+		(comment 3 "75-1000-01")
 	)
 	(lib_symbols
 		(symbol "IMNOTWOPR:CardBracket"

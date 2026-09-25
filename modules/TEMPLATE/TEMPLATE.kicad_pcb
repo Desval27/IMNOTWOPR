@@ -14,6 +14,7 @@
 		(comment 1 "IMNOTWOPR")
 		(comment 2 "TEMPLATE")
 		(comment 3 "DO NOT FOLD, SPINDLE OR MUTILATE")
+		(comment 4 "75-2000-01")
 	)
 	(layers
 		(0 "F.Cu" signal)
@@ -8165,7 +8166,7 @@
 		(layer "Edge.Cuts")
 		(uuid "13dc543d-1074-458e-b1b4-3c458ffc51a0")
 	)
-	(gr_text "${COMPANY} - ${COMMENT1} - ${TITLE} - ${COMMENT2} - REVISION ${REVISION} ${CURRENT_DATE}"
+	(gr_text "${COMPANY} - ${COMMENT1} - ${COMMENT4} - ${TITLE} - ${COMMENT2} - REVISION ${REVISION} ${CURRENT_DATE}"
 		(at 134.99 45.94 0)
 		(layer "F.SilkS")
 		(uuid "3d6d17cc-b8ad-4a85-bc6e-054aed5059fc")
@@ -8199,7 +8200,7 @@
 			(justify bottom mirror)
 		)
 	)
-	(gr_text "${COMPANY} - ${COMMENT1} - ${TITLE} - ${COMMENT2} - REVISION ${REVISION} ${CURRENT_DATE}"
+	(gr_text "${COMPANY} - ${COMMENT1} - ${COMMENT4} - ${TITLE} - ${COMMENT2} - REVISION ${REVISION} ${CURRENT_DATE}"
 		(at 134.99 45.94 0)
 		(layer "B.SilkS")
 		(uuid "054a49bb-cb26-4d75-8b91-f2a8647aea8f")
