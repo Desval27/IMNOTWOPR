@@ -5425,7 +5425,7 @@
 			)
 		)
 	)
-	(global_label "VCC"
+	(global_label "+5V"
 		(shape output)
 		(at 24.13 104.14 180)
 		(fields_autoplaced yes)
@@ -5437,7 +5437,7 @@
 		)
 		(uuid "1d8c5a41-9b8d-42ab-9e6b-2cbaef63c450")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 17.5162 104.14 0)
+			(at 17.1792 104.14 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5521,7 +5521,7 @@
 			)
 		)
 	)
-	(global_label "VCC"
+	(global_label "+5V"
 		(shape output)
 		(at 62.23 25.4 180)
 		(fields_autoplaced yes)
@@ -5533,7 +5533,7 @@
 		)
 		(uuid "5b695481-20c9-4f45-891e-a9c6d1527441")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 55.6162 25.4 0)
+			(at 55.2792 25.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5665,7 +5665,7 @@
 			)
 		)
 	)
-	(global_label "VCC"
+	(global_label "+5V"
 		(shape output)
 		(at 24.13 25.4 180)
 		(fields_autoplaced yes)
@@ -5677,7 +5677,7 @@
 		)
 		(uuid "a47a4012-15f6-4f93-9360-d8817a32d392")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 17.5162 25.4 0)
+			(at 17.1792 25.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5689,7 +5689,7 @@
 			)
 		)
 	)
-	(global_label "VCC"
+	(global_label "+5V"
 		(shape output)
 		(at 24.13 101.6 180)
 		(fields_autoplaced yes)
@@ -5701,7 +5701,7 @@
 		)
 		(uuid "bd532cfc-37a6-424d-a4a8-beef8546c6d0")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 17.5162 101.6 0)
+			(at 17.1792 101.6 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5761,7 +5761,7 @@
 			)
 		)
 	)
-	(global_label "VCC"
+	(global_label "+5V"
 		(shape output)
 		(at 62.23 104.14 180)
 		(fields_autoplaced yes)
@@ -5773,7 +5773,7 @@
 		)
 		(uuid "ccb1de48-7fc8-4205-b25d-518afd794b21")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 55.6162 104.14 0)
+			(at 55.2792 104.14 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5809,7 +5809,7 @@
 			)
 		)
 	)
-	(global_label "VCC"
+	(global_label "+5V"
 		(shape output)
 		(at 24.13 27.94 180)
 		(fields_autoplaced yes)
@@ -5821,7 +5821,7 @@
 		)
 		(uuid "ec9357c3-af96-45b9-ba48-30bbee021de0")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 17.5162 27.94 0)
+			(at 17.1792 27.94 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)

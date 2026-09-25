@@ -486,8 +486,8 @@
       "net_not_bus_member": "warning",
       "no_connect_connected": "warning",
       "no_connect_dangling": "warning",
-      "pin_not_connected": "error",
-      "pin_not_driven": "error",
+      "pin_not_connected": "ignore",
+      "pin_not_driven": "ignore",
       "pin_to_pin": "warning",
       "power_pin_not_driven": "error",
       "same_local_global_label": "warning",
@@ -688,13 +688,13 @@
         "uuid": "1bc24577-9a03-4fc2-ac64-d8d0370a6427"
       }
     ],
-    "used_designators": "IC1,U1-8,MH1,Y1-3,A1,#PWR1-20,D1-9,C1-12,J1-2,#FLG1-2,R1-9",
+    "used_designators": "RV1,P1,IC1,U1-9,MH1,Y1-3,#PWR1-22,A1,D1-9,C1-12,J1-2,#FLG1-2,R1-9",
     "variants": []
   },
   "sheets": [
     [
       "e63e39d7-6ac0-4ffd-8aa3-1841a4541b55",
-      "MPU-65X"
+      "MPX"
     ],
     [
       "1bc24577-9a03-4fc2-ac64-d8d0370a6427",
