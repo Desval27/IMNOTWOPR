@@ -8,13 +8,13 @@
 	)
 	(paper "A4")
 	(title_block
-		(title "TITLE")
+		(title "CTL")
 		(rev "A")
 		(company "THE HOUSE OF GALAHAD")
 		(comment 1 "IMNOTWOPR")
-		(comment 2 "TEMPLATE")
+		(comment 2 "PROCESSOR CONTROL")
 		(comment 3 "DO NOT FOLD, SPINDLE OR MUTILATE")
-		(comment 4 "75-2000-01")
+		(comment 4 "75-1001-01")
 	)
 	(layers
 		(0 "F.Cu" signal)
