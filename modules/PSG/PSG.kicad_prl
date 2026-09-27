@@ -1,6 +1,6 @@
 {
   "board": {
-    "active_layer": 25,
+    "active_layer": 0,
     "active_layer_preset": "",
     "auto_track_width": true,
     "hidden_netclasses": [],
@@ -17,16 +17,16 @@
     },
     "prototype_zone_fills": false,
     "selection_filter": {
-      "dimensions": true,
+      "dimensions": false,
       "footprints": true,
-      "graphics": true,
+      "graphics": false,
       "keepouts": false,
       "lockedItems": false,
       "otherItems": false,
       "pads": false,
-      "text": true,
+      "text": false,
       "tracks": false,
-      "vias": true,
+      "vias": false,
       "zones": false
     },
     "visible_items": [
@@ -53,7 +53,7 @@
       "board_outline_area",
       "ly_points"
     ],
-    "visible_layers": "00000000_00000000_00000000_020a00a1",
+    "visible_layers": "ffffffff_ffffffff_ffffffff_ffffffff",
     "zone_display_mode": 0
   },
   "git": {
@@ -63,7 +63,7 @@
     "ssh_key": ""
   },
   "meta": {
-    "filename": "TEMPLATE_4HP.kicad_prl",
+    "filename": "PSG.kicad_prl",
     "version": 5
   },
   "net_inspector_panel": {

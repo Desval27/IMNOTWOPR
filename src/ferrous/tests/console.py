@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build Ferris with make, then run: python tests/console.py PATH/TO/joshua."""
+"""Build Ferrous with make, then run: python tests/console.py PATH/TO/joshua."""
 import pathlib
 import subprocess
 import sys

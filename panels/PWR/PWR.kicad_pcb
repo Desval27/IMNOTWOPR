@@ -8402,7 +8402,7 @@
 			)
 		)
 	)
-	(gr_text "PWR"
+	(gr_text "${TITLE}"
 		(at 86.395894 42.715428 0)
 		(layer "F.SilkS")
 		(uuid "bbb33b4c-8012-4b98-9ae9-81be39e72b87")
