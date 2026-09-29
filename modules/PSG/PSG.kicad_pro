@@ -731,27 +731,18 @@
         "uuid": "e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
       },
       {
-        "filename": "system.kicad_sch",
-        "name": "SYSTEM",
-        "uuid": "1bc24577-9a03-4fc2-ac64-d8d0370a6427"
-      },
-      {
         "filename": "mixer.kicad_sch",
         "name": "MIXER",
         "uuid": "99591b70-50f6-4cca-8c7b-76ff85c46d71"
       }
     ],
-    "used_designators": "SW1,RN1,P1,R1-12,JP1-2,C1-13,Y1,LS1,#PWR1-18,#PWR20-38,U1-4,U7-9,U12,U14-15,#FLG1-2,J1-3",
+    "used_designators": "SW1-2,RN1,P1,R1-12,JP1-2,C1-20,Y1,LS1,#PWR1-41,MH1,U1-4,U7-9,U12,U14-15,#FLG1-2,J1-4",
     "variants": []
   },
   "sheets": [
     [
       "e63e39d7-6ac0-4ffd-8aa3-1841a4541b55",
       "PSG"
-    ],
-    [
-      "1bc24577-9a03-4fc2-ac64-d8d0370a6427",
-      "SYSTEM"
     ],
     [
       "99591b70-50f6-4cca-8c7b-76ff85c46d71",
