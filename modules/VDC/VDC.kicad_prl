@@ -63,7 +63,7 @@
     "ssh_key": ""
   },
   "meta": {
-    "filename": "TEMPLATE.kicad_prl",
+    "filename": "VDC.kicad_prl",
     "version": 5
   },
   "net_inspector_panel": {
