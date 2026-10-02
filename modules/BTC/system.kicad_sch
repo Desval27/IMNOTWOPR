@@ -5,12 +5,12 @@
 	(uuid "5919a681-6213-4155-92b3-30bc1b43a353")
 	(paper "A3")
 	(title_block
-		(title "PWR")
-		(rev "B")
+		(title "BEX")
+		(rev "A")
 		(company "THE HOUSE OF GALAHAD")
 		(comment 1 "IMNOTWOPR")
-		(comment 2 "POWER CONTROL")
-		(comment 3 "75-1010-01")
+		(comment 2 "BUS EXERCISER")
+		(comment 3 "75-1098-01")
 	)
 	(lib_symbols)
 	(sheet_instances

@@ -260,7 +260,7 @@
       "internal_id": "",
       "mfg": "",
       "mpn": "",
-      "sch_revision": "B"
+      "sch_revision": "A"
     },
     "layer_pairs": [],
     "layer_presets": [],
@@ -510,7 +510,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "PWR.kicad_pro",
+    "filename": "BTC.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -530,8 +530,8 @@
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.254,
         "tuning_profile": "",
-        "via_diameter": 0.8,
-        "via_drill": 0.4,
+        "via_diameter": 0.6096,
+        "via_drill": 0.3048,
         "wire_width": 6
       }
     ],
@@ -562,7 +562,7 @@
       "method": 0,
       "sort_order": 0
     },
-    "bom_export_filename": "bom.csv",
+    "bom_export_filename": "${PROJECTNAME}.csv",
     "bom_fmt_presets": [],
     "bom_fmt_settings": {
       "field_delimiter": ",",
@@ -612,36 +612,12 @@
           "label": "DNP",
           "name": "${DNP}",
           "show": true
-        },
-        {
-          "group_by": false,
-          "label": "#",
-          "name": "${ITEM_NUMBER}",
-          "show": false
-        },
-        {
-          "group_by": false,
-          "label": "Sim.Pins",
-          "name": "Sim.Pins",
-          "show": false
-        },
-        {
-          "group_by": false,
-          "label": "Voltage",
-          "name": "Voltage",
-          "show": false
-        },
-        {
-          "group_by": false,
-          "label": "Description",
-          "name": "Description",
-          "show": false
         }
       ],
       "filter_string": "",
       "group_symbols": true,
       "include_excluded_from_bom": false,
-      "name": "",
+      "name": "Grouped By Value",
       "sort_asc": true,
       "sort_field": "Reference"
     },
@@ -702,8 +678,8 @@
     "subpart_id_separator": 0,
     "top_level_sheets": [
       {
-        "filename": "PWR.kicad_sch",
-        "name": "PWR",
+        "filename": "BTC.kicad_sch",
+        "name": "BTC",
         "uuid": "e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
       },
       {
@@ -712,13 +688,13 @@
         "uuid": "1bc24577-9a03-4fc2-ac64-d8d0370a6427"
       }
     ],
-    "used_designators": "MH1,U1-4,JP1,SW1-3,R1-7,#FLG1-7,D1-5,#PWR1-42,C1-10,MES1-4,J1-2",
+    "used_designators": "#FLG1-2,R1-6,J1-2,#PWR1-26,MH1-2,U1-4,C1-10,SW1-4,D1-5",
     "variants": []
   },
   "sheets": [
     [
       "e63e39d7-6ac0-4ffd-8aa3-1841a4541b55",
-      "PWR"
+      "BTC"
     ],
     [
       "1bc24577-9a03-4fc2-ac64-d8d0370a6427",
