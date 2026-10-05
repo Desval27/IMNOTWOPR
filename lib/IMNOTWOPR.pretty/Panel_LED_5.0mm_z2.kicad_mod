@@ -1,4 +1,4 @@
-(footprint "Panel_LED_3.0mm"
+(footprint "Panel_LED_5.0mm_z2"
 	(version 20260206)
 	(generator "pcbnew")
 	(generator_version "10.0")
@@ -8,7 +8,7 @@
 		(unlocked yes)
 		(layer "F.SilkS")
 		(hide yes)
-		(uuid "993a62a4-dc06-49ad-a2d9-7db8c2ae95ee")
+		(uuid "fc639958-1aa6-4421-ad4f-e5998ac0af58")
 		(effects
 			(font
 				(size 1.016 1.016)
@@ -16,12 +16,12 @@
 			)
 		)
 	)
-	(property "Value" "Panel_LED_3.0mm"
+	(property "Value" "Panel_LED_5.0mm_z2"
 		(at 0 1.016 0)
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "07fd1eab-1d96-4e78-ba85-9b71116925d7")
+		(uuid "4975cd72-33e2-4ce3-bfeb-2310c78f79c9")
 		(effects
 			(font
 				(size 1.016 1.016)
@@ -34,7 +34,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "fc368db7-1eb2-47ff-8221-28b8feb32259")
+		(uuid "5f27a3fa-a63a-407b-9dfb-93e86f67aabe")
 		(effects
 			(font
 				(size 1.016 1.016)
@@ -47,7 +47,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "80453993-1371-49ce-91b4-7c7f12f9278e")
+		(uuid "eaf11b4b-b6e5-4710-b713-566d9943b77f")
 		(effects
 			(font
 				(size 1.016 1.016)
@@ -59,21 +59,21 @@
 	(duplicate_pad_numbers_are_jumpers no)
 	(pad "" np_thru_hole circle
 		(at 0 0)
-		(size 3.2 3.2)
-		(drill 3.2)
+		(size 5.2 5.2)
+		(drill 5.2)
 		(layers "*.Cu" "*.Mask")
-		(uuid "3c56f92e-cc82-4e32-a66f-9c9c3d1da623")
+		(uuid "5b6d47d0-b3c8-4bf6-b288-8ae5e3ba3976")
 	)
 	(embedded_fonts no)
-	(model "${KICAD10_3DMODEL_DIR}/LED_THT.3dshapes/LED_D3.0mm_Green.step"
+	(model "${KICAD10_3DMODEL_DIR}/LED_THT.3dshapes/LED_D5.0mm_Horizontal_O3.81mm_Z9.0mm.step"
 		(offset
-			(xyz -1.25 0 -5.5)
+			(xyz -9 1.25 -10)
 		)
 		(scale
 			(xyz 1 1 1)
 		)
 		(rotate
-			(xyz -0 -0 -0)
+			(xyz 90 -0 90)
 		)
 	)
 )

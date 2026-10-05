@@ -61,7 +61,7 @@
 		)
 		(capping no)
 		(filling no)
-		(grid_origin 66.245894 167.915428)
+		(grid_origin 71.695894 53.715428)
 		(pcbplotparams
 			(layerselection 0x00000000_00000000_55555555_5755f5ff)
 			(plot_on_all_layers_selection 0x00000000_00000000_00000000_00000000)
@@ -420,6 +420,84 @@
 			)
 		)
 	)
+	(footprint "IMNOTWOPR:Panel_LED_5.0mm_z1"
+		(layer "F.Cu")
+		(uuid "978a87a5-0987-4b23-8710-af1b320cb9aa")
+		(at 74.695894 67.715428)
+		(property "Reference" "REF**"
+			(at 0 -0.508 0)
+			(unlocked yes)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "0c27d5a8-0ec9-4e20-8869-9aad824372f1")
+			(effects
+				(font
+					(size 1.016 1.016)
+					(thickness 0.1524)
+				)
+			)
+		)
+		(property "Value" "Panel_LED_5.0mm_z1"
+			(at 0 1.016 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "16726cd0-0597-4391-a3f6-b875364e9861")
+			(effects
+				(font
+					(size 1.016 1.016)
+					(thickness 0.1524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c0daba09-4191-4152-9717-a39c45ebe26d")
+			(effects
+				(font
+					(size 1.016 1.016)
+					(thickness 0.1524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9bdbcd0f-762a-48cc-82f2-0ee2fbbe6b55")
+			(effects
+				(font
+					(size 1.016 1.016)
+					(thickness 0.1524)
+				)
+			)
+		)
+		(attr through_hole)
+		(duplicate_pad_numbers_are_jumpers no)
+		(pad "" np_thru_hole circle
+			(at 0 0)
+			(size 5.2 5.2)
+			(drill 5.2)
+			(layers "*.Cu" "*.Mask")
+			(uuid "106d79f6-ae9d-4d88-86f8-22b74d54b6b9")
+		)
+		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/LED_THT.3dshapes/LED_D5.0mm_Horizontal_O1.27mm_Z3.0mm.step"
+			(offset
+				(xyz -3 1.25 -7.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 90 -0 90)
+			)
+		)
+	)
 	(footprint "FormantKO-Panel:PanelMountingHole"
 		(layer "F.Cu")
 		(uuid "b5556ca1-ebae-42a2-b95e-4b860ab4366c")
@@ -598,6 +676,211 @@
 		)
 		(embedded_fonts no)
 	)
+	(footprint "IMNOTWOPR:DB-9 Panel"
+		(layer "F.Cu")
+		(uuid "ec2d42e4-5e6e-4239-aeef-b94216e420cb")
+		(at 86.695894 99.215428)
+		(property "Reference" "REF**"
+			(at 0 -0.508 0)
+			(unlocked yes)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "0757dc5e-6c1a-4ab7-994a-4619335fca78")
+			(effects
+				(font
+					(size 1.016 1.016)
+					(thickness 0.1524)
+				)
+			)
+		)
+		(property "Value" "DB-9 Panel"
+			(at 0 -0.254 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(uuid "0c64cbeb-da2c-4a83-835b-bfa9324041ac")
+			(effects
+				(font
+					(size 1.016 1.016)
+					(thickness 0.1524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c2be0fdf-874c-41e6-bcfc-f6bc6206cc98")
+			(effects
+				(font
+					(size 1.016 1.016)
+					(thickness 0.1524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "58e34d93-596e-409b-bcb7-b7911021e486")
+			(effects
+				(font
+					(size 1.016 1.016)
+					(thickness 0.1524)
+				)
+			)
+		)
+		(attr through_hole)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_line
+			(start -9.2329 2.8321)
+			(end -10.2362 -2.8321)
+			(stroke
+				(width 0.1016)
+				(type default)
+			)
+			(layer "Dwgs.User")
+			(uuid "5cc5e336-7e4c-471a-920f-d557364ae527")
+		)
+		(fp_rect
+			(start -12.4968 -5.334)
+			(end 12.4968 5.334)
+			(stroke
+				(width 0.1016)
+				(type solid)
+			)
+			(fill no)
+			(layer "Dwgs.User")
+			(uuid "32925128-11b3-4b38-a1c5-7a435ff9a6b9")
+		)
+		(fp_rect
+			(start -10.2362 -5.334)
+			(end 10.2362 5.334)
+			(stroke
+				(width 0.1016)
+				(type solid)
+			)
+			(fill no)
+			(layer "Dwgs.User")
+			(uuid "15e63364-10ba-434d-911d-062b90c1124d")
+		)
+		(fp_rect
+			(start -10.2362 -2.8321)
+			(end 10.2362 2.8321)
+			(stroke
+				(width 0.1016)
+				(type solid)
+			)
+			(fill no)
+			(layer "Dwgs.User")
+			(uuid "95761c39-9864-4e73-be43-83c39945454f")
+		)
+		(fp_rect
+			(start -7.7343 -5.334)
+			(end 7.7343 5.334)
+			(stroke
+				(width 0.1016)
+				(type solid)
+			)
+			(fill no)
+			(layer "Dwgs.User")
+			(uuid "9207089d-c81f-483d-8e07-61e7f237e334")
+		)
+		(fp_rect
+			(start -6.731 -5.334)
+			(end 6.731 5.334)
+			(stroke
+				(width 0.1016)
+				(type solid)
+			)
+			(fill no)
+			(layer "Dwgs.User")
+			(uuid "20b62ff1-108b-4d73-a08b-18bc7f7bd19c")
+		)
+		(fp_poly
+			(pts
+				(arc
+					(start 10.2362 -2.8321)
+					(mid 9.50341 -4.60121)
+					(end 7.7343 -5.334)
+				)
+				(arc
+					(start -7.7343 -5.334)
+					(mid -9.50341 -4.60121)
+					(end -10.2362 -2.8321)
+				)
+				(arc
+					(start -9.090981 3.662757)
+					(mid -8.176905 4.873879)
+					(end -6.731 5.334)
+				)
+				(arc
+					(start 6.731 5.334)
+					(mid 8.176905 4.873879)
+					(end 9.090981 3.662757)
+				)
+			)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill no)
+			(layer "Edge.Cuts")
+			(uuid "e8bf34f8-0152-436d-883c-b03b522405e4")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 1.27 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(uuid "2b8b1bd1-3313-455f-816a-b3f5381b0dbf")
+			(effects
+				(font
+					(size 1.016 1.016)
+					(thickness 0.1524)
+				)
+			)
+		)
+		(point
+			(at 78.961594 96.383328)
+			(size 1)
+			(layer "Dwgs.User")
+			(uuid "8d8c9ef9-9958-4cdf-ac9e-3862f57c3385")
+		)
+		(point
+			(at 79.964894 102.047528)
+			(size 1)
+			(layer "Dwgs.User")
+			(uuid "ce8d7218-b0c7-4233-8a00-ce4d9556b67b")
+		)
+		(point
+			(at 93.426894 102.047528)
+			(size 1)
+			(layer "Dwgs.User")
+			(uuid "6202d7bd-a636-4394-8c1f-9b3aaa6e885b")
+		)
+		(point
+			(at 94.430194 96.383328)
+			(size 1)
+			(layer "Dwgs.User")
+			(uuid "38d5ecb4-1740-4d3d-b9b9-322cdab57398")
+		)
+		(pad "" np_thru_hole circle
+			(at -12.4968 0)
+			(size 3.048 3.048)
+			(drill 3.048)
+			(layers "*.Cu" "*.Mask")
+			(uuid "83dc7050-82ce-4711-bb9e-2b0c1b90e511")
+		)
+		(pad "" np_thru_hole circle
+			(at 12.4968 0)
+			(size 3.048 3.048)
+			(drill 3.048)
+			(layers "*.Cu" "*.Mask")
+			(uuid "bfedd83e-e660-4b3a-9a3e-5a744e350206")
+		)
+		(embedded_fonts no)
+	)
 	(gr_rect
 		(start 67.245894 45.515428)
 		(end 105.545894 161.915428)
@@ -669,6 +952,17 @@
 		)
 		(layer "Dwgs.User")
 		(uuid "32846bf4-b6f7-46c9-9706-d1749670463c")
+	)
+	(gr_rect
+		(start 71.695894 53.715428)
+		(end 70.095894 153.715428)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "Cmts.User")
+		(uuid "779d5a56-6df8-4519-862a-3faa67f5adb0")
 	)
 	(gr_rect
 		(start 66.245894 39.515428)
