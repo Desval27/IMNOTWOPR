@@ -7365,7 +7365,7 @@
 		(uuid "356ed57b-6910-4ec5-925d-17eda6452af4")
 	)
 	(junction
-		(at 81.28 255.27)
+		(at 133.35 73.66)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "3892102b-250a-4ed0-a5b0-2277063418b9")
@@ -7619,10 +7619,6 @@
 		(uuid "7702fa68-83ca-456e-9602-df93de97f2c1")
 	)
 	(no_connect
-		(at 96.52 255.27)
-		(uuid "7716e96f-73f9-4a01-bec6-7c16c87d41cb")
-	)
-	(no_connect
 		(at 30.48 163.83)
 		(uuid "7ca8c53e-a590-4eac-b30f-43c5b8eaf46c")
 	)
@@ -7826,7 +7822,7 @@
 	)
 	(wire
 		(pts
-			(xy 91.44 76.2) (xy 120.65 76.2)
+			(xy 91.44 76.2) (xy 114.3 76.2)
 		)
 		(stroke
 			(width 0)
@@ -7886,7 +7882,7 @@
 	)
 	(wire
 		(pts
-			(xy 111.76 71.12) (xy 120.65 71.12)
+			(xy 111.76 71.12) (xy 114.3 71.12)
 		)
 		(stroke
 			(width 0)
@@ -8166,16 +8162,6 @@
 	)
 	(wire
 		(pts
-			(xy 78.74 255.27) (xy 81.28 255.27)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5d7d94cc-82da-4f45-973b-799c81e64c3d")
-	)
-	(wire
-		(pts
 			(xy 147.32 144.78) (xy 144.78 144.78)
 		)
 		(stroke
@@ -8246,7 +8232,7 @@
 	)
 	(wire
 		(pts
-			(xy 81.28 255.27) (xy 81.28 257.81)
+			(xy 133.35 73.66) (xy 133.35 76.2)
 		)
 		(stroke
 			(width 0)
@@ -8716,6 +8702,16 @@
 	)
 	(wire
 		(pts
+			(xy 129.54 73.66) (xy 133.35 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c1892e07-988a-4fe6-a0bc-c99d332175c7")
+	)
+	(wire
+		(pts
 			(xy 78.74 266.7) (xy 81.28 266.7)
 		)
 		(stroke
@@ -8766,16 +8762,6 @@
 	)
 	(wire
 		(pts
-			(xy 135.89 73.66) (xy 142.24 73.66)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ccf106d2-49a8-4154-9ea9-2135ef0a3c6f")
-	)
-	(wire
-		(pts
 			(xy 162.56 128.27) (xy 165.1 128.27)
 		)
 		(stroke
@@ -8786,7 +8772,7 @@
 	)
 	(wire
 		(pts
-			(xy 81.28 252.73) (xy 81.28 255.27)
+			(xy 133.35 71.12) (xy 133.35 73.66)
 		)
 		(stroke
 			(width 0)
@@ -8896,7 +8882,7 @@
 	)
 	(wire
 		(pts
-			(xy 158.75 73.66) (xy 149.86 73.66)
+			(xy 160.02 73.66) (xy 156.21 73.66)
 		)
 		(stroke
 			(width 0)
@@ -10072,85 +10058,6 @@
 			(project "PWR"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
 					(reference "#PWR026")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 78.74 255.27 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "10e7002f-9c65-4152-9fea-84bbe918578e")
-		(property "Reference" "#PWR01"
-			(at 78.74 261.62 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 78.74 260.35 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 78.74 255.27 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 78.74 255.27 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 78.74 255.27 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "3c8cc66e-7c2e-4d3d-8de5-5481de74cdba")
-		)
-		(instances
-			(project "PWR"
-				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
-					(reference "#PWR01")
 					(unit 1)
 				)
 			)
@@ -12042,7 +11949,7 @@
 	)
 	(symbol
 		(lib_id "IMNOTWOPR:74HCT00")
-		(at 128.27 73.66 0)
+		(at 121.92 73.66 0)
 		(unit 3)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -12053,7 +11960,7 @@
 		(fields_autoplaced yes)
 		(uuid "4a79a52a-97c0-4cbf-a1c1-37d0a05181f1")
 		(property "Reference" "U2"
-			(at 128.27 64.77 0)
+			(at 121.92 64.77 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace yes)
@@ -12064,7 +11971,7 @@
 			)
 		)
 		(property "Value" "74HCT00"
-			(at 128.27 67.31 0)
+			(at 121.92 67.31 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace yes)
@@ -12075,7 +11982,7 @@
 			)
 		)
 		(property "Footprint" "IMNOTWOPR:DIP-14N"
-			(at 128.27 73.66 0)
+			(at 121.92 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12086,7 +11993,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.ti.com/lit/gpn/sn74hc00"
-			(at 128.27 73.66 0)
+			(at 121.92 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12097,7 +12004,7 @@
 			)
 		)
 		(property "Description" "quad 2-input NAND gate"
-			(at 128.27 73.66 0)
+			(at 121.92 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12760,7 +12667,7 @@
 	)
 	(symbol
 		(lib_id "IMNOTWOPR:R")
-		(at 146.05 73.66 0)
+		(at 152.4 73.66 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -12770,7 +12677,7 @@
 		(dnp no)
 		(uuid "674855a8-200e-45b1-bf0e-7a2e9f380c2d")
 		(property "Reference" "R4"
-			(at 146.05 72.39 0)
+			(at 152.4 72.39 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12781,7 +12688,7 @@
 			)
 		)
 		(property "Value" "1kΩ"
-			(at 146.304 73.66 0)
+			(at 152.654 73.66 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12791,7 +12698,7 @@
 			)
 		)
 		(property "Footprint" "IMNOTWOPR:R_Axial_DIN0207_P400mil"
-			(at 146.05 73.66 0)
+			(at 152.4 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12802,7 +12709,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 146.05 73.66 90)
+			(at 152.4 73.66 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12813,7 +12720,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 146.05 73.66 0)
+			(at 152.4 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13237,7 +13144,7 @@
 	)
 	(symbol
 		(lib_id "IMNOTWOPR:LED_R")
-		(at 158.75 77.47 90)
+		(at 160.02 77.47 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -13248,7 +13155,7 @@
 		(fields_autoplaced yes)
 		(uuid "70d750b9-3462-4681-8cb1-deaa41d456ba")
 		(property "Reference" "D3"
-			(at 162.56 77.7874 90)
+			(at 163.83 77.7874 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -13259,7 +13166,7 @@
 			)
 		)
 		(property "Value" "PWR STANDBY"
-			(at 162.56 80.3274 90)
+			(at 163.83 80.3274 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -13270,7 +13177,7 @@
 			)
 		)
 		(property "Footprint" "IMNOTWOPR:LED_D5.0mm"
-			(at 158.75 77.47 0)
+			(at 160.02 77.47 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13281,7 +13188,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 158.75 77.47 0)
+			(at 160.02 77.47 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13292,7 +13199,7 @@
 			)
 		)
 		(property "Description" "Light emitting diode"
-			(at 158.75 77.47 0)
+			(at 160.02 77.47 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13303,7 +13210,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=K 2=A"
-			(at 158.75 77.47 0)
+			(at 160.02 77.47 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13505,7 +13412,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 158.75 81.28 0)
+		(at 160.02 81.28 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -13516,7 +13423,7 @@
 		(fields_autoplaced yes)
 		(uuid "76a4b620-31e4-4189-95f3-4c20c6e7d64d")
 		(property "Reference" "#PWR012"
-			(at 158.75 87.63 0)
+			(at 160.02 87.63 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13527,7 +13434,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 158.75 86.36 0)
+			(at 160.02 86.36 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13538,7 +13445,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 158.75 81.28 0)
+			(at 160.02 81.28 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13549,7 +13456,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 158.75 81.28 0)
+			(at 160.02 81.28 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13560,7 +13467,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 158.75 81.28 0)
+			(at 160.02 81.28 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15784,7 +15691,7 @@
 	)
 	(symbol
 		(lib_id "IMNOTWOPR:74HCT00")
-		(at 88.9 255.27 0)
+		(at 140.97 73.66 0)
 		(unit 2)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -15795,7 +15702,7 @@
 		(fields_autoplaced yes)
 		(uuid "be11fdd5-380a-4470-8fbb-511cea07cd43")
 		(property "Reference" "U2"
-			(at 88.9 246.38 0)
+			(at 140.97 64.77 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace yes)
@@ -15806,7 +15713,7 @@
 			)
 		)
 		(property "Value" "74HCT00"
-			(at 88.9 248.92 0)
+			(at 140.97 67.31 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace yes)
@@ -15817,7 +15724,7 @@
 			)
 		)
 		(property "Footprint" "IMNOTWOPR:DIP-14N"
-			(at 88.9 255.27 0)
+			(at 140.97 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15828,7 +15735,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.ti.com/lit/gpn/sn74hc00"
-			(at 88.9 255.27 0)
+			(at 140.97 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15839,7 +15746,7 @@
 			)
 		)
 		(property "Description" "quad 2-input NAND gate"
-			(at 88.9 255.27 0)
+			(at 140.97 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)

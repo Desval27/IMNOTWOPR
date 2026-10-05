@@ -1,0 +1,13 @@
+# Local build output
+/build/
+/firmware/build/
+/firmware/.pio/
+
+# Python helper caches
+__pycache__/
+*.py[cod]
+/.venv/
+
+# KiCad local session state (shared backup rules live at the repository root)
+*.kicad_prl
+~*.lck

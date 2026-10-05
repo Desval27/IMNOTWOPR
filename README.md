@@ -31,6 +31,7 @@ All modules and panels are currently a work in progress and **NONE** have been t
 - [Backplane](system/BACKPLANE/README.md)
 - [PWR PCB](modules/PWR/README.md)
 - [PWR Panel](panels/PWR/README.md)
+- [Lightman serial terminal](lightman/README.md) - MCU-based VGA terminal with PS/2 or USB keyboard input (initial project structure).
 
 ## Mechanical Architecture
 
