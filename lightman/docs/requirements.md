@@ -1,42 +1,29 @@
-# Initial requirements
+# Lightman baseline requirements
 
-## Intended behavior
+The initial firmware targets the original Raspberry Pi Pico (RP2040, 2 MiB
+flash). See [platform](platform.md), [wiring](wiring.md), and
+[compatibility](compatibility.md) for implementation details.
 
-- Operate as a Raspberry Pi Pico (RP2040)-based serial dumb terminal for IMNOTWOPR.
-- Render received serial text on a VGA monitor.
-- Accept keyboard input through PS/2 or USB and transmit it to the serial host.
-- Keep host applications on the connected computer.
-
-## Selected platform
-
-Use the original Raspberry Pi Pico with the RP2040 MCU. See the
-[platform decision](platform.md) for the rationale and proposed architecture.
-This selects the MCU board; the surrounding circuit and firmware are still
-to be designed.
-
-## Decisions to make
-
-| Area | Open decision |
+| Area | Selected baseline |
 | --- | --- |
-| Pico integration | Carrier PCB, mounting, pin assignments, peripheral allocation, and memory budget |
-| VGA | Video timing, text dimensions, color depth, and font size |
-| Keyboard | PS/2, USB host, or both; keyboard layout and key mapping |
-| Serial connection | Logic-level UART versus RS-232, connector, voltage levels, and any transceiver |
-| Serial settings | Baud rates, framing, buffering, and flow control |
-| Terminal behavior | Character set, control characters, escape sequences, and compatibility target |
-| User settings | Configuration interface, local echo, newline handling, and persistence |
-| Power and mechanics | Power source, connector placement, enclosure, and mounting |
-| Development | Language, SDK, build system, flashing, and debugging tools |
+| Display | Fixed 640x480 at 60 Hz; 80x24 text centered vertically |
+| VGA pins | HSYNC 16, VSYNC 17, red 18, green 19, blue 20 |
+| Keyboard | PS/2 set 2 through level shifters; US layout; GPIO6/7 |
+| Serial | UART0 on GPIO0/1 through MAX3232; DTE male DE-9 |
+| Optional handshaking | CTS/RTS on GPIO2/3, DTR/DSR on GPIO4/5 |
+| Framing | 300–115200 baud, 7/8 bits, N/E/O parity, 1/2 stop bits |
+| Flow | None, XON/XOFF or RTS/CTS; bounded RX/TX queues |
+| Emulation | Documented VT100/VT52 subset, ASCII and DEC drawing characters |
+| Setup | F12 local menu, session apply or persistent save |
+| Fonts | Fixed Regular/Bold set; developer-replaceable 8x16 PSF inputs |
+| Persistence | Two versioned CRC32 records in the last two flash sectors |
+| Build | C++23, CMake, Pico C SDK; portable host tests |
 
-## Suggested bring-up sequence
+US layout and DTE wiring were confirmed for this baseline. USB keyboard input,
+DCD/RI, modem management, and complete DEC conformance remain outside the current
+implementation. Power, enclosure, connector footprints and PCB routing still
+require hardware design work. Existing KiCad files were not rewritten.
 
-1. Allocate Pico pins, peripherals, and memory; define power and interface circuits.
-2. Produce a stable VGA test pattern and then a text display.
-3. Receive serial text and render it on screen.
-4. Read a keyboard and send keystrokes to the host.
-5. Implement the selected terminal control behavior.
-6. Validate sustained serial traffic, scrolling, and simultaneous keyboard input.
-
-Record chosen values and the reasons for them in this directory as the design
-develops. The platform is selected; the decisions in the table remain open.
-No capabilities have been implemented yet.
+Before declaring hardware support validated, complete the
+[bring-up procedure](../tests/bringup.md), including VGA deadline monitoring
+under sustained serial/keyboard load and settings-save recovery.

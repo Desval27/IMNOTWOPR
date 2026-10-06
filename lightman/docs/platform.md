@@ -1,49 +1,38 @@
 # Pico platform decision
 
-## Decision
+The original Raspberry Pi Pico, based on RP2040, was selected on 2026-10-05.
+Its two cores, PIO, DMA and hardware UART allow a fixed VGA signal while the
+terminal processes serial input and keyboard events.
 
-Select the original Raspberry Pi Pico module, based on the RP2040 MCU, as the
-platform for Lightman. This decision was made on 2026-10-05.
+The firmware uses the Pico C SDK directly. PIO0 streams all five consecutive
+VGA GPIOs from two DMA scanline buffers at a 25.2 MHz pixel clock. The system
+clock is 126 MHz; each PIO pixel takes five cycles. Core 1 expands pre-rendered
+packed pixel rows and rearms alternating DMA channels. It does not parse text,
+access flash font data, or block waiting for the terminal's frame publisher.
 
-## Rationale
+Core 0 owns terminal state, US PS/2 scan-code decoding, UART queues and setup.
+It renders complete 640x384 monochrome rasters into a three-buffer pool, then
+publishes an index under a short hardware spinlock. Core 1 adopts the latest
+published raster at a frame boundary; the buffer it scans is never modified.
+Three rasters cost about 90 KiB, leaving room in the RP2040's 264 KiB SRAM for
+fonts, pixel lookup tables, terminal state, I/O queues and stacks. Core 0 and
+core 1 each reserve a 4 KiB stack. No RTOS or pico-extras dependency is needed.
 
-Lightman needs to generate a stable VGA display while receiving serial data,
-processing keyboard input, and maintaining terminal state. The Pico provides
-more room for these concurrent tasks than an ATmega328P-based design.
+Serial RX and PS/2 falling edges use core 0 interrupts. Queues keep interrupts
+short and separate byte capture from parsing. UART0 CTS gates hardware TX;
+RTS is a GPIO so it reflects the software RX queue rather than only the UART
+FIFO. DTR remains asserted; DSR is displayed in setup.
 
-Raspberry Pi's scanvideo implementation uses PIO for video timing and DMA to
-feed scanline data. This offers a starting point for VGA generation without
-requiring the CPU to time every pixel. The firmware must still prepare display
-data in time for output.
+Saving settings stops VGA DMA and parks core 1 in an SRAM loop with interrupts
+disabled. Core 0 then disables its interrupts for the SDK flash erase/program
+calls, restores interrupts, verifies the write, and resumes VGA. The last two
+4 KiB flash sectors are reserved by a linker assertion. See
+[compatibility](compatibility.md) for the implications for uninterrupted serial
+traffic during saves.
 
-The Pico ecosystem also provides TinyUSB host examples, making USB keyboard
-input a practical option alongside PS/2. Selecting the Pico does not yet select
-the keyboard interface.
+This design has been cross-compiled and its portable logic tested. Physical
+VGA timing, analog levels and sustained-load timing margins still require the
+[bench checks](../tests/bringup.md).
 
-## Proposed starting architecture
-
-The following is a design proposal to guide prototyping, not a set of finalized
-requirements:
-
-- Mount a socketed Pico module on a carrier PCB with the display, keyboard,
-  serial, and power connectors.
-- Use PIO and DMA for VGA output, starting with monochrome 640x480 video.
-- Use an 8x16 bitmap font for an 80-column by 30-row text display.
-- Store characters and attributes in a text buffer and render glyphs into
-  scanline buffers.
-- Use a hardware UART for communication with the serial host.
-- Evaluate PS/2 for initial bring-up and native USB host for USB keyboards.
-
-The surrounding circuitry must account for the Pico's 3.3 V GPIO, the chosen
-serial electrical interface, and keyboard power and signal levels. USB host
-use also needs a defined keyboard power supply and connector arrangement.
-
-Pin assignments, video timing, buffer sizes, keyboard choice, terminal
-compatibility, and the development toolchain remain open. Track these in
-[requirements](requirements.md) as the prototype develops.
-
-## References
-
-- [Raspberry Pi Pico documentation](https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html)
-- [Raspberry Pi scanvideo architecture](https://github.com/raspberrypi/pico-extras/blob/master/src/common/pico_scanvideo/README.adoc)
-- [Raspberry Pi USB host examples](https://github.com/raspberrypi/pico-examples#usb-host)
+References: [Pico SDK hardware APIs](https://www.raspberrypi.com/documentation/pico-sdk/hardware.html),
+[Pico-series documentation](https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html).
