@@ -2,8 +2,9 @@
 
 These assignments target the original 2 MiB Raspberry Pi Pico. Numbers below
 are GPIO numbers, not physical header positions. Firmware assignments live in
-[`lightman_pico.h`](../firmware/boards/lightman_pico.h). Existing KiCad files
-have not been updated or checked against this proposed wiring.
+[`lightman_pico.h`](../firmware/boards/lightman_pico.h). The serial interface
+uses three MAX3232s for the full DE-9 signal set. Check the PCB against these
+assignments before assembly.
 
 | Signal | GPIO | Pico physical pin | Destination |
 | --- | ---: | ---: | --- |
@@ -13,8 +14,10 @@ have not been updated or checked against this proposed wiring.
 | RTS | 3 | 5 | MAX3232 driver input -> DE-9 pin 7 |
 | DTR | 4 | 6 | MAX3232 driver input -> DE-9 pin 4 |
 | DSR | 5 | 7 | MAX3232 receiver output <- DE-9 pin 6 |
-| PS/2 clock | 6 | 9 | Open-drain level shifter <-> keyboard clock |
-| PS/2 data | 7 | 10 | Open-drain level shifter <-> keyboard data |
+| DCD | 6 | 9 | MAX3232 receiver output <- DE-9 pin 1 |
+| RI | 7 | 10 | MAX3232 receiver output <- DE-9 pin 9 |
+| PS/2 clock | 8 | 11 | Open-drain level shifter <-> keyboard clock |
+| PS/2 data | 9 | 12 | Open-drain level shifter <-> keyboard data |
 | VGA HSYNC | 16 | 21 | VGA pin 13 |
 | VGA VSYNC | 17 | 22 | VGA pin 14 |
 | VGA red | 18 | 24 | Series resistor -> VGA pin 1 |
@@ -28,28 +31,30 @@ The male DE-9 is **DTE**: TX on pin 3, RX on pin 2. A DTE host such as a PC
 normally needs a null-modem cable (TX/RX crossed; handshake signals crossed
 appropriately if used). A DCE device uses a straight-through connection.
 
-Suggested transceiver allocation:
+Schematic transceiver allocation:
 
 | IC channel | Driver | Receiver |
 | --- | --- | --- |
 | U1 channel 1 | TX | RX |
 | U1 channel 2 | RTS | CTS |
-| U2 channel 1 | DTR | DSR |
-| U2 channel 2 | Spare | Spare |
+| U3 channel 1 | DTR | DSR |
+| U3 channel 2 | Spare | Spare |
+| U5 channel 1 | Spare | DCD |
+| U5 channel 2 | Spare | RI |
 
-One MAX3232 supports TX/RX and, if wired, RTS/CTS. Two chips add DTR/DSR with
-a driver and receiver spare. DCD (DE-9 pin 1) and RI (pin 9) are not implemented;
-adding both requires two receiver channels, one of which can be the spare on
-U2. Thus all DE-9 signals need one more receiver beyond two MAX3232s.
+Three MAX3232s provide the three drivers and five receivers needed for all
+eight DE-9 signals. The third chip receives DCD (DE-9 pin 1) and RI (pin 9).
 See the [MAX3232 datasheet](https://www.ti.com/lit/ds/symlink/max3232.pdf).
 
 Use 3.3 V transceiver supplies so receiver outputs are safe for the Pico.
 Fit the charge-pump capacitors specified for the particular part and supply.
 Never connect RS-232 voltages directly to GPIO. RTS and DTR are asserted by a
-low GPIO level, which the driver converts to positive RS-232 voltage. CTS and
-DSR are asserted when their receiver outputs are low. DTR stays asserted;
-DSR is informational in setup and does not gate transmission. With no handshake
-wiring, select None or XON/XOFF flow control. CTS/DSR GPIOs have pull-ups.
+low GPIO level, which the driver converts to positive RS-232 voltage. CTS,
+DSR, DCD and RI are asserted when their receiver outputs are low. DTR stays
+asserted; DSR, DCD and RI are informational in setup and do not gate serial
+traffic. RI shows the current input level, not a latched ring event. With no
+handshake wiring, select None or XON/XOFF flow control. CTS/DSR/DCD/RI GPIOs
+have pull-ups.
 
 ## Keyboard
 

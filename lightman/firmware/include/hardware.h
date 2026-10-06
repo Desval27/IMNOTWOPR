@@ -116,6 +116,16 @@ uint32_t serial_tx_drops();
  */
 bool serial_dsr();
 /**
+ * @brief Sample the active-low, transceiver-side DCD input.
+ * @return True when carrier detect is asserted; DCD does not gate transmission.
+ */
+bool serial_dcd();
+/**
+ * @brief Sample the active-low, transceiver-side RI input.
+ * @return True when ring indicator is asserted; RI is sampled, not latched.
+ */
+bool serial_ri();
+/**
  * @brief Select and decode the newest valid flash settings record.
  * @return Saved configuration, or factory defaults when neither slot is valid.
  * @pre Call once on core 0 during startup, before the first settings_save().

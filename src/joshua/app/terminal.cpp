@@ -1,7 +1,7 @@
 #include "terminal.hpp"
 #include <stdexcept>
 #ifdef _WIN32
-#define NOMINMAX
+//#define NOMINMAX
 #include <windows.h>
 #else
 #include <cerrno>

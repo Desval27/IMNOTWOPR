@@ -1,8 +1,3 @@
-; Configuration
-USE_EXTENDED_TEXT = 1	; Set to 1 to allow for text strings longer than 255 bytes.  
-
-PRINT_CHR_DELAY = $FF	; Set to a value that will give the ACIA time to send a character before the next one is sent.  This is a crude way to do it, but it works for now.
-
 .segment "ZEROPAGE"
 print_text_ptr:		.res	2
 read_text_ptr:		.res	2
@@ -67,7 +62,6 @@ login_accepted:
 	ldx	#>greeting
 	jsr	print_text
 
-
 loop:
 	lda	#<prompt
 	ldx	#>prompt
@@ -86,151 +80,9 @@ print_reverse_done:
 	jsr	print_newline
 	bra	loop
 
-.include "lib/utils.inc"
-
-; ============================================================================
-; read_text: Read and echo a line into a 256-byte buffer at A (low), X (high).
-; Returns Y = length (0..255), with a trailing NUL stored in the buffer.
-; Preserves X; clobbers A, Y, flags and read_text_ptr (not reentrant).
-; CR, LF or CR/LF finishes the line and echoes one CR/LF. Backspace/Delete
-; erases a character. Other non-printable ASCII is ignored. At capacity,
-; additional printable characters ring the bell and are not stored/echoed.
-; skip_lf must be initialized to zero once before the first call.
-; This polls the ACIA; input must be paced while echo/reverse output is sent.
-; ============================================================================
-read_text:
-	sta	read_text_ptr
-	stx	read_text_ptr+1
-	ldy	#0
-read_text_loop:
-	jsr	read_chr
-	cmp	#$0A
-	beq	read_text_lf
-	stz	skip_lf
-	cmp	#$0D
-	beq	read_text_cr
-	cmp	#$08
-	beq	read_text_erase
-	cmp	#$7F
-	beq	read_text_erase
-	cmp	#$20
-	bcc	read_text_loop
-	cmp	#$7F
-	bcs	read_text_loop
-	cpy	#$FF
-	beq	read_text_full
-	sta	(read_text_ptr),y
-	iny
-	jsr	print_chr
-	bra	read_text_loop
-read_text_full:
-	lda	#$07		; Bell: buffer is full.
-	jsr	print_chr
-	bra	read_text_loop
-read_text_erase:
-	cpy	#0
-	beq	read_text_loop
-	dey
-	lda	#$08
-	jsr	print_chr
-	lda	#' '
-	jsr	print_chr
-	lda	#$08
-	jsr	print_chr
-	bra	read_text_loop
-read_text_lf:
-	lda	skip_lf
-	beq	read_text_done
-	stz	skip_lf
-	bra	read_text_loop
-read_text_cr:
-	lda	#1
-	sta	skip_lf
-read_text_done:
-	lda	#0
-	sta	(read_text_ptr),y
-	jsr	print_newline
-	rts
-
-; Wait for an ACIA receive byte. Returns A; preserves X/Y.
-read_chr:
-	lda	acia_status
-	and	#$08		; Receive data register full.
-	beq	read_chr
-	lda	acia_data
-	rts
-
-; Print CR/LF, preserving X/Y.
-print_newline:
-	lda	#$0D
-	jsr	print_chr
-	lda	#$0A
-	jmp	print_chr
-
-; ============================================================================
-; print_text:  Print a NUL-terminated string at address A (low byte), X (high byte).
-; example:
-;	lda	#<greeting
-;	ldx	#>greeting
-;	jsr	print_text
-; ============================================================================
-.if USE_EXTENDED_TEXT = 1
-; Extended text support: Can handle strings longer than 255 bytes, but not reentrant.
-; print a NUL-terminated string at address A (low byte), X (high byte).
-; Preserves X and Y; clobbers A, flags and print_text_ptr (not reentrant).
-print_text:
-	sta	print_text_ptr
-	stx	print_text_ptr+1
-	phy				; Save registers
-	ldy	#0			; Start at the beginning of the string.
-print_text_loop:
-	lda	(print_text_ptr),y	; Get the next character.
-	beq	print_text_done	; If it's zero, we're done.
-	jsr	print_chr	; Otherwise, print it.
-	iny				; Move to the next character.
-	bne	print_text_loop
-	inc	print_text_ptr+1	; Continue past 256 bytes when Y wraps.
-	bra	print_text_loop
-print_text_done:
-	ply				; Restore registers
-	rts				; Return
-
-.else
-
-; Smaller alternative for NUL-terminated strings of 0..255 text bytes.
-; Same A/X address parameter and register contract as print_text.
-; The string may cross a page boundary; no pointer update is needed.
-print_text:
-	sta	print_text_ptr
-	stx	print_text_ptr+1
-	phy
-	ldy	#0
-print_text_loop:
-	lda	(print_text_ptr),y
-	beq	print_text_done
-	jsr	print_chr
-	iny
-	bne	print_text_loop
-print_text_done:
-	ply
-	rts
-.endif
-
-; ============================================================================
-; Print a single character in A to the ACIA.  This is a blocking call that 
-; waits for the ACIA to be ready.	
-; ============================================================================
-print_chr:
-	sta	acia_data	; Output character.  This is the easy bit.
-
-	; Now we need to wait a bit before we can send the next character.
-	phx
-	ldx	#PRINT_CHR_DELAY
-print_chr_loop:
-	dex
-	bne print_chr_loop
-	plx
-	rts				; Return
+.include "read_text.inc"
+.include "print_text.inc"
+.include "compare_text.inc"
 
 .segment "RODATA"
 

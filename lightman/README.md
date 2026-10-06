@@ -39,14 +39,15 @@ The board/layout target is the original 2 MiB Pico, not Pico 2 or Pico W.
 | UART TX / RX | 0 / 1 |
 | CTS / RTS | 2 / 3 |
 | DTR / DSR | 4 / 5 |
-| PS/2 clock / data | 6 / 7 |
+| DCD / RI | 6 / 7 |
+| PS/2 clock / data | 8 / 9 |
 | VGA HSYNC / VSYNC | 16 / 17 |
 | VGA red / green / blue | 18 / 19 / 20 |
 
 See [wiring and electrical interfaces](docs/wiring.md) before connecting the
-board. One MAX3232 supports TX/RX plus RTS/CTS when wired; a second adds DTR/DSR.
-DCD/RI are not implemented. KiCad design files have not been changed to match
-these assignments.
+board. Three MAX3232s support all eight DE-9 signals: TX/RX, RTS/CTS, DTR/DSR,
+and DCD/RI, with common ground on pin 5. DSR, DCD and RI are status inputs
+displayed in setup; they do not gate serial traffic.
 
 ## Setup
 
@@ -62,7 +63,8 @@ Backspace, Regular font, white text**. Press **F12** to open setup.
 
 Choose 300–115200 baud, 7/8 data bits, parity, stop bits, flow control, terminal
 mode, echo, Backspace behavior, Regular/Bold font, and white/green/yellow text.
-The menu shows UART errors, dropped TX/PS/2 data, missed VGA deadlines and DSR.
+The menu shows UART errors, dropped TX/PS/2 data, missed VGA deadlines, and
+live DSR, DCD and RI status.
 Incoming host text continues updating a separate terminal screen during setup.
 
 Pause the host before changing serial framing or saving. Flash saves briefly

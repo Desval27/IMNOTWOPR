@@ -47,7 +47,7 @@ uses the same graphics repertoire, rather than a distinct historical VT52 ROM.
 - VT102 insert/delete characters and lines, printer support, answerback,
   keyboard LED commands, confidence tests and serial BREAK generation.
 - USB keyboard input, keyboard host commands, non-US layouts and F5–F11.
-- DCD/RI inputs, modem dialing and DTR hangup control.
+- Modem dialing, automatic carrier/ring handling and DTR hangup control.
 
 Unsupported CSI sequences are consumed without printing them. CSI parameter
 count/value limits prevent malformed streams from overrunning buffers. OSC/DCS
@@ -65,6 +65,10 @@ selected. Flow-control characters bypass a paused TX queue. Setup requests
 that the peer pause; incoming data still updates the separate terminal buffer.
 Overrun/framing/parity errors and queue drops appear in setup. An overflowing
 TX queue discards a complete key/reply sequence, never just its suffix.
+
+DSR, DCD and RI are active-low status inputs displayed live in setup. They do
+not gate serial traffic or trigger modem actions. RI is sampled, not latched;
+brief pulses between display updates may not be visible. DTR stays asserted.
 
 Pause host output before applying framing changes or saving. Saving erases
 flash with interrupts temporarily disabled and video stopped, so an

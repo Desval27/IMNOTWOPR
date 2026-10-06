@@ -4,7 +4,8 @@ Desktop tests and cross-compilation do not verify electrical or real-time
 behavior. Perform these checks before relying on the prototype.
 
 1. Confirm the pin map in [wiring](../docs/wiring.md), level-shifter supplies,
-   PS/2 pull-ups, MAX3232 charge pump and VGA resistor values.
+   PS/2 pull-ups, all three MAX3232 charge pumps and VGA resistor values.
+   Confirm DCD/RI reach GPIO6/7 and PS/2 clock/data reach GPIO8/9.
 2. Flash the UF2. Confirm 31.5 kHz HSYNC and 60 Hz VSYNC, negative polarity,
    proper RGB blanking and a stable 80x24 picture. `VGA late` in setup should
    stay zero during scrolling, keyboard activity and repeated menu changes.
@@ -26,8 +27,12 @@ behavior. Perform these checks before relying on the prototype.
    XOFF state.
 7. Wire RTS/CTS and test gating with CTS deasserted. Resume CTS and verify
    queued characters arrive. Confirm RTS deasserts under RX pressure/setup,
-   DTR stays asserted, and DSR status follows the input. No CTS wiring means
-   hardware flow control should remain disabled.
+   DTR stays asserted, and DSR status follows the input. Independently assert
+   and deassert DCD (DE-9 pin 1) and RI (pin 9) through their receivers: setup
+   must show each asserted when its GPIO is low and inactive when high.
+   Confirm serial traffic and keyboard input continue in both states. Hold RI
+   long enough to observe a display update; its status is not latched.
+   No CTS wiring means hardware flow control should remain disabled.
 8. Send `ESC [ ? 2 l`, test VT52 cursor addressing and identity, then `ESC <`
    to return to VT100. Run the host's VT100 test program and compare failures
    to the [declared gaps](../docs/compatibility.md); do not claim full vttest

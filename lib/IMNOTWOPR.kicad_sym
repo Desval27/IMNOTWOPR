@@ -23726,7 +23726,7 @@
 				)
 			)
 		)
-		(property "Footprint" "IMNOTWOPR:LED_D5.0mm"
+		(property "Footprint" "IMNOTWOPR:Wire_LED"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23913,7 +23913,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "IMNOTWOPR:Wire_LED"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24222,7 +24222,7 @@
 				)
 			)
 		)
-		(property "Footprint" "IMNOTWOPR:LED_G_D5.0mm"
+		(property "Footprint" "IMNOTWOPR:Wire_LED"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24412,7 +24412,7 @@
 				)
 			)
 		)
-		(property "Footprint" "IMNOTWOPR:LED_D5.0mm"
+		(property "Footprint" "IMNOTWOPR:Wire_LED"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)

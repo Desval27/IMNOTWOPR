@@ -2854,6 +2854,16 @@
 					)
 				)
 			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
 			(property "ki_keywords" "connector"
 				(at 0 0 0)
 				(show_name no)
@@ -4238,7 +4248,7 @@
 				(pin passive line
 					(at -10.16 30.48 0)
 					(length 3.81)
-					(name "D_{0}"
+					(name "~{VALID}"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4256,7 +4266,7 @@
 				(pin passive line
 					(at -10.16 27.94 0)
 					(length 3.81)
-					(name "D_{1}"
+					(name "PHI2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4274,7 +4284,7 @@
 				(pin passive line
 					(at -10.16 25.4 0)
 					(length 3.81)
-					(name "D_{2}"
+					(name "R~{W}"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4292,7 +4302,7 @@
 				(pin passive line
 					(at -10.16 22.86 0)
 					(length 3.81)
-					(name "D_{3}"
+					(name "~{RESET}"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4310,7 +4320,7 @@
 				(pin passive line
 					(at -10.16 20.32 0)
 					(length 3.81)
-					(name "D_{4}"
+					(name "~{IRQ}"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4328,7 +4338,7 @@
 				(pin passive line
 					(at -10.16 17.78 0)
 					(length 3.81)
-					(name "D_{5}"
+					(name "~{NMI}"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4346,7 +4356,7 @@
 				(pin passive line
 					(at -10.16 15.24 0)
 					(length 3.81)
-					(name "D_{6}"
+					(name "READY"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4364,7 +4374,7 @@
 				(pin passive line
 					(at -10.16 12.7 0)
 					(length 3.81)
-					(name "D_{7}"
+					(name "BE"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4382,7 +4392,7 @@
 				(pin passive line
 					(at -10.16 10.16 0)
 					(length 3.81)
-					(name "Φ_{2}"
+					(name "SYNC"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4400,7 +4410,7 @@
 				(pin passive line
 					(at -10.16 7.62 0)
 					(length 3.81)
-					(name "R~{W}"
+					(name "VPB"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4418,7 +4428,7 @@
 				(pin passive line
 					(at -10.16 5.08 0)
 					(length 3.81)
-					(name "~{VALID}"
+					(name "MLB"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4436,7 +4446,7 @@
 				(pin passive line
 					(at -10.16 2.54 0)
 					(length 3.81)
-					(name "~{RESET}"
+					(name "VDA"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4454,7 +4464,7 @@
 				(pin passive line
 					(at -10.16 0 0)
 					(length 3.81)
-					(name "~{MIRQ}"
+					(name "VPA"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4472,7 +4482,7 @@
 				(pin passive line
 					(at -10.16 -2.54 0)
 					(length 3.81)
-					(name "~{NMI}"
+					(name "E"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4490,7 +4500,7 @@
 				(pin passive line
 					(at -10.16 -5.08 0)
 					(length 3.81)
-					(name "READY"
+					(name "MX"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4508,7 +4518,7 @@
 				(pin passive line
 					(at -10.16 -7.62 0)
 					(length 3.81)
-					(name "~{BUSREQ0}"
+					(name "RESERVED"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4526,7 +4536,7 @@
 				(pin passive line
 					(at -10.16 -10.16 0)
 					(length 3.81)
-					(name "~{BUSGNT0}"
+					(name "RESERVED"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4544,7 +4554,7 @@
 				(pin passive line
 					(at -10.16 -12.7 0)
 					(length 3.81)
-					(name "~{BUSREQ1}"
+					(name "RESERVED"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4562,7 +4572,7 @@
 				(pin passive line
 					(at -10.16 -15.24 0)
 					(length 3.81)
-					(name "~{BUSGNT1}"
+					(name "D_{0}"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4580,7 +4590,7 @@
 				(pin passive line
 					(at -10.16 -17.78 0)
 					(length 3.81)
-					(name "BE"
+					(name "D_{1}"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4598,7 +4608,7 @@
 				(pin passive line
 					(at -10.16 -20.32 0)
 					(length 3.81)
-					(name "SYNC"
+					(name "D_{2}"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4616,7 +4626,7 @@
 				(pin passive line
 					(at -10.16 -22.86 0)
 					(length 3.81)
-					(name "VPB"
+					(name "D_{3}"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4634,7 +4644,7 @@
 				(pin passive line
 					(at -10.16 -25.4 0)
 					(length 3.81)
-					(name "MLB"
+					(name "D_{4}"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4652,7 +4662,7 @@
 				(pin passive line
 					(at -10.16 -27.94 0)
 					(length 3.81)
-					(name "VDA"
+					(name "D_{5}"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4670,7 +4680,7 @@
 				(pin passive line
 					(at -10.16 -30.48 0)
 					(length 3.81)
-					(name "VPA"
+					(name "D_{6}"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4688,7 +4698,7 @@
 				(pin passive line
 					(at -10.16 -33.02 0)
 					(length 3.81)
-					(name "RESERVED"
+					(name "D_{7}"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -5467,7 +5477,7 @@
 				(pin passive line
 					(at -10.16 -10.16 0)
 					(length 3.81)
-					(name "~{IRQ0}"
+					(name "~{BUSREQ0}"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -5485,7 +5495,7 @@
 				(pin passive line
 					(at -10.16 -12.7 0)
 					(length 3.81)
-					(name "~{IRQ1}"
+					(name "~{BUSGNT0}"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -5503,7 +5513,7 @@
 				(pin passive line
 					(at -10.16 -15.24 0)
 					(length 3.81)
-					(name "~{IRQ2}"
+					(name "~{BUSREQ1}"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -5521,7 +5531,7 @@
 				(pin passive line
 					(at -10.16 -17.78 0)
 					(length 3.81)
-					(name "~{IRQ3}"
+					(name "~{BUSGNT1}"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -5557,7 +5567,7 @@
 				(pin passive line
 					(at -10.16 -22.86 0)
 					(length 3.81)
-					(name "E"
+					(name "~{BUSREQ2}"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -5575,7 +5585,7 @@
 				(pin passive line
 					(at -10.16 -25.4 0)
 					(length 3.81)
-					(name "MX"
+					(name "~{BUSGNT2}"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -5593,7 +5603,7 @@
 				(pin passive line
 					(at -10.16 -27.94 0)
 					(length 3.81)
-					(name "RESERVED"
+					(name "~{BUSREQ3}"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -5611,7 +5621,7 @@
 				(pin passive line
 					(at -10.16 -30.48 0)
 					(length 3.81)
-					(name "RESERVED"
+					(name "~{BUSGNT3}"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -6541,172 +6551,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Jumper:Jumper_2_Open"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "JP"
-				(at 0 2.794 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "Jumper_2_Open"
-				(at 0 -2.286 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Jumper, 2-pole, open"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "Jumper SPST"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "Jumper* TestPoint*2Pads* TestPoint*Bridge*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "Jumper_2_Open_0_0"
-				(circle
-					(center -2.032 0)
-					(radius 0.508)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 2.032 0)
-					(radius 0.508)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "Jumper_2_Open_0_1"
-				(arc
-					(start -1.524 1.27)
-					(mid 0 1.778)
-					(end 1.524 1.27)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "Jumper_2_Open_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 2.54)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 5.08 0 180)
-					(length 2.54)
-					(name "B"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "power:+12V"
 			(power global)
 			(pin_numbers
@@ -7264,28 +7108,6 @@
 		)
 		(uuid "d99f4041-8292-4c4a-ad5b-67e2aabec621")
 	)
-	(rectangle
-		(start 227.33 114.3)
-		(end 278.13 152.4)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(fill
-			(type none)
-		)
-		(uuid "ed3871ec-392b-47fa-8088-1a0cda1d19c8")
-	)
-	(text "I^{2}C SUPPORT"
-		(exclude_from_sim no)
-		(at 252.73 116.84 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "45d35c38-0c44-4e95-be31-8774ae78efc4")
-	)
 	(text "METERS"
 		(exclude_from_sim no)
 		(at 241.554 27.686 0)
@@ -7479,12 +7301,6 @@
 		(uuid "d2b6ea1c-11c2-4c1c-b188-3493415ed8a3")
 	)
 	(junction
-		(at 261.62 127)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "d8a074cd-8515-41ea-8a4b-aebbfd94465f")
-	)
-	(junction
 		(at 144.78 144.78)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -7595,6 +7411,10 @@
 		(uuid "58d47c1d-13d7-46fb-9d1c-964de00ac627")
 	)
 	(no_connect
+		(at 30.48 214.63)
+		(uuid "5a1a045b-c9e7-454a-98e1-db6ef0d99965")
+	)
+	(no_connect
 		(at 30.48 245.11)
 		(uuid "5ae06840-bc5c-4a0e-9c31-ab8d07f64394")
 	)
@@ -7637,6 +7457,10 @@
 	(no_connect
 		(at 30.48 69.85)
 		(uuid "85195034-af49-403a-a226-7d48bfbf91a8")
+	)
+	(no_connect
+		(at 30.48 212.09)
+		(uuid "86846440-8ceb-490b-b08a-eb2414bea383")
 	)
 	(no_connect
 		(at 30.48 130.81)
@@ -8012,16 +7836,6 @@
 	)
 	(wire
 		(pts
-			(xy 261.62 127) (xy 267.97 127)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3d700bf2-3b8e-414c-8448-651ba5d53d75")
-	)
-	(wire
-		(pts
 			(xy 154.94 266.7) (xy 157.48 266.7)
 		)
 		(stroke
@@ -8062,16 +7876,6 @@
 	)
 	(wire
 		(pts
-			(xy 259.08 127) (xy 261.62 127)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4b97031a-662c-4ad1-888f-67fba1ca7b55")
-	)
-	(wire
-		(pts
 			(xy 30.48 240.03) (xy 34.29 240.03)
 		)
 		(stroke
@@ -8089,16 +7893,6 @@
 			(type default)
 		)
 		(uuid "53f4ae42-2902-4706-9ef9-07d6b1ef2194")
-	)
-	(wire
-		(pts
-			(xy 267.97 137.16) (xy 267.97 146.05)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "556a0de2-604d-4b6d-9ecc-40403a4ee66b")
 	)
 	(wire
 		(pts
@@ -8362,16 +8156,6 @@
 	)
 	(wire
 		(pts
-			(xy 261.62 137.16) (xy 261.62 139.7)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8b2e9816-e2b7-4e95-99c3-95d72b375cb9")
-	)
-	(wire
-		(pts
 			(xy 144.78 147.32) (xy 144.78 158.75)
 		)
 		(stroke
@@ -8462,16 +8246,6 @@
 	)
 	(wire
 		(pts
-			(xy 242.57 146.05) (xy 267.97 146.05)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "998f60ed-2cc8-425e-b979-98c2d6fa028a")
-	)
-	(wire
-		(pts
 			(xy 30.48 275.59) (xy 34.29 275.59)
 		)
 		(stroke
@@ -8492,16 +8266,6 @@
 	)
 	(wire
 		(pts
-			(xy 267.97 129.54) (xy 267.97 127)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9b9fbc2f-97ed-4583-9d5a-38b1e7651b25")
-	)
-	(wire
-		(pts
 			(xy 30.48 97.79) (xy 30.48 101.6)
 		)
 		(stroke
@@ -8509,16 +8273,6 @@
 			(type default)
 		)
 		(uuid "a1432756-4bbd-4268-9d28-b2633014fc9c")
-	)
-	(wire
-		(pts
-			(xy 261.62 127) (xy 261.62 129.54)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a3a591a0-f3f2-4a33-9784-7198c8547124")
 	)
 	(wire
 		(pts
@@ -8592,16 +8346,6 @@
 	)
 	(wire
 		(pts
-			(xy 242.57 139.7) (xy 261.62 139.7)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ac5544f2-3e1d-4660-88b5-d6bed95e0ea3")
-	)
-	(wire
-		(pts
 			(xy 106.68 255.27) (xy 106.68 257.81)
 		)
 		(stroke
@@ -8669,16 +8413,6 @@
 			(type default)
 		)
 		(uuid "bb286da6-d0e1-4e16-8aad-d54046ca87f9")
-	)
-	(wire
-		(pts
-			(xy 242.57 127) (xy 248.92 127)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bf73110d-cb3e-4aff-8153-a53ee34e3bca")
 	)
 	(wire
 		(pts
@@ -8980,54 +8714,6 @@
 		)
 		(uuid "feb73176-b0f5-422d-8b4e-1f240d47c4f1")
 	)
-	(global_label "I2C_SCL"
-		(shape passive)
-		(at 242.57 139.7 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "1ce411ba-c048-4e63-b0c2-0d516afe3d45")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 232.9462 139.7 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-	)
-	(global_label "I2C_SCL"
-		(shape passive)
-		(at 30.48 212.09 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "2a4a2bc8-f45d-4dfc-b0cf-6a40cf165730")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 40.1038 212.09 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
 	(global_label "~{PSON}"
 		(shape input)
 		(at 31.75 204.47 0)
@@ -9220,54 +8906,6 @@
 			)
 		)
 	)
-	(global_label "I2C_SDA"
-		(shape passive)
-		(at 30.48 214.63 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "aa66528f-dd6c-42e9-9576-97f371272083")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 40.1643 214.63 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
-	(global_label "I2C_SDA"
-		(shape passive)
-		(at 242.57 146.05 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "ac9da43e-2a7c-4939-a137-719005bee443")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 232.8857 146.05 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-	)
 	(global_label "~{RESET}"
 		(shape output)
 		(at 203.2 152.4 0)
@@ -9367,86 +9005,6 @@
 			(project "PWR"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
 					(reference "C1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Jumper:Jumper_2_Open")
-		(at 254 127 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "02390637-a01d-4490-9285-00fd95f24d17")
-		(property "Reference" "JP1"
-			(at 254 120.65 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "I2C PULLUP"
-			(at 254 123.19 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 254 127 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 254 127 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Jumper, 2-pole, open"
-			(at 254 127 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "d539b134-eee0-48f8-82d1-5770f6435353")
-		)
-		(pin "2"
-			(uuid "648b48c0-ebd3-4e0d-bd3b-5b36b8bd7f0b")
-		)
-		(instances
-			(project "PWR"
-				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
-					(reference "JP1")
 					(unit 1)
 				)
 			)
@@ -9724,86 +9282,6 @@
 			(project "PWR"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
 					(reference "U2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "IMNOTWOPR:R")
-		(at 261.62 133.35 270)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "09c57dd0-a909-445b-836f-709fda93f3b7")
-		(property "Reference" "R5"
-			(at 262.89 133.35 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "4k7Ω"
-			(at 261.62 133.35 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.016 1.016)
-				)
-			)
-		)
-		(property "Footprint" "IMNOTWOPR:R_Axial_DIN0207_P400mil"
-			(at 261.62 133.35 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 261.62 133.35 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 261.62 133.35 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "b9e924c9-14ac-41d7-80ab-51d22b029034")
-		)
-		(pin "1"
-			(uuid "a4a5dd27-e295-44d2-9d91-9d3b937fbd34")
-		)
-		(instances
-			(project "PWR"
-				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
-					(reference "R5")
 					(unit 1)
 				)
 			)
@@ -10097,7 +9575,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "IMNOTWOPR:LED_G_D5.0mm"
+		(property "Footprint" "IMNOTWOPR:Wire_LED"
 			(at 90.17 48.26 0)
 			(hide yes)
 			(show_name no)
@@ -10557,83 +10035,6 @@
 			(project "PWR"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
 					(reference "C5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+5V")
-		(at 242.57 127 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "23d75205-286a-43fa-954a-869717f3c27d")
-		(property "Reference" "#PWR017"
-			(at 242.57 130.81 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "+5V"
-			(at 242.57 123.19 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 242.57 127 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 242.57 127 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 242.57 127 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "ba79f748-867d-488a-9933-62618d1a0d0a")
-		)
-		(instances
-			(project "PWR"
-				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
-					(reference "#PWR017")
 					(unit 1)
 				)
 			)
@@ -12779,7 +12180,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "IMNOTWOPR:Wire_Meter"
 			(at 228.6 41.91 90)
 			(hide yes)
 			(show_name no)
@@ -13176,7 +12577,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "IMNOTWOPR:LED_D5.0mm"
+		(property "Footprint" "IMNOTWOPR:Wire_LED"
 			(at 160.02 77.47 0)
 			(hide yes)
 			(show_name no)
@@ -13267,7 +12668,7 @@
 				)
 			)
 		)
-		(property "Footprint" "IMNOTWOPR:PanelConnector_1x03"
+		(property "Footprint" "IMNOTWOPR:Wire_SW_SPST_23"
 			(at 128.27 41.91 0)
 			(hide yes)
 			(show_name no)
@@ -13362,7 +12763,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "IMNOTWOPR:Wire_Meter"
 			(at 203.2 41.91 90)
 			(hide yes)
 			(show_name no)
@@ -13512,7 +12913,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "+12V2 METER"
+		(property "Value" "IMNOTWOPR:Wire_Meter"
 			(at 283.21 45.2754 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13523,7 +12924,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "IMNOTWOPR:Wire_Meter"
 			(at 279.4 41.91 90)
 			(hide yes)
 			(show_name no)
@@ -13940,7 +13341,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "IMNOTWOPR:Wire_Meter"
 			(at 254 41.91 90)
 			(hide yes)
 			(show_name no)
@@ -15628,7 +15029,7 @@
 				)
 			)
 		)
-		(property "Footprint" "IMNOTWOPR:PanelConnector_1x03"
+		(property "Footprint" "IMNOTWOPR:Wire_SW_SPDT"
 			(at 106.68 167.64 0)
 			(hide yes)
 			(show_name no)
@@ -16406,86 +15807,6 @@
 		)
 	)
 	(symbol
-		(lib_id "IMNOTWOPR:R")
-		(at 267.97 133.35 270)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "d20b0b7e-ccda-48d5-b742-cc993b339ae2")
-		(property "Reference" "R6"
-			(at 269.24 133.35 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "4k7Ω"
-			(at 267.97 133.35 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.016 1.016)
-				)
-			)
-		)
-		(property "Footprint" "IMNOTWOPR:R_Axial_DIN0207_P400mil"
-			(at 267.97 133.35 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 267.97 133.35 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 267.97 133.35 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "9885a39a-49c0-4ece-8b74-fb914f2785f2")
-		)
-		(pin "1"
-			(uuid "1879e0c7-8a4c-4edd-ae23-f0dca2ebed9b")
-		)
-		(instances
-			(project "PWR"
-				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
-					(reference "R6")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:+5V")
 		(at 162.56 125.73 0)
 		(unit 1)
@@ -16507,7 +15828,7 @@
 				)
 			)
 		)
-		(property "Value" "+5V"
+		(property "Value" "+5VSB"
 			(at 162.56 121.92 0)
 			(show_name no)
 			(do_not_autoplace no)

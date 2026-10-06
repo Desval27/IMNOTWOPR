@@ -21,7 +21,7 @@ core 1 each reserve a 4 KiB stack. No RTOS or pico-extras dependency is needed.
 Serial RX and PS/2 falling edges use core 0 interrupts. Queues keep interrupts
 short and separate byte capture from parsing. UART0 CTS gates hardware TX;
 RTS is a GPIO so it reflects the software RX queue rather than only the UART
-FIFO. DTR remains asserted; DSR is displayed in setup.
+FIFO. DTR remains asserted; DSR, DCD and RI are sampled and displayed in setup.
 
 Saving settings stops VGA DMA and parks core 1 in an SRAM loop with interrupts
 disabled. Core 0 then disables its interrupts for the SDK flash erase/program

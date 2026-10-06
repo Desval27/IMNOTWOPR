@@ -10,6 +10,7 @@
 namespace lightman::pins
 {
 constexpr unsigned tx = 0, rx = 1, cts = 2, rts = 3, dtr = 4, dsr = 5;
-constexpr unsigned ps2_clock = 6, ps2_data = 7;
+constexpr unsigned dcd = 6, ri = 7;
+constexpr unsigned ps2_clock = 8, ps2_data = 9;
 constexpr unsigned hsync = 16, vsync = 17, red = 18, green = 19, blue = 20;
 } // namespace lightman::pins

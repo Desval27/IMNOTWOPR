@@ -4,21 +4,26 @@
  *
  * Coordinates the terminal, keyboard, serial transport, video and persistent settings.
  */
+
 #include "hardware.h"
 #include "hardware/clocks.h"
 #include "keyboard.h"
 #include "pico/stdlib.h"
 #include <algorithm>
 #include <cstdio>
+
 using namespace lightman;
+
 namespace
 {
+
 Terminal terminal([](void *, std::string_view s) { serial_write(s); }), menu;
 Keyboard keyboard;
 Config config, draft;
 bool in_setup = false;
 int selected = 0;
 const char *status = "";
+
 /**
  * @brief Rebuild the local setup screen from draft settings and live diagnostics.
  * @note Leaves the host terminal screen unchanged; core 0 later publishes the menu.
@@ -27,9 +32,11 @@ void draw_menu()
 {
     menu.reset();
     menu.feed("\033[?25l\033[2;4H\033[1mLIGHTMAN SETUP\033[0m");
+    
     const char *flow[] = {"None (TX/RX only)", "XON/XOFF", "RTS/CTS (wire handshake pins)"};
     const char *colors[] = {"White", "Green", "Yellow"};
     const char *parity[] = {"None", "Even", "Odd"};
+
     char lines[11][70];
     std::snprintf(lines[0], 70, "Baud rate       %lu", static_cast<unsigned long>(draft.baud));
     std::snprintf(lines[1], 70, "Data bits       %u", draft.data_bits);
@@ -42,6 +49,7 @@ void draw_menu()
     std::snprintf(lines[8], 70, "Font            %s", draft.font ? "Bold" : "Regular");
     std::snprintf(lines[9], 70, "Text color      %s", colors[draft.color]);
     std::snprintf(lines[10], 70, "Restore factory defaults");
+
     for (int i = 0; i < 11; ++i)
     {
         char pos[24];
@@ -52,10 +60,12 @@ void draw_menu()
         menu.feed(lines[i]);
         menu.feed("\033[0m");
     }
+
     menu.feed("\033[16;4HUp/Down: select   Left/Right/Space: change");
     menu.feed("\033[17;4HEnter: apply   S: apply and save   Esc/F12: cancel");
     menu.feed("\033[19;4HPause host output before changing serial settings or saving.");
     menu.feed("\033[20;4HSaving briefly blanks VGA. Mode changes clear terminal text.");
+
     char counters[100];
     std::snprintf(counters, sizeof counters, "\033[22;4HRX errors:%lu  TX drops:%lu  PS/2 drops:%lu  VGA late:%lu",
                   (unsigned long)serial_rx_errors(), (unsigned long)serial_tx_drops(), (unsigned long)ps2_overflows(),
@@ -63,8 +73,12 @@ void draw_menu()
     menu.feed(counters);
     menu.feed("\033[23;4H");
     menu.feed(status);
-    menu.feed(serial_dsr() ? "  DSR: asserted" : "  DSR: inactive");
+    menu.feed("\033[24;4H");
+    menu.feed(serial_dsr() ? "DSR: asserted" : "DSR: inactive");
+    menu.feed(serial_dcd() ? "  DCD: asserted" : "  DCD: inactive");
+    menu.feed(serial_ri() ? "  RI: asserted" : "  RI: inactive");
 }
+
 /**
  * @brief Cycle the selected draft option or restore draft factory defaults.
  * @param direction Use -1 for the previous choice or +1 for the next.
@@ -112,6 +126,7 @@ void change(int direction)
         break;
     }
 }
+
 /**
  * @brief Close setup, clear its status text and release the peer-pause request.
  */
@@ -121,6 +136,7 @@ void close_menu()
     status = "";
     serial_hold(false);
 }
+
 /**
  * @brief Service serial RX/TX while waiting up to 1.5 seconds for TX to drain.
  * @return True once both the TX queue and UART are idle; false on timeout.
@@ -145,6 +161,7 @@ bool drain_transmitter()
     } while (time_us_32() - start < 1500000);
     return false;
 }
+
 /**
  * @brief Handle setup navigation, cancellation, application and optional persistence.
  * @param e Decoded local key press.
@@ -213,6 +230,7 @@ void setup_key(KeyEvent e)
     }
 }
 } // namespace
+
 /**
  * @brief Initialize the Pico and run the terminal, keyboard and setup event loop.
  * @note Runs on core 0 and does not return; video_start() launches scanout on core 1.
@@ -230,9 +248,11 @@ int main()
     terminal.feed("Lightman 0.1 - F12 opens setup\r\n");
     uint32_t last_frame = 0, last_ps2_drops = 0, last_bells = 0, bell_at = 0;
     bool bell_on = false;
+
     while (true)
     {
         serial_poll();
+
         // Continue receiving into the terminal while the separate setup screen is
         // shown.
         for (int i = 0; i < 256; ++i)
@@ -242,12 +262,14 @@ int main()
                 break;
             terminal.feed(static_cast<uint8_t>(c));
         }
+
         auto drops = ps2_overflows();
         if (drops != last_ps2_drops)
         {
             keyboard.reset();
             last_ps2_drops = drops;
         }
+
         for (int i = 0; i < 32; ++i)
         {
             int c = ps2_read();
@@ -274,16 +296,19 @@ int main()
                     terminal.feed(text);
             }
         }
+
         uint32_t now = time_us_32();
         if (terminal.bells != last_bells)
         {
             last_bells = terminal.bells;
             bell_at = now;
             bell_on = true;
-        }
+        }        
         if (bell_on && now - bell_at >= 150000)
             bell_on = false;
+
         gpio_put(PICO_DEFAULT_LED_PIN, bell_on);
+
         if (now - last_frame >= 16667)
         {
             last_frame = now;
