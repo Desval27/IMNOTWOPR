@@ -130,16 +130,47 @@ int main()
     us += 3000;
     assert(frame(0x07) == 7);
     Config config;
+    assert(config.valid() && config.color == default_normal_color);
+    assert(normal_colors[config.color].rgb332 == 0xf0); // Amber: R=7, G=4, B=0.
     auto data = encode_config(config, 42);
     Config restored;
     uint32_t gen = 0;
-    assert(decode_config(data.data(), restored, gen) && gen == 42 && restored.baud == 9600);
+    assert(decode_config(data.data(), restored, gen) && gen == 42 && restored.baud == 9600 &&
+           restored.color == default_normal_color);
     for (unsigned i = 0; i < data.size(); ++i)
     {
         auto broken = data;
         broken[i] ^= 1;
         assert(!decode_config(broken.data(), restored, gen));
     }
+    // Every preset survives flash serialization, including legacy indices 0..2.
+    for (unsigned color = 0; color < normal_colors.size(); ++color)
+    {
+        config.color = color;
+        assert(config.valid());
+        auto saved = encode_config(config, 100 + color);
+        assert(decode_config(saved.data(), restored, gen) && gen == 100 + color && restored.color == color);
+    }
+    config.color = normal_colors.size();
+    assert(!config.valid());
+    auto invalid_color = encode_config(config, 200); // Valid CRC, unsupported color.
+    Config previous = restored;
+    uint32_t previous_gen = gen;
+    assert(!decode_config(invalid_color.data(), restored, gen));
+    assert(restored.color == previous.color && gen == previous_gen);
+    config = Config{};
+    // Each RGB332 bit must drive the correct resistor, with sync held inactive.
+    assert(vga_pixel(0) == 0x003 && vga_pixel(0xff) == 0x3ff);
+    assert(vga_pixel(0x80) == 0x007); // R0: 470 ohms, greatest red weight.
+    assert(vga_pixel(0x40) == 0x00b);
+    assert(vga_pixel(0x20) == 0x013);
+    assert(vga_pixel(0x10) == 0x023); // G0: 470 ohms.
+    assert(vga_pixel(0x08) == 0x043);
+    assert(vga_pixel(0x04) == 0x083);
+    assert(vga_pixel(0x02) == 0x103); // B0: 390 ohms.
+    assert(vga_pixel(0x01) == 0x203);
+    assert(vga_pixel(normal_colors[default_normal_color].rgb332) == 0x03f);
+    assert(normal_colors[0].rgb332 == 0xff && normal_colors[1].rgb332 == 0x1c && normal_colors[2].rgb332 == 0xfc);
     config.baud = 12345;
     assert(!config.valid());
     data = encode_config(config, 43);

@@ -613,12 +613,36 @@
           "label": "Datasheet",
           "name": "Datasheet",
           "show": true
+        },
+        {
+          "group_by": false,
+          "label": "Description",
+          "name": "Description",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Voltage",
+          "name": "Voltage",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "#",
+          "name": "${ITEM_NUMBER}",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Pins",
+          "name": "Sim.Pins",
+          "show": false
         }
       ],
       "filter_string": "",
       "group_symbols": true,
       "include_excluded_from_bom": true,
-      "name": "Default Editing",
+      "name": "",
       "sort_asc": true,
       "sort_field": "Reference"
     },
@@ -663,7 +687,7 @@
         "uuid": "bc5ce1ee-80a9-4a0a-a79a-291efbccde4f"
       }
     ],
-    "used_designators": "SW23,J1-5,#FLG1-2,R1-15,R21,U1-5,D1-3,#PWR1-21,#PWR54-55,C1-17,C30-31,A1-2,F1-2",
+    "used_designators": "SW1,SW23,J1-5,#FLG1-2,R1-15,R21,U1-5,F1-2,D1-3,C1-19,C30-31,A1-2,#PWR1-23,#PWR54-55",
     "variants": []
   },
   "sheets": [

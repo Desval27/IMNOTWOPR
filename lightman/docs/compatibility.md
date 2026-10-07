@@ -56,8 +56,16 @@ strings are discarded through BEL or ST. CAN/SUB abort an in-progress sequence.
 ## Communication and storage
 
 Default: **9600 baud, 8N1, no flow control, VT100, no local echo, DEL Backspace,
-regular font, white text**. Setup supports 300–115200 baud, 7/8 bits, 1/2 stop
+regular font, amber normal text**. Setup supports 300–115200 baud, 7/8 bits, 1/2 stop
 bits, none/even/odd parity and no/software/hardware flow control.
+
+Normal color selects White, Classic green, Yellow, Amber, Red, Blue, Cyan or
+Magenta through the RGB332 DACs. It sets the base foreground on black for the
+whole terminal, including attributes and cursor; reverse swaps foreground and
+background. This does not add ANSI color SGR support. The menu previews draft
+colors and restores the applied color on cancel. Legacy saved color indices
+0/1/2 retain White/Green/Yellow; new presets extend the same settings record.
+Existing saved choices take precedence over the new amber factory default.
 
 The RX ring holds 4095 bytes and TX ring 1023 bytes. XON/XOFF and software-driven
 RTS use 75%/25% RX thresholds. UART hardware gates outgoing bytes on CTS when

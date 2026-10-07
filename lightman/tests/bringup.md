@@ -6,9 +6,15 @@ behavior. Perform these checks before relying on the prototype.
 1. Confirm the pin map in [wiring](../docs/wiring.md), level-shifter supplies,
    PS/2 pull-ups, all three MAX3232 charge pumps and VGA resistor values.
    Confirm DCD/RI reach GPIO6/7 and PS/2 clock/data reach GPIO8/9.
+   Confirm HS/VS reach GPIO13/14, R0..R2 GPIO15..17, G0..G2 GPIO18..20 and
+   B0..B1 GPIO21/22. Channel 0 must feed the smallest resistor (greatest weight).
 2. Flash the UF2. Confirm 31.5 kHz HSYNC and 60 Hz VSYNC, negative polarity,
    proper RGB blanking and a stable 80x24 picture. `VGA late` in setup should
    stay zero during scrolling, keyboard activity and repeated menu changes.
+   In setup select White and check all three color channels near 0.7 V into
+   75 ohms on lit pixels; black, porches and sync must blank all eight RGB bits.
+   Check Red/Classic green/Blue for isolated channels, then Amber for full red,
+   G0 only and blue off. Amber should differ visibly from Yellow.
 3. On a native PS/2 keyboard check letters, digits, shifted punctuation,
    independent left/right Shift and Ctrl, Caps Lock, Ctrl-C, arrow/PF keys,
    keypad application mode, and F12 setup. Disconnect/reconnect and verify BAT
@@ -37,8 +43,14 @@ behavior. Perform these checks before relying on the prototype.
    to return to VT100. Run the host's VT100 test program and compare failures
    to the [declared gaps](../docs/compatibility.md); do not claim full vttest
    compliance.
-9. In setup change font/color, cancel, then apply; confirm cancel restores the
-   previous display. Save settings, power-cycle, verify persistence. Alternate
+9. In setup cycle all eight Normal color choices in both directions, including
+   wraparound. Confirm the preview, cancel, then apply; cancel must restore the
+   previous display. Check reverse, bold, underline, blink and cursor in the
+   selected color. Restore factory defaults and verify Amber is selected;
+   cancel must retain the previous configuration. Apply/save factory defaults
+   and verify Amber after reboot. Existing saved White/Green/Yellow choices
+   should survive the firmware update. Save settings, power-cycle, verify
+   persistence. Alternate
    saved configurations and interrupt power during a save: the last intact
    record should load. Reflash UF2 and check settings remain intact.
 10. After flash save verify video recovers, the keyboard still works and serial

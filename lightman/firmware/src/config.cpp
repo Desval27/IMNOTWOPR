@@ -4,10 +4,13 @@
  *
  * Encodes versioned records with CRC32 independently of compiler structure padding.
  */
+
 #include "config.h"
 #include <algorithm>
+
 namespace lightman
 {
+
 /**
  * @brief Check whether every field is supported by this firmware.
  */
@@ -15,8 +18,10 @@ bool Config::valid() const
 {
     return std::find(baud_rates.begin(), baud_rates.end(), baud) != baud_rates.end() &&
            (data_bits == 7 || data_bits == 8) && (stop_bits == 1 || stop_bits == 2) && parity <= 2 &&
-           static_cast<unsigned>(flow) <= 2 && font < 2 && vt52 <= 1 && echo <= 1 && backspace_del <= 1 && color < 3;
+           static_cast<unsigned>(flow) <= 2 && font < 2 && vt52 <= 1 && echo <= 1 && backspace_del <= 1 &&
+           color < normal_colors.size();
 }
+
 /**
  * @brief Compute reflected CRC32 with polynomial 0xEDB88320 and inverted endpoints.
  * @param p Readable input bytes.
@@ -34,6 +39,7 @@ static uint32_t crc(const uint8_t *p, size_t n)
     }
     return ~c;
 }
+
 /**
  * @brief Store a 32-bit value as four little-endian bytes.
  * @param[out] p Writable buffer of at least four bytes.
@@ -44,6 +50,7 @@ static void put32(uint8_t *p, uint32_t v)
     for (int i = 0; i < 4; ++i)
         p[i] = v >> (8 * i);
 }
+
 /**
  * @brief Read a 32-bit value from four little-endian bytes.
  * @param p Readable buffer of at least four bytes.
@@ -56,6 +63,7 @@ static uint32_t get32(const uint8_t *p)
         v |= uint32_t(p[i]) << (8 * i);
     return v;
 }
+
 /**
  * @brief Serialize settings into a versioned little-endian record with CRC32.
  */
@@ -77,6 +85,7 @@ std::array<uint8_t, settings_size> encode_config(const Config &c, uint32_t gener
     put32(b.data() + 28, crc(b.data(), 28));
     return b;
 }
+
 /**
  * @brief Validate a settings record and decode it without partial output updates.
  */

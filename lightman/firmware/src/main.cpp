@@ -34,7 +34,6 @@ void draw_menu()
     menu.feed("\033[?25l\033[2;4H\033[1mLIGHTMAN SETUP\033[0m");
     
     const char *flow[] = {"None (TX/RX only)", "XON/XOFF", "RTS/CTS (wire handshake pins)"};
-    const char *colors[] = {"White", "Green", "Yellow"};
     const char *parity[] = {"None", "Even", "Odd"};
 
     char lines[11][70];
@@ -47,7 +46,7 @@ void draw_menu()
     std::snprintf(lines[6], 70, "Local echo      %s", draft.echo ? "On" : "Off");
     std::snprintf(lines[7], 70, "Backspace sends %s", draft.backspace_del ? "DEL (127)" : "BS (8)");
     std::snprintf(lines[8], 70, "Font            %s", draft.font ? "Bold" : "Regular");
-    std::snprintf(lines[9], 70, "Text color      %s", colors[draft.color]);
+    std::snprintf(lines[9], 70, "Normal color    %s", normal_colors[draft.color].name);
     std::snprintf(lines[10], 70, "Restore factory defaults");
 
     for (int i = 0; i < 11; ++i)
@@ -119,7 +118,7 @@ void change(int direction)
         cycle(draft.font, 2);
         break;
     case 9:
-        cycle(draft.color, 3);
+        cycle(draft.color, normal_colors.size());
         break;
     case 10:
         draft = Config{};

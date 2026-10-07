@@ -1,12 +1,12 @@
 ; @file video.pio
-; @brief Stream packed HSYNC, VSYNC and RGB pixel bytes to five consecutive pins.
+; @brief Stream HSYNC, VSYNC and RGB332 halfwords to ten consecutive pins.
 ; @details Runs at 126 MHz with five cycles per pixel for a 25.2 MHz pixel clock.
-; DMA feeds an eight-bit autopull; the three unused bits are discarded each pixel.
+; DMA feeds a sixteen-bit autopull; six unused bits are discarded each pixel.
 .program lightman_video
-; 126 MHz / 5 = 25.2 MHz pixels. One byte encodes HS, VS, R, G, B.
-; Eight-bit DMA writes replicate on the RP2040 peripheral bus. Autopull
-; consumes exactly eight bits per pixel, including three discarded bits.
+; 126 MHz / 5 = 25.2 MHz pixels. Bits 0..9 encode HS, VS, R0..R2, G0..G2, B0..B1.
+; Halfword DMA writes replicate on the RP2040 peripheral bus. Autopull
+; consumes exactly sixteen bits per pixel, including six discarded bits.
 .wrap_target
-    out pins, 5 [3]
-    out null, 3
+    out pins, 10 [3]
+    out null, 6
 .wrap

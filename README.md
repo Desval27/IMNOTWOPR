@@ -31,7 +31,7 @@ All modules and panels are currently a work in progress and **NONE** have been t
 - [Backplane](system/BACKPLANE/README.md)
 - [PWR PCB](modules/PWR/README.md)
 - [PWR Panel](panels/PWR/README.md)
-- [Lightman serial terminal](lightman/README.md) - Pico VGA/PS/2 serial terminal with VT100/VT52 firmware and on-device setup.
+- [Lightman serial terminal](lightman/README.md) - Pico RGB332 VGA/PS/2 serial terminal with VT100/VT52 firmware and on-device setup, including normal-text color selection.
 
 ## Mechanical Architecture
 

@@ -14,6 +14,7 @@
 #include "pico/multicore.h"
 #include "pico/stdlib.h"
 #include "video.pio.h"
+#include <algorithm>
 #include <atomic>
 #include <cstring>
 
@@ -30,15 +31,15 @@ constexpr int width = 800, height = 525, raster_height = rows * 16;
 struct Frame
 {
     uint8_t bits[raster_height][columns];
-    uint8_t color = 0;
+    uint8_t color = 0; // Initial raster is black; published frames carry Config::color.
 };
 Frame frames[3]{};
 int scanning = 0, published = 0;
 spin_lock_t *frame_lock;
 std::atomic<bool> pause_request{false}, paused{false};
 std::atomic<uint32_t> underruns{0};
-alignas(4) uint32_t lines[2][width / 4];
-uint32_t pixels[3][256][2];
+alignas(4) uint32_t lines[2][width / 2];
+uint32_t pixels[normal_colors.size()][256][4];
 uint8_t glyphs[2][128][16];
 uint8_t graphics[32][16];
 int channels[2];
@@ -96,25 +97,32 @@ void make_graphics()
         std::memcpy(graphics[pair[0] - '_'], glyphs[0][int(pair[1])], 16);
 }
 /**
- * @brief Expand one VGA scanline, including sync pulses and blanking, into DMA bytes.
- * @param[out] dst Word-aligned destination with space for width bytes.
+ * @brief Expand one VGA scanline, including sync and blanking, into DMA halfwords.
+ * @param[out] dst Word-aligned destination with space for width halfwords.
  * @param y Physical scanline index in 0..height-1.
  * @param frame Index of the immutable raster currently owned by scanout.
  * @note Runs on core 1 from SRAM; one lookup expands eight visible pixels.
  */
 void __not_in_flash_func(render)(uint32_t *dst, int y, int frame)
 {
-    const uint8_t sync = y >= 490 && y < 492 ? 1 : 3;
-    std::memset(dst, sync, width);
-    std::memset(reinterpret_cast<uint8_t *>(dst) + 656, sync & ~1, 96);
-    if (y < 48 || y >= 432)
+    const uint32_t sync = y >= 490 && y < 492 ? 1 : 3;
+    const bool text_line = y >= 48 && y < 432;
+    // Visible pixels are overwritten by the lookup below. Only fill their
+    // porches here so the wider RGB332 transfers do not waste scanline time.
+    const int blank_start = text_line ? columns * 8 / 2 : 0;
+    std::fill_n(dst + blank_start, width / 2 - blank_start, sync | (sync << 16));
+    const uint32_t hsync = sync & ~1u;
+    std::fill_n(dst + 656 / 2, 96 / 2, hsync | (hsync << 16));
+    if (!text_line)
         return;
     const auto *src = frames[frame].bits[y - 48];
     const auto *lookup = pixels[frames[frame].color];
     for (int x = 0; x < columns; ++x)
     {
-        dst[2 * x] = lookup[src[x]][0];
-        dst[2 * x + 1] = lookup[src[x]][1];
+        dst[4 * x] = lookup[src[x]][0];
+        dst[4 * x + 1] = lookup[src[x]][1];
+        dst[4 * x + 2] = lookup[src[x]][2];
+        dst[4 * x + 3] = lookup[src[x]][3];
     }
 }
 /**
@@ -176,7 +184,7 @@ void __not_in_flash_func(core1)()
         pio_sm_set_enabled(pio, sm, false);
         for (int ch : channels)
             dma_channel_abort(ch);
-        pio_sm_set_pins_with_mask(pio, sm, 3u << pins::hsync, 31u << pins::hsync);
+        pio_sm_set_pins_with_mask(pio, sm, 3u << pins::hsync, pins::video_pin_mask);
         uint32_t irq = save_and_disable_interrupts();
         paused.store(true, std::memory_order_release);
         while (pause_request.load(std::memory_order_acquire))
@@ -194,32 +202,31 @@ void video_start()
     frame_lock = spin_lock_init(spin_lock_claim_unused(true));
     std::memcpy(glyphs, font_data, sizeof glyphs);
     make_graphics();
-    const uint8_t colors[] = {28, 8, 12};
-    for (int color = 0; color < 3; ++color)
+    for (size_t color = 0; color < normal_colors.size(); ++color)
         for (int b = 0; b < 256; ++b)
         {
-            uint8_t packed[8];
+            uint16_t packed[8];
             for (int x = 0; x < 8; ++x)
-                packed[x] = 3 + ((b & (128 >> x)) ? colors[color] : 0);
-            std::memcpy(pixels[color][b], packed, 8);
+                packed[x] = vga_pixel((b & (128 >> x)) ? normal_colors[color].rgb332 : 0);
+            std::memcpy(pixels[color][b], packed, sizeof packed);
         }
     sm = pio_claim_unused_sm(pio, true);
     program_offset = pio_add_program(pio, &lightman_video_program);
     auto cfg = lightman_video_program_get_default_config(program_offset);
-    sm_config_set_out_pins(&cfg, pins::hsync, 5);
-    sm_config_set_out_shift(&cfg, true, true, 8);
+    sm_config_set_out_pins(&cfg, pins::hsync, pins::video_pin_count);
+    sm_config_set_out_shift(&cfg, true, true, 16);
     sm_config_set_fifo_join(&cfg, PIO_FIFO_JOIN_TX);
     sm_config_set_clkdiv(&cfg, 1.0f);
-    for (unsigned pin = pins::hsync; pin <= pins::blue; ++pin)
+    for (unsigned pin = pins::hsync; pin <= pins::blue1; ++pin)
         pio_gpio_init(pio, pin);
-    pio_sm_set_consecutive_pindirs(pio, sm, pins::hsync, 5, true);
+    pio_sm_set_consecutive_pindirs(pio, sm, pins::hsync, pins::video_pin_count, true);
     pio_sm_init(pio, sm, program_offset, &cfg);
     for (int &ch : channels)
         ch = dma_claim_unused_channel(true);
     for (int i = 0; i < 2; ++i)
     {
         auto dc = dma_channel_get_default_config(channels[i]);
-        channel_config_set_transfer_data_size(&dc, DMA_SIZE_8);
+        channel_config_set_transfer_data_size(&dc, DMA_SIZE_16);
         channel_config_set_read_increment(&dc, true);
         channel_config_set_write_increment(&dc, false);
         channel_config_set_dreq(&dc, pio_get_dreq(pio, sm, true));
