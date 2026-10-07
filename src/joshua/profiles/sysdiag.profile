@@ -3,8 +3,8 @@
 clock-hz = 1000000
 
 ram = $0000:$8000
-via = $8000
-acia = $8010
+via = $B000
+acia = $B010
 rom = $C000:$4000:../../ferrous/sysdiag.bin
 
 serial-baud = 19200

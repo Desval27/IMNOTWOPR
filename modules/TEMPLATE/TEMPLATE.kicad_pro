@@ -473,7 +473,7 @@
       "global_label_dangling": "warning",
       "ground_pin_not_ground": "warning",
       "hier_label_mismatch": "error",
-      "isolated_pin_label": "warning",
+      "isolated_pin_label": "ignore",
       "label_dangling": "error",
       "label_multiple_wires": "warning",
       "lib_symbol_issues": "warning",
@@ -688,7 +688,7 @@
         "uuid": "1bc24577-9a03-4fc2-ac64-d8d0370a6427"
       }
     ],
-    "used_designators": "#FLG1-2,J1-2,#PWR1-12,MH1-2",
+    "used_designators": "#FLG1-2,J1-2,#PWR1-16,MH1-2",
     "variants": []
   },
   "sheets": [

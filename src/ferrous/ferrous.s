@@ -1,39 +1,21 @@
-.segment "ZEROPAGE"
-print_text_ptr:		.res	2
-read_text_ptr:		.res	2
-compare_text_left:	.res	2
-compare_text_right:	.res	2
+.import acia_init
+.import read_text
+.import input_buffer
+.import print_text
+.import print_newline
+.import print_chr
+.import compare_text
+.importzp compare_text_left
+.importzp compare_text_right
 
-.segment "BSS"
-input_buffer:		.res	256	; Up to 255 characters followed by NUL.
-skip_lf:			.res	1	; Suppress the LF half of a CR/LF pair.
-
-.segment "VIA"
-via_portb:			.res	1
-via_porta:			.res	1
-via_ddrb:			.res	1
-via_ddra:			.res	1
-
-.segment "ACIA"
-acia_data:			.res	1
-acia_status:		.res	1
-acia_cmd:			.res	1
-acia_ctrl:			.res	1
-
-.segment "CODE"
+.segment "PROGRAM_CODE"
 reset:
 	sei				; Disable interrupts
 	cld				; Clear decimal mode
 	ldx	#$ff		; Set up stack pointer
 	txs				;
 
-	; ACIA Init
-	lda	#$1F		; 8-N-1, 19200 baud
-	sta	acia_ctrl
-
-	lda	#$0B		; No parity, no echo, no interrupts.
-	sta	acia_cmd
-	stz	skip_lf		; RAM is not initialized by the reset vector.
+	jsr acia_init
 
 login:
 	lda	#<login_prompt
@@ -79,10 +61,6 @@ print_reverse_loop:
 print_reverse_done:
 	jsr	print_newline
 	bra	loop
-
-.include "read_text.inc"
-.include "print_text.inc"
-.include "compare_text.inc"
 
 .segment "RODATA"
 

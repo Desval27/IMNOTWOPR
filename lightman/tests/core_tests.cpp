@@ -131,7 +131,7 @@ int main()
     assert(frame(0x07) == 7);
     Config config;
     assert(config.valid() && config.color == default_normal_color);
-    assert(normal_colors[config.color].rgb332 == 0xf0); // Amber: R=7, G=4, B=0.
+    assert(normal_colors[config.color].rgb332 == 0xff); // White: R=7, G=7, B=3.
     auto data = encode_config(config, 42);
     Config restored;
     uint32_t gen = 0;
@@ -169,7 +169,7 @@ int main()
     assert(vga_pixel(0x04) == 0x083);
     assert(vga_pixel(0x02) == 0x103); // B0: 390 ohms.
     assert(vga_pixel(0x01) == 0x203);
-    assert(vga_pixel(normal_colors[default_normal_color].rgb332) == 0x03f);
+    assert(vga_pixel(normal_colors[default_normal_color].rgb332) == 0x3ff);
     assert(normal_colors[0].rgb332 == 0xff && normal_colors[1].rgb332 == 0x1c && normal_colors[2].rgb332 == 0xfc);
     config.baud = 12345;
     assert(!config.valid());

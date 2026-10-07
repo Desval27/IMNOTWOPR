@@ -1,0 +1,21 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "5919a681-6213-4155-92b3-30bc1b43a353")
+	(paper "A3")
+	(title_block
+		(title "TITLE")
+		(rev "A")
+		(company "THE HOUSE OF GALAHAD")
+		(comment 1 "IMNOTWOPR")
+		(comment 2 "CARTRIDGE INTERFACE")
+		(comment 3 "75-1032-01")
+	)
+	(lib_symbols)
+	(sheet_instances
+		(path "/"
+			(page "2")
+		)
+	)
+)

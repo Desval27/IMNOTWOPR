@@ -5,6 +5,7 @@ behavior. Perform these checks before relying on the prototype.
 
 1. Confirm the pin map in [wiring](../docs/wiring.md), level-shifter supplies,
    PS/2 pull-ups, all three MAX3232 charge pumps and VGA resistor values.
+   Confirm TX/RX reach GPIO0/1, CTS/RTS GPIO2/3 and DTR/DSR GPIO5/4.
    Confirm DCD/RI reach GPIO6/7 and PS/2 clock/data reach GPIO8/9.
    Confirm HS/VS reach GPIO13/14, R0..R2 GPIO15..17, G0..G2 GPIO18..20 and
    B0..B1 GPIO21/22. Channel 0 must feed the smallest resistor (greatest weight).

@@ -11,7 +11,8 @@
 // GPIO numbers, not Pico physical header positions.
 namespace lightman::pins
 {
-constexpr unsigned tx = 0, rx = 1, cts = 2, rts = 3, dtr = 4, dsr = 5;
+// TX/RX/CTS use the fixed UART0 pin mux; RTS/DTR/DSR use ordinary GPIOs.
+constexpr unsigned tx = 0, rx = 1, cts = 2, rts = 3, dtr = 5, dsr = 4;
 constexpr unsigned dcd = 6, ri = 7;
 constexpr unsigned ps2_clock = 8, ps2_data = 9;
 constexpr unsigned hsync = 13, vsync = 14;

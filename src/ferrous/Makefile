@@ -40,7 +40,7 @@ LD65FLAGS ?= -C $(CONFIG)
 # COMMON_MODULES := lib/console lib/delay
 # target1_MODULES := lib/uart
 # target2_MODULES := lib/math
-COMMON_MODULES := 
+COMMON_MODULES := kernal
 ferrous_MODULES :=
 sysdiag_MODULES :=
 
@@ -54,6 +54,7 @@ ASM_DEPS := $(wildcard *.inc lib/*.inc)
 # target2_DEPS := lib/macros.inc
 ferrous_DEPS := 
 sysdiag_DEPS :=
+test_DEPS :=
 
 
 .PHONY: all clean $(TARGETS)

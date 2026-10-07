@@ -1,39 +1,19 @@
 ; IMNOTWOPR 
 ; System Diagnostics for the 6502-based computer system.
 
-.segment "ZEROPAGE"
-print_text_ptr:		.res	2
-read_text_ptr:		.res	2
+.import acia_init
+.import print_text
+.import read_text
+.import input_buffer
 
-.segment "BSS"
-input_buffer:		.res	256	; Line input, including its trailing NUL.
-skip_lf:			.res	1	; Suppress the LF half of a CR/LF pair.
-
-.segment "VIA"
-via_portb:			.res	1
-via_porta:			.res	1
-via_ddrb:			.res	1
-via_ddra:			.res	1
-
-.segment "ACIA"
-acia_data:			.res	1
-acia_status:		.res	1
-acia_cmd:			.res	1
-acia_ctrl:			.res	1
-
-.segment "CODE"
+.segment "PROGRAM_CODE"
 reset:
 	sei
 	cld
 	ldx	#$FF
 	txs
 
-	; Use the same serial setup as Ferrous: 19200 baud, 8-N-1, no IRQs.
-	lda	#$1F
-	sta	acia_ctrl
-	lda	#$0B
-	sta	acia_cmd
-	stz	skip_lf
+	jsr	acia_init
 
 menu:
 	lda	#<menu_text
@@ -96,9 +76,6 @@ option_4:
 	jsr	print_text
 	rts
 
-.include "print_text.inc"
-.include "read_text.inc"	
-
 .segment "RODATA"
 
 ; To add an option, add its handler, table entry and menu label.
@@ -111,10 +88,10 @@ MENU_COUNT = (* - option_handlers) / 2
 menu_text:
 	.byte	$0D, $0A
 	.byte	"SYSTEM DIAGNOSTICS", $0D, $0A
-	.byte	"1. Option 1", $0D, $0A
-	.byte	"2. Option 2", $0D, $0A
-	.byte	"3. Option 3", $0D, $0A
-	.byte	"4. Option 4", $0D, $0A
+	.byte	"1. MEMORY", $0D, $0A
+	.byte	"2. VIA 2", $0D, $0A
+	.byte	"3. ACIA", $0D, $0A
+	.byte	"4. PSG", $0D, $0A
 	.byte   $0D, $0A,0
 prompt:
 	.asciiz	"Select an option and press Enter: "

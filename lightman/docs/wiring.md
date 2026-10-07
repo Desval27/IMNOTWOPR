@@ -8,10 +8,10 @@ assignments before assembly.
 
 | Signal | GPIO | Pico physical pin | Destination |
 | --- | ---: | ---: | --- |
-| UART0 RX | 0 | 1 | MAX3232 receiver output <- DE-9 pin 2 |
-| UART0 TX | 1 | 2 | MAX3232 driver input -> DE-9 pin 3 |
-| RTS | 2 | 4 | MAX3232 driver input -> DE-9 pin 7 |
-| CTS | 3 | 5 | MAX3232 receiver output <- DE-9 pin 8 |
+| UART0 TX | 0 | 1 | MAX3232 driver input -> DE-9 pin 3 |
+| UART0 RX | 1 | 2 | MAX3232 receiver output <- DE-9 pin 2 |
+| CTS | 2 | 4 | MAX3232 receiver output <- DE-9 pin 8 |
+| RTS | 3 | 5 | MAX3232 driver input -> DE-9 pin 7 |
 | DSR | 4 | 6 | MAX3232 receiver output <- DE-9 pin 6 |
 | DTR | 5 | 7 | MAX3232 driver input -> DE-9 pin 4 |
 | DCD | 6 | 9 | MAX3232 receiver output <- DE-9 pin 1 |
@@ -31,6 +31,12 @@ assignments before assembly.
 | Common ground | GND | e.g. 3 | DE-9 pin 5, keyboard ground, VGA grounds |
 
 ## Serial
+
+On GPIO0/1/2, the RP2040 hardware UART0 functions are fixed as TX/RX/CTS;
+these signals cannot be swapped within those pins in firmware. Keep the PCB
+connections in the order above. RTS is a software-controlled output on GPIO3.
+DTR and DSR use ordinary GPIOs and are assigned to GPIO5 and GPIO4 respectively
+to suit the board layout.
 
 The male DE-9 is **DTE**: TX on pin 3, RX on pin 2. A DTE host such as a PC
 normally needs a null-modem cable (TX/RX crossed; handshake signals crossed

@@ -38,7 +38,7 @@ The board/layout target is the original 2 MiB Pico, not Pico 2 or Pico W.
 | --- | --- |
 | UART TX / RX | 0 / 1 |
 | CTS / RTS | 2 / 3 |
-| DTR / DSR | 4 / 5 |
+| DTR / DSR | 5 / 4 |
 | DCD / RI | 6 / 7 |
 | PS/2 clock / data | 8 / 9 |
 | VGA HSYNC / VSYNC | 13 / 14 |

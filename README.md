@@ -77,6 +77,8 @@ The passive backplane itself should contain as little active circuitry as practi
 
 ## System Bus
 
+[Bus Allocation](doc/bus.md)
+
 The IMNOTWOPR bus is inspired conceptually by S-100, but is designed specifically for the 6502 family.
 
 The initial system is expected to use a **W65C02S**, while the backplane is provisioned from the beginning for eventual use with the **W65C816S**.
