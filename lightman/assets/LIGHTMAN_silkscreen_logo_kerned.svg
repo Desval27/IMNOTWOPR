@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+  <title>LIGHTMAN PCB Silkscreen Logo</title>
+  <desc>Single-color, font-independent vector logo for PCB silkscreen.</desc>
+
+  <g fill="none" stroke="#000000" stroke-width="28" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- Lightbulb head -->
+    <circle cx="500" cy="300" r="150"/>
+    <path d="M425 426 H575"/>
+    <path d="M438 462 H562"/>
+    <path d="M452 498 H548"/>
+    <path d="M480 530 H520"/>
+
+    <!-- Face -->
+    <line x1="455" y1="280" x2="455" y2="325"/>
+    <line x1="545" y1="280" x2="545" y2="325"/>
+    <path d="M455 355 Q500 395 545 355"/>
+
+    <!-- Rays -->
+    <line x1="500" y1="95" x2="500" y2="45"/>
+    <line x1="365" y1="125" x2="330" y2="88"/>
+    <line x1="635" y1="125" x2="670" y2="88"/>
+    <line x1="290" y1="300" x2="240" y2="300"/>
+    <line x1="710" y1="300" x2="760" y2="300"/>
+
+    <!-- Arms -->
+    <path d="M405 475 L350 535 L350 590"/>
+    <path d="M595 475 L650 535 L650 590"/>
+    <circle cx="350" cy="620" r="34"/>
+    <circle cx="650" cy="620" r="34"/>
+
+    <!-- Legs -->
+    <path d="M470 535 L430 585 L430 650 L390 690"/>
+    <path d="M530 535 L570 585 L570 650 L610 690"/>
+    <line x1="355" y1="690" x2="430" y2="690"/>
+    <line x1="570" y1="690" x2="645" y2="690"/>
+  </g>
+
+  <!-- Geometric LIGHTMAN wordmark, font-independent -->
+  <g fill="none" stroke="#000000" stroke-width="26" stroke-linecap="round" stroke-linejoin="round">
+    <!-- baseline y=865, top y=755, nominal width 70, gap 24 -->
+
+    <!-- L -->
+    <path d="M120 755 V865 H180"/>
+
+    <!-- I -->
+    <path d="M212 755 V865"/>
+
+    <!-- G -->
+    <path transform="translate(12 0)" d="M320 775 Q300 755 270 755 Q235 755 235 810 Q235 865 275 865 Q320 865 320 825 H285"/>
+
+    <!-- H -->
+    <path d="M365 755 V865 M435 755 V865 M365 810 H435"/>
+
+    <!-- T -->
+    <path d="M475 755 H555 M515 755 V865"/>
+
+    <!-- M -->
+    <path d="M590 865 V755 L630 810 L670 755 V865"/>
+
+    <!-- A -->
+    <path d="M705 865 L745 755 L785 865 M720 825 H770"/>
+
+    <!-- N -->
+    <path d="M825 865 V755 L895 865 V755"/>
+  </g>
+</svg>
