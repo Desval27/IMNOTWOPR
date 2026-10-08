@@ -7742,8 +7742,8 @@
 				)
 			)
 			(pin input line
-				(at -12.7 -10.16 0)
-				(length 5.08)
+				(at -10.16 -10.16 0)
+				(length 2.54)
 				(name "A->B"
 					(effects
 						(font
@@ -7760,8 +7760,8 @@
 				)
 			)
 			(pin tri_state line
-				(at -12.7 12.7 0)
-				(length 5.08)
+				(at -10.16 12.7 0)
+				(length 2.54)
 				(name "A0"
 					(effects
 						(font
@@ -7778,8 +7778,8 @@
 				)
 			)
 			(pin tri_state line
-				(at -12.7 10.16 0)
-				(length 5.08)
+				(at -10.16 10.16 0)
+				(length 2.54)
 				(name "A1"
 					(effects
 						(font
@@ -7796,8 +7796,8 @@
 				)
 			)
 			(pin tri_state line
-				(at -12.7 7.62 0)
-				(length 5.08)
+				(at -10.16 7.62 0)
+				(length 2.54)
 				(name "A2"
 					(effects
 						(font
@@ -7814,8 +7814,8 @@
 				)
 			)
 			(pin tri_state line
-				(at -12.7 5.08 0)
-				(length 5.08)
+				(at -10.16 5.08 0)
+				(length 2.54)
 				(name "A3"
 					(effects
 						(font
@@ -7832,8 +7832,8 @@
 				)
 			)
 			(pin tri_state line
-				(at -12.7 2.54 0)
-				(length 5.08)
+				(at -10.16 2.54 0)
+				(length 2.54)
 				(name "A4"
 					(effects
 						(font
@@ -7850,8 +7850,8 @@
 				)
 			)
 			(pin tri_state line
-				(at -12.7 0 0)
-				(length 5.08)
+				(at -10.16 0 0)
+				(length 2.54)
 				(name "A5"
 					(effects
 						(font
@@ -7868,8 +7868,8 @@
 				)
 			)
 			(pin tri_state line
-				(at -12.7 -2.54 0)
-				(length 5.08)
+				(at -10.16 -2.54 0)
+				(length 2.54)
 				(name "A6"
 					(effects
 						(font
@@ -7886,8 +7886,8 @@
 				)
 			)
 			(pin tri_state line
-				(at -12.7 -5.08 0)
-				(length 5.08)
+				(at -10.16 -5.08 0)
+				(length 2.54)
 				(name "A7"
 					(effects
 						(font
@@ -7904,8 +7904,8 @@
 				)
 			)
 			(pin tri_state line
-				(at 12.7 -5.08 180)
-				(length 5.08)
+				(at 10.16 -5.08 180)
+				(length 2.54)
 				(name "B7"
 					(effects
 						(font
@@ -7922,8 +7922,8 @@
 				)
 			)
 			(pin tri_state line
-				(at 12.7 -2.54 180)
-				(length 5.08)
+				(at 10.16 -2.54 180)
+				(length 2.54)
 				(name "B6"
 					(effects
 						(font
@@ -7940,8 +7940,8 @@
 				)
 			)
 			(pin tri_state line
-				(at 12.7 0 180)
-				(length 5.08)
+				(at 10.16 0 180)
+				(length 2.54)
 				(name "B5"
 					(effects
 						(font
@@ -7958,8 +7958,8 @@
 				)
 			)
 			(pin tri_state line
-				(at 12.7 2.54 180)
-				(length 5.08)
+				(at 10.16 2.54 180)
+				(length 2.54)
 				(name "B4"
 					(effects
 						(font
@@ -7976,8 +7976,8 @@
 				)
 			)
 			(pin tri_state line
-				(at 12.7 5.08 180)
-				(length 5.08)
+				(at 10.16 5.08 180)
+				(length 2.54)
 				(name "B3"
 					(effects
 						(font
@@ -7994,8 +7994,8 @@
 				)
 			)
 			(pin tri_state line
-				(at 12.7 7.62 180)
-				(length 5.08)
+				(at 10.16 7.62 180)
+				(length 2.54)
 				(name "B2"
 					(effects
 						(font
@@ -8012,8 +8012,8 @@
 				)
 			)
 			(pin tri_state line
-				(at 12.7 10.16 180)
-				(length 5.08)
+				(at 10.16 10.16 180)
+				(length 2.54)
 				(name "B1"
 					(effects
 						(font
@@ -8030,8 +8030,8 @@
 				)
 			)
 			(pin tri_state line
-				(at 12.7 12.7 180)
-				(length 5.08)
+				(at 10.16 12.7 180)
+				(length 2.54)
 				(name "B0"
 					(effects
 						(font
@@ -8048,8 +8048,8 @@
 				)
 			)
 			(pin input line
-				(at -12.7 -12.7 0)
-				(length 5.08)
+				(at -10.16 -12.7 0)
+				(length 2.54)
 				(name "~{OE}"
 					(effects
 						(font
@@ -9172,6 +9172,485 @@
 			)
 		)
 		(symbol "74x32_5_1"
+			(rectangle
+				(start -2.54 7.62)
+				(end 2.54 -7.62)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(text "${REFERENCE}"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(text "${VALUE}"
+				(at 3.81 0 900)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+	(symbol "74x390"
+		(pin_names
+			(offset 1.016)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "U"
+			(at 0 8.89 0)
+			(show_name no)
+			(do_not_autoplace yes)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "74x390"
+			(at -7.62 -8.89 0)
+			(show_name no)
+			(do_not_autoplace yes)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "IMNOTWOPR:DIP-16N"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/cd74hct390.pdf"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Dual BCD 4-bit counter"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_locked" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "TTL CNT CNT4"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "DIP?16*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "74x390_1_0"
+			(pin input clock
+				(at -12.7 2.54 0)
+				(length 5.08)
+				(name "~{CP0}"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -12.7 -5.08 0)
+				(length 5.08)
+				(name "MR"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin output line
+				(at 12.7 2.54 180)
+				(length 5.08)
+				(name "Q0"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input clock
+				(at -12.7 0 0)
+				(length 5.08)
+				(name "~{CP1}"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin output line
+				(at 12.7 0 180)
+				(length 5.08)
+				(name "Q1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin output line
+				(at 12.7 -2.54 180)
+				(length 5.08)
+				(name "Q2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin output line
+				(at 12.7 -5.08 180)
+				(length 5.08)
+				(name "Q3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(symbol "74x390_1_1"
+			(rectangle
+				(start -7.62 5.08)
+				(end 7.62 -7.62)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(text "${REFERENCE}"
+				(at 0 8.89 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(text "${VALUE}"
+				(at 0 6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+		)
+		(symbol "74x390_2_0"
+			(pin output line
+				(at 12.7 -5.08 180)
+				(length 5.08)
+				(name "Q3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "9"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin output line
+				(at 12.7 -2.54 180)
+				(length 5.08)
+				(name "Q2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "10"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin output line
+				(at 12.7 0 180)
+				(length 5.08)
+				(name "Q1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "11"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input clock
+				(at -12.7 0 0)
+				(length 5.08)
+				(name "~{CP1}"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "12"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin output line
+				(at 12.7 2.54 180)
+				(length 5.08)
+				(name "Q0"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "13"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -12.7 -5.08 0)
+				(length 5.08)
+				(name "MR"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "14"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input clock
+				(at -12.7 2.54 0)
+				(length 5.08)
+				(name "~{CP0}"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "15"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(symbol "74x390_2_1"
+			(rectangle
+				(start -7.62 5.08)
+				(end 7.62 -7.62)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(text "${REFERENCE}"
+				(at 0 8.89 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(text "${VALUE}"
+				(at 0 6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+		)
+		(symbol "74x390_3_0"
+			(pin power_in line
+				(at 0 -10.16 90)
+				(length 2.54)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 10.16 270)
+				(length 2.54)
+				(name "VCC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "16"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(symbol "74x390_3_1"
 			(rectangle
 				(start -2.54 7.62)
 				(end 2.54 -7.62)
@@ -25002,10 +25481,10 @@
 				)
 			)
 		)
-		(property "Sim.Pins" "1=K 2=A"
-			(at 0 0 0)
+		(property "Legend" "LEGEND"
+			(at 0 -5.08 0)
 			(show_name no)
-			(do_not_autoplace no)
+			(do_not_autoplace yes)
 			(hide yes)
 			(effects
 				(font
@@ -25498,10 +25977,10 @@
 				)
 			)
 		)
-		(property "Sim.Pins" "1=K 2=A"
-			(at 0 0 0)
+		(property "Legend" "LEGEND"
+			(at 0 -5.08 0)
 			(show_name no)
-			(do_not_autoplace no)
+			(do_not_autoplace yes)
 			(hide yes)
 			(effects
 				(font
@@ -25688,10 +26167,10 @@
 				)
 			)
 		)
-		(property "Sim.Pins" "1=K 2=A"
-			(at 0 0 0)
+		(property "Legend" "LEGEND"
+			(at 0 -5.08 0)
 			(show_name no)
-			(do_not_autoplace no)
+			(do_not_autoplace yes)
 			(hide yes)
 			(effects
 				(font
@@ -34516,7 +34995,7 @@
 			(pin passive line
 				(at -10.16 30.48 0)
 				(length 3.81)
-				(name "~{VALID}"
+				(name "/VALID"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -34552,7 +35031,7 @@
 			(pin passive line
 				(at -10.16 25.4 0)
 				(length 3.81)
-				(name "R~{W}"
+				(name "R/W"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -34570,7 +35049,7 @@
 			(pin passive line
 				(at -10.16 22.86 0)
 				(length 3.81)
-				(name "~{RESET}"
+				(name "/RESET"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -34588,7 +35067,7 @@
 			(pin passive line
 				(at -10.16 20.32 0)
 				(length 3.81)
-				(name "~{IRQ}"
+				(name "/IRQ"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -34606,7 +35085,7 @@
 			(pin passive line
 				(at -10.16 17.78 0)
 				(length 3.81)
-				(name "~{NMI}"
+				(name "/NMI"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -35457,7 +35936,7 @@
 			(pin passive line
 				(at -10.16 30.48 0)
 				(length 3.81)
-				(name "~{PSON}"
+				(name "/PSON"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -35691,7 +36170,7 @@
 			(pin passive line
 				(at -10.16 -2.54 0)
 				(length 3.81)
-				(name "~{SPI_SEL}"
+				(name "/SPI_SEL"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -35727,7 +36206,7 @@
 			(pin passive line
 				(at -10.16 -7.62 0)
 				(length 3.81)
-				(name "~{SERIRQ}"
+				(name "/SERIRQ"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -35745,7 +36224,7 @@
 			(pin passive line
 				(at -10.16 -10.16 0)
 				(length 3.81)
-				(name "~{BUSREQ0}"
+				(name "/BUSREQ0"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -35763,7 +36242,7 @@
 			(pin passive line
 				(at -10.16 -12.7 0)
 				(length 3.81)
-				(name "~{BUSGNT0}"
+				(name "/BUSGNT0"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -35781,7 +36260,7 @@
 			(pin passive line
 				(at -10.16 -15.24 0)
 				(length 3.81)
-				(name "~{BUSREQ1}"
+				(name "/BUSREQ1"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -35799,7 +36278,7 @@
 			(pin passive line
 				(at -10.16 -17.78 0)
 				(length 3.81)
-				(name "~{BUSGNT1}"
+				(name "/BUSGNT1"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -35835,7 +36314,7 @@
 			(pin passive line
 				(at -10.16 -22.86 0)
 				(length 3.81)
-				(name "~{BUSREQ2}"
+				(name "/BUSREQ2"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -35853,7 +36332,7 @@
 			(pin passive line
 				(at -10.16 -25.4 0)
 				(length 3.81)
-				(name "~{BUSGNT2}"
+				(name "/BUSGNT2"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -35871,7 +36350,7 @@
 			(pin passive line
 				(at -10.16 -27.94 0)
 				(length 3.81)
-				(name "~{BUSREQ3}"
+				(name "/BUSREQ3"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -35889,7 +36368,7 @@
 			(pin passive line
 				(at -10.16 -30.48 0)
 				(length 3.81)
-				(name "~{BUSGNT3}"
+				(name "/BUSGNT3"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -35969,6 +36448,219 @@
 					)
 				)
 				(number "c32"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+	(symbol "Voltmeter_DC"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0.0254)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "MES"
+			(at 3.81 2.54 0)
+			(show_name no)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Voltmeter_DC"
+			(at 3.81 0 0)
+			(show_name no)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "IMNOTWOPR:Wire_Meter"
+			(at 0 2.54 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 2.54 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "DC voltmeter"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Legend" "LEGEND"
+			(at 3.81 -2.54 0)
+			(show_name no)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "ki_keywords" "voltmeter DC"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "Voltmeter_DC_0_0"
+			(polyline
+				(pts
+					(xy -3.175 -3.175) (xy -1.905 -1.905)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 1.905 3.175) (xy 3.175 3.175) (xy 3.175 1.905)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 1.905 1.905) (xy 3.175 3.175)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(text "V"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 2.54 2.54)
+					)
+				)
+			)
+		)
+		(symbol "Voltmeter_DC_0_1"
+			(circle
+				(center 0 0)
+				(radius 2.54)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0.254 3.81) (xy 0.762 3.81)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0.508 4.064) (xy 0.508 3.556)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "Voltmeter_DC_1_1"
+			(pin passive line
+				(at 0 -5.08 90)
+				(length 2.54)
+				(name "-"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 5.08 270)
+				(length 2.54)
+				(name "+"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -38769,6 +39461,86 @@
 		)
 		(embedded_fonts no)
 	)
+	(symbol "74HCT10"
+		(extends "74x10")
+		(property "Reference" "U"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "74HCT10"
+			(at -3.81 0 90)
+			(show_name no)
+			(do_not_autoplace yes)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "IMNOTWOPR:DIP-14N"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/cd74hct10.pdf"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Triple 3-input NAND"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "TTL Nand3"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "DIP*W7.62mm*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
 	(symbol "74HCT13"
 		(extends "74x13")
 		(property "Reference" "U"
@@ -38930,6 +39702,85 @@
 			)
 		)
 		(property "ki_fp_filters" "DIP?14*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+	(symbol "74HCT390"
+		(extends "74x390")
+		(property "Reference" "U"
+			(at -7.62 8.89 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "74HCT390"
+			(at -7.62 -8.89 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "IMNOTWOPR:DIP-16N"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/cd74hct390.pdf"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Dual BCD 4-bit counter"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "TTL CNT CNT4"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "DIP?16*"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)

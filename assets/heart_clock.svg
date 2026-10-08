@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="48"
+   height="48"
+   viewBox="0 0 48 48"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)"
+   sodipodi:docname="heart_clock.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="px"
+     showgrid="true"
+     inkscape:zoom="16"
+     inkscape:cx="23.375"
+     inkscape:cy="14.34375"
+     inkscape:window-width="1680"
+     inkscape:window-height="979"
+     inkscape:window-x="1672"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       id="grid1"
+       units="px"
+       originx="24"
+       originy="24"
+       spacingx="1"
+       spacingy="1"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="5"
+       enabled="true"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="rect6"
+       style="mix-blend-mode:normal;fill:#000000;fill-rule:evenodd;stroke-width:1.445"
+       d="M 9.8378906 0.052734375 C 7.2078381 0.16170937 4.8586663 1.0924945 3.0761719 2.9140625 C -1.2747271 7.3603367 -0.89058509 15.737808 3.4726562 23.5 L 6.5 23.5 L 6.5 13.5 L 12.5 13.5 L 12.5 23.5 L 16.5 23.5 L 16.5 13.5 L 22.5 13.5 L 22.5 23.5 L 26.5 23.5 L 26.5 13.5 L 32.5 13.5 L 32.5 23.5 L 36.5 23.5 L 36.5 13.5 L 42.5 13.5 L 42.5 23.5 L 44.525391 23.5 C 48.88908 15.737808 49.274727 7.3603374 44.923828 2.9140625 C 40.170508 -1.9434535 31.385907 -0.451289 24 6 C 19.383809 1.967948 14.221313 -0.12889063 9.8378906 0.052734375 z M 7.5 14.5 L 7.5 24.5 L 4.0585938 24.5 C 5.024945 26.081706 6.1585167 27.629683 7.4511719 29.103516 L 23.935547 47.898438 L 23.9375 47.90625 L 24 47.96875 L 24.0625 47.90625 L 24.064453 47.898438 L 40.546875 29.103516 C 41.839525 27.629683 42.973023 26.081706 43.939453 24.5 L 41.5 24.5 L 41.5 14.5 L 37.5 14.5 L 37.5 24.5 L 31.5 24.5 L 31.5 14.5 L 27.5 14.5 L 27.5 24.5 L 21.5 24.5 L 21.5 14.5 L 17.5 14.5 L 17.5 24.5 L 11.5 24.5 L 11.5 14.5 L 7.5 14.5 z " />
+    <path
+       style="fill:none;stroke:none;stroke-width:1.88976;stroke-linecap:round;stroke-miterlimit:5"
+       d="m 9,19 h 5 V 9 h 5 v 10 h 5 V 9 h 5 v 10 h 5 V 9 h 5 v 10 h 5 v 0"
+       id="path7" />
+  </g>
+</svg>
