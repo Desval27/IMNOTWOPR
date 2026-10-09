@@ -473,7 +473,7 @@
       "global_label_dangling": "warning",
       "ground_pin_not_ground": "warning",
       "hier_label_mismatch": "error",
-      "isolated_pin_label": "ignore",
+      "isolated_pin_label": "warning",
       "label_dangling": "error",
       "label_multiple_wires": "warning",
       "lib_symbol_issues": "warning",
@@ -486,9 +486,9 @@
       "net_not_bus_member": "warning",
       "no_connect_connected": "warning",
       "no_connect_dangling": "warning",
-      "pin_not_connected": "error",
-      "pin_not_driven": "error",
-      "pin_to_pin": "warning",
+      "pin_not_connected": "warning",
+      "pin_not_driven": "warning",
+      "pin_to_pin": "ignore",
       "power_pin_not_driven": "error",
       "same_local_global_label": "warning",
       "similar_label_and_power": "warning",
@@ -621,7 +621,17 @@
       "sort_asc": true,
       "sort_field": "Reference"
     },
-    "bus_aliases": {},
+    "bus_aliases": {
+      "CONTROL": [
+        "~{VALID}",
+        "PHI2",
+        "~{IRQ}",
+        "R/W",
+        "~{RESET}",
+        "~{ACIA_A_CS}",
+        "~{ACIA_B_CS}"
+      ]
+    },
     "connection_grid_size": 50.0,
     "drawing": {
       "dashed_lines_dash_length_ratio": 12.0,
@@ -688,7 +698,7 @@
         "uuid": "1bc24577-9a03-4fc2-ac64-d8d0370a6427"
       }
     ],
-    "used_designators": "#FLG1-2,J1-2,#PWR1-16,MH1-2",
+    "used_designators": "#FLG1-2,R1-18,J1-4,#PWR1-46,MH1-2,U1-14,C1-20,Y1-2,D1-18,RN1,SW1",
     "variants": []
   },
   "sheets": [

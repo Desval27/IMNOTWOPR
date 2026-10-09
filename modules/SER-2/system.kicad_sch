@@ -3,14 +3,14 @@
 	(generator "eeschema")
 	(generator_version "10.0")
 	(uuid "5919a681-6213-4155-92b3-30bc1b43a353")
-	(paper "A3")
+	(paper "A2")
 	(title_block
-		(title "TITLE")
+		(title "SER-2")
 		(rev "A")
 		(company "THE HOUSE OF GALAHAD")
 		(comment 1 "IMNOTWOPR")
-		(comment 2 "DUAL SERIAL PORT")
-		(comment 3 "75-1000-01")
+		(comment 2 "DUAL SERIAL PORTS")
+		(comment 3 "75-1042-01")
 	)
 	(lib_symbols)
 	(sheet_instances
