@@ -124,8 +124,8 @@
         "pth_inside_courtyard": "ignore",
         "shorting_items": "error",
         "silk_edge_clearance": "warning",
-        "silk_over_copper": "error",
-        "silk_overlap": "error",
+        "silk_over_copper": "ignore",
+        "silk_overlap": "ignore",
         "skew_out_of_range": "error",
         "solder_mask_bridge": "error",
         "starved_thermal": "error",
@@ -636,6 +636,24 @@
           "label": "Description",
           "name": "Description",
           "show": false
+        },
+        {
+          "group_by": false,
+          "label": "DigiKey",
+          "name": "DigiKey",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Legend",
+          "name": "Legend",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Device",
+          "name": "Sim.Device",
+          "show": false
         }
       ],
       "filter_string": "",
@@ -707,7 +725,7 @@
         "uuid": "e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
       }
     ],
-    "used_designators": "MH1,U1-7,JP1,SW1-3,R1-7,#FLG1-7,D1-6,#PWR1-53,C1-13,MES1-4,J1-2,Y1",
+    "used_designators": "MH1,U1-7,JP1,R1-7,SW1-3,#FLG1-7,D1-6,C1-17,#PWR1-53,Y1,MES1-4,J1-2",
     "variants": []
   },
   "sheets": [
