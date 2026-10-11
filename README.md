@@ -33,6 +33,11 @@ All modules and panels are currently a work in progress and **NONE** have been t
 - [PWR Panel](panels/PWR/README.md)
 - [Lightman serial terminal](lightman/README.md) - Pico RGB332 VGA/PS/2 serial terminal with VT100/VT52 firmware and on-device setup, including normal-text color selection.
 
+## Blue Sky Wants
+
+- Up to 16 bus controllers with a bus arbitrator (BUSREQ0..BUSREQ4) & (BUSGRNT0..BUSGNT4).  Bus arbitrator is an implicit bus controller.
+- Up to 8 memory maps with a memory map manager (BANK0..BANK2).  Memory Map Manager is likely a bus controller too.
+
 ## Mechanical Architecture
 
 IMNOTWOPR uses the **3U Eurocard format**, with typical cards measuring approximately:
