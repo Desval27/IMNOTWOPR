@@ -37,6 +37,7 @@ All modules and panels are currently a work in progress and **NONE** have been t
 
 - Up to 16 bus controllers with a bus arbitrator (BUSREQ0..BUSREQ4) & (BUSGRNT0..BUSGNT4).  Bus arbitrator is an implicit bus controller.
 - Up to 8 memory maps with a memory map manager (BANK0..BANK2).  Memory Map Manager is likely a bus controller too.
+- Local RAM that is only visible to the CPU on the card with it.  Configurable from 0k (NONE), 1k, 2k, 4k, 8k, 16k, 32k.
 
 ## Mechanical Architecture
 
