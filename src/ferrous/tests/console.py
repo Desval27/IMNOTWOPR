@@ -7,13 +7,13 @@ import tempfile
 import unittest
 
 EXECUTABLE = pathlib.Path(sys.argv.pop(1)).resolve()
-PROFILE = pathlib.Path(__file__).resolve().parents[2] / "joshua/profiles/ferris.profile"
+PROFILE = pathlib.Path(__file__).resolve().parents[2] / "joshua/profiles/ferrous.profile"
 
 
 class ConsoleTests(unittest.TestCase):
     def test_generic_comparison(self):
         labels = {}
-        label_file = pathlib.Path(__file__).resolve().parents[1] / "ferris.lbl"
+        label_file = pathlib.Path(__file__).resolve().parents[1] / "ferrous.lbl"
         for line in label_file.read_text().splitlines():
             _, address, name = line.split()
             labels[name.lstrip(".")] = int(address, 16)
@@ -46,51 +46,86 @@ class ConsoleTests(unittest.TestCase):
                     self.assertEqual(bool(flags & 2), equal)
                     self.assertEqual(x, 0xa5)
 
-    def check_console(self, typed, expected, login=True):
-        if login:
-            typed = b"joshua\r\n" + typed
-            expected = b"joshua\r\nGREETINGS PROFESSOR FALKEN.\r\n> " + expected
+    def check_console(self, typed, expected, wake=True):
+        if wake:
+            typed = b"\r\n" + typed
+            expected = b"\r\nwhat? " + expected
         # Pace input so the polling receiver can finish echoing each character.
         commands = ["run"] * 5
         for byte in typed:
             commands += [f"send {byte:02X}", "run"]
             if byte in (10, 13):
-                commands += ["run"] * 40  # Allow a full 255-byte reversal.
+                commands += ["run"] * 60  # Allow maximum-length itemized output.
         commands += ["quit"]
         result = subprocess.run(
             [str(EXECUTABLE), "--profile", str(PROFILE), "--console-newline", "raw",
              "--cycles", "10000", "--unthrottled"],
             input=("\n".join(commands) + "\n").encode(), capture_output=True, timeout=30)
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertEqual(result.stdout, b"login: " + expected)
+        self.assertEqual(result.stdout, expected)
 
     def test_initial_prompt(self):
-        self.check_console(b"", b"", login=False)
+        self.check_console(b"", b"", wake=False)
+        self.check_console(b"", b"")
 
-    def test_login_rejection_and_retry(self):
-        names = [b"", b"Joshua", b"JOSHUA", b"joshu", b"joshuax", b" joshua", b"joshua "]
-        typed = b"".join(name + b"\r\n" for name in names)
-        expected = b"".join(name + b"\r\nACCESS DENIED.\r\nlogin: " for name in names)
-        self.check_console(typed + b"joshua\nTest\r",
-                           expected + b"joshua\r\nGREETINGS PROFESSOR FALKEN.\r\n> Test\r\ntseT\r\n> ",
-                           login=False)
+    @staticmethod
+    def items(*values):
+        return b"".join(f"  [{i}] ".encode() + value + b"\r\n"
+                        for i, value in enumerate(values, 1))
 
-    def test_reverse_and_line_endings(self):
-        self.check_console(b"Hello\r\nWorld\n!\r",
-                           b"Hello\r\nolleH\r\n> World\r\ndlroW\r\n> !\r\n!\r\n> ")
+    def test_echo_and_line_endings(self):
+        self.check_console(b"echo Hello World\r\necho !\necho\r",
+                           b"echo Hello World\r\n" + self.items(b"Hello", b"World")
+                           + b"what? echo !\r\n" + self.items(b"!")
+                           + b"what? echo\r\n\r\nwhat? ")
+
+    def test_unknown_and_exact_names(self):
+        lines = [b"Echo", b"ECHO", b"ech", b"echox", b"unknown x y", b'  nope "a b"  ', b'""']
+        self.check_console(b"".join(line + b"\r" for line in lines) + b"echo ok\r",
+                           b"".join(line + b"\r\nunrecognized command " + line
+                                    + b"\r\nwhat? " for line in lines)
+                           + b"echo ok\r\n" + self.items(b"ok") + b"what? ")
+
+    def test_spaces_and_quotes(self):
+        line = b'  echo   one "two three" "" pre" mid "post "a\\b"  '
+        self.check_console(line + b"\r", line + b"\r\n"
+                           + self.items(b"one", b"two three", b"", b"pre mid post", b"a\\b")
+                           + b"what? ")
+        self.check_console(b'"echo" "hi"\r', b'"echo" "hi"\r\n'
+                           + self.items(b"hi") + b"what? ")
+
+    def test_malformed_and_recovery(self):
+        lines = [b'echo "unterminated', b'echo good bad"', b"echo " + b"x " * 16]
+        error = b"malformed command (unclosed quote or too many parameters)\r\nwhat? "
+        self.check_console(b"".join(line + b"\r" for line in lines) + b"echo ok\r",
+                           b"".join(line + b"\r\n" + error for line in lines)
+                           + b"echo ok\r\n" + self.items(b"ok") + b"what? ")
+
+    def test_parameter_limit(self):
+        values = [str(i).encode() for i in range(1, 16)]
+        line = b"echo " + b" ".join(values) + b"   "
+        self.check_console(line + b"\r", line + b"\r\n" + self.items(*values) + b"what? ")
+        line = b"echo " + b" ".join([b'""'] * 15)
+        self.check_console(line + b"\r", line + b"\r\n" + self.items(*([b""] * 15)) + b"what? ")
 
     def test_empty_and_editing(self):
-        self.check_console(b"\r\x08ab\x08C\x7fD\r",
-                           b"\r\n\r\n> ab\x08 \x08C\x08 \x08D\r\nDa\r\n> ")
+        self.check_console(b"\r   \r\x08echo ab\x08C\x7fD\r",
+                           b"\r\nwhat?    \r\nwhat? echo ab\x08 \x08C\x08 \x08D\r\n"
+                           + self.items(b"aD") + b"what? ")
 
     def test_capacity_and_reuse(self):
-        text = (b"abcde" * 51)
-        self.check_console(text + b"Z\x08Q\rOK\r",
-                           text + b"\x07\x08 \x08Q\r\n" + (text[:-1] + b"Q")[::-1]
-                           + b"\r\n> OK\r\nKO\r\n> ")
+        text = b"echo " + b"abcde" * 50
+        self.check_console(text + b"Z\x08Q\recho OK\r",
+                           text + b"\x07\x08 \x08Q\r\n" + self.items(text[5:-1] + b"Q")
+                           + b"what? echo OK\r\n" + self.items(b"OK") + b"what? ")
+        # A full buffer ending in a separator must not wrap either parse index.
+        text = b"echo " + b"x" * 249 + b" "
+        self.check_console(text + b"\r", text + b"\r\n" + self.items(b"x" * 249) + b"what? ")
+        self.check_console(b" " * 255 + b"\r", b" " * 255 + b"\r\nwhat? ")
 
     def test_ignore_other_control_bytes(self):
-        self.check_console(b"a\x00\x01\xffb\r", b"ab\r\nba\r\n> ")
+        self.check_console(b"echo a\x00\x01\xffb\r",
+                           b"echo ab\r\n" + self.items(b"ab") + b"what? ")
 
 
 if __name__ == "__main__":

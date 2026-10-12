@@ -8838,7 +8838,7 @@
 				)
 			)
 			(pin input inverted
-				(at -12.7 -2.54 0)
+				(at -12.7 -5.08 0)
 				(length 5.08)
 				(name "G2A"
 					(effects
@@ -8856,7 +8856,7 @@
 				)
 			)
 			(pin input inverted
-				(at -12.7 -5.08 0)
+				(at -12.7 -7.62 0)
 				(length 5.08)
 				(name "G2B"
 					(effects
@@ -8874,7 +8874,7 @@
 				)
 			)
 			(pin input line
-				(at -12.7 -7.62 0)
+				(at -12.7 -2.54 0)
 				(length 5.08)
 				(name "G1"
 					(effects
@@ -38276,7 +38276,7 @@
 			(pin passive line
 				(at -10.16 30.48 0)
 				(length 3.81)
-				(name "A_{0}"
+				(name "A_{8}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -38294,7 +38294,7 @@
 			(pin passive line
 				(at -10.16 27.94 0)
 				(length 3.81)
-				(name "A_{1}"
+				(name "A_{9}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -38312,7 +38312,7 @@
 			(pin passive line
 				(at -10.16 25.4 0)
 				(length 3.81)
-				(name "A_{2}"
+				(name "A_{10}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -38330,7 +38330,7 @@
 			(pin passive line
 				(at -10.16 22.86 0)
 				(length 3.81)
-				(name "A_{3}"
+				(name "A_{11}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -38348,7 +38348,7 @@
 			(pin passive line
 				(at -10.16 20.32 0)
 				(length 3.81)
-				(name "A_{4}"
+				(name "A_{12}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -38366,7 +38366,7 @@
 			(pin passive line
 				(at -10.16 17.78 0)
 				(length 3.81)
-				(name "A_{5}"
+				(name "A_{13}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -38384,7 +38384,7 @@
 			(pin passive line
 				(at -10.16 15.24 0)
 				(length 3.81)
-				(name "A_{6}"
+				(name "A_{14}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -38402,7 +38402,7 @@
 			(pin passive line
 				(at -10.16 12.7 0)
 				(length 3.81)
-				(name "A_{7}"
+				(name "A_{15}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -38420,7 +38420,7 @@
 			(pin passive line
 				(at -10.16 10.16 0)
 				(length 3.81)
-				(name "A_{8}"
+				(name "A_{16}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -38438,7 +38438,7 @@
 			(pin passive line
 				(at -10.16 7.62 0)
 				(length 3.81)
-				(name "A_{9}"
+				(name "A_{17}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -38456,7 +38456,7 @@
 			(pin passive line
 				(at -10.16 5.08 0)
 				(length 3.81)
-				(name "A_{10}"
+				(name "A_{18}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -38474,7 +38474,7 @@
 			(pin passive line
 				(at -10.16 2.54 0)
 				(length 3.81)
-				(name "A_{11}"
+				(name "A_{19}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -38492,7 +38492,7 @@
 			(pin passive line
 				(at -10.16 0 0)
 				(length 3.81)
-				(name "A_{12}"
+				(name "A_{20}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -38510,7 +38510,7 @@
 			(pin passive line
 				(at -10.16 -2.54 0)
 				(length 3.81)
-				(name "A_{13}"
+				(name "A_{21}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -38528,7 +38528,7 @@
 			(pin passive line
 				(at -10.16 -5.08 0)
 				(length 3.81)
-				(name "A_{14}"
+				(name "A_{22}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -38546,7 +38546,7 @@
 			(pin passive line
 				(at -10.16 -7.62 0)
 				(length 3.81)
-				(name "A_{15}"
+				(name "A_{23}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -38561,10 +38561,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin passive inverted
 				(at -10.16 -10.16 0)
 				(length 3.81)
-				(name "A_{16}"
+				(name "ABORT"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -38582,7 +38582,7 @@
 			(pin passive line
 				(at -10.16 -12.7 0)
 				(length 3.81)
-				(name "A_{17}"
+				(name "VPA"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -38600,7 +38600,7 @@
 			(pin passive line
 				(at -10.16 -15.24 0)
 				(length 3.81)
-				(name "A_{18}"
+				(name "VDA"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -38618,7 +38618,7 @@
 			(pin passive line
 				(at -10.16 -17.78 0)
 				(length 3.81)
-				(name "A_{19}"
+				(name "E"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -38636,7 +38636,7 @@
 			(pin passive line
 				(at -10.16 -20.32 0)
 				(length 3.81)
-				(name "A_{20}"
+				(name "MX"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -38651,10 +38651,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin passive inverted
 				(at -10.16 -22.86 0)
 				(length 3.81)
-				(name "A_{21}"
+				(name "HALT?"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -38669,10 +38669,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin open_collector inverted
 				(at -10.16 -25.4 0)
 				(length 3.81)
-				(name "A_{22}"
+				(name "IRQ_{4}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -38687,10 +38687,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin open_collector inverted
 				(at -10.16 -27.94 0)
 				(length 3.81)
-				(name "A_{23}"
+				(name "IRQ_{5}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -38705,10 +38705,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin open_collector inverted
 				(at -10.16 -30.48 0)
 				(length 3.81)
-				(name "RESERVED"
+				(name "IRQ_{6}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -38723,10 +38723,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin open_collector inverted
 				(at -10.16 -33.02 0)
 				(length 3.81)
-				(name "RESERVED"
+				(name "IRQ_{7}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -39214,10 +39214,10 @@
 					)
 				)
 			)
-			(pin passive inverted
+			(pin passive line
 				(at -10.16 30.48 0)
 				(length 3.81)
-				(name "VALID"
+				(name "A_{0}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -39235,7 +39235,7 @@
 			(pin passive line
 				(at -10.16 27.94 0)
 				(length 3.81)
-				(name "PHI2"
+				(name "A_{1}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -39253,7 +39253,7 @@
 			(pin passive line
 				(at -10.16 25.4 0)
 				(length 3.81)
-				(name "R/W"
+				(name "A_{2}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -39268,10 +39268,10 @@
 					)
 				)
 			)
-			(pin passive inverted
+			(pin passive line
 				(at -10.16 22.86 0)
 				(length 3.81)
-				(name "RESET"
+				(name "A_{3}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -39286,10 +39286,10 @@
 					)
 				)
 			)
-			(pin passive inverted
+			(pin passive line
 				(at -10.16 20.32 0)
 				(length 3.81)
-				(name "IRQ"
+				(name "A_{4}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -39304,10 +39304,10 @@
 					)
 				)
 			)
-			(pin passive inverted
+			(pin passive line
 				(at -10.16 17.78 0)
 				(length 3.81)
-				(name "NMI"
+				(name "A_{5}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -39325,7 +39325,7 @@
 			(pin passive line
 				(at -10.16 15.24 0)
 				(length 3.81)
-				(name "READY"
+				(name "A_{6}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -39343,7 +39343,7 @@
 			(pin passive line
 				(at -10.16 12.7 0)
 				(length 3.81)
-				(name "BE"
+				(name "A_{7}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -39358,10 +39358,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin passive inverted
 				(at -10.16 10.16 0)
 				(length 3.81)
-				(name "SYNC"
+				(name "RESET"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -39379,7 +39379,7 @@
 			(pin passive line
 				(at -10.16 7.62 0)
 				(length 3.81)
-				(name "VPB"
+				(name "PHI2"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -39397,7 +39397,7 @@
 			(pin passive line
 				(at -10.16 5.08 0)
 				(length 3.81)
-				(name "MLB"
+				(name "R/W"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -39412,10 +39412,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin passive inverted
 				(at -10.16 2.54 0)
 				(length 3.81)
-				(name "VDA"
+				(name "VALID"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -39433,7 +39433,7 @@
 			(pin passive line
 				(at -10.16 0 0)
 				(length 3.81)
-				(name "VPA"
+				(name "D_{0}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -39451,7 +39451,7 @@
 			(pin passive line
 				(at -10.16 -2.54 0)
 				(length 3.81)
-				(name "E"
+				(name "D_{1}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -39469,7 +39469,7 @@
 			(pin passive line
 				(at -10.16 -5.08 0)
 				(length 3.81)
-				(name "MX"
+				(name "D_{2}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -39487,7 +39487,7 @@
 			(pin passive line
 				(at -10.16 -7.62 0)
 				(length 3.81)
-				(name "~{BANK0}"
+				(name "D_{3}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -39505,7 +39505,7 @@
 			(pin passive line
 				(at -10.16 -10.16 0)
 				(length 3.81)
-				(name "~{BANK1}"
+				(name "D_{4}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -39523,7 +39523,7 @@
 			(pin passive line
 				(at -10.16 -12.7 0)
 				(length 3.81)
-				(name "~{BANK2}"
+				(name "D_{5}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -39541,7 +39541,7 @@
 			(pin passive line
 				(at -10.16 -15.24 0)
 				(length 3.81)
-				(name "D_{0}"
+				(name "D_{6}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -39559,7 +39559,7 @@
 			(pin passive line
 				(at -10.16 -17.78 0)
 				(length 3.81)
-				(name "D_{1}"
+				(name "D_{7}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -39574,10 +39574,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin open_collector inverted
 				(at -10.16 -20.32 0)
 				(length 3.81)
-				(name "D_{2}"
+				(name "IRQ"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -39592,10 +39592,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin open_collector inverted
 				(at -10.16 -22.86 0)
 				(length 3.81)
-				(name "D_{3}"
+				(name "NMI"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -39610,10 +39610,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin open_collector inverted
 				(at -10.16 -25.4 0)
 				(length 3.81)
-				(name "D_{4}"
+				(name "IRQ_{0}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -39628,10 +39628,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin open_collector inverted
 				(at -10.16 -27.94 0)
 				(length 3.81)
-				(name "D_{5}"
+				(name "IRQ_{1}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -39646,10 +39646,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin open_collector inverted
 				(at -10.16 -30.48 0)
 				(length 3.81)
-				(name "D_{6}"
+				(name "IRQ_{2}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -39664,10 +39664,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin open_collector line
 				(at -10.16 -33.02 0)
 				(length 3.81)
-				(name "D_{7}"
+				(name "IRQ_{3}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -40209,10 +40209,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin passive inverted
 				(at -10.16 22.86 0)
 				(length 3.81)
-				(name "I2C_SCL"
+				(name "BUSREQ0"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -40227,10 +40227,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin passive inverted
 				(at -10.16 20.32 0)
 				(length 3.81)
-				(name "I2C_SDA"
+				(name "BUSREQ1"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -40245,10 +40245,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin passive inverted
 				(at -10.16 17.78 0)
 				(length 3.81)
-				(name "SPI_SCK"
+				(name "BUSREQ2"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -40263,10 +40263,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin passive inverted
 				(at -10.16 15.24 0)
 				(length 3.81)
-				(name "SPI_MOSI"
+				(name "BUSREQ3"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -40281,10 +40281,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin passive inverted
 				(at -10.16 12.7 0)
 				(length 3.81)
-				(name "SPI_MISO"
+				(name "BUSREQ5"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -40317,10 +40317,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin passive inverted
 				(at -10.16 7.62 0)
 				(length 3.81)
-				(name "SPI_ID0"
+				(name "BUSGNT0"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -40335,10 +40335,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin passive inverted
 				(at -10.16 5.08 0)
 				(length 3.81)
-				(name "SPI_ID1"
+				(name "BUSGNT1"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -40353,10 +40353,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin passive inverted
 				(at -10.16 2.54 0)
 				(length 3.81)
-				(name "SPI_ID2"
+				(name "BUSGNT2"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -40371,10 +40371,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin passive inverted
 				(at -10.16 0 0)
 				(length 3.81)
-				(name "SPI_ID3"
+				(name "BUSGNT3"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -40392,7 +40392,7 @@
 			(pin passive inverted
 				(at -10.16 -2.54 0)
 				(length 3.81)
-				(name "SPI_SEL"
+				(name "BUSGNT3"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -40428,7 +40428,7 @@
 			(pin passive inverted
 				(at -10.16 -7.62 0)
 				(length 3.81)
-				(name "SERIRQ"
+				(name "BANK0"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -40446,7 +40446,7 @@
 			(pin passive inverted
 				(at -10.16 -10.16 0)
 				(length 3.81)
-				(name "BUSREQ0"
+				(name "BANK1"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -40464,7 +40464,7 @@
 			(pin passive inverted
 				(at -10.16 -12.7 0)
 				(length 3.81)
-				(name "BUSGNT0"
+				(name "BANK2"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -40479,10 +40479,10 @@
 					)
 				)
 			)
-			(pin passive inverted
+			(pin passive line
 				(at -10.16 -15.24 0)
 				(length 3.81)
-				(name "BUSREQ1"
+				(name "I^{2}C_SCL"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -40497,10 +40497,10 @@
 					)
 				)
 			)
-			(pin passive inverted
+			(pin passive line
 				(at -10.16 -17.78 0)
 				(length 3.81)
-				(name "BUSGNT1"
+				(name "I^{2}C_SDA"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -40533,10 +40533,10 @@
 					)
 				)
 			)
-			(pin passive inverted
+			(pin passive line
 				(at -10.16 -22.86 0)
 				(length 3.81)
-				(name "BUSREQ2"
+				(name "READY"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -40551,10 +40551,10 @@
 					)
 				)
 			)
-			(pin passive inverted
+			(pin passive line
 				(at -10.16 -25.4 0)
 				(length 3.81)
-				(name "BUSGNT2"
+				(name "SYNC"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -40572,7 +40572,7 @@
 			(pin passive inverted
 				(at -10.16 -27.94 0)
 				(length 3.81)
-				(name "BUSREQ3"
+				(name "VP"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -40590,7 +40590,7 @@
 			(pin passive inverted
 				(at -10.16 -30.48 0)
 				(length 3.81)
-				(name "BUSGNT3"
+				(name "ML"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -40608,7 +40608,7 @@
 			(pin passive line
 				(at -10.16 -33.02 0)
 				(length 3.81)
-				(name "RESERVED"
+				(name "BE"
 					(effects
 						(font
 							(size 1.27 1.27)

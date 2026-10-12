@@ -3,6 +3,9 @@
 .import input_buffer
 .import print_text
 .import print_newline
+.import print_chr
+.import compare_text
+.importzp compare_text_left, compare_text_right
 
 .segment "PROGRAM_CODE"
 reset:
@@ -41,6 +44,12 @@ command:
 	;
 	; Parse & Execute
 	;
+	jsr command_parse
+	bcs command_malformed
+	lda command_argc
+	beq command		; Empty lines just prompt again.
+	jsr command_execute
+	bcc command
 
 	;
 	; Command not recognized or malformed
@@ -54,6 +63,14 @@ command:
 	jsr print_newline
 
 	jmp command			; Going for a loop
+
+command_malformed:
+	lda #<malformed_command
+	ldx #>malformed_command
+	jsr print_text
+	jmp command
+
+.include "command.inc"
 
 ;login:
 	;lda	#<login_prompt
@@ -114,7 +131,9 @@ command:
 prompt:
 	.asciiz	"what? "
 unrecognized_command:
-	.asciiz "unrecognized command "
+	.asciiz "unrecognized command: "
+malformed_command:
+	.asciiz "malformed command (unclosed quote or too many parameters)\r\n"
 
 .segment "VECTORS"
 	.word	0			; NMI vector address
