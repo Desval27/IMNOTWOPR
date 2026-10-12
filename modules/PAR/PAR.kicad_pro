@@ -473,11 +473,11 @@
       "global_label_dangling": "warning",
       "ground_pin_not_ground": "warning",
       "hier_label_mismatch": "error",
-      "isolated_pin_label": "ignore",
+      "isolated_pin_label": "warning",
       "label_dangling": "error",
       "label_multiple_wires": "warning",
       "lib_symbol_issues": "warning",
-      "lib_symbol_mismatch": "warning",
+      "lib_symbol_mismatch": "ignore",
       "missing_bidi_pin": "warning",
       "missing_input_pin": "warning",
       "missing_power_pin": "error",
@@ -486,8 +486,8 @@
       "net_not_bus_member": "warning",
       "no_connect_connected": "warning",
       "no_connect_dangling": "warning",
-      "pin_not_connected": "error",
-      "pin_not_driven": "error",
+      "pin_not_connected": "warning",
+      "pin_not_driven": "warning",
       "pin_to_pin": "warning",
       "power_pin_not_driven": "error",
       "same_local_global_label": "warning",
@@ -495,7 +495,7 @@
       "similar_labels": "warning",
       "similar_power": "warning",
       "simulation_model_issue": "error",
-      "single_global_label": "ignore",
+      "single_global_label": "warning",
       "stacked_pin_name": "warning",
       "unannotated": "error",
       "unconnected_wire_endpoint": "warning",
@@ -621,7 +621,35 @@
       "sort_asc": true,
       "sort_field": "Reference"
     },
-    "bus_aliases": {},
+    "bus_aliases": {
+      "CONTROL": [
+        "#VALID",
+        "PHI2",
+        "R/W",
+        "#RESET",
+        "#IRQ",
+        "#VIA_1_CS",
+        "#VIA_2_CS",
+        "#VIA_3_CS",
+        "#VIA_4_CS",
+        "#VIA_5_CS",
+        "#VIA_6_CS",
+        "#VIA_7_CS",
+        "#VIA_8_CS"
+      ],
+      "PORT1": [
+        "PORT1_PA[0..7]",
+        "PORT1_CA[1..2]",
+        "PORT1_PB[0..7]",
+        "PORT1_CB[1..2]"
+      ],
+      "PORT2": [
+        "PORT2_PA[0..7]",
+        "PORT2_CA[1..2]",
+        "PORT2_PB[0..7]",
+        "PORT2_CB[1..2]"
+      ]
+    },
     "connection_grid_size": 50.0,
     "drawing": {
       "dashed_lines_dash_length_ratio": 12.0,
@@ -681,24 +709,15 @@
         "filename": "PAR.kicad_sch",
         "name": "PAR",
         "uuid": "e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
-      },
-      {
-        "filename": "system.kicad_sch",
-        "name": "SYSTEM",
-        "uuid": "1bc24577-9a03-4fc2-ac64-d8d0370a6427"
       }
     ],
-    "used_designators": "#FLG1-2,J1-2,#PWR1-16,MH1-2",
+    "used_designators": "JP1-4,R1-40,SW1,RN1-5,D1-2,C1-10,#FLG1-2,J1-2,#PWR1-36,U1-11,U13,MH1-2",
     "variants": []
   },
   "sheets": [
     [
       "e63e39d7-6ac0-4ffd-8aa3-1841a4541b55",
-      "TEMPLATE"
-    ],
-    [
-      "1bc24577-9a03-4fc2-ac64-d8d0370a6427",
-      "SYSTEM"
+      "PAR"
     ]
   ],
   "text_variables": {},
