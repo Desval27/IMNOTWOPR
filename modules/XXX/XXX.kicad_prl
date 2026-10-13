@@ -1,6 +1,6 @@
 {
   "board": {
-    "active_layer": 7,
+    "active_layer": 0,
     "active_layer_preset": "",
     "auto_track_width": true,
     "hidden_netclasses": [],
@@ -24,8 +24,8 @@
       "lockedItems": false,
       "otherItems": false,
       "pads": true,
-      "text": false,
-      "tracks": false,
+      "text": true,
+      "tracks": true,
       "vias": false,
       "zones": false
     },
@@ -53,7 +53,7 @@
       "board_outline_area",
       "ly_points"
     ],
-    "visible_layers": "ffffffff_ffffffff_ffffffff_ffffff7f",
+    "visible_layers": "ffffffff_ffffffff_fffffff7_fffdff7f",
     "zone_display_mode": 0
   },
   "git": {
@@ -123,15 +123,15 @@
   "schematic": {
     "hierarchy_collapsed": [],
     "selection_filter": {
-      "graphics": true,
-      "images": true,
-      "labels": true,
+      "graphics": false,
+      "images": false,
+      "labels": false,
       "lockedItems": false,
-      "otherItems": true,
-      "pins": true,
-      "ruleAreas": true,
+      "otherItems": false,
+      "pins": false,
+      "ruleAreas": false,
       "symbols": true,
-      "text": true,
+      "text": false,
       "wires": true
     }
   }
