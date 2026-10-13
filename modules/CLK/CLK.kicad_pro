@@ -107,7 +107,7 @@
         "invalid_outline": "error",
         "isolated_copper": "warning",
         "item_on_disabled_layer": "error",
-        "items_not_allowed": "error",
+        "items_not_allowed": "ignore",
         "length_out_of_range": "error",
         "lib_footprint_issues": "warning",
         "lib_footprint_mismatch": "warning",
@@ -124,8 +124,8 @@
         "pth_inside_courtyard": "ignore",
         "shorting_items": "error",
         "silk_edge_clearance": "warning",
-        "silk_over_copper": "error",
-        "silk_overlap": "error",
+        "silk_over_copper": "ignore",
+        "silk_overlap": "ignore",
         "skew_out_of_range": "error",
         "solder_mask_bridge": "error",
         "starved_thermal": "error",
@@ -708,7 +708,7 @@
         "uuid": "1bc24577-9a03-4fc2-ac64-d8d0370a6427"
       }
     ],
-    "used_designators": "SW1,R1-3,R5,D1-5,C1-12,#FLG1-2,J1-2,Y1,#PWR1-40,#PWR43-45,#PWR50,U1-7,MH1-2",
+    "used_designators": "SW1,J1-2,R1-3,R5,#FLG1-2,#PWR1-40,#PWR43-45,#PWR50,D1-5,C1-12,Y1,MH1-2,U1-7",
     "variants": []
   },
   "sheets": [

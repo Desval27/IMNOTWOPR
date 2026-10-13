@@ -40284,7 +40284,7 @@
 			(pin passive inverted
 				(at -10.16 12.7 0)
 				(length 3.81)
-				(name "BUSREQ5"
+				(name "BUSREQ4"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -40392,7 +40392,7 @@
 			(pin passive inverted
 				(at -10.16 -2.54 0)
 				(length 3.81)
-				(name "BUSGNT3"
+				(name "BUSGNT4"
 					(effects
 						(font
 							(size 1.27 1.27)
