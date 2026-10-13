@@ -38,3 +38,29 @@ python3 tests/console.py ../joshua/build/ucrt64/joshua.exe
 ```
 
 Use the corresponding Joshua executable path for other build configurations.
+
+## Memory monitor
+
+Build with `make monitor` and load `monitor.bin` (Joshua profile:
+`../joshua/profiles/monitor.profile`). At the `: ` prompt, use
+`mem low_address high_address` to display an inclusive memory range. Both
+addresses must contain 1–4 hexadecimal digits, without a prefix; either letter
+case is accepted. Invalid arguments or a start address above the end address
+print usage without dumping memory.
+
+The dump starts at the requested address and shows up to 16 bytes per row,
+with uppercase hex and printable ASCII (`.` for other bytes):
+
+```text
+: mem 3000 3003
+3000: 48 69 21 00                                       |Hi!.|
+```
+
+Each byte is read once; dumping memory-mapped I/O performs real device reads.
+Ranges ending at `FFFF` stop there without wrapping to zero.
+
+Run the monitor emulator tests after building:
+
+```sh
+python3 tests/monitor.py ../joshua/build/gcc14/joshua
+```

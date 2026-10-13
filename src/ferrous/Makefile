@@ -10,7 +10,7 @@
 # ASM_DEPS globally or <target>_DEPS for a particular target.
 # -----------------------------------------------------------------------------
 
-TARGETS := ferrous sysdiag
+TARGETS := ferrous monitor sysdiag
 
 # -----------------------------------------------------------------------------
 # Build Configuration
@@ -42,6 +42,7 @@ LD65FLAGS ?= -C $(CONFIG)
 # target2_MODULES := lib/math
 COMMON_MODULES := kernal
 ferrous_MODULES :=
+monitor_MODULES :=
 sysdiag_MODULES :=
 
 # Files pulled in textually with ca65 .include directives.  Listing them here
@@ -53,8 +54,8 @@ ASM_DEPS := $(wildcard *.inc lib/*.inc)
 # target1_DEPS := lib/macros.inc lib/hardware.inc
 # target2_DEPS := lib/macros.inc
 ferrous_DEPS := 
+monitor_DEPS :=
 sysdiag_DEPS :=
-test_DEPS :=
 
 
 .PHONY: all clean $(TARGETS)

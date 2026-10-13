@@ -72,6 +72,44 @@ command_malformed:
 
 .include "command.inc"
 
+; Example handler: print each parameter as a numbered item. With no parameters,
+; echo prints a newline. print_text/print_chr preserve Y, our argument index.
+command_echo:
+	lda command_argc
+	cmp #1
+	bne command_echo_parameters
+	jmp print_newline
+command_echo_parameters:
+	ldy #1
+command_echo_next:
+	lda #<parameter_prefix
+	ldx #>parameter_prefix
+	jsr print_text
+	tya
+	cmp #10
+	bcc command_echo_digit
+	lda #'1'
+	jsr print_chr
+	tya
+	sec
+	sbc #10
+command_echo_digit:
+	clc
+	adc #'0'
+	jsr print_chr
+	lda #<parameter_separator
+	ldx #>parameter_separator
+	jsr print_text
+	tya
+	jsr command_argument
+	jsr print_text
+	jsr print_newline
+	iny
+	cpy command_argc
+	bcc command_echo_next
+	rts
+
+
 ;login:
 	;lda	#<login_prompt
 	;ldx	#>login_prompt
@@ -119,15 +157,19 @@ command_malformed:
 ;
 .segment "RODATA"
 
-; The Makefile enables ca65's string_escapes feature.
-;login_prompt:
-	;.asciiz	"login: "
-;login_name:
-	;.asciiz	"joshua"
-;denied_message:
-	;.asciiz	"ACCESS DENIED.\r\n"
-;greeting:
-	;.asciiz	"GREETINGS PROFESSOR FALKEN.\r\n"
+.segment "RODATA"
+; Add a NUL-terminated name and its handler address before the zero sentinel
+; to register another command. No parser or dispatcher changes are needed.
+command_table:
+	.word command_echo_name, command_echo
+	.word 0, 0
+command_echo_name:
+	.asciiz "echo"
+parameter_prefix:
+	.asciiz "  ["
+parameter_separator:
+	.asciiz "] "
+
 prompt:
 	.asciiz	"what? "
 unrecognized_command:

@@ -2045,8 +2045,8 @@
 		)
 		(symbol "555_0_0"
 			(pin power_in line
-				(at 0 -12.7 90)
-				(length 2.54)
+				(at 0 -15.24 90)
+				(length 5.08)
 				(name "GND"
 					(effects
 						(font
@@ -2078,8 +2078,8 @@
 		)
 		(symbol "555_1_0"
 			(pin power_in line
-				(at 0 12.7 270)
-				(length 2.54)
+				(at 0 15.24 270)
+				(length 5.08)
 				(name "V_{CC}"
 					(effects
 						(font
@@ -2098,8 +2098,8 @@
 		)
 		(symbol "555_1_1"
 			(pin input line
-				(at -12.7 0 0)
-				(length 2.54)
+				(at -15.24 0 0)
+				(length 5.08)
 				(name "TRIG"
 					(effects
 						(font
@@ -2116,8 +2116,8 @@
 				)
 			)
 			(pin output line
-				(at 12.7 0 180)
-				(length 2.54)
+				(at 15.24 0 180)
+				(length 5.08)
 				(name "OUT"
 					(effects
 						(font
@@ -2133,10 +2133,10 @@
 					)
 				)
 			)
-			(pin input line
-				(at 5.08 12.7 270)
-				(length 2.54)
-				(name "~{RST}"
+			(pin input inverted
+				(at 5.08 15.24 270)
+				(length 5.08)
+				(name "RESET"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -2152,8 +2152,8 @@
 				)
 			)
 			(pin passive line
-				(at -5.08 -12.7 90)
-				(length 2.54)
+				(at -5.08 -15.24 90)
+				(length 5.08)
 				(name "CONT"
 					(effects
 						(font
@@ -2170,8 +2170,8 @@
 				)
 			)
 			(pin input line
-				(at -12.7 5.08 0)
-				(length 2.54)
+				(at -15.24 5.08 0)
+				(length 5.08)
 				(name "THRES"
 					(effects
 						(font
@@ -2188,8 +2188,8 @@
 				)
 			)
 			(pin input line
-				(at -12.7 7.62 0)
-				(length 2.54)
+				(at -15.24 7.62 0)
+				(length 5.08)
 				(name "DISCH"
 					(effects
 						(font
@@ -4837,8 +4837,8 @@
 		)
 		(symbol "74HCT14_7_0"
 			(pin power_in line
-				(at 0 -10.16 90)
-				(length 2.54)
+				(at 0 -12.7 90)
+				(length 5.08)
 				(name "GND"
 					(effects
 						(font
@@ -4855,9 +4855,9 @@
 				)
 			)
 			(pin power_in line
-				(at 0 10.16 270)
-				(length 2.54)
-				(name "VCC"
+				(at 0 12.7 270)
+				(length 5.08)
+				(name "V_{CC}"
 					(effects
 						(font
 							(size 1.27 1.27)
