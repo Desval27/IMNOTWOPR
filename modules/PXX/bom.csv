@@ -1,0 +1,5 @@
+"Reference","Value","Datasheet","Footprint","Qty","DNP"
+"J1","CardConnector","","IMNOTWOPR:SystemConector_Male","1",""
+"J2,J3,J4","Conn_01x32","","Connector_PinHeader_2.54mm:PinHeader_1x32_P2.54mm_Vertical","3",""
+"MH1","CardBracket","","IMNOTWOPR:CardBracket","1",""
+"U1,U2","","","IMNOTWOPR:Breadboard 400-Point","2",""
