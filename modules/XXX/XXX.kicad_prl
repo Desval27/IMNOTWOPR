@@ -1,6 +1,6 @@
 {
   "board": {
-    "active_layer": 0,
+    "active_layer": 2,
     "active_layer_preset": "",
     "auto_track_width": true,
     "hidden_netclasses": [],
@@ -123,15 +123,15 @@
   "schematic": {
     "hierarchy_collapsed": [],
     "selection_filter": {
-      "graphics": false,
+      "graphics": true,
       "images": false,
-      "labels": false,
+      "labels": true,
       "lockedItems": false,
       "otherItems": false,
       "pins": false,
       "ruleAreas": false,
       "symbols": true,
-      "text": false,
+      "text": true,
       "wires": true
     }
   }
