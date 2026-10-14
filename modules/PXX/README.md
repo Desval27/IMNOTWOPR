@@ -1,6 +1,8 @@
 # PXX PCB
 
-Prototype Card PCB
+Prototype Card
+
+This card provides two 400-point breadboards or space for an adhesive solder-less variety.  All 96 pins of the system bus are broken out into header pins or sockets.
 
 Status: Untested
 
