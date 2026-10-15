@@ -30601,7 +30601,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(duplicate_pin_numbers_are_jumpers no)
-		(property "Reference" "U"
+		(property "Reference" "U1"
 			(at 0 10.16 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -30611,8 +30611,8 @@
 				)
 			)
 		)
-		(property "Value" ""
-			(at 0 0 0)
+		(property "Value" "LEVEL SHIFTER"
+			(at 0 -11.684 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -30654,11 +30654,24 @@
 				)
 			)
 		)
-		(symbol "LevelShifter_0_0"
-			(pin power_in line
+		(symbol "LevelShifter_0_1"
+			(rectangle
+				(start -7.62 7.62)
+				(end 7.62 -10.16)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+		)
+		(symbol "LevelShifter_1_0"
+			(pin bidirectional line
 				(at -10.16 5.08 0)
 				(length 2.54)
-				(name "+5V"
+				(name "LV1"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30673,10 +30686,10 @@
 					)
 				)
 			)
-			(pin power_in line
+			(pin bidirectional line
 				(at -10.16 2.54 0)
 				(length 2.54)
-				(name "GND"
+				(name "LV2"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30691,10 +30704,10 @@
 					)
 				)
 			)
-			(pin bidirectional line
+			(pin power_in line
 				(at -10.16 0 0)
 				(length 2.54)
-				(name "HV1"
+				(name "LV"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30709,10 +30722,10 @@
 					)
 				)
 			)
-			(pin bidirectional line
+			(pin power_in line
 				(at -10.16 -2.54 0)
 				(length 2.54)
-				(name "HV2"
+				(name "GND"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30730,7 +30743,7 @@
 			(pin bidirectional line
 				(at -10.16 -5.08 0)
 				(length 2.54)
-				(name "HV3"
+				(name "LV3"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30748,7 +30761,7 @@
 			(pin bidirectional line
 				(at -10.16 -7.62 0)
 				(length 2.54)
-				(name "HV4"
+				(name "LV4"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30766,7 +30779,7 @@
 			(pin bidirectional line
 				(at 10.16 -7.62 180)
 				(length 2.54)
-				(name "LV4"
+				(name "HV4"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30784,7 +30797,7 @@
 			(pin bidirectional line
 				(at 10.16 -5.08 180)
 				(length 2.54)
-				(name "LV3"
+				(name "HV3"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30799,10 +30812,10 @@
 					)
 				)
 			)
-			(pin bidirectional line
+			(pin power_in line
 				(at 10.16 -2.54 180)
 				(length 2.54)
-				(name "LV2"
+				(name "GND"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30817,10 +30830,10 @@
 					)
 				)
 			)
-			(pin bidirectional line
+			(pin power_in line
 				(at 10.16 0 180)
 				(length 2.54)
-				(name "LV1"
+				(name "HV"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30835,10 +30848,10 @@
 					)
 				)
 			)
-			(pin power_in line
+			(pin bidirectional line
 				(at 10.16 2.54 180)
 				(length 2.54)
-				(name "GND"
+				(name "HV2"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30853,10 +30866,10 @@
 					)
 				)
 			)
-			(pin input line
+			(pin bidirectional line
 				(at 10.16 5.08 180)
 				(length 2.54)
-				(name "+3V3"
+				(name "HV1"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30869,19 +30882,6 @@
 							(size 1.27 1.27)
 						)
 					)
-				)
-			)
-		)
-		(symbol "LevelShifter_0_1"
-			(rectangle
-				(start -7.62 7.62)
-				(end 7.62 -10.16)
-				(stroke
-					(width 0)
-					(type default)
-				)
-				(fill
-					(type background)
 				)
 			)
 		)
