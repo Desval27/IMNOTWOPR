@@ -20,9 +20,12 @@
 
 namespace lightman
 {
+
 namespace
 {
+
 constexpr int width = 800, height = 525, raster_height = rows * 16;
+
 // Three packed 1bpp rasters: scanning, published, and being drawn. Core0 never
 // writes the raster core1 is scanning. Only indices change under the spinlock.
 /**
@@ -33,6 +36,7 @@ struct Frame
     uint8_t bits[raster_height][columns];
     uint8_t color = 0; // Initial raster is black; published frames carry Config::color.
 };
+
 Frame frames[3]{};
 int scanning = 0, published = 0;
 spin_lock_t *frame_lock;
@@ -45,6 +49,7 @@ uint8_t graphics[32][16];
 int channels[2];
 PIO pio = pio0;
 unsigned sm, program_offset;
+
 /**
  * @brief Build DEC drawing glyphs and ASCII approximations in SRAM.
  * @pre The base glyph tables have been copied into glyphs.
@@ -53,9 +58,11 @@ void make_graphics()
 {
     for (int c = 0; c < 32; ++c)
         std::memcpy(graphics[c], glyphs[0]['?'], 16);
+
     auto line = [](char c, bool up, bool down, bool left, bool right) {
         auto *g = graphics[c - '_'];
         std::memset(g, 0, 16);
+
         for (int y = 0; y < 16; ++y)
         {
             if ((up && y <= 7) || (down && y >= 7))
@@ -69,6 +76,7 @@ void make_graphics()
             }
         }
     };
+
     line('j', true, false, true, false);
     line('k', false, true, true, false);
     line('l', false, true, false, true);
@@ -80,19 +88,24 @@ void make_graphics()
     line('v', true, false, true, true);
     line('w', false, true, true, true);
     line('x', true, true, false, false);
+
     for (char c : {'o', 'p', 'r', 's'})
     {
         auto *g = graphics[c - '_'];
         std::memset(g, 0, 16);
         g[c == 'o' ? 1 : c == 'p' ? 4 : c == 'r' ? 10 : 13] = 255;
     }
+
     std::memset(graphics[0], 0, 16);
     constexpr uint8_t diamond[16] = {0, 0, 0, 0, 0x10, 0x38, 0x7c, 0xfe, 0x7c, 0x38, 0x10, 0, 0, 0, 0, 0};
     std::memcpy(graphics['`' - '_'], diamond, 16);
+
     for (int y = 0; y < 16; ++y)
         graphics['a' - '_'][y] = (y & 1) ? 0x55 : 0xaa;
+
     const char replacements[][2] = {{'b', 'H'}, {'c', 'F'}, {'d', 'R'}, {'e', 'L'}, {'h', 'N'}, {'i', 'V'}, {'y', '<'},
                                     {'z', '>'}, {'{', 'p'}, {'|', '!'}, {'}', 'L'}, {'~', '.'}, {'f', 'o'}, {'g', '+'}};
+
     for (auto &pair : replacements)
         std::memcpy(graphics[pair[0] - '_'], glyphs[0][int(pair[1])], 16);
 }
@@ -107,16 +120,21 @@ void __not_in_flash_func(render)(uint32_t *dst, int y, int frame)
 {
     const uint32_t sync = y >= 490 && y < 492 ? 1 : 3;
     const bool text_line = y >= 48 && y < 432;
+
     // Visible pixels are overwritten by the lookup below. Only fill their
     // porches here so the wider RGB332 transfers do not waste scanline time.
     const int blank_start = text_line ? columns * 8 / 2 : 0;
     std::fill_n(dst + blank_start, width / 2 - blank_start, sync | (sync << 16));
+
     const uint32_t hsync = sync & ~1u;
     std::fill_n(dst + 656 / 2, 96 / 2, hsync | (hsync << 16));
+
     if (!text_line)
         return;
+
     const auto *src = frames[frame].bits[y - 48];
     const auto *lookup = pixels[frames[frame].color];
+
     for (int x = 0; x < columns; ++x)
     {
         dst[4 * x] = lookup[src[x]][0];
@@ -133,6 +151,7 @@ void __not_in_flash_func(render)(uint32_t *dst, int y, int frame)
 int snapshot()
 {
     uint32_t irq = save_and_disable_interrupts();
+
     if (spin_try_lock_unsafe(frame_lock))
     {
         scanning = published;
@@ -158,11 +177,13 @@ void __not_in_flash_func(core1)()
             dma_channel_set_read_addr(channels[i], lines[i], false);
             dma_channel_set_trans_count(channels[i], width, false);
         }
+
         pio_sm_clear_fifos(pio, sm);
         pio_sm_restart(pio, sm);
         pio_sm_exec(pio, sm, pio_encode_jmp(program_offset));
         dma_start_channel_mask(1u << channels[0]);
         pio_sm_set_enabled(pio, sm, true);
+
         int next = 2, completed = 0;
         while (!pause_request.load(std::memory_order_acquire))
         {
@@ -184,16 +205,20 @@ void __not_in_flash_func(core1)()
         pio_sm_set_enabled(pio, sm, false);
         for (int ch : channels)
             dma_channel_abort(ch);
+
         pio_sm_set_pins_with_mask(pio, sm, 3u << pins::hsync, pins::video_pin_mask);
         uint32_t irq = save_and_disable_interrupts();
+
         paused.store(true, std::memory_order_release);
         while (pause_request.load(std::memory_order_acquire))
             __asm volatile("nop");
+
         restore_interrupts(irq);
         paused.store(false, std::memory_order_release);
     }
 }
 } // namespace
+
 /**
  * @brief Initialize VGA rendering, claim PIO/DMA resources and launch core 1.
  */
@@ -202,6 +227,7 @@ void video_start()
     frame_lock = spin_lock_init(spin_lock_claim_unused(true));
     std::memcpy(glyphs, font_data, sizeof glyphs);
     make_graphics();
+
     for (size_t color = 0; color < normal_colors.size(); ++color)
         for (int b = 0; b < 256; ++b)
         {
@@ -210,19 +236,25 @@ void video_start()
                 packed[x] = vga_pixel((b & (128 >> x)) ? normal_colors[color].rgb332 : 0);
             std::memcpy(pixels[color][b], packed, sizeof packed);
         }
+
     sm = pio_claim_unused_sm(pio, true);
     program_offset = pio_add_program(pio, &lightman_video_program);
-    auto cfg = lightman_video_program_get_default_config(program_offset);
+    auto cfg = lightman_video_program_get_default_config(program_offset);   
+    
     sm_config_set_out_pins(&cfg, pins::hsync, pins::video_pin_count);
     sm_config_set_out_shift(&cfg, true, true, 16);
     sm_config_set_fifo_join(&cfg, PIO_FIFO_JOIN_TX);
     sm_config_set_clkdiv(&cfg, 1.0f);
+
     for (unsigned pin = pins::hsync; pin <= pins::blue1; ++pin)
         pio_gpio_init(pio, pin);
+
     pio_sm_set_consecutive_pindirs(pio, sm, pins::hsync, pins::video_pin_count, true);
     pio_sm_init(pio, sm, program_offset, &cfg);
+
     for (int &ch : channels)
         ch = dma_claim_unused_channel(true);
+
     for (int i = 0; i < 2; ++i)
     {
         auto dc = dma_channel_get_default_config(channels[i]);
@@ -234,8 +266,10 @@ void video_start()
         channel_config_set_high_priority(&dc, true);
         dma_channel_configure(channels[i], &dc, &pio->txf[sm], lines[i], width, false);
     }
+
     multicore_launch_core1(core1);
 }
+
 /**
  * @brief Render and publish a complete frame without modifying the scanned buffer.
  */
@@ -245,10 +279,12 @@ void video_publish(const Terminal &t, const Config &c)
     int back = 0;
     while (back == scanning || back == published)
         ++back;
+        
     spin_unlock(frame_lock, irq);
     auto &frame = frames[back];
     frame.color = c.color;
     bool blink = (time_us_64() / 500000) % 2 == 0;
+
     for (int row = 0; row < rows; ++row)
         for (int x = 0; x < columns; ++x)
         {
@@ -270,10 +306,12 @@ void video_publish(const Terminal &t, const Config &c)
                 frame.bits[row * 16 + gy][x] = bits;
             }
         }
+
     irq = spin_lock_blocking(frame_lock);
     published = back;
     spin_unlock(frame_lock, irq);
 }
+
 /**
  * @brief Stop VGA DMA and wait for core 1 to park in SRAM with interrupts disabled.
  */
@@ -283,6 +321,7 @@ void video_pause()
     while (!paused.load(std::memory_order_acquire))
         tight_loop_contents();
 }
+
 /**
  * @brief Release core 1 from its park loop and wait for its acknowledgement.
  */
@@ -292,6 +331,7 @@ void video_resume()
     while (paused.load(std::memory_order_acquire))
         tight_loop_contents();
 }
+
 /**
  * @brief Read the accumulated scanline deadline-miss count.
  */
@@ -299,4 +339,5 @@ uint32_t video_underruns()
 {
     return underruns.load();
 }
+
 } // namespace lightman

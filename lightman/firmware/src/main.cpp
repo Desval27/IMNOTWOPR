@@ -32,7 +32,7 @@ void draw_menu()
 {
     menu.reset();
     menu.feed("\033[?25l\033[2;4H\033[1mLIGHTMAN SETUP\033[0m");
-    
+
     const char *flow[] = {"None (TX/RX only)", "XON/XOFF", "RTS/CTS (wire handshake pins)"};
     const char *parity[] = {"None", "Even", "Odd"};
 
@@ -302,7 +302,7 @@ int main()
             last_bells = terminal.bells;
             bell_at = now;
             bell_on = true;
-        }        
+        }
         if (bell_on && now - bell_at >= 150000)
             bell_on = false;
 

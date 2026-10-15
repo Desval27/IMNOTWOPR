@@ -70,7 +70,7 @@ int ps2_read()
     auto t = tail.load(std::memory_order_relaxed);
     if (t == head.load(std::memory_order_acquire))
         return -1;
-        
+
     int result = queue[t];
     tail.store((t + 1) % 128, std::memory_order_release);
     return result;
