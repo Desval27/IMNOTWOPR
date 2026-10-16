@@ -9,6 +9,23 @@ fonts. It builds to a Pico UF2. Host tests and cross-compilation are verified;
 physical VGA/PS/2/serial operation still needs prototype validation. See the
 [compatibility matrix](docs/compatibility.md) for implemented sequences and gaps.
 
+## Documents
+
+- [Schematic](hardware/schematic.pdf)
+- [Assembly](hardware/assembly.pdf)
+- [Bill of Materials](hardware/bom.csv)
+- [Interactive Bill of Materials](hardware/ibom.html)
+
+## Gerber To Order
+
+!Untested!
+
+- [Default](hardware/gerber_to_order/lightman_74.0x119.0mm_for_Default.zip)
+- [Elecrow](hardware/gerber_to_order/lightman_74.0x119.0mm_for_Elecrow.zip)
+- [FusionPCB](hardware/gerber_to_order/lightman_74.0x119.0mm_for_FusionPCB.zip)
+- [JLCPCB](hardware/gerber_to_order/lightman_74.0x119.0mm_for_JLCPCB.zip)
+- [PCBWay](hardware/gerber_to_order/lightman_74.0x119.0mm_for_PCBWay.zip)
+
 ## Build and flash
 
 Dependencies: CMake 3.24+, Python 3, an Arm GNU embedded C/C++ compiler with
@@ -123,3 +140,17 @@ for the remaining bench work.
 Original source is under the repository [MIT license](../LICENSE). Embedded
 font assets have their own SIL Open Font License. Dependencies are the official
 [Pico SDK](https://github.com/raspberrypi/pico-sdk) and its build tools.
+
+## Rendered Images
+
+### PCB Top /w 3D
+
+[PCB Top 3D](hardware/top_3d.png)
+
+### PCB Top
+
+[PCB Top](hardware/top.png)
+
+### PCB Bottom
+
+[PCB Bottom](hardware/bottom.png)
