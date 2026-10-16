@@ -6,7 +6,8 @@
 	(paper "A3")
 	(title_block
 		(title "LIGHTMAN")
-		(rev "A")
+		(date "2026-10-16")
+		(rev "B")
 		(company "THE HOUSE OF GALAHAD")
 		(comment 1 "IMNOTWOPR")
 		(comment 2 "VGA SERIAL TERMINAL")
@@ -2213,6 +2214,196 @@
 						)
 					)
 					(number "MH"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "IMNOTWOPR:LED_R"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "LED_R"
+				(at 0 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "IMNOTWOPR:Wire_LED"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Light emitting diode"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Legend" "LEGEND"
+				(at 0 -5.08 0)
+				(show_name no)
+				(do_not_autoplace yes)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "LED diode"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "LED* LED_SMD:* LED_THT:*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "LED_R_0_1"
+				(polyline
+					(pts
+						(xy -3.048 -0.762) (xy -4.572 -2.286) (xy -3.81 -2.286) (xy -4.572 -2.286) (xy -4.572 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.778 -0.762) (xy -3.302 -2.286) (xy -2.54 -2.286) (xy -3.302 -2.286) (xy -3.302 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 -1.27) (xy -1.27 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type color)
+						(color 194 0 0 1)
+					)
+				)
+			)
+			(symbol "LED_R_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -5982,6 +6173,12 @@
 		(uuid "14aac6cb-0cba-4c4e-86e0-72aea18432bd")
 	)
 	(junction
+		(at 127 190.5)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1d121c9f-ed6e-43bf-b69e-f871023c6f48")
+	)
+	(junction
 		(at 119.38 68.58)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -6042,6 +6239,12 @@
 		(uuid "755177b8-bb58-4370-80d6-3ed1a5906106")
 	)
 	(junction
+		(at 139.7 190.5)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "864cf2b4-aa26-4b27-9473-6194189d3c00")
+	)
+	(junction
 		(at 152.4 78.74)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -6094,6 +6297,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c564a077-3924-4f42-8921-86394cb553f2")
+	)
+	(junction
+		(at 134.62 190.5)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c868f98b-2de2-43dc-8ff7-93d2bbefaabf")
 	)
 	(junction
 		(at 294.64 220.98)
@@ -6200,10 +6409,6 @@
 		(uuid "60df6bad-dbf8-467c-9b7b-8586465f5e9d")
 	)
 	(no_connect
-		(at 36.83 81.28)
-		(uuid "66d69796-09ee-4497-9f7d-dd540e080aae")
-	)
-	(no_connect
 		(at 223.52 223.52)
 		(uuid "68a36bce-e310-485c-a31a-b14eecafe36f")
 	)
@@ -6214,10 +6419,6 @@
 	(no_connect
 		(at 44.45 173.99)
 		(uuid "82e3dfec-5e01-42c0-84de-47ada6f438d1")
-	)
-	(no_connect
-		(at 36.83 78.74)
-		(uuid "965ccd5b-4f0d-4664-9de5-2b53f4989b92")
 	)
 	(no_connect
 		(at 223.52 154.94)
@@ -6252,20 +6453,12 @@
 		(uuid "cf0dbf32-5654-42e5-9f11-a5b47a658c64")
 	)
 	(no_connect
-		(at 82.55 81.28)
-		(uuid "df888c1f-bbab-4f7d-92ab-4314043afb3b")
-	)
-	(no_connect
 		(at 154.94 71.12)
 		(uuid "e0d98eb5-d1b5-438b-b0d4-d791b6d165df")
 	)
 	(no_connect
 		(at 82.55 83.82)
 		(uuid "e6e0c0e7-c222-4c8d-b857-1e3e80aee591")
-	)
-	(no_connect
-		(at 36.83 83.82)
-		(uuid "f5cd4bbc-684b-4124-a331-ee0251f4a81f")
 	)
 	(no_connect
 		(at 82.55 86.36)
@@ -6280,6 +6473,16 @@
 			(type default)
 		)
 		(uuid "00bc3159-710e-46ae-9173-efd27deb5a60")
+	)
+	(wire
+		(pts
+			(xy 152.4 190.5) (xy 152.4 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "015913ce-862d-4153-ba07-199a732c6424")
 	)
 	(wire
 		(pts
@@ -6603,6 +6806,16 @@
 	)
 	(wire
 		(pts
+			(xy 134.62 190.5) (xy 134.62 193.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2a7c9ccb-1eae-4102-8f22-9ca3488b5610")
+	)
+	(wire
+		(pts
 			(xy 144.78 250.19) (xy 151.13 250.19)
 		)
 		(stroke
@@ -6653,6 +6866,16 @@
 	)
 	(wire
 		(pts
+			(xy 114.3 171.45) (xy 114.3 172.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "31681616-2514-4314-8b07-688f17682213")
+	)
+	(wire
+		(pts
 			(xy 264.16 67.31) (xy 276.86 67.31)
 		)
 		(stroke
@@ -6683,6 +6906,16 @@
 	)
 	(wire
 		(pts
+			(xy 114.3 190.5) (xy 127 190.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3c61fcc5-4934-4b44-b79d-3dcb309a3b2a")
+	)
+	(wire
+		(pts
 			(xy 30.48 86.36) (xy 36.83 86.36)
 		)
 		(stroke
@@ -6700,6 +6933,16 @@
 			(type default)
 		)
 		(uuid "3f9a85ba-af31-4ba2-a70c-7a538c3e8c03")
+	)
+	(wire
+		(pts
+			(xy 134.62 190.5) (xy 139.7 190.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "459582eb-e4aa-4116-b75f-6acb8b1308be")
 	)
 	(wire
 		(pts
@@ -6853,6 +7096,16 @@
 	)
 	(wire
 		(pts
+			(xy 152.4 171.45) (xy 152.4 172.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "59025a39-eee9-41bf-81a3-9805d98fd35d")
+	)
+	(wire
+		(pts
 			(xy 119.38 60.96) (xy 119.38 63.5)
 		)
 		(stroke
@@ -6933,6 +7186,16 @@
 	)
 	(wire
 		(pts
+			(xy 114.3 187.96) (xy 114.3 190.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6acdac4e-3446-4a14-af47-80944b80cdb9")
+	)
+	(wire
+		(pts
 			(xy 36.83 88.9) (xy 34.29 88.9)
 		)
 		(stroke
@@ -6953,6 +7216,16 @@
 	)
 	(wire
 		(pts
+			(xy 139.7 190.5) (xy 152.4 190.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6df23ffc-52b7-4df3-be9b-a7aad07548ea")
+	)
+	(wire
+		(pts
 			(xy 82.55 60.96) (xy 106.68 60.96)
 		)
 		(stroke
@@ -6970,6 +7243,16 @@
 			(type default)
 		)
 		(uuid "7084d917-d84c-47c4-bb00-1b021808d8a0")
+	)
+	(wire
+		(pts
+			(xy 127 190.5) (xy 134.62 190.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7c608819-d635-4f1c-937f-e8f7beda650a")
 	)
 	(wire
 		(pts
@@ -7103,6 +7386,16 @@
 	)
 	(wire
 		(pts
+			(xy 139.7 171.45) (xy 139.7 172.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8aab12be-8174-46b4-8f58-6e25d48b3015")
+	)
+	(wire
+		(pts
 			(xy 73.66 147.32) (xy 101.6 147.32)
 		)
 		(stroke
@@ -7150,6 +7443,16 @@
 			(type default)
 		)
 		(uuid "915cf3eb-4487-4bcc-9e5a-fbd5300c3fd4")
+	)
+	(wire
+		(pts
+			(xy 139.7 187.96) (xy 139.7 190.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "91b398a6-6806-4ada-b4ce-e9e75c4e399c")
 	)
 	(wire
 		(pts
@@ -7503,6 +7806,16 @@
 	)
 	(wire
 		(pts
+			(xy 127 187.96) (xy 127 190.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d4a9b07e-6666-40b5-a602-12565dc5b49a")
+	)
+	(wire
+		(pts
 			(xy 82.55 71.12) (xy 106.68 71.12)
 		)
 		(stroke
@@ -7743,6 +8056,16 @@
 	)
 	(wire
 		(pts
+			(xy 127 171.45) (xy 127 172.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f925c75d-d8dc-4410-b2fd-4059274902d2")
+	)
+	(wire
+		(pts
 			(xy 39.37 171.45) (xy 44.45 171.45)
 		)
 		(stroke
@@ -7780,6 +8103,16 @@
 			(justify right bottom)
 		)
 		(uuid "1590dc75-4232-4fab-849c-a0451ea5e4af")
+	)
+	(label "L4_LED"
+		(at 152.4 171.45 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify bottom)
+		)
+		(uuid "168c7908-a6ac-4370-b6c3-c554b43d03f7")
 	)
 	(label "GREEN"
 		(at 133.35 63.5 0)
@@ -8001,6 +8334,16 @@
 		)
 		(uuid "77d8175c-4da2-4420-9a98-38e3051182c5")
 	)
+	(label "L3_LED"
+		(at 139.7 171.45 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify bottom)
+		)
+		(uuid "7cae4dae-2641-48f5-aed5-8191e8457aff")
+	)
 	(label "R2"
 		(at 91.44 58.42 0)
 		(effects
@@ -8161,6 +8504,16 @@
 		)
 		(uuid "b7e54662-8bab-4013-92a2-c5c5264241eb")
 	)
+	(label "L1_LED"
+		(at 36.83 78.74 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "b7fa551d-4145-4aa4-a55a-730b8374c1d2")
+	)
 	(label "G0"
 		(at 91.44 60.96 0)
 		(effects
@@ -8231,6 +8584,26 @@
 		)
 		(uuid "d4c86597-906e-4ba8-83a6-6b2ed616bd4c")
 	)
+	(label "L2_LED"
+		(at 127 171.45 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify bottom)
+		)
+		(uuid "d6f64d4b-5f76-4660-b120-974f8b4459e2")
+	)
+	(label "L3_LED"
+		(at 36.83 83.82 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "da25b692-47cf-4b12-bfaf-141e9e95c432")
+	)
 	(label "DTR"
 		(at 276.86 139.7 180)
 		(effects
@@ -8251,6 +8624,16 @@
 		)
 		(uuid "e08f219a-585a-475f-9920-bceef7be86fb")
 	)
+	(label "L1_LED"
+		(at 114.3 171.45 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify bottom)
+		)
+		(uuid "eae22166-b286-4997-a1d6-cdb9981b479e")
+	)
 	(label "R0"
 		(at 91.44 53.34 0)
 		(effects
@@ -8270,6 +8653,26 @@
 			(justify right bottom)
 		)
 		(uuid "ef551094-4c22-45e3-b5e6-51883e1bbdd2")
+	)
+	(label "L4_LED"
+		(at 82.55 81.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f145c7d8-4105-4afe-a6c7-32d9d00aa0bd")
+	)
+	(label "L2_LED"
+		(at 36.83 81.28 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "f8a46791-92c2-4685-a64a-9cedcc15e666")
 	)
 	(label "PICO_CTS"
 		(at 36.83 58.42 180)
@@ -8363,6 +8766,87 @@
 			(project "lightman"
 				(path "/bc5ce1ee-80a9-4a0a-a79a-291efbccde4f"
 					(reference "#PWR08")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "IMNOTWOPR:R_Vertical")
+		(at 127 176.53 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "0500d6bf-ff99-4e5c-8121-d919d350480d")
+		(property "Reference" "R11"
+			(at 128.27 176.53 0)
+			(show_name no)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1k"
+			(at 127 176.53 90)
+			(show_name no)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.016 1.016)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical"
+			(at 127 176.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 127 176.53 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 127 176.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "09cdbb5b-b9f6-4b9f-8586-a5f8b976cec2")
+		)
+		(pin "2"
+			(uuid "2728a677-43ac-450d-a724-4e8a2e5e4d5e")
+		)
+		(instances
+			(project "lightman"
+				(path "/bc5ce1ee-80a9-4a0a-a79a-291efbccde4f"
+					(reference "R11")
 					(unit 1)
 				)
 			)
@@ -8523,6 +9007,87 @@
 		)
 	)
 	(symbol
+		(lib_id "IMNOTWOPR:R_Vertical")
+		(at 139.7 176.53 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "11baadfd-381e-469f-9597-2560bd45bbbd")
+		(property "Reference" "R12"
+			(at 140.97 176.53 0)
+			(show_name no)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1k"
+			(at 139.7 176.53 90)
+			(show_name no)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.016 1.016)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical"
+			(at 139.7 176.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 139.7 176.53 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 139.7 176.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "de5d4874-195d-4139-9536-e36d73e106f5")
+		)
+		(pin "2"
+			(uuid "2078c98d-0e38-462c-b80f-089a3f24921b")
+		)
+		(instances
+			(project "lightman"
+				(path "/bc5ce1ee-80a9-4a0a-a79a-291efbccde4f"
+					(reference "R12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 132.08 250.19 0)
 		(unit 1)
@@ -8632,7 +9197,7 @@
 				)
 			)
 		)
-		(property "Footprint" "IMNOTWOPR:R_Axial_DIN0207_P400mil"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical"
 			(at 68.58 255.27 0)
 			(hide yes)
 			(show_name no)
@@ -9148,6 +9713,165 @@
 			(project "lightman"
 				(path "/bc5ce1ee-80a9-4a0a-a79a-291efbccde4f"
 					(reference "U4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 134.62 193.04 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "291d6877-a455-491b-b6b0-a92bbc99ad39")
+		(property "Reference" "#PWR026"
+			(at 134.62 199.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 134.62 198.12 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 134.62 193.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 134.62 193.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 134.62 193.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "d1709029-8588-4fe2-9262-3f013ac8e160")
+		)
+		(instances
+			(project "lightman"
+				(path "/bc5ce1ee-80a9-4a0a-a79a-291efbccde4f"
+					(reference "#PWR026")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "IMNOTWOPR:R_Vertical")
+		(at 152.4 176.53 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2ac47d6e-7879-4e96-a668-fc12005199d3")
+		(property "Reference" "R13"
+			(at 153.67 176.53 0)
+			(show_name no)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1k"
+			(at 152.4 176.53 90)
+			(show_name no)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.016 1.016)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical"
+			(at 152.4 176.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 152.4 176.53 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 152.4 176.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "2d6b322a-af22-4998-885f-48d75d7004ac")
+		)
+		(pin "2"
+			(uuid "c4c5c0ae-fdc7-4ee8-a807-70989b4b3672")
+		)
+		(instances
+			(project "lightman"
+				(path "/bc5ce1ee-80a9-4a0a-a79a-291efbccde4f"
+					(reference "R13")
 					(unit 1)
 				)
 			)
@@ -10968,6 +11692,98 @@
 			(project "lightman"
 				(path "/bc5ce1ee-80a9-4a0a-a79a-291efbccde4f"
 					(reference "J1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "IMNOTWOPR:LED_R")
+		(at 139.7 184.15 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "7417b017-66f6-4a4a-b1ed-98cec65662ec")
+		(property "Reference" "D5"
+			(at 143.51 184.4674 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "LED_R"
+			(at 143.51 187.0074 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "IMNOTWOPR:Wire_LED"
+			(at 139.7 184.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 139.7 184.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 139.7 184.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Legend" "L3"
+			(at 145.034 186.436 90)
+			(show_name no)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "09908afe-fe1f-4b28-8b94-7804645e5e5d")
+		)
+		(pin "2"
+			(uuid "e8dd536c-345b-4642-bd51-c5dea8d60298")
+		)
+		(instances
+			(project "lightman"
+				(path "/bc5ce1ee-80a9-4a0a-a79a-291efbccde4f"
+					(reference "D5")
 					(unit 1)
 				)
 			)
@@ -13075,6 +13891,98 @@
 		)
 	)
 	(symbol
+		(lib_id "IMNOTWOPR:LED_R")
+		(at 114.3 184.15 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "c700c648-de64-402a-bd9a-1d7e095bb851")
+		(property "Reference" "D3"
+			(at 118.11 184.4674 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "LED_R"
+			(at 118.11 187.0074 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "IMNOTWOPR:Wire_LED"
+			(at 114.3 184.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 114.3 184.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 114.3 184.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Legend" "L1"
+			(at 119.634 186.436 90)
+			(show_name no)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "afae6925-f07a-42ed-86bc-c842f4d7756e")
+		)
+		(pin "2"
+			(uuid "3aec8c04-abe5-4a80-b8c3-209c749bb7c3")
+		)
+		(instances
+			(project "lightman"
+				(path "/bc5ce1ee-80a9-4a0a-a79a-291efbccde4f"
+					(reference "D3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Interface_UART:MAX3232")
 		(at 243.84 215.9 0)
 		(unit 1)
@@ -13436,6 +14344,190 @@
 			(project "lightman"
 				(path "/bc5ce1ee-80a9-4a0a-a79a-291efbccde4f"
 					(reference "R5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "IMNOTWOPR:LED_R")
+		(at 127 184.15 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "d389caaa-6b20-40d9-984a-ef3d116722c9")
+		(property "Reference" "D4"
+			(at 130.81 184.4674 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "LED_R"
+			(at 130.81 187.0074 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "IMNOTWOPR:Wire_LED"
+			(at 127 184.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 127 184.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 127 184.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Legend" "L2"
+			(at 132.334 186.436 90)
+			(show_name no)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "aa32ef0a-ed3c-472d-84a6-97103392fbb1")
+		)
+		(pin "2"
+			(uuid "627d7387-3407-42b9-9244-72b6b75bcd38")
+		)
+		(instances
+			(project "lightman"
+				(path "/bc5ce1ee-80a9-4a0a-a79a-291efbccde4f"
+					(reference "D4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "IMNOTWOPR:LED_R")
+		(at 152.4 184.15 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "d7b39b3b-fc70-49ed-9876-f1b9a2cdb5f9")
+		(property "Reference" "D6"
+			(at 156.21 184.4674 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "LED_R"
+			(at 156.21 187.0074 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "IMNOTWOPR:Wire_LED"
+			(at 152.4 184.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 152.4 184.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 152.4 184.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Legend" "L4"
+			(at 157.734 186.436 90)
+			(show_name no)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "1be96b5d-70c2-492e-9a67-66387660cf91")
+		)
+		(pin "2"
+			(uuid "a6da02ac-ab14-4028-82e5-16c3c6db6dad")
+		)
+		(instances
+			(project "lightman"
+				(path "/bc5ce1ee-80a9-4a0a-a79a-291efbccde4f"
+					(reference "D6")
 					(unit 1)
 				)
 			)
@@ -14189,6 +15281,87 @@
 			(project "lightman"
 				(path "/bc5ce1ee-80a9-4a0a-a79a-291efbccde4f"
 					(reference "#PWR015")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "IMNOTWOPR:R_Vertical")
+		(at 114.3 176.53 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "fbf3b46e-102b-4a76-b355-0d862cd8badb")
+		(property "Reference" "R10"
+			(at 115.57 176.53 0)
+			(show_name no)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1k"
+			(at 114.3 176.53 90)
+			(show_name no)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.016 1.016)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical"
+			(at 114.3 176.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 114.3 176.53 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 114.3 176.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "6bf04951-9e70-487e-8257-53be5f1d2496")
+		)
+		(pin "2"
+			(uuid "d1b23d77-97a3-4c52-955e-a95178a1aa31")
+		)
+		(instances
+			(project "lightman"
+				(path "/bc5ce1ee-80a9-4a0a-a79a-291efbccde4f"
+					(reference "R10")
 					(unit 1)
 				)
 			)
