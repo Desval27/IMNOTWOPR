@@ -4,7 +4,7 @@
  *
  * Core 0 renders complete frames; core 1 expands scanlines and rearms DMA.
  * A short spinlock protects buffer ownership. Scanout uses 800 by 525 total
- * pixels at 25.2 MHz, with an 80 by 24 text image centered in the visible area.
+ * pixels at 25.2 MHz, with 80/132 by 24 text centered in the visible area.
  */
 #include "fonts.h"
 #include "hardware.h"
@@ -13,6 +13,7 @@
 #include "lightman_pico.h"
 #include "pico/multicore.h"
 #include "pico/stdlib.h"
+#include "raster.h"
 #include "video.pio.h"
 #include <algorithm>
 #include <atomic>
@@ -33,7 +34,7 @@ constexpr int width = 800, height = 525, raster_height = rows * 16;
  */
 struct Frame
 {
-    uint8_t bits[raster_height][columns];
+    uint8_t bits[raster_height][raster_bytes];
     uint8_t color = 0; // Initial raster is black; published frames carry Config::color.
 };
 
@@ -123,7 +124,7 @@ void __not_in_flash_func(render)(uint32_t *dst, int y, int frame)
 
     // Visible pixels are overwritten by the lookup below. Only fill their
     // porches here so the wider RGB332 transfers do not waste scanline time.
-    const int blank_start = text_line ? columns * 8 / 2 : 0;
+    const int blank_start = text_line ? raster_width / 2 : 0;
     std::fill_n(dst + blank_start, width / 2 - blank_start, sync | (sync << 16));
 
     const uint32_t hsync = sync & ~1u;
@@ -135,7 +136,7 @@ void __not_in_flash_func(render)(uint32_t *dst, int y, int frame)
     const auto *src = frames[frame].bits[y - 48];
     const auto *lookup = pixels[frames[frame].color];
 
-    for (int x = 0; x < columns; ++x)
+    for (int x = 0; x < raster_bytes; ++x)
     {
         dst[4 * x] = lookup[src[x]][0];
         dst[4 * x + 1] = lookup[src[x]][1];
@@ -239,8 +240,8 @@ void video_start()
 
     sm = pio_claim_unused_sm(pio, true);
     program_offset = pio_add_program(pio, &lightman_video_program);
-    auto cfg = lightman_video_program_get_default_config(program_offset);   
-    
+    auto cfg = lightman_video_program_get_default_config(program_offset);
+
     sm_config_set_out_pins(&cfg, pins::hsync, pins::video_pin_count);
     sm_config_set_out_shift(&cfg, true, true, 16);
     sm_config_set_fifo_join(&cfg, PIO_FIFO_JOIN_TX);
@@ -279,31 +280,36 @@ void video_publish(const Terminal &t, const Config &c)
     int back = 0;
     while (back == scanning || back == published)
         ++back;
-        
+
     spin_unlock(frame_lock, irq);
     auto &frame = frames[back];
     frame.color = c.color;
     bool blink = (time_us_64() / 500000) % 2 == 0;
+    const int columns = t.column_count();
+    std::memset(frame.bits, 0, sizeof frame.bits);
 
     for (int row = 0; row < rows; ++row)
         for (int x = 0; x < columns; ++x)
         {
             Cell cell = t.cells()[row * columns + x];
+            const int left = x * raster_width / columns;
+            const int cell_width = (x + 1) * raster_width / columns - left;
+            const uint8_t mask = (1u << cell_width) - 1;
             const auto *glyph = (cell.attr & Graphics) && cell.ch >= '_' && cell.ch <= '~'
                                     ? graphics[cell.ch - '_']
                                     : glyphs[(cell.attr & Bold) ? 1 : c.font][cell.ch & 127];
             for (int gy = 0; gy < 16; ++gy)
             {
-                uint8_t bits = glyph[gy];
+                uint8_t bits = fit_glyph_row(glyph[gy], cell_width);
                 if ((cell.attr & Underline) && gy == 14)
-                    bits = 255;
+                    bits = mask;
                 if ((cell.attr & Blink) && !blink)
                     bits = 0;
                 if (bool(cell.attr & Reverse) ^ t.reverse_screen())
-                    bits = ~bits;
+                    bits ^= mask;
                 if (t.cursor_visible() && blink && t.x() == x && t.y() == row && gy >= 14)
-                    bits = ~bits;
-                frame.bits[row * 16 + gy][x] = bits;
+                    bits ^= mask;
+                pack_glyph_row(frame.bits[row * 16 + gy], left, cell_width, bits);
             }
         }
 

@@ -6,7 +6,7 @@ flash). See [platform](platform.md), [wiring](wiring.md), and
 
 | Area | Selected baseline |
 | --- | --- |
-| Display | Fixed 640x480 at 60 Hz; 80x24 text centered vertically |
+| Display | Fixed 640x480 at 60 Hz; selectable 80x24 or 132x24 text centered vertically; narrow glyphs at 132 columns |
 | VGA pins | HSYNC 13, VSYNC 14, R0..R2 15..17, G0..G2 18..20, B0..B1 21..22 |
 | Color | RGB332 resistor DACs; channel 0 is most significant; amber normal text by default |
 | Keyboard | PS/2 set 2 through level shifters; US layout; clock GPIO8, data GPIO9 |

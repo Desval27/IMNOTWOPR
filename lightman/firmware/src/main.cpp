@@ -22,6 +22,7 @@ Keyboard keyboard;
 Config config, draft;
 bool in_setup = false;
 int selected = 0;
+constexpr int menu_items = 12;
 const char *status = "";
 
 /**
@@ -36,7 +37,7 @@ void draw_menu()
     const char *flow[] = {"None (TX/RX only)", "XON/XOFF", "RTS/CTS (wire handshake pins)"};
     const char *parity[] = {"None", "Even", "Odd"};
 
-    char lines[11][70];
+    char lines[menu_items][70];
     std::snprintf(lines[0], 70, "Baud rate       %lu", static_cast<unsigned long>(draft.baud));
     std::snprintf(lines[1], 70, "Data bits       %u", draft.data_bits);
     std::snprintf(lines[2], 70, "Parity          %s", parity[draft.parity]);
@@ -47,9 +48,10 @@ void draw_menu()
     std::snprintf(lines[7], 70, "Backspace sends %s", draft.backspace_del ? "DEL (127)" : "BS (8)");
     std::snprintf(lines[8], 70, "Font            %s", draft.font ? "Bold" : "Regular");
     std::snprintf(lines[9], 70, "Normal color    %s", normal_colors[draft.color].name);
-    std::snprintf(lines[10], 70, "Restore factory defaults");
+    std::snprintf(lines[10], 70, "Columns         %u", draft.columns);
+    std::snprintf(lines[11], 70, "Restore factory defaults");
 
-    for (int i = 0; i < 11; ++i)
+    for (int i = 0; i < menu_items; ++i)
     {
         char pos[24];
         std::snprintf(pos, sizeof pos, "\033[%d;4H", i + 4);
@@ -60,8 +62,8 @@ void draw_menu()
         menu.feed("\033[0m");
     }
 
-    menu.feed("\033[16;4HUp/Down: select   Left/Right/Space: change");
-    menu.feed("\033[17;4HEnter: apply   S: apply and save   Esc/F12: cancel");
+    menu.feed("\033[17;4HUp/Down: select   Left/Right/Space: change");
+    menu.feed("\033[18;4HEnter: apply   S: apply and save   Esc/F12: cancel");
     menu.feed("\033[19;4HPause host output before changing serial settings or saving.");
     menu.feed("\033[20;4HSaving briefly blanks VGA. Mode changes clear terminal text.");
 
@@ -121,6 +123,9 @@ void change(int direction)
         cycle(draft.color, normal_colors.size());
         break;
     case 10:
+        draft.columns = draft.columns == 80 ? 132 : 80;
+        break;
+    case 11:
         draft = Config{};
         break;
     }
@@ -174,9 +179,9 @@ void setup_key(KeyEvent e)
         return;
     }
     if (e.key == Key::Up)
-        selected = (selected + 10) % 11;
+        selected = (selected + menu_items - 1) % menu_items;
     if (e.key == Key::Down)
-        selected = (selected + 1) % 11;
+        selected = (selected + 1) % menu_items;
     if (e.key == Key::Left)
         change(-1);
     if (e.key == Key::Right || (e.key == Key::Character && e.character == ' '))
@@ -223,7 +228,9 @@ void setup_key(KeyEvent e)
             return;
         }
         if (config.vt52 != draft.vt52)
-            terminal.reset(draft.vt52);
+            terminal.reset(draft.vt52, draft.columns);
+        else if (terminal.column_count() != draft.columns)
+            terminal.set_columns(draft.columns);
         config = draft;
         close_menu();
     }
@@ -238,7 +245,7 @@ int main()
 {
     set_sys_clock_khz(126000, true);
     config = settings_load();
-    terminal.reset(config.vt52);
+    terminal.reset(config.vt52, config.columns);
     serial_start(config);
     ps2_start();
     video_start();
@@ -283,6 +290,7 @@ int main()
             {
                 in_setup = true;
                 draft = config;
+                draft.columns = terminal.column_count();
                 selected = 0;
                 status = "";
                 serial_hold(true);

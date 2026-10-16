@@ -3,7 +3,7 @@
 Lightman is a Raspberry Pi Pico (RP2040) serial terminal with RGB332 VGA output,
 PS/2 keyboard input, and a DTE male DE-9 RS-232 port through MAX3232 transceivers.
 
-The firmware baseline provides 80x24 text, common VT100/VT52 controls, a US
+The firmware baseline provides 80x24 or 132x24 text, common VT100/VT52 controls, a US
 keyboard layout, buffered UART I/O, an on-device setup menu, and two embedded
 fonts. It builds to a Pico UF2. Host tests and cross-compilation are verified;
 physical VGA/PS/2/serial operation still needs prototype validation. See the
@@ -76,7 +76,7 @@ guide for resistor values and signal order.
 
 ## Setup
 
-Defaults are **9600 baud, 8N1, no flow control, VT100, local echo off, DEL
+Defaults are **9600 baud, 8N1, no flow control, VT100, 80 columns, local echo off, DEL
 Backspace, Regular font, amber normal text**. Press **F12** to open setup.
 
 - Up/Down selects a setting; Left/Right or Space changes it.
@@ -84,10 +84,10 @@ Backspace, Regular font, amber normal text**. Press **F12** to open setup.
 - S applies and saves settings to flash.
 - Esc or F12 cancels the draft changes.
 - The last menu row restores factory defaults to the draft; apply/save it
-  using Enter/S. Terminal mode changes clear the terminal screen.
+  using Enter/S. Terminal mode and column-count changes clear the terminal screen.
 
 Choose 300–115200 baud, 7/8 data bits, parity, stop bits, flow control, terminal
-mode, echo, Backspace behavior, Regular/Bold font, and **Normal color**:
+mode, **Columns (80/132)**, echo, Backspace behavior, Regular/Bold font, and **Normal color**:
 White, Classic green, Yellow, Amber, Red, Blue, Cyan or Magenta. Color changes
 preview immediately in setup; Enter applies, S saves, and Esc/F12 restores the
 previous color. Normal color is the base foreground on black; bold, underline,
@@ -97,11 +97,22 @@ The menu shows UART errors, dropped TX/PS/2 data, missed VGA deadlines, and
 live DSR, DCD and RI status.
 Incoming host text continues updating a separate terminal screen during setup.
 
+In VT100 mode, the host can send **`ESC [ ? 3 h`** for 132 columns or
+**`ESC [ ? 3 l`** for 80 columns (DECCOLM; no spaces in the transmitted bytes).
+Both sequences clear the screen, home the cursor and reset scrolling margins,
+even when selecting the current width. Host changes last for the session;
+setup shows the active width, and S saves it as the startup choice. Esc/F12
+cancels draft changes. `ESC c` resets to 80 columns without changing flash.
+Setup itself stays at 80 columns. Both widths keep 24 rows and the existing
+640-pixel VGA timing; 132-column glyphs are compressed to four or five pixels
+per cell, so fine font detail is reduced. VT52 can use either width via setup.
+
 Pause the host before changing serial framing or saving. Flash saves briefly
 blank VGA and suspend interrupt handling. Two checksummed flash records protect
 against an interrupted save; normal UF2 updates preserve saved settings.
 Existing saved White/Green/Yellow choices remain valid. Amber is the default
 when no valid settings exist or when factory defaults are restored.
+Settings saved by older firmware load with 80 columns.
 
 ## Fonts
 
@@ -120,9 +131,9 @@ cmake --build lightman/build/host -j
 ctest --test-dir lightman/build/host --output-on-failure
 ```
 
-Tests cover terminal positioning/scrolling/modes/replies, malformed streams,
+Tests cover 80/132-column positioning/scrolling/modes/replies, malformed streams,
 keyboard sequences, PS/2 frame parity and timeout, settings validation/CRC,
-all normal-color presets and their persistence, RGB332 DAC bit mapping,
+all normal-color presets and column-width persistence, packed glyph boundaries, RGB332 DAC bit mapping,
 and generated font data. A seeded 250,000-byte malformed-input exercise checks
 cursor bounds. For sanitizer checks add
 `-DCMAKE_CXX_FLAGS="-fsanitize=address,undefined -fno-omit-frame-pointer"` to a

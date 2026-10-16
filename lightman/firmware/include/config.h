@@ -37,6 +37,7 @@ struct Config
     uint8_t data_bits = 8, stop_bits = 1, parity = 0; // none, even, odd
     Flow flow = Flow::None;
     uint8_t font = 0, vt52 = 0, echo = 0, backspace_del = 1, color = default_normal_color;
+    uint8_t columns = 80;
     /**
      * @brief Check whether every field is supported by this firmware.
      * @return True when baud, framing, modes, font and color are in range.

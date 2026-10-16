@@ -20,6 +20,11 @@ Three rasters cost about 90 KiB. Each frame also carries its normal-color
 selection. Eight RGB332 presets expand glyph rows through a 32 KiB lookup
 table; two 800-pixel halfword scanline buffers use 3,200 bytes. The raster stays
 1 bit per pixel, with a single selected foreground and black background.
+Both 80- and 132-column modes use this same raster and scanout timing. Core 0
+fits eight-pixel glyphs into eight-pixel cells at 80 columns, or four/five-pixel
+cells at 132 columns, merging strokes before applying reverse video and cursor
+effects. Each terminal reserves space for 132x24 cells; its active row stride
+follows the selected width. Width changes clear the cells before reuse.
 This leaves room in the RP2040's 264 KiB SRAM for fonts, terminal state, I/O
 queues and stacks. Core 0 and
 core 1 each reserve a 4 KiB stack. No RTOS or pico-extras dependency is needed.

@@ -1,6 +1,6 @@
 /**
  * @file terminal.h
- * @brief Portable 80-column, 24-row VT100/VT52 terminal state and parser.
+ * @brief Portable 80/132-column, 24-row VT100/VT52 terminal state and parser.
  *
  * Owns screen cells, cursor state, character sets and host-controlled modes.
  * Hardware rendering and serial transport are supplied separately.
@@ -12,7 +12,7 @@
 
 namespace lightman
 {
-constexpr int columns = 80, rows = 24;
+constexpr int default_columns = 80, max_columns = 132, rows = 24;
 /**
  * @brief Bit flags attached to each displayed character.
  */
@@ -32,7 +32,7 @@ struct Cell
     uint8_t ch = ' ', attr = 0;
 };
 /**
- * @brief Stateful VT100/VT52 parser owning an 80 by 24 text screen.
+ * @brief Stateful VT100/VT52 parser owning an 80 or 132 by 24 text screen.
  *
  * Call from one execution context. Rendering must not race feed() or reset().
  */
@@ -53,9 +53,19 @@ class Terminal
     /**
      * @brief Clear the screen and restore default cursor, tabs, modes and saved state.
      * @param vt52 True to start in VT52 mode; false to start in VT100/ANSI mode.
+     * @param columns Initial width: 80 or 132; other values select 80.
      * @note The accumulated bell counter is preserved.
      */
-    void reset(bool vt52 = false);
+    void reset(bool vt52 = false, int columns = default_columns);
+    /**
+     * @brief Set 80/132 columns, clear the screen, reset margins and home the cursor.
+     * @note Preserves tabs, rendition and other modes; unsupported widths are ignored.
+     */
+    void set_columns(int columns);
+    int column_count() const
+    {
+        return columns_;
+    }
     /**
      * @brief Process one host byte, retaining any incomplete escape sequence.
      * @param byte Incoming control or character byte; printable text is 7-bit ASCII.
@@ -69,15 +79,15 @@ class Terminal
     void feed(std::string_view text);
     /**
      * @brief Read the current row-major text cells.
-     * @return A reference owned by this terminal; contents change with subsequent input.
+     * @return Storage with column_count() stride; only the first column_count()*rows cells are active.
      */
-    const std::array<Cell, columns * rows> &cells() const
+    const std::array<Cell, max_columns * rows> &cells() const
     {
         return screen_;
     }
     /**
      * @brief Read the cursor column.
-     * @return Zero-based column in the range 0..columns-1.
+     * @return Zero-based column in the range 0..column_count()-1.
      */
     int x() const
     {
@@ -165,8 +175,9 @@ class Terminal
         String,
         StringEscape
     };
-    std::array<Cell, columns * rows> screen_{};
-    std::array<bool, columns> tabs_{};
+    std::array<Cell, max_columns * rows> screen_{};
+    std::array<bool, max_columns> tabs_{};
+    int columns_ = default_columns;
     std::array<int, 16> params_{};
     int x_ = 0, y_ = 0, top_ = 0, bottom_ = rows - 1, count_ = 1, charset_ = 0;
     int saved_x_ = 0, saved_y_ = 0;
@@ -209,7 +220,7 @@ class Terminal
      * @brief Replace a contiguous cell range with blank, unstyled cells.
      * @param first Inclusive row-major cell offset.
      * @param last Exclusive row-major cell offset.
-     * @pre 0 <= first <= last <= columns * rows.
+     * @pre 0 <= first <= last <= column_count() * rows.
      */
     void erase(int first, int last);
     /**

@@ -12,6 +12,14 @@ behavior. Perform these checks before relying on the prototype.
 2. Flash the UF2. Confirm 31.5 kHz HSYNC and 60 Hz VSYNC, negative polarity,
    proper RGB blanking and a stable 80x24 picture. `VGA late` in setup should
    stay zero during scrolling, keyboard activity and repeated menu changes.
+   Repeat at 132 columns using F12 > Columns > Enter, then use S and power-cycle
+   to check persistence. Cancel a draft width change with Esc/F12 and confirm
+   the terminal is unchanged. Check all 132 columns, including the rightmost
+   cursor, narrow text readability, reverse/underline/blink and DEC line drawing.
+   Send `ESC[?3h` and `ESC[?3l`; each must clear text, home the cursor and restore
+   full-screen scrolling, while the monitor stays synchronized. Setup stays
+   readable at 80 columns and shows the active host-selected width. Repeat
+   sustained serial/keyboard load in both widths and check the error counters.
    In setup select White and check all three color channels near 0.7 V into
    75 ohms on lit pixels; black, porches and sync must blank all eight RGB bits.
    Check Red/Classic green/Blue for isolated channels, then Amber for full red,

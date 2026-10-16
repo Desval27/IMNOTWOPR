@@ -1,7 +1,7 @@
 # Terminal compatibility baseline
 
 This is an initial useful VT100/VT52 subset, not a conformance-certified DEC
-terminal. Use ASCII, 80 columns and 24 rows. Host applications should avoid
+terminal. Use ASCII, 80 or 132 columns and 24 rows. Host applications should avoid
 features listed as unsupported below. There is no Unicode/UTF-8 decoder.
 
 The implementation follows the
@@ -18,7 +18,8 @@ The implementation follows the
 | Attributes | SGR reset, bold (bold font), underline, blink, reverse; 22/24/25/27 resets |
 | Tabs | Every eight columns by default; ESC H; CSI 0g/3g |
 | Saved state | ESC 7/8: cursor, rendition, origin/wrap modes and G0/G1 selection |
-| Modes | DECCKM, DECANM, DECOM, DECAWM, DECSCNM, LNM, keyboard lock; cursor visibility extension |
+| Modes | DECCKM, DECANM, DECCOLM, DECOM, DECAWM, DECSCNM, LNM, keyboard lock; cursor visibility extension |
+| Columns | CSI ? 3 h selects 132; CSI ? 3 l selects 80; both clear the screen, home the cursor and reset scrolling margins |
 | Identification | DA replies ESC [ ? 1 ; 0 c (VT100, no options); DSR 5/6 |
 | Character sets | G0/G1 ASCII and DEC special graphics, SO/SI selection |
 | Reset/test | RIS (ESC c); DECALN (ESC # 8) |
@@ -39,9 +40,18 @@ DEC box-drawing, scan lines, diamond and checkerboard glyphs are drawn locally.
 Some mathematical/control-picture symbols are ASCII approximations. VT52 F/G
 uses the same graphics repertoire, rather than a distinct historical VT52 ROM.
 
+DECCOLM preserves tab stops, rendition and other modes. Default tab stops extend
+every eight columns across both widths. RIS resets to 80 columns. Setup offers
+80/132 columns in either emulation, shows the current host-selected width and
+can save it for startup. Host sequences alone do not write flash. Old settings
+records with an unused width byte load as 80 columns.
+The 640-pixel raster and VGA timing stay fixed: 80-column cells are eight pixels
+wide; 132-column cells are four or five pixels wide with merged glyph strokes.
+Fine font detail is reduced in the narrow mode. Setup stays at 80 columns.
+
 ## Deliberate gaps
 
-- 132-column mode, double-width/double-height lines, smooth scrolling.
+- Double-width/double-height lines, smooth scrolling.
 - Exact historical VT52 graphics, UK national character set, full DEC font ROM.
 - ANSI color SGR, Unicode, alternate screen, scrollback, and xterm features.
 - VT102 insert/delete characters and lines, printer support, answerback,
@@ -55,7 +65,7 @@ strings are discarded through BEL or ST. CAN/SUB abort an in-progress sequence.
 
 ## Communication and storage
 
-Default: **9600 baud, 8N1, no flow control, VT100, no local echo, DEL Backspace,
+Default: **9600 baud, 8N1, no flow control, VT100, 80 columns, no local echo, DEL Backspace,
 regular font, amber normal text**. Setup supports 300–115200 baud, 7/8 bits, 1/2 stop
 bits, none/even/odd parity and no/software/hardware flow control.
 

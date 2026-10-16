@@ -8,17 +8,128 @@
 #include "config.h"
 #include "fonts.h"
 #include "keyboard.h"
+#include "raster.h"
 #include "terminal.h"
+#include <algorithm>
 #include <cassert>
 #include <iostream>
 #include <random>
 using namespace lightman;
+/**
+ * @brief Exercise width changes and screen operations at both right margins.
+ */
+static void test_column_modes()
+{
+    std::string replies;
+    Terminal t([](void *p, std::string_view s) { static_cast<std::string *>(p)->append(s); }, &replies);
+    assert(t.column_count() == 80);
+    t.feed("old text\033[5;10r\033[?6h\033[?3");
+    assert(t.column_count() == 80); // Incomplete sequences have no effect.
+    t.feed("h");
+    assert(t.column_count() == 132 && t.x() == 0 && t.y() == 0);
+    assert(std::all_of(t.cells().begin(), t.cells().end(), [](Cell c) { return c.ch == ' ' && c.attr == 0; }));
+    t.feed("\033[24;132HX\033[6n");
+    assert(replies == "\033[24;132R"); // Full-height margins restored, even in origin mode.
+    t.feed("Y");
+    assert(t.cells()[22 * 132 + 131].ch == 'X' && t.cells()[23 * 132].ch == 'Y');
+    t.feed("\033[?3h"); // Re-selecting the current width still clears and homes.
+    assert(t.x() == 0 && t.y() == 0 && t.cells()[23 * 132].ch == ' ');
+    t.feed("\033[1;132H\0337\033[?3l\0338");
+    assert(t.column_count() == 80 && t.x() == 79 && t.y() == 0);
+    t.feed("\033[3h\033[?9h\033[?3:1h"); // ANSI, unknown and malformed modes do not resize.
+    assert(t.column_count() == 80);
+
+    for (int width : {80, 132})
+    {
+        t.reset(false, width);
+        assert(t.column_count() == width);
+        t.feed(std::string(width, 'A'));
+        assert(t.x() == width - 1 && t.y() == 0);
+        t.feed("B");
+        assert(t.x() == 1 && t.y() == 1 && t.cells()[width].ch == 'B');
+        t.feed("\033[?7l\033[1;999HCZ");
+        assert(t.x() == width - 1 && t.cells()[width - 1].ch == 'Z');
+        t.feed("\033[2K");
+        assert(t.cells()[width - 1].ch == ' ' && t.cells()[width].ch == 'B');
+        t.feed("\033[2;1H\033[1J");
+        assert(t.cells()[width].ch == ' ');
+        t.feed("\033[2;3r\033[2;1HA\033[3;1HB\n");
+        assert(t.cells()[width].ch == 'B' && t.cells()[2 * width].ch == ' ');
+        t.feed("\033[2;1H\033M");
+        assert(t.cells()[width].ch == ' ' && t.cells()[2 * width].ch == 'B');
+        t.feed("\033[24;999H\033[0J");
+        assert(t.x() == width - 1 && t.y() == 23);
+        t.feed("\033[2J");
+        assert(std::all_of(t.cells().begin(), t.cells().end(), [](Cell c) { return c.ch == ' '; }));
+        t.feed("\033#8");
+        assert(t.cells()[rows * width - 1].ch == 'E');
+        t.feed("\033c");
+        assert(t.column_count() == 80 && t.x() == 0 && t.y() == 0);
+    }
+
+    t.reset();
+    t.feed("\033[?3h\033[1;81H\t");
+    assert(t.x() == 88); // Default tabs extend beyond column 80.
+    t.feed("\033[3g\033[1;101H\033H\033[?3l\033[?3h\t");
+    assert(t.x() == 100); // Custom tabs survive width switches.
+    t.feed("\033[3g\t");
+    assert(t.x() == 131);
+    t.set_columns(81);
+    assert(t.column_count() == 132 && t.x() == 131);
+    t.reset(true, 132);
+    t.feed("\033Y!*X");
+    assert(t.cells()[132 + 10].ch == 'X');
+    t.feed("\033[?3l");
+    assert(t.column_count() == 132); // DECCOLM is ANSI-only.
+    t.feed("\033<\033[?3l");
+    assert(t.column_count() == 80);
+}
+
+/**
+ * @brief Check every glyph pattern at every cell boundary, with guard bytes.
+ */
+static void test_raster_columns()
+{
+    for (int columns : {80, 132})
+    {
+        std::array<uint8_t, raster_bytes + 2> raster{};
+        raster.front() = 0xa5;
+        raster.back() = 0x5a;
+        for (int column = 0; column < columns; ++column)
+        {
+            int left = column * raster_width / columns;
+            int width = (column + 1) * raster_width / columns - left;
+            for (int bits = 0; bits < 256; ++bits)
+            {
+                std::fill(raster.begin() + 1, raster.end() - 1, 0);
+                pack_glyph_row(raster.data() + 1, left, width, fit_glyph_row(bits, width));
+                std::array<bool, raster_width> expected{};
+                for (int source = 0; source < 8; ++source)
+                    if (bits & (128 >> source))
+                        expected[left + source * width / 8] = true;
+                for (int pixel = 0; pixel < raster_width; ++pixel)
+                    assert(bool(raster[1 + pixel / 8] & (128 >> (pixel & 7))) == expected[pixel]);
+                assert(raster.front() == 0xa5 && raster.back() == 0x5a);
+            }
+        }
+        std::fill(raster.begin() + 1, raster.end() - 1, 0);
+        for (int column = 0; column < columns; ++column)
+        {
+            int left = column * raster_width / columns;
+            int width = (column + 1) * raster_width / columns - left;
+            pack_glyph_row(raster.data() + 1, left, width, fit_glyph_row(255, width));
+        }
+        assert(std::all_of(raster.begin() + 1, raster.end() - 1, [](uint8_t b) { return b == 255; }));
+    }
+}
 /**
  * @brief Execute assertion-based portable-core regression and malformed-input checks.
  * @return Zero after all checks pass; a failed assertion terminates the process.
  */
 int main()
 {
+    test_column_modes();
+    test_raster_columns();
     std::string replies;
     Terminal t([](void *p, std::string_view s) { static_cast<std::string *>(p)->append(s); }, &replies);
     t.feed("hello\r\nworld");
@@ -159,6 +270,25 @@ int main()
     assert(!decode_config(invalid_color.data(), restored, gen));
     assert(restored.color == previous.color && gen == previous_gen);
     config = Config{};
+    assert(config.columns == 80);
+    for (int width : {80, 132})
+    {
+        config.columns = width;
+        assert(config.valid());
+        auto saved = encode_config(config, 250);
+        assert(decode_config(saved.data(), restored, gen) && restored.columns == width && gen == 250);
+    }
+    config.columns = 0; // Reproduce an old record's zero-filled reserved byte and CRC.
+    auto legacy = encode_config(config, 251);
+    assert(decode_config(legacy.data(), restored, gen) && restored.columns == 80 && gen == 251);
+    for (int width : {1, 79, 81, 131, 133, 255})
+    {
+        config.columns = width;
+        assert(!config.valid());
+        auto invalid = encode_config(config, 252);
+        assert(!decode_config(invalid.data(), restored, gen) && restored.columns == 80 && gen == 251);
+    }
+    config = Config{};
     // Each RGB332 bit must drive the correct resistor, with sync held inactive.
     assert(vga_pixel(0) == 0x003 && vga_pixel(0xff) == 0x3ff);
     assert(vga_pixel(0x80) == 0x007); // R0: 470 ohms, greatest red weight.
@@ -181,8 +311,10 @@ int main()
     t.reset();
     for (int i = 0; i < 250000; ++i)
     {
+        if (i % 4096 == 0)
+            t.reset(false, (i / 4096) % 2 ? 132 : 80);
         t.feed(static_cast<uint8_t>(rng()));
-        assert(t.x() >= 0 && t.x() < 80 && t.y() >= 0 && t.y() < 24);
+        assert(t.x() >= 0 && t.x() < t.column_count() && t.y() >= 0 && t.y() < 24);
     }
     std::cout << "Terminal, keyboard, PS/2 framing, settings and font checks passed\n";
 }

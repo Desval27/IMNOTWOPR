@@ -19,7 +19,7 @@ bool Config::valid() const
     return std::find(baud_rates.begin(), baud_rates.end(), baud) != baud_rates.end() &&
            (data_bits == 7 || data_bits == 8) && (stop_bits == 1 || stop_bits == 2) && parity <= 2 &&
            static_cast<unsigned>(flow) <= 2 && font < 2 && vt52 <= 1 && echo <= 1 && backspace_del <= 1 &&
-           color < normal_colors.size();
+           color < normal_colors.size() && (columns == 80 || columns == 132);
 }
 
 /**
@@ -82,6 +82,7 @@ std::array<uint8_t, settings_size> encode_config(const Config &c, uint32_t gener
     b[18] = c.echo;
     b[19] = c.backspace_del;
     b[20] = c.color;
+    b[21] = c.columns;
     put32(b.data() + 28, crc(b.data(), 28));
     return b;
 }
@@ -104,6 +105,8 @@ bool decode_config(const uint8_t *b, Config &c, uint32_t &generation)
     candidate.echo = b[18];
     candidate.backspace_del = b[19];
     candidate.color = b[20];
+    // Older records left this reserved byte zero and always used 80 columns.
+    candidate.columns = b[21] == 0 ? 80 : b[21];
     if (!candidate.valid())
         return false;
     c = candidate;

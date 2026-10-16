@@ -20,11 +20,12 @@ Terminal::Terminal(Output output, void *context) : output_(output), context_(con
 /**
  * @brief Clear the screen and restore default cursor, tabs, modes and saved state.
  */
-void Terminal::reset(bool vt52)
+void Terminal::reset(bool vt52, int columns)
 {
+    columns_ = columns == max_columns ? max_columns : default_columns;
     screen_.fill(Cell{});
     tabs_.fill(false);
-    for (int i = 8; i < columns; i += 8)
+    for (int i = 8; i < max_columns; i += 8)
         tabs_[i] = true;
     x_ = y_ = top_ = 0;
     bottom_ = rows - 1;
@@ -37,6 +38,19 @@ void Terminal::reset(bool vt52)
     active_charset_ = 0;
     state_ = State::Text;
     save();
+}
+/**
+ * @brief Apply DECCOLM's screen, margin and cursor effects, even for the current width.
+ */
+void Terminal::set_columns(int columns)
+{
+    if (columns != default_columns && columns != max_columns)
+        return;
+    columns_ = columns;
+    screen_.fill(Cell{});
+    top_ = 0;
+    bottom_ = rows - 1;
+    move(0, 0);
 }
 /**
  * @brief Process a byte span in order without resetting parser state.
@@ -59,7 +73,7 @@ void Terminal::reply(std::string_view text)
  */
 void Terminal::move(int x, int y)
 {
-    x_ = std::clamp(x, 0, columns - 1);
+    x_ = std::clamp(x, 0, columns_ - 1);
     y_ = std::clamp(y, origin_ ? top_ : 0, origin_ ? bottom_ : rows - 1);
     pending_wrap_ = false;
 }
@@ -75,16 +89,16 @@ void Terminal::erase(int first, int last)
  */
 void Terminal::scroll(int direction)
 {
-    const int first = top_ * columns, last = (bottom_ + 1) * columns;
+    const int first = top_ * columns_, last = (bottom_ + 1) * columns_;
     if (direction > 0)
     {
-        std::move(screen_.begin() + first + columns, screen_.begin() + last, screen_.begin() + first);
-        erase(last - columns, last);
+        std::move(screen_.begin() + first + columns_, screen_.begin() + last, screen_.begin() + first);
+        erase(last - columns_, last);
     }
     else
     {
-        std::move_backward(screen_.begin() + first, screen_.begin() + last - columns, screen_.begin() + last);
-        erase(first, first + columns);
+        std::move_backward(screen_.begin() + first, screen_.begin() + last - columns_, screen_.begin() + last);
+        erase(first, first + columns_);
     }
 }
 /**
@@ -119,8 +133,8 @@ void Terminal::put(uint8_t ch)
         index();
     }
     pending_wrap_ = false;
-    screen_[y_ * columns + x_] = {ch, static_cast<uint8_t>(attr_ | (graphics_[active_charset_] ? Graphics : 0))};
-    if (x_ == columns - 1)
+    screen_[y_ * columns_ + x_] = {ch, static_cast<uint8_t>(attr_ | (graphics_[active_charset_] ? Graphics : 0))};
+    if (x_ == columns_ - 1)
         pending_wrap_ = wrap_;
     else
         ++x_;
@@ -179,10 +193,10 @@ void Terminal::escape(uint8_t c)
             index(true);
             break;
         case 'J':
-            erase(y_ * columns + x_, columns * rows);
+            erase(y_ * columns_ + x_, columns_ * rows);
             break;
         case 'K':
-            erase(y_ * columns + x_, (y_ + 1) * columns);
+            erase(y_ * columns_ + x_, (y_ + 1) * columns_);
             break;
         case 'Y':
             state_ = State::Row52;
@@ -298,19 +312,19 @@ void Terminal::csi(uint8_t final)
         break;
     case 'J':
         if (params_[0] == 0)
-            erase(y_ * columns + x_, columns * rows);
+            erase(y_ * columns_ + x_, columns_ * rows);
         else if (params_[0] == 1)
-            erase(0, y_ * columns + x_ + 1);
+            erase(0, y_ * columns_ + x_ + 1);
         else if (params_[0] == 2)
-            erase(0, columns * rows);
+            erase(0, columns_ * rows);
         break;
     case 'K':
         if (params_[0] == 0)
-            erase(y_ * columns + x_, (y_ + 1) * columns);
+            erase(y_ * columns_ + x_, (y_ + 1) * columns_);
         else if (params_[0] == 1)
-            erase(y_ * columns, y_ * columns + x_ + 1);
+            erase(y_ * columns_, y_ * columns_ + x_ + 1);
         else if (params_[0] == 2)
-            erase(y_ * columns, (y_ + 1) * columns);
+            erase(y_ * columns_, (y_ + 1) * columns_);
         break;
     case 'm':
         for (int i = 0; i < count_; ++i)
@@ -380,6 +394,9 @@ void Terminal::csi(uint8_t final)
                         vt52_ = true;
                         origin_ = false;
                     }
+                    break;
+                case 3:
+                    set_columns(on ? max_columns : default_columns);
                     break;
                 case 5:
                     reverse_screen_ = on;
@@ -457,7 +474,7 @@ void Terminal::feed(uint8_t c)
             break;
         case 9: {
             int x = x_ + 1;
-            while (x < columns - 1 && !tabs_[x])
+            while (x < columns_ - 1 && !tabs_[x])
                 ++x;
             move(x, y_);
             break;
