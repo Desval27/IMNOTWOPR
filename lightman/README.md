@@ -145,12 +145,12 @@ font assets have their own SIL Open Font License. Dependencies are the official
 
 ### PCB Top /w 3D
 
-[PCB Top 3D](hardware/top_3d.png)
+![PCB Top 3D](hardware/top_3d.png)
 
 ### PCB Top
 
-[PCB Top](hardware/top.png)
+![PCB Top](hardware/top.png)
 
 ### PCB Bottom
 
-[PCB Bottom](hardware/bottom.png)
+![PCB Bottom](hardware/bottom.png)
