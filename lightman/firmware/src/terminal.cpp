@@ -30,6 +30,7 @@ void Terminal::reset(bool vt52, int columns)
     x_ = y_ = top_ = 0;
     bottom_ = rows - 1;
     attr_ = 0;
+    leds_ = 0;
     vt52_ = vt52;
     app_cursor_ = app_keypad_ = newline_ = origin_ = pending_wrap_ = false;
     reverse_screen_ = keyboard_locked_ = false;
@@ -360,6 +361,17 @@ void Terminal::csi(uint8_t final)
             default:
                 break;
             }
+        break;
+    case 'q':
+        // VT100 DECLL: omitted/zero clears all; 1..4 latch the corresponding LED on.
+        // Parameters are applied in order. Later-terminal LED extensions are ignored.
+        for (int i = 0; i < count_; ++i)
+        {
+            if (params_[i] == 0)
+                leds_ = 0;
+            else if (params_[i] >= 1 && params_[i] <= 4)
+                leds_ |= 1u << (params_[i] - 1);
+        }
         break;
     case 'r': {
         int t = p(0) - 1, b = p(1, rows) - 1;

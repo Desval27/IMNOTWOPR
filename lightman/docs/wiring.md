@@ -18,6 +18,10 @@ assignments before assembly.
 | RI | 7 | 10 | MAX3232 receiver output <- DE-9 pin 9 |
 | PS/2 clock | 8 | 11 | Open-drain level shifter <-> keyboard clock |
 | PS/2 data | 9 | 12 | Open-drain level shifter <-> keyboard data |
+| Host LED L1 | 10 | 14 | Series resistor -> LED anode; cathode to GND |
+| Host LED L2 | 11 | 15 | Series resistor -> LED anode; cathode to GND |
+| Host LED L3 | 12 | 16 | Series resistor -> LED anode; cathode to GND |
+| Host LED L4 | 26 | 31 | Series resistor -> LED anode; cathode to GND |
 | VGA HSYNC | 13 | 17 | VGA pin 13 |
 | VGA VSYNC | 14 | 19 | VGA pin 14 |
 | VGA R0 | 15 | 20 | 3-Bit DAC_R0 -> VGA pin 1 |
@@ -79,6 +83,31 @@ The initial driver receives the keyboard's default scan-code set 2 and does
 not send commands. Use a native PS/2 keyboard that starts scanning in set 2.
 Keyboard LEDs, host-controlled repeat settings and USB-only keyboards with a
 passive PS/2 adapter are not supported. Clock and data remain inputs.
+
+## Host-controlled LEDs L1–L4
+
+The firmware assigns VT100 DECLL indicators L1/L2/L3/L4 to GPIO10/11/12/26.
+Each output is active high: wire `GPIO -> resistor -> LED anode`, with the
+LED cathode connected to common ground. Use one resistor per LED. For a
+typical red LED with approximately 2.0 V forward drop, **1 kohm** gives about
+1.3 mA from 3.3 V; choose the resistance for the actual LED's forward voltage
+and brightness, targeting no more than 2 mA per LED. The firmware selects
+2 mA drive strength, which is not a substitute for the series resistor.
+
+GPIO26 is also an ADC-capable pin, but is configured as a normal digital
+output here. On the original Pico, GPIO23 controls the onboard power supply,
+GPIO24 senses VBUS, and GPIO25 drives the onboard LED; these three are not
+available on the header. GPIO25 remains the separate BEL indicator. See the
+[official Pico datasheet](https://datasheets.raspberrypi.com/pico/pico-datasheet.pdf)
+and [SDK board definitions](https://github.com/raspberrypi/pico-sdk/blob/master/src/boards/include/boards/pico.h).
+
+All four enclosure LEDs start off. `ESC[1q` through `ESC[4q` latch the selected
+LED on; `ESC[0q` or `ESC[q` clears all four. Multiple parameters are applied
+in order, so `ESC[0;2;4q` leaves only L2 and L4 on. To extinguish one LED,
+clear all and specify those that should remain on. Terminal reset clears the
+LEDs; ordinary screen erasure, column changes and BEL do not. These signals
+never drive the PS/2 keyboard LEDs. This is the firmware wiring assignment;
+the existing PCB/schematic does not yet include the four LED circuits.
 
 ## VGA
 

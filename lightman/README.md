@@ -62,6 +62,7 @@ The board/layout target is the original 2 MiB Pico, not Pico 2 or Pico W.
 | DTR / DSR | 5 / 4 |
 | DCD / RI | 6 / 7 |
 | PS/2 clock / data | 8 / 9 |
+| Host LEDs L1 / L2 / L3 / L4 | 10 / 11 / 12 / 26 |
 | VGA HSYNC / VSYNC | 13 / 14 |
 | VGA R0 / R1 / R2 | 15 / 16 / 17 |
 | VGA G0 / G1 / G2 | 18 / 19 / 20 |
@@ -113,6 +114,23 @@ against an interrupted save; normal UF2 updates preserve saved settings.
 Existing saved White/Green/Yellow choices remain valid. Amber is the default
 when no valid settings exist or when factory defaults are restored.
 Settings saved by older firmware load with 80 columns.
+
+## Host-controlled LEDs
+
+VT100 **DECLL** controls four active-high enclosure LEDs independently of the
+PS/2 keyboard and the Pico's onboard BEL indicator. Wire L1/L2/L3/L4 to
+GPIO10/11/12/26 respectively, each through its own current-limiting resistor
+and LED to ground. See [LED wiring](docs/wiring.md#host-controlled-leds-l1l4)
+for Pico header pins and resistor guidance.
+
+- `ESC[1q` through `ESC[4q` turn the corresponding LED on, leaving others alone.
+- `ESC[0q` or `ESC[q` turns all four off.
+- `ESC[0;1;3q` clears all, then lights L1 and L3. Parameters run left to right.
+
+LED state starts off, clears on terminal reset (`ESC c`), and is not saved to
+flash. Screen clearing, column switching, BEL and opening/closing setup leave
+the indicators unchanged; host commands still update them while setup is open.
+DECLL is recognized in VT100 mode. No LED commands are sent to the keyboard.
 
 ## Fonts
 

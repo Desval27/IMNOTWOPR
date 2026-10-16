@@ -66,10 +66,21 @@ behavior. Perform these checks before relying on the prototype.
     flow resumes. Test with the host paused; separately establish how a peer
     ignoring the pause affects RX error counts.
 
+11. Connect L1/L2/L3/L4 to GPIO10/11/12/26 through separate resistors and LEDs
+    to ground. Confirm all four start off. Send `ESC[1q` through `ESC[4q` in
+    order; each should add one lit LED. `ESC[0;1;3q` should leave only L1/L3 on;
+    `ESC[q` and `ESC[0q` should clear all. Repeat with F12 setup open and during
+    a transmitter-drain wait. BEL should flash only the onboard LED, and
+    column changes and screen erasure should preserve L1–L4. RIS (`ESC c`)
+    and power cycling must clear them. Verify the PS/2 keyboard LEDs do not
+    change and the LED outputs hold their state through a settings save.
+
 For a host serial smoke test (replace the serial device as appropriate):
 
 ```sh
 stty -F /dev/ttyUSB0 9600 cs8 -parenb -cstopb -crtscts -ixon -ixoff raw -echo
 printf '\033[2J\033[HLightman test\r\n\033[7mReverse\033[0m\r\n' > /dev/ttyUSB0
 printf '\033(0lqqqqk\r\nx    x\r\nmqqqqj\033(B\r\n' > /dev/ttyUSB0
+printf '\033[0;1;3q' > /dev/ttyUSB0  # L1 and L3 on; L2 and L4 off
+printf '\033[0q' > /dev/ttyUSB0      # All host LEDs off
 ```

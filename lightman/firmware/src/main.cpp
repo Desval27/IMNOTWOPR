@@ -8,6 +8,7 @@
 #include "hardware.h"
 #include "hardware/clocks.h"
 #include "keyboard.h"
+#include "lightman_pico.h"
 #include "pico/stdlib.h"
 #include <algorithm>
 #include <cstdio>
@@ -24,6 +25,19 @@ bool in_setup = false;
 int selected = 0;
 constexpr int menu_items = 12;
 const char *status = "";
+
+/**
+ * @brief Copy the host terminal's DECLL state to the four active-high enclosure LEDs.
+ * @note The separate setup terminal never controls these outputs.
+ */
+void update_host_leds()
+{
+    uint32_t levels = 0;
+    for (unsigned i = 0; i < pins::host_leds.size(); ++i)
+        if (terminal.leds() & (1u << i))
+            levels |= 1u << pins::host_leds[i];
+    gpio_put_masked(pins::host_led_mask, levels);
+}
 
 /**
  * @brief Rebuild the local setup screen from draft settings and live diagnostics.
@@ -158,6 +172,7 @@ bool drain_transmitter()
                 break;
             terminal.feed(static_cast<uint8_t>(c));
         }
+        update_host_leds();
         serial_poll();
         if (serial_idle())
             return true;
@@ -246,6 +261,13 @@ int main()
     set_sys_clock_khz(126000, true);
     config = settings_load();
     terminal.reset(config.vt52, config.columns);
+    for (unsigned pin : pins::host_leds)
+    {
+        gpio_init(pin);
+        gpio_put(pin, false); // Load the off level before enabling the output driver.
+        gpio_set_drive_strength(pin, GPIO_DRIVE_STRENGTH_2MA);
+        gpio_set_dir(pin, GPIO_OUT);
+    }
     serial_start(config);
     ps2_start();
     video_start();
@@ -315,6 +337,7 @@ int main()
             bell_on = false;
 
         gpio_put(PICO_DEFAULT_LED_PIN, bell_on);
+        update_host_leds();
 
         if (now - last_frame >= 16667)
         {

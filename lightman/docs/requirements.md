@@ -10,6 +10,7 @@ flash). See [platform](platform.md), [wiring](wiring.md), and
 | VGA pins | HSYNC 13, VSYNC 14, R0..R2 15..17, G0..G2 18..20, B0..B1 21..22 |
 | Color | RGB332 resistor DACs; channel 0 is most significant; amber normal text by default |
 | Keyboard | PS/2 set 2 through level shifters; US layout; clock GPIO8, data GPIO9 |
+| Host LEDs | VT100 DECLL controls active-high L1–L4 on GPIO10/11/12/26; separate from keyboard LEDs and onboard BEL |
 | Serial | UART0 on GPIO0/1; three MAX3232s support all DTE male DE-9 signals |
 | Optional handshaking | CTS/RTS on GPIO2/3, DTR/DSR on GPIO5/4 |
 | Modem status | DSR on GPIO4, DCD on GPIO6, RI on GPIO7; live status in setup |

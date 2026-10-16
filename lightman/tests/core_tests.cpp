@@ -16,6 +16,54 @@
 #include <random>
 using namespace lightman;
 /**
+ * @brief Verify VT100 DECLL parsing, latching and independence from display/keyboard state.
+ */
+static void test_host_leds()
+{
+    std::string replies;
+    Terminal t([](void *p, std::string_view s) { static_cast<std::string *>(p)->append(s); }, &replies);
+    assert(t.leds() == 0);
+    t.feed("text\033[5;10H\033[1m\033[1");
+    assert(t.leds() == 0); // Wait for the final byte.
+    t.feed("q");
+    assert(t.leds() == 1 && t.x() == 9 && t.y() == 4 && t.cells()[0].ch == 't');
+    t.feed("X");
+    assert(t.cells()[4 * 80 + 9].attr == Bold);
+    t.feed("\033[2q\033[3;4q");
+    assert(t.leds() == 15);
+    t.feed("\033[1;1q");
+    assert(t.leds() == 15); // Setting an LED does not toggle it or clear the others.
+    t.feed("\033[0;2;4q");
+    assert(t.leds() == 10);
+    t.feed("\033[3;0;1q");
+    assert(t.leds() == 1); // Reset in the middle applies in parameter order.
+    t.feed("\033[2;q");
+    assert(t.leds() == 0); // An empty parameter means zero.
+    t.feed("\033[;3q");
+    assert(t.leds() == 4);
+    t.feed("\033[q");
+    assert(t.leds() == 0);
+    t.feed("\033[4q\033[5;21;22;23;24;9999q");
+    assert(t.leds() == 8); // Ignore unsupported parameters, including xterm LED extensions.
+    t.feed("\033[?0q\033[0 q\033[0:1q\033[0\x18q");
+    assert(t.leds() == 8); // Private, intermediate, malformed and cancelled sequences.
+    t.feed("\033[0;1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16q");
+    assert(t.leds() == 8); // Parameter overflow must not partially clear the LEDs.
+    t.feed("\0337\033[1q\0338\033[2J\033[?3h\a\033[2h");
+    assert(t.leds() == 9 && t.bells == 1 && t.keyboard_locked());
+    t.feed("\033[0q"); // Keyboard lock does not block host LED commands.
+    assert(t.leds() == 0 && replies.empty());
+    t.feed("\033[1;2;3;4q\033c");
+    assert(t.leds() == 0);
+    t.feed("\033[2q\033[?2l\033[0q");
+    assert(t.vt52() && t.leds() == 2); // No CSI commands in VT52 mode.
+    t.feed("\033<\033[0q");
+    assert(t.leds() == 0);
+    t.feed("\033[4q");
+    t.reset(true, 132);
+    assert(t.leds() == 0); // Local terminal reset also clears indicators.
+}
+/**
  * @brief Exercise width changes and screen operations at both right margins.
  */
 static void test_column_modes()
@@ -128,6 +176,7 @@ static void test_raster_columns()
  */
 int main()
 {
+    test_host_leds();
     test_column_modes();
     test_raster_columns();
     std::string replies;

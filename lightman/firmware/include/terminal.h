@@ -158,6 +158,14 @@ class Terminal
         return keyboard_locked_;
     }
     /**
+     * @brief Read the host-controlled DECLL indicators; bits 0..3 correspond to L1..L4.
+     * @note These are enclosure LEDs, independent of BEL and PS/2 keyboard LEDs.
+     */
+    uint8_t leds() const
+    {
+        return leds_;
+    }
+    /**
      * @brief Count of received BEL controls, modulo 2^32, for the frontend indicator.
      */
     uint32_t bells = 0;
@@ -182,6 +190,7 @@ class Terminal
     int x_ = 0, y_ = 0, top_ = 0, bottom_ = rows - 1, count_ = 1, charset_ = 0;
     int saved_x_ = 0, saved_y_ = 0;
     uint8_t attr_ = 0, saved_attr_ = 0;
+    uint8_t leds_ = 0;
     bool vt52_ = false, app_cursor_ = false, app_keypad_ = false, newline_ = false;
     bool origin_ = false, wrap_ = true, pending_wrap_ = false, cursor_visible_ = true;
     bool reverse_screen_ = false, keyboard_locked_ = false, private_ = false, invalid_ = false;

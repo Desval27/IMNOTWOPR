@@ -23,6 +23,7 @@ The implementation follows the
 | Identification | DA replies ESC [ ? 1 ; 0 c (VT100, no options); DSR 5/6 |
 | Character sets | G0/G1 ASCII and DEC special graphics, SO/SI selection |
 | Reset/test | RIS (ESC c); DECALN (ESC # 8) |
+| Host indicators | DECLL (CSI Ps q): 0/omitted clears L1–L4; 1–4 lights the selected enclosure LED; multiple parameters apply in order |
 | VT52 | ESC A/B/C/D, H, I, J, K, Y row/column, Z, F/G, =/>, < |
 | VT52 identity | ESC / Z; ESC < enters ANSI mode; ANSI CSI ? 2 l enters VT52 |
 | Keys | US set 2 PS/2 typing, Shift/Caps/Ctrl/Alt, arrows, F1–F4 as PF1–PF4 |
@@ -35,6 +36,12 @@ be changed to BS in setup. Enter sends CR, or CR/LF when the host enables LNM.
 Keypad plus, multiply and divide remain literal characters; Num Lock does not
 change the numeric keypad. Caps Lock is tracked locally without setting the
 keyboard's LED. Holding keys uses the keyboard's own repeat behavior.
+DECLL drives enclosure LEDs on GPIO10/11/12/26, separate from the PS/2 keyboard
+and the onboard BEL indicator. LED state is volatile, starts off, and clears
+on RIS or local terminal reset. It survives cursor save/restore, screen erasure,
+column changes and setup navigation. Unsupported LED parameters are ignored;
+later-terminal individual-off commands (21–24) are not implemented. DECLL has
+no question mark or intermediate byte: `CSI ? Ps q` and `CSI Ps SP q` are ignored.
 
 DEC box-drawing, scan lines, diamond and checkerboard glyphs are drawn locally.
 Some mathematical/control-picture symbols are ASCII approximations. VT52 F/G
@@ -55,7 +62,7 @@ Fine font detail is reduced in the narrow mode. Setup stays at 80 columns.
 - Exact historical VT52 graphics, UK national character set, full DEC font ROM.
 - ANSI color SGR, Unicode, alternate screen, scrollback, and xterm features.
 - VT102 insert/delete characters and lines, printer support, answerback,
-  keyboard LED commands, confidence tests and serial BREAK generation.
+  PS/2 keyboard LED updates, confidence tests and serial BREAK generation.
 - USB keyboard input, keyboard host commands, non-US layouts and F5–F11.
 - Modem dialing, automatic carrier/ring handling and DTR hangup control.
 
