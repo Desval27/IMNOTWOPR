@@ -26,6 +26,10 @@ physical VGA/PS/2/serial operation still needs prototype validation. See the
 - [JLCPCB](hardware/gerber_to_order/lightman_74.0x119.0mm_for_JLCPCB.zip)
 - [PCBWay](hardware/gerber_to_order/lightman_74.0x119.0mm_for_PCBWay.zip)
 
+## BOM Notes
+
+- The 5V <-> 3V3 level shifters are from [Amazon](https://www.amazon.com/dp/B07SZQMWFS).  The footprint is easily hacked to fit others.
+
 ## Build and flash
 
 Dependencies: CMake 3.24+, Python 3, an Arm GNU embedded C/C++ compiler with
