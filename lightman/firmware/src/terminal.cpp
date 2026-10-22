@@ -56,10 +56,10 @@ void Terminal::set_columns(int columns)
 /**
  * @brief Process a byte span in order without resetting parser state.
  */
-void Terminal::feed(std::string_view text)
+void Terminal::feed(std::string_view text, bool crlf)
 {
     for (unsigned char c : text)
-        feed(c);
+        feed(c, crlf);
 }
 /**
  * @brief Deliver a host reply through the optional output callback.
@@ -454,7 +454,7 @@ void Terminal::csi(uint8_t final)
 /**
  * @brief Process one host byte, retaining any incomplete escape sequence.
  */
-void Terminal::feed(uint8_t c)
+void Terminal::feed(uint8_t c, bool crlf)
 {
     if (c == 0x18 || c == 0x1a)
     {
@@ -500,6 +500,8 @@ void Terminal::feed(uint8_t c)
             break;
         case 13:
             move(0, y_);
+            if (crlf)
+                index();
             break;
         case 14:
             active_charset_ = 1;

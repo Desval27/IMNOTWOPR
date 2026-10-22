@@ -98,6 +98,20 @@ The menu shows UART errors, dropped TX/PS/2 data, missed VGA deadlines, and
 live DSR, DCD and RI status.
 Incoming host text continues updating a separate terminal screen during setup.
 
+**Receive CR+LF** and **Transmit CR+LF** are independent On/Off options; both
+default to **Off**, including when loading settings saved by older firmware.
+Enable either or both, then Enter to apply or S to save:
+
+- Receive CR+LF treats each received carriage return as CR followed by LF,
+  returning to column zero and advancing one row. An existing host CR/LF pair
+  advances two rows with this option on.
+- Transmit CR+LF adds LF when a key sends CR (Enter, numeric keypad Enter or
+  Ctrl+M). Application keypad sequences stay unchanged. Host-enabled VT100
+  newline mode still sends CR/LF for Enter, without adding a second LF.
+
+These options work in VT100 and VT52. Local echo displays the transmitted
+bytes; receive conversion applies only to incoming serial data.
+
 In VT100 mode, the host can send **`ESC [ ? 3 h`** for 132 columns or
 **`ESC [ ? 3 l`** for 80 columns (DECCOLM; no spaces in the transmitted bytes).
 Both sequences clear the screen, home the cursor and reset scrolling margins,
@@ -150,7 +164,8 @@ ctest --test-dir lightman/build/host --output-on-failure
 ```
 
 Tests cover 80/132-column positioning/scrolling/modes/replies, malformed streams,
-keyboard sequences, PS/2 frame parity and timeout, settings validation/CRC,
+keyboard sequences, all four receive/transmit CR/LF combinations and persistence,
+PS/2 frame parity and timeout, settings validation/CRC,
 all normal-color presets and column-width persistence, packed glyph boundaries, RGB332 DAC bit mapping,
 and generated font data. A seeded 250,000-byte malformed-input exercise checks
 cursor bounds. For sanitizer checks add

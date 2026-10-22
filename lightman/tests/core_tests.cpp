@@ -16,6 +16,101 @@
 #include <random>
 using namespace lightman;
 /**
+ * @brief Check independent CR/LF options, saved records and interactions with terminal modes.
+ */
+static void test_crlf_options()
+{
+    Config defaults;
+    assert(defaults.receive_crlf == 0 && defaults.transmit_crlf == 0);
+    auto legacy = encode_config(defaults, 40);
+    assert(legacy[22] == 0 && legacy[23] == 0); // Reserved bytes in older firmware.
+    Config restored;
+    restored.receive_crlf = restored.transmit_crlf = 1;
+    uint32_t generation = 0;
+    assert(decode_config(legacy.data(), restored, generation));
+    assert(restored.receive_crlf == 0 && restored.transmit_crlf == 0 && generation == 40);
+
+    for (uint8_t rx : {0, 1})
+        for (uint8_t tx : {0, 1})
+        {
+            Config config;
+            config.receive_crlf = rx;
+            config.transmit_crlf = tx;
+            assert(config.valid());
+            auto saved = encode_config(config, 41);
+            assert(decode_config(saved.data(), restored, generation) && generation == 41);
+            assert(restored.receive_crlf == rx && restored.transmit_crlf == tx);
+
+            for (bool vt52 : {false, true})
+                for (int width : {80, 132})
+                {
+                    Terminal t;
+                    t.reset(vt52, width);
+                    t.feed("ABC\rZ", restored.receive_crlf);
+                    assert(t.x() == 1 && t.y() == rx);
+                    assert(t.cells()[rx * width].ch == 'Z');
+                    assert(t.cells()[1].ch == 'B');
+
+                    const std::string expected = tx ? "\r\n" : "\r";
+                    for (KeyEvent key :
+                         {KeyEvent{Key::Enter}, KeyEvent{Key::Keypad, '\r'}, KeyEvent{Key::Character, '\r'}})
+                    {
+                        assert(encode_key(key, t, true, restored.transmit_crlf) == expected);
+                        key.alt = true;
+                        assert(encode_key(key, t, true, restored.transmit_crlf) == "\033" + expected);
+                    }
+                    assert(encode_key({Key::Character, '\n'}, t, true, tx) == "\n");
+                    assert(encode_key({Key::Character, 'X'}, t, true, tx) == "X");
+                    assert(encode_key({Key::Character, 0}, t, true, tx) == std::string(1, '\0'));
+
+                    // Local echo displays the transmitted bytes without receiving them a second time.
+                    t.reset(vt52, width);
+                    t.feed("ABC");
+                    t.feed(encode_key({Key::Enter}, t, true, tx));
+                    assert(t.x() == 0 && t.y() == tx);
+
+                    t.feed("\033=");
+                    assert(encode_key({Key::Keypad, '\r'}, t, true, tx) == (vt52 ? "\033?M" : "\033OM"));
+                    t.feed("\033>");
+                    if (!vt52)
+                    {
+                        t.feed("\033[20h");
+                        assert(encode_key({Key::Enter}, t, true, tx) == "\r\n");
+                        assert(encode_key({Key::Keypad, '\r'}, t, true, tx) == "\r\n");
+                        t.feed("\033[20l");
+                        assert(encode_key({Key::Enter}, t, true, tx) == expected);
+                    }
+                }
+        }
+
+    Terminal t;
+    t.feed("A\r\nB", true); // Receive conversion adds LF even when the host already sends one.
+    assert(t.x() == 1 && t.y() == 2 && t.cells()[160].ch == 'B');
+    t.reset();
+    t.feed("AB\nC", true); // LF alone keeps its usual column behavior.
+    assert(t.x() == 3 && t.y() == 1 && t.cells()[82].ch == 'C');
+    t.feed("\033[2;3r\033[2;1HA\033[3;1HB\rC", true);
+    assert(t.x() == 1 && t.y() == 2 && t.cells()[80].ch == 'B' && t.cells()[160].ch == 'C');
+    t.feed("\033cA\rB", true); // Host reset does not disable the receive setting.
+    assert(t.x() == 1 && t.y() == 1 && t.cells()[80].ch == 'B');
+    t.reset();
+    t.feed("\033]hidden\r\033\\A", true); // Discarded strings remain invisible.
+    assert(t.x() == 1 && t.y() == 0 && t.cells()[0].ch == 'A');
+    t.feed("\033[1\rmb", true); // CR/LF controls preserve an incomplete CSI sequence.
+    assert(t.x() == 1 && t.y() == 1 && t.cells()[80].attr == Bold);
+
+    for (bool receive : {false, true})
+        for (uint8_t invalid : {2, 255})
+        {
+            Config config;
+            (receive ? config.receive_crlf : config.transmit_crlf) = invalid;
+            assert(!config.valid());
+            auto saved = encode_config(config, 99); // Correct CRC with an invalid option.
+            assert(!decode_config(saved.data(), restored, generation));
+            assert(restored.receive_crlf == 1 && restored.transmit_crlf == 1 && generation == 41);
+        }
+}
+/**
  * @brief Verify VT100 DECLL parsing, latching and independence from display/keyboard state.
  */
 static void test_host_leds()
@@ -176,6 +271,7 @@ static void test_raster_columns()
  */
 int main()
 {
+    test_crlf_options();
     test_host_leds();
     test_column_modes();
     test_raster_columns();

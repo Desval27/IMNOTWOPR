@@ -23,7 +23,7 @@ Keyboard keyboard;
 Config config, draft;
 bool in_setup = false;
 int selected = 0;
-constexpr int menu_items = 12;
+constexpr int menu_items = 14;
 const char *status = "";
 
 /**
@@ -63,7 +63,9 @@ void draw_menu()
     std::snprintf(lines[8], 70, "Font            %s", draft.font ? "Bold" : "Regular");
     std::snprintf(lines[9], 70, "Normal color    %s", normal_colors[draft.color].name);
     std::snprintf(lines[10], 70, "Columns         %u", draft.columns);
-    std::snprintf(lines[11], 70, "Restore factory defaults");
+    std::snprintf(lines[11], 70, "Receive CR+LF   %s", draft.receive_crlf ? "On" : "Off");
+    std::snprintf(lines[12], 70, "Transmit CR+LF  %s", draft.transmit_crlf ? "On" : "Off");
+    std::snprintf(lines[13], 70, "Restore factory defaults");
 
     for (int i = 0; i < menu_items; ++i)
     {
@@ -76,10 +78,10 @@ void draw_menu()
         menu.feed("\033[0m");
     }
 
-    menu.feed("\033[17;4HUp/Down: select   Left/Right/Space: change");
-    menu.feed("\033[18;4HEnter: apply   S: apply and save   Esc/F12: cancel");
-    menu.feed("\033[19;4HPause host output before changing serial settings or saving.");
-    menu.feed("\033[20;4HSaving briefly blanks VGA. Mode changes clear terminal text.");
+    menu.feed("\033[18;4HUp/Down: select   Left/Right/Space: change");
+    menu.feed("\033[19;4HEnter: apply   S: apply and save   Esc/F12: cancel");
+    menu.feed("\033[20;4HPause host output before changing serial settings or saving.");
+    menu.feed("\033[21;4HSaving briefly blanks VGA. Mode changes clear terminal text.");
 
     char counters[100];
     std::snprintf(counters, sizeof counters, "\033[22;4HRX errors:%lu  TX drops:%lu  PS/2 drops:%lu  VGA late:%lu",
@@ -140,6 +142,12 @@ void change(int direction)
         draft.columns = draft.columns == 80 ? 132 : 80;
         break;
     case 11:
+        draft.receive_crlf ^= 1;
+        break;
+    case 12:
+        draft.transmit_crlf ^= 1;
+        break;
+    case 13:
         draft = Config{};
         break;
     }
@@ -170,7 +178,7 @@ bool drain_transmitter()
             int c = serial_read();
             if (c < 0)
                 break;
-            terminal.feed(static_cast<uint8_t>(c));
+            terminal.feed(static_cast<uint8_t>(c), config.receive_crlf);
         }
         update_host_leds();
         serial_poll();
@@ -288,7 +296,7 @@ int main()
             int c = serial_read();
             if (c < 0)
                 break;
-            terminal.feed(static_cast<uint8_t>(c));
+            terminal.feed(static_cast<uint8_t>(c), config.receive_crlf);
         }
 
         auto drops = ps2_overflows();
@@ -319,7 +327,7 @@ int main()
             }
             else if (!terminal.keyboard_locked())
             {
-                auto text = encode_key(e, terminal, config.backspace_del);
+                auto text = encode_key(e, terminal, config.backspace_del, config.transmit_crlf);
                 serial_write(text);
                 if (config.echo)
                     terminal.feed(text);

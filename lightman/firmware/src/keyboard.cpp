@@ -231,7 +231,7 @@ KeyEvent Keyboard::feed(uint8_t c)
 /**
  * @brief Encode a logical key using the current terminal modes.
  */
-std::string encode_key(KeyEvent e, const Terminal &t, bool del)
+std::string encode_key(KeyEvent e, const Terminal &t, bool del, bool crlf)
 {
     std::string s;
     switch (e.key)
@@ -302,6 +302,8 @@ std::string encode_key(KeyEvent e, const Terminal &t, bool del)
     default:
         break;
     }
+    if (crlf && s == "\r")
+        s += '\n';
     if (e.alt && !s.empty())
         s.insert(s.begin(), 27);
     return s;

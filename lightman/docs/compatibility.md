@@ -76,6 +76,16 @@ Default: **9600 baud, 8N1, no flow control, VT100, 80 columns, no local echo, DE
 regular font, amber normal text**. Setup supports 300–115200 baud, 7/8 bits, 1/2 stop
 bits, none/even/odd parity and no/software/hardware flow control.
 
+Independent Receive CR+LF and Transmit CR+LF setup options default off. Receive
+conversion advances one row after every received CR control; a host CR/LF pair
+therefore advances twice. LF behavior and discarded OSC/DCS strings are unchanged.
+Transmit conversion appends LF to a key's CR, including Ctrl+M and numeric keypad
+Enter, but preserves application keypad sequences and existing CR/LF from LNM.
+Local echo displays the final transmitted bytes without receive conversion.
+Both options work in VT100/VT52 and persist in previously reserved, zero-filled
+record bytes; older saved records load with both off. Host resets and LNM changes
+do not change these local options.
+
 Normal color selects White, Classic green, Yellow, Amber, Red, Blue, Cyan or
 Magenta through the RGB332 DACs. It sets the base foreground on black for the
 whole terminal, including attributes and cursor; reverse swaps foreground and

@@ -38,6 +38,7 @@ struct Config
     Flow flow = Flow::None;
     uint8_t font = 0, vt52 = 0, echo = 0, backspace_del = 1, color = default_normal_color;
     uint8_t columns = 80;
+    uint8_t receive_crlf = 0, transmit_crlf = 0;
     /**
      * @brief Check whether every field is supported by this firmware.
      * @return True when baud, framing, modes, font and color are in range.

@@ -82,9 +82,10 @@ class Keyboard
  * @param event Key press and modifier state; Alt adds an ESC prefix.
  * @param terminal Supplies VT52, application cursor/keypad and newline modes.
  * @param backspace_del True to send DEL for Backspace; false to send BS.
+ * @param crlf True to append LF to a transmitted CR, including Ctrl+M; existing CR/LF stays unchanged.
  * @return Bytes to transmit, possibly containing NUL, or empty for a local/unused key.
  */
-std::string encode_key(KeyEvent event, const Terminal &terminal, bool backspace_del);
+std::string encode_key(KeyEvent event, const Terminal &terminal, bool backspace_del, bool crlf = false);
 // PS/2 set 2 frames: start, eight LSB-first data bits, odd parity, stop.
 /**
  * @brief Assemble 11-bit PS/2 frames from falling clock edges.

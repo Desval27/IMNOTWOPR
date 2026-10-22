@@ -69,14 +69,16 @@ class Terminal
     /**
      * @brief Process one host byte, retaining any incomplete escape sequence.
      * @param byte Incoming control or character byte; printable text is 7-bit ASCII.
+     * @param crlf True to process a CR control as CR followed by LF.
      * @note Processing may synchronously invoke the Output callback.
      */
-    void feed(uint8_t byte);
+    void feed(uint8_t byte, bool crlf = false);
     /**
      * @brief Process a byte span in order without resetting parser state.
      * @param text Host bytes; embedded NULs are processed and no storage is retained.
+     * @param crlf True to process each CR control as CR followed by LF.
      */
-    void feed(std::string_view text);
+    void feed(std::string_view text, bool crlf = false);
     /**
      * @brief Read the current row-major text cells.
      * @return Storage with column_count() stride; only the first column_count()*rows cells are active.

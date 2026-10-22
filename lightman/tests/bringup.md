@@ -31,6 +31,14 @@ behavior. Perform these checks before relying on the prototype.
    if available. No LED updates are expected on the keyboard itself.
 4. Connect DE-9 TX/RX loopback (pins 3/2), default 9600 8N1, local echo off.
    Typed characters should return once. Then test a null-modem-connected host.
+   Check all four combinations of Receive CR+LF and Transmit CR+LF in F12 setup.
+   A host sending `A\rB` should overwrite A with receive conversion off and put
+   B on the next row with it on. Capture Enter, numeric keypad Enter and Ctrl+M:
+   transmit conversion off sends CR; on sends CR/LF. With host LNM enabled,
+   Enter must send exactly CR/LF even when transmit conversion is on. Local
+   echo must show the transmitted line ending once. Verify cancel, apply,
+   save/reboot and factory defaults (both off), plus receive conversion while
+   setup is open. In loopback with both on, CR/LF advances two rows.
 5. At each supported baud/framing combination, match the host settings and
    send known patterns. Test 115200-baud sustained text, full-screen scrolling,
    cursor addressing, reverse/underline/blink, and simultaneous keyboard use.
