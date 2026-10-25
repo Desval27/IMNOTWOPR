@@ -597,10 +597,10 @@
           "group_by": false,
           "label": "Datasheet",
           "name": "Datasheet",
-          "show": true
+          "show": false
         },
         {
-          "group_by": false,
+          "group_by": true,
           "label": "Footprint",
           "name": "Footprint",
           "show": true
@@ -616,12 +616,60 @@
           "label": "DNP",
           "name": "${DNP}",
           "show": true
+        },
+        {
+          "group_by": false,
+          "label": "Exclude from Simulation",
+          "name": "${EXCLUDE_FROM_SIM}",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Exclude from Position Files",
+          "name": "${EXCLUDE_FROM_POS_FILES}",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Exclude from Board",
+          "name": "${EXCLUDE_FROM_BOARD}",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Exclude from BOM",
+          "name": "${EXCLUDE_FROM_BOM}",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Description",
+          "name": "Description",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "#",
+          "name": "${ITEM_NUMBER}",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Legend",
+          "name": "Legend",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Voltage",
+          "name": "Voltage",
+          "show": true
         }
       ],
       "filter_string": "",
       "group_symbols": true,
       "include_excluded_from_bom": false,
-      "name": "Grouped By Value",
+      "name": "",
       "sort_asc": true,
       "sort_field": "Reference"
     },
@@ -685,11 +733,6 @@
         "filename": "P9V.kicad_sch",
         "name": "P9V",
         "uuid": "e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
-      },
-      {
-        "filename": "system.kicad_sch",
-        "name": "SYSTEM",
-        "uuid": "1bc24577-9a03-4fc2-ac64-d8d0370a6427"
       }
     ],
     "used_designators": "#FLG1-2,#PWR1-25,C1-12,D1-3,J1-5,MH1-2,R1-3,U1-3",
@@ -699,10 +742,6 @@
     [
       "e63e39d7-6ac0-4ffd-8aa3-1841a4541b55",
       "P9V"
-    ],
-    [
-      "1bc24577-9a03-4fc2-ac64-d8d0370a6427",
-      "SYSTEM"
     ]
   ],
   "text_variables": {
