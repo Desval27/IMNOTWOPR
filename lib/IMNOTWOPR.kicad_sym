@@ -40201,17 +40201,6 @@
 				)
 			)
 		)
-		(property "ki_fp_filters" "DIN41612*3x*"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(symbol "SystemConnector_1_1"
 			(rectangle
 				(start -6.35 39.37)
@@ -47193,17 +47182,6 @@
 				)
 			)
 		)
-		(property "ki_fp_filters" "DIN41612*3x*"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(embedded_fonts no)
 	)
 	(symbol "CardConnector"
@@ -47272,17 +47250,6 @@
 				)
 			)
 		)
-		(property "ki_fp_filters" "DIN41612*3x*"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(embedded_fonts no)
 	)
 	(symbol "CardExtender"
@@ -47341,17 +47308,6 @@
 			)
 		)
 		(property "ki_keywords" "connector"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ki_fp_filters" "DIN41612*3x*"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)

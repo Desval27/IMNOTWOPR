@@ -5,12 +5,12 @@
 	(uuid "e63e39d7-6ac0-4ffd-8aa3-1841a4541b55")
 	(paper "A3")
 	(title_block
-		(title "TITLE")
+		(title "${MODULE_NAME}")
 		(rev "A")
-		(company "THE HOUSE OF GALAHAD")
-		(comment 1 "IMNOTWOPR")
-		(comment 2 "CARD TEMPLATE")
-		(comment 3 "75-1000-01")
+		(company "${COMPANY_NAME}")
+		(comment 1 "${PROJECT_NAME}")
+		(comment 2 "${MODULE_DESCRIPTION}")
+		(comment 3 "${PART_NUMBER}")
 	)
 	(lib_symbols
 		(symbol "IMNOTWOPR:CardBracket"
