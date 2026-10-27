@@ -184,7 +184,6 @@
         {
           "td_allow_use_two_tracks": true,
           "td_curve_segcount": 0,
-          "td_enabled": false,
           "td_height_ratio": 1.0,
           "td_length_ratio": 0.5,
           "td_maxheight": 2.0,
@@ -196,7 +195,6 @@
         {
           "td_allow_use_two_tracks": true,
           "td_curve_segcount": 0,
-          "td_enabled": false,
           "td_height_ratio": 1.0,
           "td_length_ratio": 0.5,
           "td_maxheight": 2.0,
@@ -208,7 +206,6 @@
         {
           "td_allow_use_two_tracks": true,
           "td_curve_segcount": 0,
-          "td_enabled": false,
           "td_height_ratio": 1.0,
           "td_length_ratio": 0.5,
           "td_maxheight": 2.0,
@@ -489,8 +486,8 @@
       "net_not_bus_member": "warning",
       "no_connect_connected": "warning",
       "no_connect_dangling": "warning",
-      "pin_not_connected": "error",
-      "pin_not_driven": "error",
+      "pin_not_connected": "ignore",
+      "pin_not_driven": "ignore",
       "pin_to_pin": "warning",
       "power_pin_not_driven": "error",
       "same_local_global_label": "warning",
@@ -542,8 +539,8 @@
     "meta": {
       "version": 5
     },
-    "net_colors": {},
-    "netclass_assignments": {},
+    "net_colors": null,
+    "netclass_assignments": null,
     "netclass_patterns": []
   },
   "pcbnew": {
@@ -625,7 +622,19 @@
       "sort_asc": true,
       "sort_field": "Reference"
     },
-    "bus_aliases": {},
+    "bus_aliases": {
+      "CONTROL": [
+        "R/W",
+        "#VALID",
+        "#RAM_WE",
+        "#RAM_OE",
+        "#RAM1_SEL",
+        "#RAM2_SEL",
+        "#RAM3_SEL",
+        "#RAM4_SEL",
+        "#DATA_OE"
+      ]
+    },
     "connection_grid_size": 50.0,
     "drawing": {
       "dashed_lines_dash_length_ratio": 12.0,
@@ -687,7 +696,7 @@
         "uuid": "e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
       }
     ],
-    "used_designators": "#FLG1-2,#PWR1-23,C1-14,J1-2,MH1-2,RN1-4,SW1-5,U1-14",
+    "used_designators": "#FLG1-2,J1-2,#PWR1-30,C1-14,MH1-2,U1-14,RN1-4,SW1-5",
     "variants": []
   },
   "sheets": [

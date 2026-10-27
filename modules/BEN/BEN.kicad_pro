@@ -541,8 +541,8 @@
     "meta": {
       "version": 5
     },
-    "net_colors": {},
-    "netclass_assignments": {},
+    "net_colors": null,
+    "netclass_assignments": null,
     "netclass_patterns": []
   },
   "pcbnew": {
@@ -722,7 +722,7 @@
         "uuid": "e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
       }
     ],
-    "used_designators": "#FLG1-2,#PWR1-58,C1-26,D1-18,J1-4,MH1-2,R1-25,RN1-5,SW1-9,U1-14,Y1-2",
+    "used_designators": "J1-4,#FLG1-2,R1-25,#PWR1-58,D1-18,C1-26,U1-14,MH1-2,RN1-5,SW1-9,Y1-2",
     "variants": []
   },
   "sheets": [

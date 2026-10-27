@@ -1,0 +1,85 @@
+<svg xmlns="http://w3.org" viewBox="0 0 400 400" width="100%" height="100%">
+  <!-- Outer Technical Targeting / Alignment Border -->
+  <circle cx="200" cy="180" r="140" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="8 6" />
+  <path d="M 200 25 L 200 35 M 200 325 L 200 335 M 45 180 L 55 180 M 345 180 L 355 180" stroke="currentColor" stroke-width="2" />
+
+  <!-- Main Cybernetic Bus / Cyborg Endoskeleton Fusion Face -->
+  <g fill="currentColor">
+    <!-- Upper Bus Roof and Forehead Plate -->
+    <path d="M 110 90 L 290 90 L 285 75 C 250 65, 150 65, 115 75 Z" />
+    
+    <!-- Heavy Brow Line & Destination Sign Box (Empty/Cutout) -->
+    <path d="M 100 95 L 300 95 L 295 110 L 105 110 Z" />
+    
+    <!-- Cyborg Eye/Windshield Frames -->
+    <!-- Left Windshield (Normal human bus view) -->
+    <path d="M 110 115 L 192 115 L 192 150 L 115 150 C 110 140, 110 125, 110 115 Z" />
+    <!-- Right Windshield (Broken/Exposing Terminator Endoskeleton Red Eye Core) -->
+    <path d="M 208 115 L 290 115 C 290 125, 290 140, 285 150 L 208 150 Z" />
+    
+    <!-- Left Grille/Cheek Detail -->
+    <path d="M 115 160 L 180 160 L 180 195 L 125 195 C 120 185, 115 175, 115 160 Z" />
+    
+    <!-- Right Cybernetic Exposed Cheek Structure (Mechanical Pistons/Paddings) -->
+    <path d="M 220 160 L 285 160 C 285 175, 280 185, 275 195 L 220 195 Z" />
+    
+    <!-- Headlight Targets -->
+    <!-- Left Classic Round Bus Headlight -->
+    <circle cx="135" cy="210" r="12" />
+    <!-- Right Terminator Glowing Eye Core (Positioned lower in the chassis) -->
+    <circle cx="250" cy="132" r="7" fill="none" stroke="currentColor" stroke-width="4" />
+    <circle cx="250" cy="132" r="2" />
+    
+    <!-- Grill Panels & Nose Bridge -->
+    <path d="M 188 160 L 212 160 L 212 215 L 188 215 Z" />
+    <path d="M 140 227 L 260 227 L 255 235 L 145 235 Z" />
+
+    <!-- Cybernetic Metallic Teeth / Bus Grille Hybrid -->
+    <!-- Top Row of Teeth -->
+    <path d="M 155 242 L 163 242 L 163 252 L 155 252 Z M 167 242 L 175 242 L 175 254 L 167 254 Z M 179 242 L 187 242 L 187 255 L 179 255 Z M 191 242 L 199 242 L 199 255 L 191 255 Z M 201 242 L 209 242 L 209 255 L 201 255 Z M 213 242 L 221 242 L 221 255 L 213 255 Z M 225 242 L 233 242 L 233 254 L 225 254 Z M 237 242 L 245 242 L 245 252 L 237 252 Z" />
+    <!-- Bottom Row of Teeth / Heavy Bumper Jaw -->
+    <path d="M 157 257 L 163 257 L 163 265 L 157 265 Z M 167 258 L 173 258 L 173 268 L 167 268 Z M 177 259 L 185 259 L 185 270 L 177 270 Z M 189 259 L 197 259 L 197 271 L 189 271 Z M 203 259 L 211 259 L 211 271 L 203 271 Z M 215 259 L 223 259 L 223 270 L 215 270 Z M 227 258 L 233 258 L 233 268 L 227 268 Z M 237 257 L 243 257 L 243 265 L 237 265 Z" />
+    
+    <!-- Heavy Robotic Cast-Iron Lower Bumper / Jawline -->
+    <path d="M 140 274 L 260 274 L 245 292 L 155 292 Z" />
+  </g>
+
+  <!-- Stylized Technical Text: "BUS TERMINATOR" -->
+  <g fill="currentColor" aria-label="BUS TERMINATOR">
+    <!-- B --> <path d="M 50 340 V 360 H 58 C 62 360, 64 358, 64 355 C 64 352, 62 351, 58 350 C 61 350, 63 348, 63 345 C 63 342, 61 340, 56 340 Z M 54 344 H 56 C 58 344, 59 345, 59 346 C 59 348, 58 349, 56 349 H 54 Z M 54 353 H 57 C 59 353, 60 354, 60 356 C 60 358, 59 359, 57 359 H 54 Z" />
+    <!-- U --> <path d="M 70 340 V 354 C 70 358, 73 360, 77 360 C 81 360, 84 358, 84 354 V 340 H 80 V 354 C 80 356, 79 357, 77 357 C 75 357, 74 356, 74 354 V 340 Z" />
+    <!-- S --> <path d="M 90 345 H 94 C 94 344, 95 343, 97 343 C 99 343, 100 344, 100 345 C 100 347, 98 348, 94 350 C 91 352, 89 354, 89 357 C 89 359, 92 361, 97 361 H 98 C 102 361, 105 359, 105 355 H 101 C 101 357, 100 358, 98 358 C 96 358, 94 357, 94 356 C 94 354, 97 353, 100 351 C 104 349, 105 347, 105 344 C 105 341, 102 339, 97 339 C 92 339, 90 342, 90 345 Z" />
+    
+    <!-- T --> <path d="M 115 340 H 131 V 344 H 125 V 360 H 121 V 344 H 115 Z" />
+    <!-- E --> <path d="M 137 340 H 149 V 344 H 141 V 348 H 147 V 352 H 141 V 356 H 149 V 360 H 137 Z" />
+    <!-- R --> <path d="M 155 340 H 164 C 168 340, 171 342, 171 346 C 171 349, 169 351, 165 352 L 172 360 H 167 L 161 352 H 159 V 360 H 155 Z M 159 344 V 349 H 163 C 165 349, 166 348, 166 346 C 166 345, 165 344, 163 344 Z" />
+    <!-- M --> <path d="M 177 340 L 183 353 L 189 340 H 194 V 360 H 190 V 346 L 185 358 H 182 L 177 346 V 360 H 173 V 340 Z" />
+    <!-- I --> <path d="M 200 340 H 204 V 360 H 200 Z" />
+    <!-- N --> <path d="M 210 340 L 221 355 V 340 H 225 V 360 H 221 L 214 345 V 360 H 210 Z" />
+    <!-- A --> <path d="M 235 340 H 241 L 248 360 H 243 L 241 354 H 350 H 235 L 233 360 H 228 Z M 236 350 H 240 L 238 344 Z" />
+    <!-- T --> <path d="M 252 340 H 268 V 344 H 262 V 360 H 258 V 344 H 252 Z" />
+    <!-- O --> <path d="M 274 340 H 284 C 289 340, 292 343, 292 350 V 351 C 292 357, 289 360, 284 360 H 274 C 269 360, 266 357, 266 351 V 350 C 266 343, 269 340, 274 340 Z M 274 344 C 271 344, 270 346, 270 350 V 351 C 270 355, 271 356, 274 356 H 284 C 286 356, 288 355, 288 351 V 350 C 288 346, 286 344, 284 344 Z" />
+    <!-- R --> <path d="M 298 340 H 307 C 311 340, 314 342, 314 346 C 314 349, 312 351, 308 352 L 315 360 H 310 L 304 352 H 302 V 360 H 298 Z M 302 344 V 349 H 306 C 308 344, 309 345, 309 346 C 309 345, 308 344, 306 344 Z" />
+  </g>
+
+  <!-- Subtitle Tagline: "I'LL BE BACKPLANE" -->
+  <g fill="currentColor" transform="scale(0.7) translate(115, 175)" aria-label="I'LL BE BACKPLANE">
+    <!-- I --> <path d="M 55 340 H 59 V 360 H 55 Z" />
+    <!-- ' --> <path d="M 62 340 H 64 L 63 346 H 61 Z" />
+    <!-- L --> <path d="M 68 340 H 72 V 356 H 80 V 360 H 68 Z" />
+    <!-- L --> <path d="M 85 340 H 89 V 356 H 97 V 360 H 85 Z" />
+    
+    <!-- B --> <path d="M 107 340 H 115 C 119 340, 121 341, 121 345 C 121 347, 119 349, 116 350 C 119 351, 122 353, 122 356 C 122 359, 119 360, 114 360 H 107 Z M 111 344 V 348 H 114 C 116 348, 117 347, 117 346 C 117 345, 116 344, 114 344 Z M 111 352 V 356 H 115 C 117 356, 118 355, 118 354 C 118 353, 117 352, 115 352 Z" />
+    <!-- E --> <path d="M 127 340 H 139 V 344 H 131 V 348 H 137 V 352 H 131 V 356 H 139 V 360 H 127 Z" />
+    
+    <!-- B --> <path d="M 149 340 H 157 C 161 340, 163 341, 163 345 C 163 347, 161 349, 158 350 C 161 351, 164 353, 164 356 C 164 359, 161 360, 156 360 H 149 Z M 153 344 V 348 H 156 C 158 348, 159 347, 159 346 C 159 345, 158 344, 156 344 Z M 153 352 V 356 H 157 C 159 356, 160 355, 160 354 C 160 353, 159 352, 157 352 Z" />
+    <!-- A --> <path d="M 173 340 H 179 L 185 360 H 180 L 179 354 H 173 L 171 360 H 166 Z M 174 350 H 178 L 176 344 Z" />
+    <!-- C --> <path d="M 195 340 H 204 V 344 H 195 C 193 344, 192 346, 192 350 V 351 C 192 355, 193 356, 195 356 H 204 V 360 H 195 C 190 360, 188 357, 188 351 V 350 C 188 343, 190 340, 195 340 Z" />
+    <!-- K --> <path d="M 210 340 H 214 V 349 L 221 340 H 226 L 218 350 L 227 360 H 221 L 214 352 V 360 H 210 Z" />
+    <!-- P --> <path d="M 232 340 H 241 C 245 340, 248 342, 248 346 C 248 350, 245 352, 241 352 H 236 V 360 H 232 Z M 236 344 V 348 H 240 C 242 348, 243 347, 243 346 C 243 345, 242 344, 240 344 Z" />
+    <!-- L --> <path d="M 253 340 H 257 V 356 H 265 V 360 H 253 Z" />
+    <!-- A --> <path d="M 275 340 H 281 L 287 360 H 282 L 281 354 H 275 L 273 360 H 268 Z M 276 350 H 280 L 278 344 Z" />
+    <!-- N --> <path d="M 293 340 L 304 355 V 340 H 308 V 360 H 304 L 297 345 V 360 H 293 Z" />
+    <!-- E --> <path d="M 314 340 H 326 V 344 H 318 V 348 H 324 V 352 H 318 V 356 H 326 V 360 H 314 Z" />
+  </g>
+</svg>
