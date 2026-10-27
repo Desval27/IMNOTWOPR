@@ -685,11 +685,6 @@
         "filename": "TEMPLATE.kicad_sch",
         "name": "TEMPLATE",
         "uuid": "e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
-      },
-      {
-        "filename": "system.kicad_sch",
-        "name": "SYSTEM",
-        "uuid": "1bc24577-9a03-4fc2-ac64-d8d0370a6427"
       }
     ],
     "used_designators": "#FLG1-2,#PWR1-16,J1-2,MH1-2",
@@ -699,10 +694,6 @@
     [
       "e63e39d7-6ac0-4ffd-8aa3-1841a4541b55",
       "TEMPLATE"
-    ],
-    [
-      "1bc24577-9a03-4fc2-ac64-d8d0370a6427",
-      "SYSTEM"
     ]
   ],
   "text_variables": {
