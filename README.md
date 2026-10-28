@@ -36,6 +36,7 @@ All modules and panels are currently a work in progress and **NONE** have been t
 - [P9V PCB](modules/P9V/README.md) 9V Power Supply
 - [P9V Panel](panels/P9V/README.md)
 - [XXX PCB](modules/XXX/README.md) Bus Terminator/Configuration Card
+- [GEN Panel](panels/GEN/README.md) Generic 4HP Panel
 - [Lightman serial terminal](lightman/README.md) - Pico RGB332 VGA/PS/2 serial terminal with VT100/VT52 firmware and on-device setup, including normal-text color selection.
 
 ## Blue Sky Wants
