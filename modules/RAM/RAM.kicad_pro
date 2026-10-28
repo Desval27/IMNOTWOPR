@@ -473,7 +473,7 @@
       "global_label_dangling": "warning",
       "ground_pin_not_ground": "warning",
       "hier_label_mismatch": "error",
-      "isolated_pin_label": "ignore",
+      "isolated_pin_label": "warning",
       "label_dangling": "error",
       "label_multiple_wires": "warning",
       "lib_symbol_issues": "warning",
@@ -486,8 +486,8 @@
       "net_not_bus_member": "warning",
       "no_connect_connected": "warning",
       "no_connect_dangling": "warning",
-      "pin_not_connected": "ignore",
-      "pin_not_driven": "ignore",
+      "pin_not_connected": "error",
+      "pin_not_driven": "error",
       "pin_to_pin": "warning",
       "power_pin_not_driven": "error",
       "same_local_global_label": "warning",
@@ -696,7 +696,7 @@
         "uuid": "e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
       }
     ],
-    "used_designators": "#FLG1-2,J1-2,#PWR1-30,C1-14,MH1-2,U1-14,RN1-4,SW1-5",
+    "used_designators": "R1-4,#FLG1-2,J1-2,#PWR1-42,C1-15,U1-15,MH1-2,RN1-4,SW1-5,D1-5",
     "variants": []
   },
   "sheets": [
