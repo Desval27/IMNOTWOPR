@@ -21002,10 +21002,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "922cd8d2-4bcf-4ad1-a84d-46ef90a68471")
+			(uuid "922cd8d2-4bcf-4ad1-a84d-46ef90a68472")
 		)
 		(pin "2"
-			(uuid "13a4fa00-bddb-4053-a498-e7a1b71ff60a")
+			(uuid "13a4fa00-bddb-4053-a498-e7a1b71ff60b")
 		)
 		(instances
 			(project "RAM"
@@ -23826,7 +23826,7 @@
 				)
 			)
 		)
-		(property "Footprint" "IMNOTWOPR:R_Axial_DIN0207_P400mil"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical"
 			(at 101.6 215.9 0)
 			(hide yes)
 			(show_name no)
@@ -25091,10 +25091,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "922cd8d2-4bcf-4ad1-a84d-46ef90a68471")
+			(uuid "922cd8d2-4bcf-4ad1-a84d-46ef90a68473")
 		)
 		(pin "2"
-			(uuid "13a4fa00-bddb-4053-a498-e7a1b71ff60a")
+			(uuid "13a4fa00-bddb-4053-a498-e7a1b71ff60c")
 		)
 		(instances
 			(project "RAM"
@@ -25402,10 +25402,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "922cd8d2-4bcf-4ad1-a84d-46ef90a68471")
+			(uuid "922cd8d2-4bcf-4ad1-a84d-46ef90a68474")
 		)
 		(pin "2"
-			(uuid "13a4fa00-bddb-4053-a498-e7a1b71ff60a")
+			(uuid "13a4fa00-bddb-4053-a498-e7a1b71ff60d")
 		)
 		(instances
 			(project "RAM"
@@ -27283,7 +27283,7 @@
 				)
 			)
 		)
-		(property "Footprint" "IMNOTWOPR:R_Axial_DIN0207_P400mil"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical"
 			(at 101.6 203.2 0)
 			(hide yes)
 			(show_name no)
@@ -28879,7 +28879,7 @@
 				)
 			)
 		)
-		(property "Footprint" "IMNOTWOPR:R_Axial_DIN0207_P400mil"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical"
 			(at 101.6 241.3 0)
 			(hide yes)
 			(show_name no)
@@ -29451,7 +29451,7 @@
 				)
 			)
 		)
-		(property "Footprint" "IMNOTWOPR:R_Axial_DIN0207_P400mil"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical"
 			(at 101.6 228.6 0)
 			(hide yes)
 			(show_name no)
