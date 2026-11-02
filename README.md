@@ -26,20 +26,20 @@ Historical authenticity is not a primary goal. The machine should feel like a cl
 
 ## Current Status
 
-All modules and panels are currently a work in progress and **NONE** have been tested yet.
+All modules and panels are currently a work in progress and only a few have been tested yet.
 
 - [Backplane](system/BACKPLANE/README.md)
-- [PWR PCB](modules/PWR/README.md) Power Management (updated to Rev B)
-- [PWR Panel](panels/PWR/README.md)
-- [PXX PCB](modules/PXX/README.md) Prototypeing Card
-- [PXX Panel](panels/PXX/README.md) 
+- [PWR PCB](modules/PWR/README.md) Power Management (updated to Rev B)  (Rev B untested)
+- [PWR Panel](panels/PWR/README.md) (Tested)
+- [PXX PCB](modules/PXX/README.md) Prototypeing Card (Tested)
+- [PXX Panel](panels/PXX/README.md) (Tested)
 - [CLX PCB](modules/CLX/README.md) Clock+ Card
 - [CLX Panel](panels/CLX/README.md)
 - [P9V PCB](modules/P9V/README.md) 9V Power Supply
 - [P9V Panel](panels/P9V/README.md)
 - [XXX PCB](modules/XXX/README.md) Bus Terminator/Configuration Card
 - [GEN Panel](panels/GEN/README.md) Generic 4HP Panel
-- [Lightman serial terminal](lightman/README.md) - Pico RGB332 VGA/PS/2 serial terminal with VT100/VT52 firmware and on-device setup, including normal-text color selection.
+- [Lightman serial terminal](lightman/README.md) - Pico RGB332 VGA/PS/2 serial terminal with VT100/VT52 firmware and on-device setup, including normal-text color selection. Tested.
 
 ## Blue Sky Wants
 
