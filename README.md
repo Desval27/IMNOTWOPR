@@ -33,6 +33,8 @@ All modules and panels are currently a work in progress and **NONE** have been t
 - [PWR Panel](panels/PWR/README.md)
 - [PXX PCB](modules/PXX/README.md) Prototypeing Card
 - [PXX Panel](panels/PXX/README.md) 
+- [CLX PCB](modules/CLX/README.md) Clock+ Card
+- [CLX Panel](panels/CLX/README.md)
 - [P9V PCB](modules/P9V/README.md) 9V Power Supply
 - [P9V Panel](panels/P9V/README.md)
 - [XXX PCB](modules/XXX/README.md) Bus Terminator/Configuration Card
