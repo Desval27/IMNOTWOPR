@@ -17,16 +17,16 @@
     },
     "prototype_zone_fills": false,
     "selection_filter": {
-      "dimensions": true,
+      "dimensions": false,
       "footprints": true,
-      "graphics": true,
-      "keepouts": true,
-      "lockedItems": true,
-      "otherItems": true,
+      "graphics": false,
+      "keepouts": false,
+      "lockedItems": false,
+      "otherItems": false,
       "pads": true,
-      "text": true,
+      "text": false,
       "tracks": true,
-      "vias": true,
+      "vias": false,
       "zones": true
     },
     "visible_items": [
@@ -53,8 +53,8 @@
       "board_outline_area",
       "ly_points"
     ],
-    "visible_layers": "ffffffff_ffffffff_ffffffff_ffffffff",
-    "zone_display_mode": 0
+    "visible_layers": "ffffffff_ffffffff_fffffff5_5fffff5f",
+    "zone_display_mode": 1
   },
   "git": {
     "integration_disabled": false,
@@ -94,12 +94,12 @@
     "col_widths": [
       162,
       147,
+      97,
+      80,
       91,
-      67,
+      99,
       91,
-      91,
-      91,
-      71,
+      84,
       91,
       91
     ],

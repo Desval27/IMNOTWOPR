@@ -1,0 +1,19 @@
+| Row 1 | Row 2 | Row 3 |
+| :---: | :---: | :---: |
+|  A0   |  D0   | PHI2  |
+|  A1   |  D1   | R/W   |
+|  A2   |  D2   | VALID |
+|  A3   |  D3   | IRQ   |
+|  A4   |  D4   | NMI   |
+|  A5   |  D5   | READY |
+|  A6   |  D6   | SYNC  |
+|  A7   |  D7   | BE    |
+| :---: | :---: | :---: |
+|  A8   | BR0   | BG0   |
+|  A9   | BR1   | BG1   |
+|  A10  | BR2   | BG2   |
+|  A11  | BR3   | BG3   |
+|  A12  | BR4   | BG4   |
+|  A13  | BANK0 | VP    |
+|  A14  | BANK1 | ML    |
+|  A15  | BANK2 | PWROK |

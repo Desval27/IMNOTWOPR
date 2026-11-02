@@ -2868,6 +2868,252 @@
 		)
 		(embedded_fonts no)
 	)
+	(symbol "555_Alt"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "U1"
+			(at 0 1.27 0)
+			(show_name no)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "555_Alt"
+			(at 0 -1.27 0)
+			(show_name no)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "IMNOTWOPR:DIP-8N"
+			(at 12.7 -24.13 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "http://www.ti.com/lit/ds/symlink/ne555.pdf"
+			(at 12.7 -26.67 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Precision Timers, 555 compatible, PDIP-8"
+			(at 12.7 -21.59 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "single timer 555"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "DIP*W7.62mm*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "555_Alt_0_0"
+			(pin power_in line
+				(at 0 -15.24 90)
+				(length 5.08)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(symbol "555_Alt_0_1"
+			(rectangle
+				(start -10.16 10.16)
+				(end 10.16 -10.16)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+		)
+		(symbol "555_Alt_1_0"
+			(pin power_in line
+				(at 0 15.24 270)
+				(length 5.08)
+				(name "V_{CC}"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(symbol "555_Alt_1_1"
+			(pin input line
+				(at -15.24 7.62 0)
+				(length 5.08)
+				(name "TRIG"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin output line
+				(at 15.24 7.62 180)
+				(length 5.08)
+				(name "Q"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input inverted
+				(at -15.24 -7.62 0)
+				(length 5.08)
+				(name "RESET"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -15.24 0 0)
+				(length 5.08)
+				(name "CONT"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at 15.24 -7.62 180)
+				(length 5.08)
+				(name "THRES"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at 15.24 0 180)
+				(length 5.08)
+				(name "DISCH"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
 	(symbol "62256"
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5535,8 +5781,8 @@
 		)
 		(symbol "74HCT14_7_1"
 			(rectangle
-				(start -2.54 7.62)
-				(end 2.54 -7.62)
+				(start -5.08 7.62)
+				(end 5.08 -7.62)
 				(stroke
 					(width 0.254)
 					(type default)
@@ -5546,7 +5792,7 @@
 				)
 			)
 			(text "${REFERENCE}"
-				(at 0 0 0)
+				(at 0 1.27 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -5554,7 +5800,7 @@
 				)
 			)
 			(text "${VALUE}"
-				(at 3.81 0 900)
+				(at 0 -1.27 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -6573,8 +6819,8 @@
 		)
 		(symbol "74x00_5_1"
 			(rectangle
-				(start -3.81 7.62)
-				(end 3.81 -7.62)
+				(start -5.08 7.62)
+				(end 5.08 -7.62)
 				(stroke
 					(width 0.254)
 					(type default)
@@ -6583,16 +6829,16 @@
 					(type background)
 				)
 			)
-			(text "${REFERENCE}"
-				(at 0 0 0)
+			(text "${VALUE}"
+				(at -0.254 -1.27 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
 				)
 			)
-			(text "${VALUE}"
-				(at 5.08 0 900)
+			(text "${REFERENCE}"
+				(at 0 1.27 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -7611,8 +7857,8 @@
 		)
 		(symbol "74x02_5_1"
 			(rectangle
-				(start -2.54 7.62)
-				(end 2.54 -7.62)
+				(start -5.08 7.62)
+				(end 5.08 -7.62)
 				(stroke
 					(width 0.254)
 					(type default)
@@ -7622,7 +7868,7 @@
 				)
 			)
 			(text "${REFERENCE}"
-				(at 0 0.254 0)
+				(at 0 1.27 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -7630,7 +7876,7 @@
 				)
 			)
 			(text "${VALUE}"
-				(at 3.81 0 900)
+				(at 0 -1.27 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -9213,7 +9459,7 @@
 		(property "Reference" "U"
 			(at 0 0 0)
 			(show_name no)
-			(do_not_autoplace yes)
+			(do_not_autoplace no)
 			(hide yes)
 			(effects
 				(font
@@ -9222,7 +9468,7 @@
 			)
 		)
 		(property "Value" "74x10"
-			(at -3.81 0 90)
+			(at 0 -0.254 0)
 			(show_name no)
 			(do_not_autoplace yes)
 			(hide yes)
@@ -10057,7 +10303,7 @@
 			(pin power_in line
 				(at 0 12.7 270)
 				(length 5.08)
-				(name "VCC"
+				(name "V_{CC}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -10075,8 +10321,8 @@
 		)
 		(symbol "74x10_4_1"
 			(rectangle
-				(start -2.54 7.62)
-				(end 2.54 -7.62)
+				(start -5.08 7.62)
+				(end 5.08 -7.62)
 				(stroke
 					(width 0.254)
 					(type default)
@@ -10086,7 +10332,15 @@
 				)
 			)
 			(text "${VALUE}"
-				(at -3.81 0 900)
+				(at 0 -1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(text "${REFERENCE}"
+				(at 0.254 1.27 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -10813,8 +11067,8 @@
 		)
 		(symbol "74x13_3_1"
 			(rectangle
-				(start -3.81 7.62)
-				(end 3.81 -7.62)
+				(start -5.08 7.62)
+				(end 5.08 -7.62)
 				(stroke
 					(width 0.254)
 					(type default)
@@ -10824,7 +11078,7 @@
 				)
 			)
 			(text "${REFERENCE}"
-				(at 0 0 0)
+				(at 0 1.27 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -10832,7 +11086,7 @@
 				)
 			)
 			(text "${VALUE}"
-				(at 5.08 0 900)
+				(at 0 -1.27 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -11258,8 +11512,8 @@
 		)
 		(symbol "74x138_2_1"
 			(rectangle
-				(start -2.54 7.62)
-				(end 2.54 -7.62)
+				(start -5.08 7.62)
+				(end 5.08 -7.62)
 				(stroke
 					(width 0)
 					(type default)
@@ -11269,7 +11523,7 @@
 				)
 			)
 			(text "${REFERENCE}"
-				(at 0 0 0)
+				(at 0 1.27 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -11277,7 +11531,7 @@
 				)
 			)
 			(text "${VALUE}"
-				(at 3.81 0 900)
+				(at 0 -1.524 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -11742,8 +11996,8 @@
 		)
 		(symbol "74x151_2_1"
 			(rectangle
-				(start -2.54 7.62)
-				(end 2.54 -7.62)
+				(start -5.08 7.62)
+				(end 5.08 -7.62)
 				(stroke
 					(width 0.254)
 					(type default)
@@ -11753,7 +12007,7 @@
 				)
 			)
 			(text "${REFERENCE}"
-				(at 0 0 0)
+				(at 0 1.27 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -11761,7 +12015,7 @@
 				)
 			)
 			(text "${VALUE}"
-				(at 3.81 0 900)
+				(at 0 -1.27 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -12816,8 +13070,8 @@
 		)
 		(symbol "74x245_2_1"
 			(rectangle
-				(start -3.81 7.62)
-				(end 3.81 -7.62)
+				(start -5.08 7.62)
+				(end 5.08 -7.62)
 				(stroke
 					(width 0)
 					(type default)
@@ -12827,7 +13081,7 @@
 				)
 			)
 			(text "${REFERENCE}"
-				(at 0 0 0)
+				(at 0 1.27 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -12835,7 +13089,7 @@
 				)
 			)
 			(text "${VALUE}"
-				(at 5.08 0 900)
+				(at 0 -1.27 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -13452,8 +13706,8 @@
 		)
 		(symbol "74x30_2_1"
 			(rectangle
-				(start -2.54 7.62)
-				(end 2.54 -7.62)
+				(start -5.08 7.62)
+				(end 5.08 -7.62)
 				(stroke
 					(width 0.254)
 					(type default)
@@ -13463,7 +13717,7 @@
 				)
 			)
 			(text "${REFERENCE}"
-				(at -0.254 0.254 0)
+				(at 0 1.27 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -13471,7 +13725,7 @@
 				)
 			)
 			(text "${VALUE}"
-				(at 3.81 0 900)
+				(at 0 -1.27 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -14547,8 +14801,8 @@
 		)
 		(symbol "74x32_5_1"
 			(rectangle
-				(start -3.81 7.62)
-				(end 3.81 -7.62)
+				(start -5.08 7.62)
+				(end 5.08 -7.62)
 				(stroke
 					(width 0.254)
 					(type default)
@@ -14558,7 +14812,7 @@
 				)
 			)
 			(text "${REFERENCE}"
-				(at 0 0 0)
+				(at 0 1.27 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -14566,7 +14820,7 @@
 				)
 			)
 			(text "${VALUE}"
-				(at 5.08 0 900)
+				(at 0 -1.27 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -15026,8 +15280,8 @@
 		)
 		(symbol "74x390_3_1"
 			(rectangle
-				(start -3.81 7.62)
-				(end 3.81 -7.62)
+				(start -5.08 7.62)
+				(end 5.08 -7.62)
 				(stroke
 					(width 0.254)
 					(type default)
@@ -15037,7 +15291,7 @@
 				)
 			)
 			(text "${REFERENCE}"
-				(at 0 0 0)
+				(at 0 1.27 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -15045,7 +15299,565 @@
 				)
 			)
 			(text "${VALUE}"
-				(at 5.08 0 900)
+				(at 0 -1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+	(symbol "74x540"
+		(pin_names
+			(offset 1.016)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "U"
+			(at -0.254 -0.762 0)
+			(show_name no)
+			(do_not_autoplace yes)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "Value" "74x540"
+			(at -0.508 -0.254 0)
+			(show_name no)
+			(do_not_autoplace yes)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "IMNOTWOPR:DIP-20N"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "http://www.ti.com/lit/gpn/sn74HCT541"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "8-bit Buffer/Line Driver 3-state outputs"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_locked" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "TTL BUFFER 3State BUS"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "DIP?20*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "74x540_1_0"
+			(polyline
+				(pts
+					(xy -1.27 -1.6002) (xy 0.635 -1.6002) (xy 0.635 0.9398) (xy 1.27 0.9398)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -0.635 -1.6002) (xy -0.635 0.9398) (xy 0.635 0.9398)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 1.27 3.4798) (xy -1.27 4.7498) (xy -1.27 2.2098) (xy 1.27 3.4798)
+				)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(pin input inverted
+				(at -12.7 -10.16 0)
+				(length 5.08)
+				(name "OE_{1}"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -12.7 12.7 0)
+				(length 5.08)
+				(name "A_{0}"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -12.7 10.16 0)
+				(length 5.08)
+				(name "A_{1}"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -12.7 7.62 0)
+				(length 5.08)
+				(name "A_{2}"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -12.7 5.08 0)
+				(length 5.08)
+				(name "A_{3}"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -12.7 2.54 0)
+				(length 5.08)
+				(name "A_{4}"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -12.7 0 0)
+				(length 5.08)
+				(name "A_{5}"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -12.7 -2.54 0)
+				(length 5.08)
+				(name "A_{6}"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -12.7 -5.08 0)
+				(length 5.08)
+				(name "A_{7}"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "9"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin tri_state inverted
+				(at 12.7 -5.08 180)
+				(length 5.08)
+				(name "Y_{7}"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "11"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin tri_state inverted
+				(at 12.7 -2.54 180)
+				(length 5.08)
+				(name "Y_{6}"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "12"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin tri_state inverted
+				(at 12.7 0 180)
+				(length 5.08)
+				(name "Y_{5}"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "13"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin tri_state inverted
+				(at 12.7 2.54 180)
+				(length 5.08)
+				(name "Y_{4}"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "14"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin tri_state inverted
+				(at 12.7 5.08 180)
+				(length 5.08)
+				(name "Y_{3}"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "15"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin tri_state inverted
+				(at 12.7 7.62 180)
+				(length 5.08)
+				(name "Y_{2}"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "16"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin tri_state inverted
+				(at 12.7 10.16 180)
+				(length 5.08)
+				(name "Y_{1}"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "17"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin tri_state inverted
+				(at 12.7 12.7 180)
+				(length 5.08)
+				(name "Y_{0}"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "18"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input inverted
+				(at -12.7 -12.7 0)
+				(length 5.08)
+				(name "OE_{2}"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "19"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(symbol "74x540_1_1"
+			(rectangle
+				(start -7.62 15.24)
+				(end 7.62 -15.24)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(text "${REFERENCE}"
+				(at 0 17.78 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+				)
+			)
+			(text "${VALUE}"
+				(at 0 16.51 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+		)
+		(symbol "74x540_2_0"
+			(pin power_in line
+				(at 0 -12.7 90)
+				(length 5.08)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "10"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 12.7 270)
+				(length 5.08)
+				(name "V_{CC}"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "20"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(symbol "74x540_2_1"
+			(rectangle
+				(start -5.08 7.62)
+				(end 5.08 -7.62)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(text "${REFERENCE}"
+				(at 0 1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(text "${VALUE}"
+				(at 0 -1.27 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -15584,8 +16396,8 @@
 		)
 		(symbol "74x541_2_1"
 			(rectangle
-				(start -3.81 7.62)
-				(end 3.81 -7.62)
+				(start -5.08 7.62)
+				(end 5.08 -7.62)
 				(stroke
 					(width 0)
 					(type default)
@@ -15595,7 +16407,7 @@
 				)
 			)
 			(text "${REFERENCE}"
-				(at 0 0 0)
+				(at 0 1.27 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -15603,7 +16415,7 @@
 				)
 			)
 			(text "${VALUE}"
-				(at 5.08 0 900)
+				(at 0 -1.27 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -38670,33 +39482,10 @@
 				)
 			)
 		)
-		(property "Sim.Device" "R"
-			(at 0 0 0)
+		(property "Legend" "Legend"
+			(at 3.81 -3.81 0)
 			(show_name no)
 			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Type" "POT"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Pins" "1=r0 2=wiper 3=r1"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -40604,7 +41393,7 @@
 				)
 			)
 		)
-		(property "Footprint" "IMNOTWOPR:PanelConnector_1x03"
+		(property "Footprint" "IMNOTWOPR:Wire_SW_SPDT"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -40631,6 +41420,16 @@
 			(show_name no)
 			(do_not_autoplace no)
 			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Legend" "Legend"
+			(at 0 -7.62 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -48237,6 +49036,88 @@
 			)
 		)
 		(property "ki_fp_filters" "DIP?16*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+	(symbol "74HCT540"
+		(extends "74x540")
+		(property "Reference" "U"
+			(at -0.254 -0.762 0)
+			(show_name no)
+			(do_not_autoplace yes)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "Value" "74HCT540"
+			(at -0.508 -0.254 0)
+			(show_name no)
+			(do_not_autoplace yes)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "IMNOTWOPR:DIP-20N"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/cd74hct540.pdf"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "8-bit Buffer/Line Driver 3-state outputs"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "TTL BUFFER 3State BUS"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "DIP?20*"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
