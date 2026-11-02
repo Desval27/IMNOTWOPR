@@ -6,6 +6,7 @@
 	(paper "A2")
 	(title_block
 		(title "${MODULE_NAME}")
+		(date "2026-11-02")
 		(rev "A")
 		(company "${COMPANY_NAME}")
 		(comment 1 "${PROJECT_NAME}")
@@ -10535,7 +10536,7 @@
 		)
 		(uuid "4b2d8e1a-1598-4550-8f6d-c4ac73fa6ffa")
 	)
-	(text "R5 is a 4k7 pull-up \nresistor located on \na bus terminator card."
+	(text "R15 is a 4k7 pull-up \nresistor located on \na bus terminator card."
 		(exclude_from_sim no)
 		(at 521.97 211.074 0)
 		(effects
@@ -15300,7 +15301,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "05faca93-b45c-4694-8a6e-5368680e43ad")
 		(property "Reference" "R13"
 			(at 487.68 226.568 0)
@@ -17057,7 +17058,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "1b3fcc6f-3b8d-4654-a71e-d4f37482a02e")
 		(property "Reference" "R12"
 			(at 434.34 210.82 0)
@@ -18948,7 +18949,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "3b072815-57f6-4251-84a3-04f30fda5cd5")
 		(property "Reference" "R14"
@@ -23179,7 +23180,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "89bca099-60b2-49d0-a21e-afbd307efa50")
 		(property "Reference" "C19"
@@ -24753,7 +24754,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "a98a550d-dfe2-4379-a53b-532f0f4a5f98")
 		(property "Reference" "D3"
 			(at 422.148 208.28 90)
@@ -25338,7 +25339,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "b9973581-eaa6-4745-bcfb-7afd5e7094de")
 		(property "Reference" "U11"
@@ -25917,7 +25918,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "c76c5e73-769b-4236-970e-1e1067b3ad16")
 		(property "Reference" "C17"
 			(at 430.53 237.49 0)
@@ -26075,7 +26076,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "cc5d9d08-c33c-4deb-aa4c-2cdaac2e0a60")
 		(property "Reference" "SW4"
 			(at 403.86 236.22 0)
@@ -26582,7 +26583,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "d58c3b97-2949-4bf6-ae24-9361f6c1f17d")
 		(property "Reference" "C15"
 			(at 403.86 224.79 90)
@@ -26910,7 +26911,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "de84b5a8-fdd3-407e-abc0-0e681f1a08cc")
 		(property "Reference" "C18"
 			(at 449.58 246.38 0)
@@ -27501,7 +27502,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "e5695d0d-9745-439c-a68c-6bc3d4002d2f")
 		(property "Reference" "Q1"
@@ -28017,7 +28018,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "ebf341e6-80d6-49ae-bbd6-3e7ec56ea3f4")
 		(property "Reference" "R11"
 			(at 414.02 209.55 0)

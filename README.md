@@ -29,7 +29,7 @@ Historical authenticity is not a primary goal. The machine should feel like a cl
 All modules and panels are currently a work in progress and **NONE** have been tested yet.
 
 - [Backplane](system/BACKPLANE/README.md)
-- [PWR PCB](modules/PWR/README.md) Power Management
+- [PWR PCB](modules/PWR/README.md) Power Management (updated to Rev B)
 - [PWR Panel](panels/PWR/README.md)
 - [PXX PCB](modules/PXX/README.md) Prototypeing Card
 - [PXX Panel](panels/PXX/README.md) 

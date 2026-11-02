@@ -60,7 +60,7 @@
           "hatch_smoothing_level": 0,
           "hatch_smoothing_value": 0.1,
           "hatch_thickness": 1.0,
-          "min_clearance": 0.0,
+          "min_clearance": 0.5,
           "min_island_area": 10.0,
           "min_thickness": 0.25,
           "pad_connection": 1,
@@ -488,7 +488,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "SCC.kicad_pro",
+    "filename": "CLX.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -660,9 +660,9 @@
   ],
   "text_variables": {
     "EMAIL": "mailto:paul.f.burdette@gmail.com",
-    "GITHUB": "https://github.com/Desval27/FormantKO/",
-    "MODULE": "MOD",
-    "PARTNO": "0000-0",
+    "GITHUB": "https://github.com/Desval27/IMNOTWOPR/",
+    "MODULE": "CLX",
+    "PARTNO": "75-2013-01",
     "TAG": "NO ORGANIC GROUNDING"
   },
   "tuning_profiles": {
