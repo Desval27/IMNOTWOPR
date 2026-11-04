@@ -17,26 +17,24 @@ struct ColorPreset
 };
 
 // Keep the original white/green/yellow indices compatible with saved settings.
-inline constexpr std::array<ColorPreset, 16> normal_colors = {
-    {
-        {"White", 0xff},
-        {"Classic green", 0x1c},
-        {"Yellow", 0xfc},
-        {"Amber", 0xf0},
-        {"Red", 0xe0},
-        {"Blue", 0x03},
-        {"Cyan", 0x1f},
-        {"Magenta", 0xe3},
-        {"Gray", 0x92},
-        {"Orange", 0xf8},
-        {"Pink", 0xe7},
-        {"Purple", 0x83},
-        {"Teal", 0x1b},
-        {"Brown", 0x84},
-        {"Light gray", 0xd6},
-        {"Dark gray", 0x49},
-    }   
-};
+inline constexpr std::array<ColorPreset, 16> normal_colors = {{
+    {"White", 0xff},
+    {"Classic green", 0x1c},
+    {"Yellow", 0xfc},
+    {"Amber", 0xf0},
+    {"Red", 0xe0},
+    {"Blue", 0x03},
+    {"Cyan", 0x1f},
+    {"Magenta", 0xe3},
+    {"Gray", 0x92},
+    {"Orange", 0xf8},
+    {"Pink", 0xe7},
+    {"Purple", 0x83},
+    {"Teal", 0x1b},
+    {"Brown", 0x84},
+    {"Light gray", 0xd6},
+    {"Dark gray", 0x49},
+}};
 
 inline constexpr uint8_t default_normal_color = 0;
 
