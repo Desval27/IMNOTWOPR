@@ -25,6 +25,7 @@ PRINT_CHR_DELAY ?= 255
 CA65 ?= ca65
 LD65 ?= ld65
 
+# Fallback linker configuration when <target>.cfg does not exist.
 CONFIG ?= config.cfg
 INCLUDE_DIRS ?= -I . -I lib
 
@@ -32,7 +33,7 @@ DEFINES_LIST = USE_EXTENDED_TEXT ACIA_BUG PRINT_CHR_DELAY
 CA65_DEFINES = $(foreach d,$(DEFINES_LIST),-D $(d)="$(value $(d))")
 
 CA65FLAGS ?= -g --cpu 65C02 ${INCLUDE_DIRS} ${CA65_DEFINES} --feature string_escapes
-LD65FLAGS ?= -C $(CONFIG)
+LD65FLAGS ?=
 
 # Optional modules assembled separately and linked with a target.
 # Names are source paths without the .s suffix.
@@ -70,14 +71,15 @@ $(TARGETS): %: %.bin
 # Build one linker rule per program.  Each program always starts with the
 # same-named source/object, then adds any common and target-specific modules.
 define PROGRAM_template
+$1_CONFIG := $$(or $$(wildcard $1.cfg),$$(CONFIG))
 $1_OBJS := obj/$1.o \
            $$(addprefix obj/,$$(addsuffix .o,$$(COMMON_MODULES))) \
            $$(addprefix obj/,$$(addsuffix .o,$$($1_MODULES)))
 
 obj/$1.o: $$($1_DEPS)
 
-$1.bin: $$($1_OBJS) $$(CONFIG)
-	$$(LD65) $$(LD65FLAGS) -m $1.map -Ln $1.lbl -o $$@ $$(filter %.o,$$^)
+$1.bin: $$($1_OBJS) $$($1_CONFIG)
+	$$(LD65) -C $$($1_CONFIG) $$(LD65FLAGS) -m $1.map -Ln $1.lbl -o $$@ $$(filter %.o,$$^)
 endef
 
 $(foreach t,$(TARGETS),$(eval $(call PROGRAM_template,$(t))))

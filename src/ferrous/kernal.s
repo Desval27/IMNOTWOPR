@@ -27,6 +27,7 @@ acia_ctrl:			.res	1
 .exportzp compare_text_right
 
 .export acia_init
+.export acia_data, acia_status, acia_cmd
 .export print_text
 .export print_newline
 .export print_chr
