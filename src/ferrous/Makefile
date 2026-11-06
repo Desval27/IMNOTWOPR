@@ -10,7 +10,7 @@
 # ASM_DEPS globally or <target>_DEPS for a particular target.
 # -----------------------------------------------------------------------------
 
-TARGETS := ferrous monitor sysdiag
+TARGETS := ferrous monitor sysdiag forth
 
 # -----------------------------------------------------------------------------
 # Build Configuration
@@ -44,6 +44,7 @@ COMMON_MODULES := kernal
 ferrous_MODULES :=
 monitor_MODULES :=
 sysdiag_MODULES :=
+forth_MODULES :=
 
 # Files pulled in textually with ca65 .include directives.  Listing them here
 # makes Make rebuild an example when one changes.  The wildcard is intentionally
@@ -56,6 +57,7 @@ ASM_DEPS := $(wildcard *.inc lib/*.inc)
 ferrous_DEPS := 
 monitor_DEPS :=
 sysdiag_DEPS :=
+forth_DEPS :=
 
 
 .PHONY: all clean $(TARGETS)
