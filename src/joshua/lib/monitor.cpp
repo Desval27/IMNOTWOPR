@@ -195,6 +195,21 @@ MonitorAction Monitor::execute(const std::string &line)
         arity(4, 4);
         machine_.save(static_cast<Word>(n(2)), n(3, 65536), args[1]);
     }
+    else if (command == "save-state")
+    {
+        arity(2, 2);
+        machine_.saveState(args[1]);
+        out_ << "State saved to " << args[1] << '\n';
+    }
+    else if (command == "load-state")
+    {
+        arity(2, 2);
+        machine_.loadState(args[1]);
+        nextMemory_.reset();
+        nextDisassembly_.reset();
+        out_ << "State loaded from " << args[1] << '\n';
+        return MonitorAction::restored;
+    }
     else if (command == "map")
     {
         arity(1, 1);
@@ -355,6 +370,8 @@ Use $/0x hex, 0d decimal, 0o octal, or 0b binary. Quote paths with spaces.
   nmi                             Latch NMI for the next step/run
   load FILE ADDRESS               Load a raw binary into RAM/ROM
   save FILE ADDRESS COUNT         Save bytes to raw binary (replaces FILE)
+  save-state FILE                 Save full machine state (replaces FILE)
+  load-state FILE                 Restore state; same memory map and clock required
   map                             Display configured regions
   io read ADDRESS                 Perform a real bus read, including side effects
   io write ADDRESS BYTE           Perform a real bus write, including side effects

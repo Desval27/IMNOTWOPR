@@ -180,6 +180,8 @@ int main(int argc, char **argv)
                 auto action = monitor.execute(line);
                 if (action == joshua::MonitorAction::quit)
                     break;
+                if (action == joshua::MonitorAction::restored)
+                    lastBreakpoint.reset();
                 if (action == joshua::MonitorAction::run)
                     run(machine, config, lastBreakpoint, config.script.empty());
             }

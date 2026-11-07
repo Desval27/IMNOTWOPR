@@ -11,6 +11,7 @@ namespace joshua
 
     class Cpu
     {
+        friend class StateCodec;
     public:
         explicit Cpu(Bus &bus) : bus_(bus) {}
         Registers r;

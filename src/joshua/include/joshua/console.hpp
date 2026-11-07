@@ -44,6 +44,7 @@ namespace joshua
     // Host presentation only: ACIA frames and received bytes remain untouched.
     class ConsoleOutput
     {
+        friend class StateCodec;
     public:
         explicit ConsoleOutput(ConsoleNewline mode = ConsoleNewline::raw) : mode_(mode) {}
         ConsoleNewline mode() const { return mode_; }

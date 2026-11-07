@@ -8,7 +8,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_library(joshua_core
     lib/memory.cpp lib/devices.cpp lib/cpu.cpp lib/instruction.cpp
-    lib/config.cpp lib/machine.cpp lib/monitor.cpp lib/serial.cpp)
+    lib/config.cpp lib/state.cpp lib/machine.cpp lib/monitor.cpp lib/serial.cpp)
 target_include_directories(joshua_core PUBLIC include)
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     target_compile_options(joshua_core PRIVATE -Wall -Wextra -Wpedantic)
@@ -22,6 +22,9 @@ if(BUILD_TESTING)
     add_executable(joshua_tests tests/tests.cpp)
     target_link_libraries(joshua_tests PRIVATE joshua_core)
     add_test(NAME core COMMAND joshua_tests)
+    add_executable(joshua_state_tests tests/state.cpp)
+    target_link_libraries(joshua_state_tests PRIVATE joshua_core)
+    add_test(NAME state COMMAND joshua_state_tests)
     add_test(NAME cli_help COMMAND joshua --help)
     add_executable(joshua_vectors tests/vectors.cpp)
     target_link_libraries(joshua_vectors PRIVATE joshua_core)

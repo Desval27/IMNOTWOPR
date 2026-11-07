@@ -130,7 +130,7 @@ shell_cold:
 @ready:
     jmp shell_abort
 shell_banner:
-    .byte "IMNOTWOPR FORTH",13,10,"16-bit serial shell; Ctrl-C aborts.",13,10,0
+    .byte "WHOPPING FORTH",13,10,"16-bit serial shell; Ctrl-C aborts.",13,10,0
 
 shell_empty:
     stz definition_active
@@ -138,9 +138,9 @@ shell_empty:
     jmp shell_abort
 
 reset_dictionary:
-    ldx #LA9A3-LA955-1
+    ldx #VOCABULARY_LATEST_TABLE-FORTH_NFA-1
 @copy:
-    lda LA955,x
+    lda FORTH_NFA,x
     sta RAMVOC,x
     dex
     bpl @copy
@@ -150,9 +150,9 @@ reset_dictionary:
     lda #>DICT_START
     sta USRINI+$11
     sta USRINI+$13
-    lda #<(RAMVOC+LA99F-LA955+2)
+    lda #<(RAMVOC+EDITOR_LATEST-FORTH_NFA+2)
     sta USRINI+$14
-    lda #>(RAMVOC+LA99F-LA955+2)
+    lda #>(RAMVOC+EDITOR_LATEST-FORTH_NFA+2)
     sta USRINI+$15
     rts
 
@@ -191,14 +191,14 @@ shell_error:
     lda #' '
     jsr print_chr
     lda error_number
-    cmp #(ERROR_TABLE_END-L8FD2)/2
+    cmp #(ERROR_TABLE_END-ERROR_TABLE)/2
     bcc :+
     lda #4                   ; UNKNOWN ERROR
 :   asl a
     tay
-    lda L8FD2,y
+    lda ERROR_TABLE,y
     sta NXTMP
-    lda L8FD2+1,y
+    lda ERROR_TABLE+1,y
     sta NXTMP+1
     ldy #0
     lda (NXTMP),y
@@ -242,10 +242,10 @@ shell_restart:
     sta UP
     lda #>USRINI
     sta UP+1
-    lda #<(RAMVOC+LA963-LA955)
+    lda #<(RAMVOC+FORTH_LATEST-FORTH_NFA)
     sta USRINI+$20
     sta USRINI+$22
-    lda #>(RAMVOC+LA963-LA955)
+    lda #>(RAMVOC+FORTH_LATEST-FORTH_NFA)
     sta USRINI+$21
     sta USRINI+$23
     stz USRINI+$24            ; STATE: interpreting

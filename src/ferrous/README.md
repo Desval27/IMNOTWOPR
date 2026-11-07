@@ -1,5 +1,8 @@
 # Ferrous command loop
 
+For the separate Forth ROM, see [WHOPPING FORTH for IMNOTWOPR](README_FORTH.md)
+for setup, usage, availability, and validation status.
+
 Build with `make ferrous`. Press Enter once to get the `what? ` prompt.
 Commands are case-sensitive. Spaces separate parameters; double quotes preserve
 spaces or an empty value. Quotes are removed, and adjacent quoted/unquoted text
@@ -64,3 +67,10 @@ Run the monitor emulator tests after building:
 ```sh
 python3 tests/monitor.py ../joshua/build/gcc14/joshua
 ```
+
+## Forth port
+
+The dedicated [Forth README](README_FORTH.md) covers the interactive serial
+shell, build/run instructions, word availability, memory layout, source-label
+conventions, and regression tests. The `forth` target is separate from the
+Ferrous command loop and memory monitor described above.

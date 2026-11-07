@@ -27,6 +27,7 @@ namespace joshua
 
     class Memory final : public Device
     {
+        friend class StateCodec;
     public:
         Memory(std::uint32_t size, bool readOnly);
         Byte peek(Word offset) const override;
@@ -56,6 +57,7 @@ namespace joshua
 
     class Bus
     {
+        friend class StateCodec;
     public:
         void map(Mapping mapping);
         Byte read(Word address, bool sync = false);

@@ -8,6 +8,7 @@ namespace joshua
     enum class MonitorAction
     {
         prompt,
+        restored,
         run,
         quit
     };

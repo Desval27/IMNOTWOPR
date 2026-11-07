@@ -2,7 +2,7 @@
 ; Dictionary: THEN [FORTH]; immediate.
 THEN_NFA:
     .byte $C4,"THE",$CE
-    .word LBFA0
+    .word SPREAD_NFA
     .word DOCOL
     .word ENDIF,SEMIS
 

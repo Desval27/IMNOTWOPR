@@ -9,6 +9,7 @@ namespace joshua
 {
     class Via final : public Device
     {
+        friend class StateCodec;
     public:
         Byte peek(Word offset) const override;
         Byte read(Word offset) override;
@@ -32,6 +33,7 @@ namespace joshua
     // Byte endpoint with emulated frame duration; the N variant's TDRE is always set.
     class Acia final : public Device
     {
+        friend class StateCodec;
     public:
         explicit Acia(std::uint32_t clockHz, SerialSettings peer = {});
         Byte peek(Word offset) const override;

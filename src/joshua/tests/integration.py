@@ -7,6 +7,7 @@ import sys
 import tempfile
 import time
 import unittest
+import zlib
 
 EXECUTABLE = pathlib.Path(sys.argv.pop(1)).resolve()
 PROJECT = pathlib.Path(__file__).resolve().parent.parent
@@ -75,6 +76,69 @@ class Integration(unittest.TestCase):
             result = self.run_script(commands, *args)
             self.assertNotEqual(result.returncode, 0)
             self.assertIn(b"console-newline must be", result.stderr)
+
+    def test_save_load_state(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = pathlib.Path(directory)
+            result = self.run_script(
+                'asm 200 INC A\nasm 201 BRA 200\nregs pc 200\nstep\n'
+                'write C000 42\nbreak 201\nbreak disable 201\n'
+                'serial 9600 7 even 1\nconsole-newline auto\n'
+                'save-state "saved state.jss"\nquit\n', directory=directory)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            saved = root.joinpath("saved state.jss").read_bytes()
+            # Restore in a new process and check continuation cursors and execution.
+            result = self.run_script(
+                'mem 400 L 1\ndis 400 L 1\nload-state "saved state.jss"\n'
+                'save-state roundtrip.jss\nmem N L 1\ndis N L 1\n'
+                'step 2\nregs\nserial\nconsole-newline\nbreak\nquit\n', directory=directory)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(root.joinpath("roundtrip.jss").read_bytes(), saved)
+            self.assertIn(b"PC=0201 A=02", result.stderr)
+            self.assertIn(b"9600 baud, 7 data bits, parity=even", result.stderr)
+            self.assertIn(b"Console newline: auto", result.stderr)
+            self.assertIn(b"0201 disabled", result.stderr)
+            self.assertEqual(result.stderr.count(b"0201  "), 2)
+
+            invalid = {
+                "magic": b"INVALID!" + saved[8:],
+                "version": saved[:8] + (99).to_bytes(4, "little") + saved[12:],
+                "truncated": saved[:-1],
+                "extra": saved + b"extra",
+                "checksum": saved[:-1] + bytes([saved[-1] ^ 1]),
+                "oversize": saved[:12] + (2**32 - 1).to_bytes(4, "little") + saved[16:],
+            }
+            # Invalid boolean at the end, with a valid checksum: parse failure
+            # after all memory and devices have been staged must be transactional.
+            payload = saved[20:-1] + b"\x02"
+            invalid["boolean"] = saved[:16] + zlib.crc32(payload).to_bytes(4, "little") + payload
+            # A valid checksum on a short payload exercises internal bounds checks.
+            payload = saved[20:35]
+            invalid["short_payload"] = (saved[:12] + len(payload).to_bytes(4, "little")
+                                        + zlib.crc32(payload).to_bytes(4, "little") + payload)
+            for name, content in invalid.items():
+                with self.subTest(name=name):
+                    root.joinpath("bad.jss").write_bytes(content)
+                    result = self.run_script(
+                        'save-state before.jss\nload-state bad.jss\nsave-state after.jss\nquit\n',
+                        directory=directory)
+                    self.assertNotEqual(result.returncode, 0)
+                    self.assertIn(b"Error:", result.stderr)
+                    self.assertEqual(root.joinpath("before.jss").read_bytes(),
+                                     root.joinpath("after.jss").read_bytes())
+            for command in ('save-state', 'load-state', 'save-state one two', 'load-state one two'):
+                result = self.run_script(command + '\nquit\n', directory=directory)
+                self.assertNotEqual(result.returncode, 0)
+
+    def test_restored_breakpoint_is_not_bypassed(self):
+        with tempfile.TemporaryDirectory() as directory:
+            result = self.run_script(
+                'asm 200 INC A\nasm 201 BRA 200\nregs pc 200\nbreak 200\n'
+                'save-state paused.jss\nrun\nload-state paused.jss\nrun\nregs\nquit\n',
+                '--cycles', '100', '--unthrottled', directory=directory)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(result.stderr.count(b"Breakpoint at $0200."), 2)
+            self.assertNotIn(b"A=01", result.stderr)
 
     def test_wozmon_dump_newlines(self):
         # Let firmware initialize, then type slowly enough for its polling receiver.

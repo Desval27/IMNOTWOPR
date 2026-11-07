@@ -109,6 +109,8 @@ run C000
 | `run [ADDRESS]` | Resume execution and serial communication |
 | `load FILE ADDRESS` | Load a raw binary |
 | `save FILE ADDRESS COUNT` | Save a raw binary, replacing the named file |
+| `save-state FILE` | Save the full machine state, replacing the named file |
+| `load-state FILE` | Restore a snapshot with a matching memory map and clock |
 | `map` | Show the machine's configured mappings |
 | `io read ADDRESS` | Read through the real bus, including register side effects |
 | `io write ADDRESS BYTE` | Write through the real bus |
@@ -131,6 +133,38 @@ The assembler supports the documented W65C02 instruction set, numeric operands, 
 Debugger patches bypass ROM protection but cannot target I/O or unmapped memory. The entire input/range is validated before any bytes are changed. CPU writes still obey ROM protection. Inspection, disassembly, and saving never consume serial data or clear interrupt flags. `io` explicitly performs a bus transaction and advances the machine by one cycle.
 
 Breakpoints stop before instruction execution and do not patch guest memory. Continuing from a hit executes past that breakpoint once; a later visit stops again. Reset retains loaded memory and breakpoints. STP requires reset; changing PC alone does not restart a stopped CPU.
+
+### Saving and restoring a session
+
+Enter the monitor with **Ctrl-]**, then use:
+
+```text
+save-state "my session.jss"
+load-state "my session.jss"
+run
+```
+
+Snapshots include CPU registers, WAI/STP and pending NMI state, all RAM and ROM
+bytes, the bus cycle count, VIA registers/timers/inputs, ACIA registers and pending
+serial frames/queues, console serial and newline settings, and enabled/disabled
+breakpoints. Save/load does not advance emulated time or access I/O registers.
+Loading leaves execution paused; `run` resumes from the restored PC (a restored
+STP still requires reset).
+
+To restore after restarting Joshua, start with the same profile or equivalent
+RAM/ROM regions, device addresses and CPU clock, then `load-state FILE`. The file
+contains memory contents, including ROM patches; it does not change the configured
+memory map. Filenames are relative to the working directory; quote spaces.
+
+The versioned binary format checks file length and a CRC32 checksum. Unsupported,
+corrupt or incompatible snapshots are rejected without changing the machine.
+Snapshots are limited to 16 MiB, including serial queues. Saving writes a temporary
+file beside the destination and replaces it only after the write succeeds.
+Terminal scrollback, unread host keyboard input, escape key, throttling and cycle
+limits are host settings and are not saved. Loading resets `mem N`/`dis N` to the
+restored PC and clears the previous breakpoint-resume bypass. Previously printed
+serial output is not undone. Raw binary `save` and `load` remain available for
+memory images.
 
 ## Serial I/O and automation
 

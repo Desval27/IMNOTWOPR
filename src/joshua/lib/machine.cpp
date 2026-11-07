@@ -5,7 +5,7 @@
 
 namespace joshua
 {
-Machine::Machine(const Config &config) : cpu(bus), consoleOutput(config.consoleNewline)
+Machine::Machine(const Config &config) : cpu(bus), consoleOutput(config.consoleNewline), clockHz_(config.clockHz)
 {
     auto add = [&](const auto &regions, bool rom) {
         unsigned index = 0;

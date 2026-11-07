@@ -44,7 +44,8 @@ including their device side effects. Read-modify-write instructions use the CMOS
 two-read/one-write sequence. Device time is never advanced in a lump after an
 instruction.
 
-Bus time is a monotonically increasing 64-bit cycle count. Reset takes seven bus
+Bus time is a 64-bit cycle count that increases during execution; loading a
+snapshot restores its saved value. Reset takes seven bus
 cycles and retains the elapsed counter. Power-on gives deterministic initial
 register values; software must still initialize registers as it would on hardware.
 Reset adjusts SP by three, sets I and clears D, and loads the reset vector.
@@ -71,8 +72,25 @@ when opening a memory view.
 
 Instruction decoding, disassembly and ad-hoc assembly share one opcode table.
 Breakpoints are host metadata, never BRK patches in the guest image. There are no
-symbol files, read/write watchpoints, conditional breakpoints or snapshot files in
-0.1; raw binary load/save operates only on memory bytes.
+symbol files, read/write watchpoints or conditional breakpoints in 0.1. Raw binary
+load/save operates only on memory bytes.
+
+`Machine::saveState`/`loadState` implement full snapshots in `lib/state.cpp`.
+`StateCodec` has private access to CPU/device latches and serial queues, keeping
+serialization separate from normal bus accesses. The format uses an eight-byte
+`JOSHUA\r\n` signature followed by little-endian uint32 version, payload length and
+CRC32 fields. Version 1 stores explicit fixed-width fields, not C++ object layouts.
+The payload is limited to 16 MiB and includes the map types/bases/sizes and clock
+for compatibility checks. Mapping order must also match.
+
+Loading checks the header/checksum and decodes into cloned devices before a
+no-throw commit. Existing device identities, the CPU's bus reference and host trace
+callback are preserved. The monitor remains paused and clears display continuation
+addresses; the application clears the last-breakpoint bypass. Host terminal and
+run-loop settings are outside the snapshot. Saving closes a temporary sibling file
+before renaming it over the destination. The state tests compare subsequent CPU
+bus traces, peripheral behavior and snapshot bytes after restore, and integration
+tests cover restoration in a fresh process and rejection without mutation.
 
 ## Configuration decisions
 

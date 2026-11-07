@@ -26,6 +26,8 @@ Historical authenticity is not a primary goal. The machine should feel like a cl
 
 ## Current Status
 
+A limited **FORTH** port has been added.  It is currently untested outside of emulation.  [Details](src/ferrous/README_FORTH.md)
+
 All modules and panels are currently a work in progress and only a few have been tested yet.
 
 - [Backplane](system/BACKPLANE/README.md) (Tested)
@@ -416,6 +418,10 @@ Custom hardware
 Both configurations are equally valid.
 
 ## Software
+
+The [WHOPPING FORTH port](src/ferrous/README_FORTH.md) provides an interactive
+serial Forth environment, with current availability and Joshua emulator
+validation documented in its own README.
 
 Software development is expected to be just as experimental as the hardware.
 
