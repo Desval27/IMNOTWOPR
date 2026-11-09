@@ -35,6 +35,7 @@ int Ps2Frame::edge(bool high, uint32_t now)
         return -1;
     return (frame >> 1) & 255;
 }
+
 /**
  * @brief Consume one scan-code byte and update keyboard state.
  */
@@ -228,6 +229,7 @@ KeyEvent Keyboard::feed(uint8_t c)
         }
     return e;
 }
+
 /**
  * @brief Encode a logical key using the current terminal modes.
  */

@@ -29,6 +29,7 @@ constexpr int width = 800, height = 525, raster_height = rows * 16;
 
 // Three packed 1bpp rasters: scanning, published, and being drawn. Core0 never
 // writes the raster core1 is scanning. Only indices change under the spinlock.
+
 /**
  * @brief Packed 1-bit raster and color selection exchanged between the two cores.
  */
@@ -110,6 +111,7 @@ void make_graphics()
     for (auto &pair : replacements)
         std::memcpy(graphics[pair[0] - '_'], glyphs[0][int(pair[1])], 16);
 }
+
 /**
  * @brief Expand one VGA scanline, including sync and blanking, into DMA halfwords.
  * @param[out] dst Word-aligned destination with space for width halfwords.
@@ -144,6 +146,7 @@ void __not_in_flash_func(render)(uint32_t *dst, int y, int frame)
         dst[4 * x + 3] = lookup[src[x]][3];
     }
 }
+
 /**
  * @brief Adopt the newest published raster if the ownership lock is immediately available.
  * @return Raster index that remains owned by core 1 for the next frame.
@@ -162,6 +165,7 @@ int snapshot()
         restore_interrupts(irq);
     return scanning;
 }
+
 /**
  * @brief Run the scanline/DMA loop and service core 0 pause requests.
  * @note Never returns. During flash saves, parks in SRAM with interrupts disabled.

@@ -13,6 +13,7 @@
 namespace lightman
 {
 constexpr int default_columns = 80, max_columns = 132, rows = 24;
+
 /**
  * @brief Bit flags attached to each displayed character.
  */
@@ -24,6 +25,7 @@ enum Attribute : uint8_t
     Reverse = 8,
     Graphics = 16
 };
+
 /**
  * @brief Character code and display attributes for one text cell.
  */
@@ -31,6 +33,7 @@ struct Cell
 {
     uint8_t ch = ' ', attr = 0;
 };
+
 /**
  * @brief Stateful VT100/VT52 parser owning an 80 or 132 by 24 text screen.
  *
@@ -44,12 +47,14 @@ class Terminal
      * @note The string view is valid only during the callback; copy it if retaining data.
      */
     using Output = void (*)(void *, std::string_view);
+
     /**
      * @brief Construct a cleared terminal with default VT100 modes.
      * @param output Optional callback for identity/status replies; null discards replies.
      * @param context Opaque value passed to output on every reply.
      */
     explicit Terminal(Output output = nullptr, void *context = nullptr);
+
     /**
      * @brief Clear the screen and restore default cursor, tabs, modes and saved state.
      * @param vt52 True to start in VT52 mode; false to start in VT100/ANSI mode.
@@ -57,6 +62,7 @@ class Terminal
      * @note The accumulated bell counter is preserved.
      */
     void reset(bool vt52 = false, int columns = default_columns);
+
     /**
      * @brief Set 80/132 columns, clear the screen, reset margins and home the cursor.
      * @note Preserves tabs, rendition and other modes; unsupported widths are ignored.
@@ -66,6 +72,7 @@ class Terminal
     {
         return columns_;
     }
+
     /**
      * @brief Process one host byte, retaining any incomplete escape sequence.
      * @param byte Incoming control or character byte; printable text is 7-bit ASCII.
@@ -73,13 +80,15 @@ class Terminal
      * @note Processing may synchronously invoke the Output callback.
      */
     void feed(uint8_t byte, bool crlf = false);
+
     /**
      * @brief Process a byte span in order without resetting parser state.
      * @param text Host bytes; embedded NULs are processed and no storage is retained.
      * @param crlf True to process each CR control as CR followed by LF.
      */
-    void feed(std::string_view text, bool crlf = false);
-    /**
+     void feed(std::string_view text, bool crlf = false);
+
+     /**
      * @brief Read the current row-major text cells.
      * @return Storage with column_count() stride; only the first column_count()*rows cells are active.
      */
@@ -87,6 +96,7 @@ class Terminal
     {
         return screen_;
     }
+
     /**
      * @brief Read the cursor column.
      * @return Zero-based column in the range 0..column_count()-1.
@@ -95,6 +105,7 @@ class Terminal
     {
         return x_;
     }
+
     /**
      * @brief Read the absolute cursor row.
      * @return Zero-based screen row in the range 0..rows-1, even in origin mode.
@@ -103,6 +114,7 @@ class Terminal
     {
         return y_;
     }
+
     /**
      * @brief Read the active emulation mode.
      * @return True for VT52; false for VT100/ANSI.
@@ -111,6 +123,7 @@ class Terminal
     {
         return vt52_;
     }
+
     /**
      * @brief Read the cursor-key encoding mode.
      * @return True when ANSI cursor keys use application sequences.
@@ -119,6 +132,7 @@ class Terminal
     {
         return app_cursor_;
     }
+
     /**
      * @brief Read the numeric-keypad encoding mode.
      * @return True when keypad keys use application sequences.
@@ -127,6 +141,7 @@ class Terminal
     {
         return app_keypad_;
     }
+
     /**
      * @brief Read line-feed/newline mode.
      * @return True when received LF also returns to column zero and Enter sends CR/LF.
@@ -135,6 +150,7 @@ class Terminal
     {
         return newline_;
     }
+
     /**
      * @brief Read the requested cursor visibility.
      * @return True when the renderer should display the cursor.
@@ -143,6 +159,7 @@ class Terminal
     {
         return cursor_visible_;
     }
+
     /**
      * @brief Read the global reverse-video mode.
      * @return True when the renderer should invert screen-cell polarity.
@@ -151,6 +168,7 @@ class Terminal
     {
         return reverse_screen_;
     }
+
     /**
      * @brief Read the host-requested keyboard lock.
      * @return True when ordinary key transmission should be suppressed; local setup remains available.
@@ -159,6 +177,7 @@ class Terminal
     {
         return keyboard_locked_;
     }
+
     /**
      * @brief Read the host-controlled DECLL indicators; bits 0..3 correspond to L1..L4.
      * @note These are enclosure LEDs, independent of BEL and PS/2 keyboard LEDs.
@@ -167,6 +186,7 @@ class Terminal
     {
         return leds_;
     }
+
     /**
      * @brief Count of received BEL controls, modulo 2^32, for the frontend indicator.
      */
@@ -185,48 +205,59 @@ class Terminal
         String,
         StringEscape
     };
+
     std::array<Cell, max_columns * rows> screen_{};
     std::array<bool, max_columns> tabs_{};
     int columns_ = default_columns;
     std::array<int, 16> params_{};
+
     int x_ = 0, y_ = 0, top_ = 0, bottom_ = rows - 1, count_ = 1, charset_ = 0;
     int saved_x_ = 0, saved_y_ = 0;
     uint8_t attr_ = 0, saved_attr_ = 0;
     uint8_t leds_ = 0;
+
     bool vt52_ = false, app_cursor_ = false, app_keypad_ = false, newline_ = false;
     bool origin_ = false, wrap_ = true, pending_wrap_ = false, cursor_visible_ = true;
     bool reverse_screen_ = false, keyboard_locked_ = false, private_ = false, invalid_ = false;
     bool graphics_[2]{}, saved_graphics_[2]{}, saved_origin_ = false, saved_wrap_ = true;
+
     int active_charset_ = 0, saved_charset_ = 0;
+
     State state_ = State::Text;
     Output output_;
     void *context_;
+
     /**
      * @brief Deliver a host reply through the optional output callback.
      * @param text Reply bytes valid for the duration of the synchronous call.
      */
     void reply(std::string_view text);
+
     /**
      * @brief Write a printable character with current attributes and delayed wrapping.
      * @param ch Character code to store at the cursor.
      */
     void put(uint8_t ch);
+
     /**
      * @brief Clamp a requested cursor position and cancel pending wrapping.
      * @param x Requested zero-based column.
      * @param y Requested absolute row, clamped to margins when origin mode is enabled.
      */
     void move(int x, int y);
+
     /**
      * @brief Move one line vertically, scrolling at the applicable margin.
      * @param reverse True for reverse index (up); false for index (down).
      */
     void index(bool reverse = false);
+
     /**
      * @brief Scroll the active margin region by one row and blank the exposed row.
      * @param direction Positive scrolls up; zero or negative scrolls down.
      */
     void scroll(int direction);
+
     /**
      * @brief Replace a contiguous cell range with blank, unstyled cells.
      * @param first Inclusive row-major cell offset.
@@ -234,11 +265,13 @@ class Terminal
      * @pre 0 <= first <= last <= column_count() * rows.
      */
     void erase(int first, int last);
+
     /**
      * @brief Dispatch a completed CSI sequence using the accumulated parameters.
      * @param final Final command byte; unsupported commands have no effect.
      */
     void csi(uint8_t final);
+
     /**
      * @brief Dispatch the byte following ESC in the current emulation mode.
      * @param byte Escape command byte, which may start a longer parser sequence.
@@ -248,6 +281,7 @@ class Terminal
      * @brief Save cursor, rendition, character sets, origin and wrapping modes.
      */
     void save();
+
     /**
      * @brief Restore saved cursor and modes, clamping the cursor to valid bounds.
      */

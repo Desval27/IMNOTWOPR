@@ -10,6 +10,7 @@
 
 namespace lightman
 {
+
 /**
  * @brief Construct a cleared terminal with default VT100 modes.
  */
@@ -17,6 +18,7 @@ Terminal::Terminal(Output output, void *context) : output_(output), context_(con
 {
     reset();
 }
+
 /**
  * @brief Clear the screen and restore default cursor, tabs, modes and saved state.
  */
@@ -27,6 +29,7 @@ void Terminal::reset(bool vt52, int columns)
     tabs_.fill(false);
     for (int i = 8; i < max_columns; i += 8)
         tabs_[i] = true;
+
     x_ = y_ = top_ = 0;
     bottom_ = rows - 1;
     attr_ = 0;
@@ -40,6 +43,7 @@ void Terminal::reset(bool vt52, int columns)
     state_ = State::Text;
     save();
 }
+
 /**
  * @brief Apply DECCOLM's screen, margin and cursor effects, even for the current width.
  */
@@ -47,12 +51,14 @@ void Terminal::set_columns(int columns)
 {
     if (columns != default_columns && columns != max_columns)
         return;
+
     columns_ = columns;
     screen_.fill(Cell{});
     top_ = 0;
     bottom_ = rows - 1;
     move(0, 0);
 }
+
 /**
  * @brief Process a byte span in order without resetting parser state.
  */
@@ -61,6 +67,7 @@ void Terminal::feed(std::string_view text, bool crlf)
     for (unsigned char c : text)
         feed(c, crlf);
 }
+
 /**
  * @brief Deliver a host reply through the optional output callback.
  */
@@ -69,6 +76,7 @@ void Terminal::reply(std::string_view text)
     if (output_)
         output_(context_, text);
 }
+
 /**
  * @brief Clamp a requested cursor position and cancel pending wrapping.
  */
@@ -78,6 +86,7 @@ void Terminal::move(int x, int y)
     y_ = std::clamp(y, origin_ ? top_ : 0, origin_ ? bottom_ : rows - 1);
     pending_wrap_ = false;
 }
+
 /**
  * @brief Replace a contiguous cell range with blank, unstyled cells.
  */
@@ -85,6 +94,7 @@ void Terminal::erase(int first, int last)
 {
     std::fill(screen_.begin() + first, screen_.begin() + last, Cell{});
 }
+
 /**
  * @brief Scroll the active margin region by one row and blank the exposed row.
  */
@@ -102,6 +112,7 @@ void Terminal::scroll(int direction)
         erase(first, first + columns_);
     }
 }
+
 /**
  * @brief Move one line vertically, scrolling at the applicable margin.
  */
@@ -123,6 +134,7 @@ void Terminal::index(bool reverse)
             ++y_;
     }
 }
+
 /**
  * @brief Write a printable character with current attributes and delayed wrapping.
  */
@@ -140,6 +152,7 @@ void Terminal::put(uint8_t ch)
     else
         ++x_;
 }
+
 /**
  * @brief Save cursor, rendition, character sets, origin and wrapping modes.
  */
@@ -153,6 +166,7 @@ void Terminal::save()
     saved_charset_ = active_charset_;
     std::copy_n(graphics_, 2, saved_graphics_);
 }
+
 /**
  * @brief Restore saved cursor and modes, clamping the cursor to valid bounds.
  */
@@ -165,6 +179,7 @@ void Terminal::restore()
     std::copy_n(saved_graphics_, 2, graphics_);
     move(saved_x_, saved_y_);
 }
+
 /**
  * @brief Dispatch the byte following ESC in the current emulation mode.
  */
@@ -284,6 +299,7 @@ void Terminal::escape(uint8_t c)
         break;
     }
 }
+
 /**
  * @brief Dispatch a completed CSI sequence using the accumulated parameters.
  */
@@ -451,6 +467,7 @@ void Terminal::csi(uint8_t final)
         break;
     }
 }
+
 /**
  * @brief Process one host byte, retaining any incomplete escape sequence.
  */
