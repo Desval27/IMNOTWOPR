@@ -30327,7 +30327,7 @@
 			)
 		)
 		(symbol "CartridgeROM_1_0"
-			(pin passive line
+			(pin power_in line
 				(at 0 38.1 180)
 				(length 2.54)
 				(name "+5v"
@@ -30345,7 +30345,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 0 35.56 180)
 				(length 2.54)
 				(name "GND"
@@ -30363,7 +30363,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 0 33.02 180)
 				(length 2.54)
 				(name "+12V"
@@ -30813,10 +30813,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin passive inverted
 				(at 0 -30.48 180)
 				(length 2.54)
-				(name "RESERVED"
+				(name "BUSREQ"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30831,10 +30831,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin passive inverted
 				(at 0 -33.02 180)
 				(length 2.54)
-				(name "RESERVED"
+				(name "BUSGNT"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30849,10 +30849,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin unspecified line
 				(at 0 -35.56 180)
 				(length 2.54)
-				(name "+12V"
+				(name "RESERVED"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30885,7 +30885,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at 0 -40.64 180)
 				(length 2.54)
 				(name "+5V"
@@ -30905,7 +30905,7 @@
 			)
 		)
 		(symbol "CartridgeROM_2_0"
-			(pin passive line
+			(pin power_in line
 				(at 0 38.1 180)
 				(length 2.54)
 				(name "+5V"
@@ -30923,7 +30923,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 0 35.56 180)
 				(length 2.54)
 				(name "GND"
@@ -30941,7 +30941,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 0 33.02 180)
 				(length 2.54)
 				(name "-12V"
@@ -30959,10 +30959,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin passive inverted
 				(at 0 30.48 180)
 				(length 2.54)
-				(name "~{VALID}"
+				(name "RESET"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30998,7 +30998,7 @@
 			(pin passive line
 				(at 0 25.4 180)
 				(length 2.54)
-				(name "R~{W}"
+				(name "R/W"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31013,10 +31013,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin passive inverted
 				(at 0 22.86 180)
 				(length 2.54)
-				(name "~{RESET}"
+				(name "VALID"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31031,10 +31031,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin passive inverted
 				(at 0 20.32 180)
 				(length 2.54)
-				(name "~{IRQ}"
+				(name "IRQ"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31049,10 +31049,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin passive inverted
 				(at 0 17.78 180)
 				(length 2.54)
-				(name "~{NMI}"
+				(name "NMI"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31088,7 +31088,7 @@
 			(pin passive line
 				(at 0 12.7 180)
 				(length 2.54)
-				(name "BE"
+				(name "SYNC"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31103,10 +31103,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin passive inverted
 				(at 0 10.16 180)
 				(length 2.54)
-				(name "SYNC"
+				(name "VP"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31121,10 +31121,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin passive inverted
 				(at 0 7.62 180)
 				(length 2.54)
-				(name "VPB"
+				(name "ML"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31142,7 +31142,7 @@
 			(pin passive line
 				(at 0 5.08 180)
 				(length 2.54)
-				(name "MLB"
+				(name "BE"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31160,7 +31160,7 @@
 			(pin passive line
 				(at 0 2.54 180)
 				(length 2.54)
-				(name "VDA"
+				(name "VPA"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31178,7 +31178,7 @@
 			(pin passive line
 				(at 0 0 180)
 				(length 2.54)
-				(name "E"
+				(name "VDA"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31196,7 +31196,7 @@
 			(pin passive line
 				(at 0 -2.54 180)
 				(length 2.54)
-				(name "MX"
+				(name "E"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31214,7 +31214,7 @@
 			(pin passive line
 				(at 0 -5.08 180)
 				(length 2.54)
-				(name "~{EXROM}"
+				(name "MX"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31229,10 +31229,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin passive inverted
 				(at 0 -7.62 180)
 				(length 2.54)
-				(name "RESERVED"
+				(name "BANK0"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31247,10 +31247,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin passive inverted
 				(at 0 -10.16 180)
 				(length 2.54)
-				(name "RESERVED"
+				(name "BANK1"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31265,10 +31265,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin passive inverted
 				(at 0 -12.7 180)
 				(length 2.54)
-				(name "RESERVED"
+				(name "BANK2"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31427,10 +31427,10 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output inverted
 				(at 0 -35.56 180)
 				(length 2.54)
-				(name "-12V"
+				(name "OE"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31445,7 +31445,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 0 -38.1 180)
 				(length 2.54)
 				(name "GND"
@@ -31463,7 +31463,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 0 -40.64 180)
 				(length 2.54)
 				(name "+5V"
@@ -44241,7 +44241,7 @@
 			(pin passive inverted
 				(at -10.16 -22.86 0)
 				(length 3.81)
-				(name "HALT?"
+				(name "HALT"
 					(effects
 						(font
 							(size 1.27 1.27)

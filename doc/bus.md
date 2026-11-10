@@ -16,9 +16,9 @@ The system bus uses a **96-pin DIN 41612 connector** which is broken out into th
 |   10   | A14      | A6        | #BUSREQ3 |
 |   11   | A15      | A7        | #BUSREQ4 |
 |   12   | A16      | #RESET    | GND      |
-|   13   | A17      | #VALID    | #BUSGNT0 |
-|   14   | A18      | PHI2      | #BUSGNT1 |
-|   15   | A19      | R#W       | #BUSGNT2 |
+|   13   | A17      | PHI2      | #BUSGNT0 |
+|   14   | A18      | R#W       | #BUSGNT1 |
+|   15   | A19      | #VALID    | #BUSGNT2 |
 |   16   | A20      | D0        | #BUSGNT3 |
 |   17   | A21      | D1        | #BUSGNT4 |
 |   18   | A22      | D2        | GND      |
@@ -28,7 +28,7 @@ The system bus uses a **96-pin DIN 41612 connector** which is broken out into th
 |   22   | VDA      | D6        | I2C_SCL  |
 |   23   | E        | D7        | I2C_SDA  |
 |   24   | MX       | #IRQ      | GND      |
-|   25   | #HALT?   | #NMI      | READY    |
+|   25   | #HALT    | #NMI      | READY    |
 |   26   | #IRQ4    | #IRQ0     | SYNC     |
 |   27   | #IRQ5    | #IRQ1     | #VP      |
 |   28   | #IRQ6    | #IRQ2     | #ML      |
