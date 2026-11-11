@@ -19,7 +19,7 @@ The cartridge connector only exposes part of the main system bus and is limited 
 |    6   | #VALID   | A14       |
 |    7   | #IRQ     | A13       |
 |    8   | #NMI     | A12       |
-|    9   | RESERVED | A11       |
+|    9   | #OE      | A11       |
 |   10   | #BANK0   | A10       |
 |   11   | #BANK1   | A9        |
 |   12   | #BANK2   | A8        |
