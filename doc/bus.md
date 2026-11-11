@@ -2,6 +2,8 @@
 
 The system bus uses a **96-pin DIN 41612 connector** which is broken out into three different rows.
 
+**#** indicates **asserted low**
+
 |   PIN  |     a    |     b     |     c    |
 | :----: | :------: | :-------: | :------: |
 |    1   | +5V      | +5V       | +5VSB    |

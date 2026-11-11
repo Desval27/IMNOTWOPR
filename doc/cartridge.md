@@ -8,6 +8,7 @@ The cartridge connector uses a 22 pin edge connector similar to the C64.  Howeve
 
 The cartridge connector only exposes part of the main system bus and is limited to the 16-bit address lines (A0..A15).  
 
+**#** indicates **asserted low**
 
 |   PIN  |     a    |     b     |
 | :----: | :------: | :-------: |
