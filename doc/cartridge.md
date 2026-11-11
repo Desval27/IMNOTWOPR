@@ -1,39 +1,35 @@
 # IMNOTWOPR CARTRIDGE PIN ASSIGNMENT #
 
-The cartridge connector uses a **64 pin edge connector** with a pitch of 0.100"/2.54mm
+WIP
+
+The cartridge connector uses a 22 pin edge connector similar to the C64.  However, it is **NOT** compatible and will possibly cause bad things to happen if an incompatible cartridge is plugged in.  
+
+~~**64 pin edge connector** with a pitch of 0.100"/2.54mm~~ <- This just wouldn't fit very well ;)
+
+The cartridge connector only exposes part of the main system bus and is limited to the 16-bit address lines (A0..A15).  
 
 
 |   PIN  |     a    |     b     |
 | :----: | :------: | :-------: |
-|    1   | +5V      | +5V       |
-|    2   | GND      | GND       |
-|    3   | +12V     | -12V      |
-|    4   | A0       | #RESET    |
-|    5   | A1       | PHI2      |
-|    6   | A2       | R#W       |
-|    7   | A3       | #VALID    |
-|    8   | A4       | #IRQ      |
-|    9   | A5       | #NMI      |
-|   10   | A6       | READY     |
-|   11   | A7       | SYNC      |
-|   12   | A8       | #VP       |
-|   13   | A9       | #ML       |
-|   14   | A10      | BE        |
-|   15   | A11      | VPA       |
-|   16   | A12      | VDA       |
-|   17   | A13      | E         |
-|   18   | A14      | MX        |
-|   19   | A15      | #BANK0    |
-|   20   | A16      | #BANK1    |
-|   21   | A17      | #BANK2    |
-|   22   | A18      | D0        |
-|   23   | A19      | D1        |
-|   24   | A20      | D2        |
-|   25   | A21      | D3        |
-|   26   | A22      | D4        |
-|   27   | A23      | D5        |
-|   28   | #BUSREQ  | D6        |
-|   29   | #BUSGNT  | D7        |
-|   30   | +12V     | -12V      |
-|   31   | GND      | GND       |
-|   32   | +5V      | +5V       |
+|    1   | GND      | GND       |
+|    2   | +5V      | +5V       |
+|    3   | #RESET   | #BUSREQ   |
+|    4   | PHI2     | #BUSGNT   |
+|    5   | R#W      | A15       |
+|    6   | #VALID   | A14       |
+|    7   | #IRQ     | A13       |
+|    8   | #NMI     | A12       |
+|    9   | RESERVED | A11       |
+|   10   | #BANK0   | A10       |
+|   11   | #BANK1   | A9        |
+|   12   | #BANK2   | A8        |
+|   13   | D7       | A7        |
+|   14   | D6       | A6        |
+|   15   | D5       | A5        |
+|   16   | D4       | A4        |
+|   17   | D3       | A3        |
+|   18   | D2       | A2        |
+|   19   | D1       | A1        |
+|   20   | D0       | A0        |
+|   21   | +12V     | -12V      |
+|   22   | GND      | GND       |
