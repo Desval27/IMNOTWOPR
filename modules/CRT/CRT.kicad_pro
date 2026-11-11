@@ -681,24 +681,15 @@
         "filename": "CRT.kicad_sch",
         "name": "CRT",
         "uuid": "e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
-      },
-      {
-        "filename": "system.kicad_sch",
-        "name": "SYSTEM",
-        "uuid": "1bc24577-9a03-4fc2-ac64-d8d0370a6427"
       }
     ],
-    "used_designators": "#FLG1-2,J1-4,#PWR1-43,U1-4,MH1-2,C1-5",
+    "used_designators": "J1-4,#FLG1-2,#PWR1-43,MH1-2,U1-5,C1-5",
     "variants": []
   },
   "sheets": [
     [
       "e63e39d7-6ac0-4ffd-8aa3-1841a4541b55",
       "CRT"
-    ],
-    [
-      "1bc24577-9a03-4fc2-ac64-d8d0370a6427",
-      "SYSTEM"
     ]
   ],
   "text_variables": {},

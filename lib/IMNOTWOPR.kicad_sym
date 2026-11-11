@@ -30251,7 +30251,7 @@
 		(in_pos_files yes)
 		(duplicate_pin_numbers_are_jumpers no)
 		(property "Reference" "J"
-			(at -12.7 44.45 0)
+			(at -12.7 31.75 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -30261,7 +30261,7 @@
 			)
 		)
 		(property "Value" "EXROM"
-			(at -12.7 41.91 0)
+			(at -12.7 29.21 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -30270,7 +30270,7 @@
 				)
 			)
 		)
-		(property "Footprint" "IMNOTWOPR:EDAC_395-064-559-201"
+		(property "Footprint" "IMNOTWOPR:EDAC_395-044-559-212"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -30315,8 +30315,8 @@
 		)
 		(symbol "CartridgeROM_0_1"
 			(rectangle
-				(start -22.86 40.64)
-				(end -2.54 -43.18)
+				(start -22.86 27.94)
+				(end -2.54 -30.48)
 				(stroke
 					(width 0)
 					(type default)
@@ -30328,9 +30328,9 @@
 		)
 		(symbol "CartridgeROM_1_0"
 			(pin power_in line
-				(at 0 38.1 180)
+				(at 0 25.4 180)
 				(length 2.54)
-				(name "+5v"
+				(name "GND"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30346,9 +30346,9 @@
 				)
 			)
 			(pin power_in line
-				(at 0 35.56 180)
+				(at 0 22.86 180)
 				(length 2.54)
-				(name "GND"
+				(name "+5V"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30363,10 +30363,10 @@
 					)
 				)
 			)
-			(pin power_in line
-				(at 0 33.02 180)
+			(pin passive line
+				(at 0 20.32 180)
 				(length 2.54)
-				(name "+12V"
+				(name "D_{7}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30382,9 +30382,9 @@
 				)
 			)
 			(pin passive line
-				(at 0 30.48 180)
+				(at 0 17.78 180)
 				(length 2.54)
-				(name "A_{0}"
+				(name "D_{6}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30400,9 +30400,9 @@
 				)
 			)
 			(pin passive line
-				(at 0 27.94 180)
+				(at 0 15.24 180)
 				(length 2.54)
-				(name "A_{1}"
+				(name "D_{5}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30418,9 +30418,9 @@
 				)
 			)
 			(pin passive line
-				(at 0 25.4 180)
+				(at 0 12.7 180)
 				(length 2.54)
-				(name "A_{2}"
+				(name "D_{4}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30436,9 +30436,9 @@
 				)
 			)
 			(pin passive line
-				(at 0 22.86 180)
+				(at 0 10.16 180)
 				(length 2.54)
-				(name "A_{3}"
+				(name "D_{3}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30454,9 +30454,9 @@
 				)
 			)
 			(pin passive line
-				(at 0 20.32 180)
+				(at 0 7.62 180)
 				(length 2.54)
-				(name "A_{4}"
+				(name "D_{2}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30472,9 +30472,9 @@
 				)
 			)
 			(pin passive line
-				(at 0 17.78 180)
+				(at 0 5.08 180)
 				(length 2.54)
-				(name "A_{5}"
+				(name "D_{1}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30490,9 +30490,9 @@
 				)
 			)
 			(pin passive line
-				(at 0 15.24 180)
+				(at 0 2.54 180)
 				(length 2.54)
-				(name "A_{6}"
+				(name "D_{0}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30507,10 +30507,10 @@
 					)
 				)
 			)
-			(pin passive line
-				(at 0 12.7 180)
+			(pin passive inverted
+				(at 0 0 180)
 				(length 2.54)
-				(name "A_{7}"
+				(name "BUSREQ"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30525,10 +30525,10 @@
 					)
 				)
 			)
-			(pin passive line
-				(at 0 10.16 180)
+			(pin passive inverted
+				(at 0 -2.54 180)
 				(length 2.54)
-				(name "A_{8}"
+				(name "BUSGNT"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30544,9 +30544,9 @@
 				)
 			)
 			(pin passive line
-				(at 0 7.62 180)
+				(at 0 -5.08 180)
 				(length 2.54)
-				(name "A_{9}"
+				(name "A_{15}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30562,9 +30562,9 @@
 				)
 			)
 			(pin passive line
-				(at 0 5.08 180)
+				(at 0 -7.62 180)
 				(length 2.54)
-				(name "A_{10}"
+				(name "A_{14}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30580,9 +30580,9 @@
 				)
 			)
 			(pin passive line
-				(at 0 2.54 180)
+				(at 0 -10.16 180)
 				(length 2.54)
-				(name "A_{11}"
+				(name "A_{13}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30598,7 +30598,7 @@
 				)
 			)
 			(pin passive line
-				(at 0 0 180)
+				(at 0 -12.7 180)
 				(length 2.54)
 				(name "A_{12}"
 					(effects
@@ -30616,9 +30616,9 @@
 				)
 			)
 			(pin passive line
-				(at 0 -2.54 180)
+				(at 0 -15.24 180)
 				(length 2.54)
-				(name "A_{13}"
+				(name "A_{11}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30634,9 +30634,9 @@
 				)
 			)
 			(pin passive line
-				(at 0 -5.08 180)
+				(at 0 -17.78 180)
 				(length 2.54)
-				(name "A_{14}"
+				(name "A_{10}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30652,9 +30652,9 @@
 				)
 			)
 			(pin passive line
-				(at 0 -7.62 180)
+				(at 0 -20.32 180)
 				(length 2.54)
-				(name "A_{15}"
+				(name "A_{9}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30670,9 +30670,9 @@
 				)
 			)
 			(pin passive line
-				(at 0 -10.16 180)
+				(at 0 -22.86 180)
 				(length 2.54)
-				(name "A_{16}"
+				(name "A_{8}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30687,10 +30687,10 @@
 					)
 				)
 			)
-			(pin passive line
-				(at 0 -12.7 180)
+			(pin power_in line
+				(at 0 -25.4 180)
 				(length 2.54)
-				(name "A_{17}"
+				(name "+12V"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30705,10 +30705,10 @@
 					)
 				)
 			)
-			(pin passive line
-				(at 0 -15.24 180)
+			(pin power_in line
+				(at 0 -27.94 180)
 				(length 2.54)
-				(name "A_{18}"
+				(name "GND"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30723,192 +30723,12 @@
 					)
 				)
 			)
-			(pin passive line
-				(at 0 -17.78 180)
-				(length 2.54)
-				(name "A_{19}"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "a23"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 0 -20.32 180)
-				(length 2.54)
-				(name "A_{20}"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "a24"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 0 -22.86 180)
-				(length 2.54)
-				(name "A_{21}"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "a25"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 0 -25.4 180)
-				(length 2.54)
-				(name "A_{22}"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "a26"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 0 -27.94 180)
-				(length 2.54)
-				(name "A_{23}"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "a27"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive inverted
-				(at 0 -30.48 180)
-				(length 2.54)
-				(name "BUSREQ"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "a28"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive inverted
-				(at 0 -33.02 180)
-				(length 2.54)
-				(name "BUSGNT"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "a29"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin unspecified line
-				(at 0 -35.56 180)
-				(length 2.54)
-				(name "RESERVED"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "a30"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 0 -38.1 180)
-				(length 2.54)
-				(name "GND"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "a31"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin input line
-				(at 0 -40.64 180)
-				(length 2.54)
-				(name "+5V"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "a32"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
 		)
 		(symbol "CartridgeROM_2_0"
 			(pin power_in line
-				(at 0 38.1 180)
+				(at 0 25.4 180)
 				(length 2.54)
-				(name "+5V"
+				(name "GND"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30924,9 +30744,9 @@
 				)
 			)
 			(pin power_in line
-				(at 0 35.56 180)
+				(at 0 22.86 180)
 				(length 2.54)
-				(name "GND"
+				(name "+5V"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30941,10 +30761,10 @@
 					)
 				)
 			)
-			(pin power_in line
-				(at 0 33.02 180)
+			(pin passive inverted
+				(at 0 20.32 180)
 				(length 2.54)
-				(name "-12V"
+				(name "NMI"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30960,9 +30780,9 @@
 				)
 			)
 			(pin passive inverted
-				(at 0 30.48 180)
+				(at 0 17.78 180)
 				(length 2.54)
-				(name "RESET"
+				(name "IRQ"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30977,10 +30797,10 @@
 					)
 				)
 			)
-			(pin passive line
-				(at 0 27.94 180)
+			(pin passive inverted
+				(at 0 15.24 180)
 				(length 2.54)
-				(name "PHI2"
+				(name "VALID"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -30996,7 +30816,7 @@
 				)
 			)
 			(pin passive line
-				(at 0 25.4 180)
+				(at 0 12.7 180)
 				(length 2.54)
 				(name "R/W"
 					(effects
@@ -31013,10 +30833,10 @@
 					)
 				)
 			)
-			(pin passive inverted
-				(at 0 22.86 180)
+			(pin passive line
+				(at 0 10.16 180)
 				(length 2.54)
-				(name "VALID"
+				(name "PHI2"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31032,9 +30852,9 @@
 				)
 			)
 			(pin passive inverted
-				(at 0 20.32 180)
+				(at 0 7.62 180)
 				(length 2.54)
-				(name "IRQ"
+				(name "RESET"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31050,9 +30870,9 @@
 				)
 			)
 			(pin passive inverted
-				(at 0 17.78 180)
+				(at 0 5.08 180)
 				(length 2.54)
-				(name "NMI"
+				(name "OE"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31067,10 +30887,10 @@
 					)
 				)
 			)
-			(pin passive line
-				(at 0 15.24 180)
+			(pin passive inverted
+				(at 0 2.54 180)
 				(length 2.54)
-				(name "READY"
+				(name "BANK2"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31085,10 +30905,10 @@
 					)
 				)
 			)
-			(pin passive line
-				(at 0 12.7 180)
+			(pin passive inverted
+				(at 0 0 180)
 				(length 2.54)
-				(name "SYNC"
+				(name "BANK1"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31104,9 +30924,9 @@
 				)
 			)
 			(pin passive inverted
-				(at 0 10.16 180)
+				(at 0 -2.54 180)
 				(length 2.54)
-				(name "VP"
+				(name "BANK0"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31121,10 +30941,10 @@
 					)
 				)
 			)
-			(pin passive inverted
-				(at 0 7.62 180)
+			(pin passive line
+				(at 0 -5.08 180)
 				(length 2.54)
-				(name "ML"
+				(name "A_{7}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31140,9 +30960,9 @@
 				)
 			)
 			(pin passive line
-				(at 0 5.08 180)
+				(at 0 -7.62 180)
 				(length 2.54)
-				(name "BE"
+				(name "A_{6}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31158,9 +30978,9 @@
 				)
 			)
 			(pin passive line
-				(at 0 2.54 180)
+				(at 0 -10.16 180)
 				(length 2.54)
-				(name "VPA"
+				(name "A_{5}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31176,9 +30996,9 @@
 				)
 			)
 			(pin passive line
-				(at 0 0 180)
+				(at 0 -12.7 180)
 				(length 2.54)
-				(name "VDA"
+				(name "A_{4}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31194,9 +31014,9 @@
 				)
 			)
 			(pin passive line
-				(at 0 -2.54 180)
+				(at 0 -15.24 180)
 				(length 2.54)
-				(name "E"
+				(name "A_{3}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31212,9 +31032,9 @@
 				)
 			)
 			(pin passive line
-				(at 0 -5.08 180)
+				(at 0 -17.78 180)
 				(length 2.54)
-				(name "MX"
+				(name "A_{2}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31229,10 +31049,10 @@
 					)
 				)
 			)
-			(pin passive inverted
-				(at 0 -7.62 180)
+			(pin passive line
+				(at 0 -20.32 180)
 				(length 2.54)
-				(name "BANK0"
+				(name "A_{1}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31247,10 +31067,10 @@
 					)
 				)
 			)
-			(pin passive inverted
-				(at 0 -10.16 180)
+			(pin passive line
+				(at 0 -22.86 180)
 				(length 2.54)
-				(name "BANK1"
+				(name "A_{0}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31265,10 +31085,10 @@
 					)
 				)
 			)
-			(pin passive inverted
-				(at 0 -12.7 180)
+			(pin power_in line
+				(at 0 -25.4 180)
 				(length 2.54)
-				(name "BANK2"
+				(name "-12V"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -31283,170 +31103,8 @@
 					)
 				)
 			)
-			(pin passive line
-				(at 0 -15.24 180)
-				(length 2.54)
-				(name "D_{0}"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "b22"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 0 -17.78 180)
-				(length 2.54)
-				(name "D_{1}"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "b23"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 0 -20.32 180)
-				(length 2.54)
-				(name "D_{2}"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "b24"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 0 -22.86 180)
-				(length 2.54)
-				(name "D_{3}"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "b25"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 0 -25.4 180)
-				(length 2.54)
-				(name "D_{4}"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "b26"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 0 -27.94 180)
-				(length 2.54)
-				(name "D_{5}"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "b27"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 0 -30.48 180)
-				(length 2.54)
-				(name "D_{6}"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "b28"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 0 -33.02 180)
-				(length 2.54)
-				(name "D_{7}"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "b29"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin output inverted
-				(at 0 -35.56 180)
-				(length 2.54)
-				(name "OE"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "b30"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
 			(pin power_in line
-				(at 0 -38.1 180)
+				(at 0 -27.94 180)
 				(length 2.54)
 				(name "GND"
 					(effects
@@ -31455,25 +31113,7 @@
 						)
 					)
 				)
-				(number "b31"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin power_in line
-				(at 0 -40.64 180)
-				(length 2.54)
-				(name "+5V"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "b32"
+				(number "b22"
 					(effects
 						(font
 							(size 1.27 1.27)
