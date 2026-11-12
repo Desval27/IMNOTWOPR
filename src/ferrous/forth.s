@@ -6541,7 +6541,8 @@ SYSTEM_NFA:
 	.word	DOVOC
 	.word	$A081
 SYSTEM_LATEST:
-	.word	SCRNQ_NFA
+	; .word	SCRNQ_NFA
+	.word	MASKQ_NFA
 	.word	$850
 
 ; ---------------------------------------------------------------------------
@@ -8831,632 +8832,632 @@ SOURCE_NFA:
 
 ;	MSREG
 
-; ---------------------------------------------------------------------------
-; SID SOUND SHADOW and CONTROL WORDS
-; ---------------------------------------------------------------------------
-; Dictionary: MSREG [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- a1 )
-; Manual: A system constant which returns the address of the memory area that
-; is a copy of the SID chip sound register. This array is maintained to allow
-; both reading and writing to the SID chip registers.
-MSREG_NFA:
-	.byte	$85,"MSRE",$C7
-	.word	PCONT_NFA	; LFA: previous name field in this vocabulary chain
-; SID software shadow at $779A. Most setters modify this RAM image because
-; SID control registers cannot be read back normally. S! copies 32 bytes to
-; SID hardware; setters alone do not necessarily change the sound
-; immediately.
-MSREG:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; SID SOUND SHADOW and CONTROL WORDS
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: MSREG [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- a1 )
+; ; Manual: A system constant which returns the address of the memory area that
+; ; is a copy of the SID chip sound register. This array is maintained to allow
+; ; both reading and writing to the SID chip registers.
+; MSREG_NFA:
+; 	.byte	$85,"MSRE",$C7
+; 	.word	PCONT_NFA	; LFA: previous name field in this vocabulary chain
+; ; SID software shadow at $779A. Most setters modify this RAM image because
+; ; SID control registers cannot be read back normally. S! copies 32 bytes to
+; ; SID hardware; setters alone do not necessarily change the sound
+; ; immediately.
+; MSREG:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: SBASE [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- a1 )
-; Manual: A system constant which returns the base address a1 of the SID
-; chip.
-SBASE_NFA:
-	.byte	$85,"SBAS",$C5
-	.word	MSREG_NFA	; LFA: previous name field in this vocabulary chain
-SBASE:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: SBASE [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- a1 )
+; ; Manual: A system constant which returns the base address a1 of the SID
+; ; chip.
+; SBASE_NFA:
+; 	.byte	$85,"SBAS",$C5
+; 	.word	MSREG_NFA	; LFA: previous name field in this vocabulary chain
+; SBASE:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: CV [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- a1 )
-; Manual: Returns the base address of the currently selected voice of the
-; sound system.
-CV_NFA:
-	.byte	$82,"C",$D6
-	.word	SBASE_NFA	; LFA: previous name field in this vocabulary chain
-CV:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: CV [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- a1 )
+; ; Manual: Returns the base address of the currently selected voice of the
+; ; sound system.
+; CV_NFA:
+; 	.byte	$82,"C",$D6
+; 	.word	SBASE_NFA	; LFA: previous name field in this vocabulary chain
+; CV:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: WFORM [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual: A defining word used to create many of the sound control words. Not
-; a user word. 151
-WFORM_NFA:
-	.byte	$85,"WFOR",$CD
-	.word	CV_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: WFORM [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual: A defining word used to create many of the sound control words. Not
+; ; a user word. 151
+; WFORM_NFA:
+; 	.byte	$85,"WFOR",$CD
+; 	.word	CV_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: S! [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: A sound system primitive, which moves the contents of the memory
-; copy of the SID chip, to the actual SID chip registers. This word must be
-; executed whenever a change 141 is made to the SID chip registers. It is not
-; done automatically, because there would then be a heavy speed penalty for
-; each sound word executed. As a result, this word is used after a group of
-; changes are performed to cause them to all have effect at once.
-SSTOR_NFA:
-	.byte	$82,"S",$A1
-	.word	SOURCE_NFA	; LFA: previous name field in this vocabulary chain
-SSTOR:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: S! [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: A sound system primitive, which moves the contents of the memory
+; ; copy of the SID chip, to the actual SID chip registers. This word must be
+; ; executed whenever a change 141 is made to the SID chip registers. It is not
+; ; done automatically, because there would then be a heavy speed penalty for
+; ; each sound word executed. As a result, this word is used after a group of
+; ; changes are performed to cause them to all have effect at once.
+; SSTOR_NFA:
+; 	.byte	$82,"S",$A1
+; 	.word	SOURCE_NFA	; LFA: previous name field in this vocabulary chain
+; SSTOR:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: SINIT [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: This is the sound initialization word. It must be executed before
-; any other operations can be done to the sound system.
-SINIT_NFA:
-	.byte	$85,"SINI",$D4
-	.word	SSTOR_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: SINIT [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: This is the sound initialization word. It must be executed before
+; ; any other operations can be done to the sound system.
+; SINIT_NFA:
+; 	.byte	$85,"SINI",$D4
+; 	.word	SSTOR_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: PWIDTH! [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: Sets the PULSE width register value for voice #1, in the range 0 to
-; 4095. See S!
-PWIDTH_STORE_NFA:
-	.byte	$87,"PWIDTH",$A1
-	.word	SINIT_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: PWIDTH! [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: Sets the PULSE width register value for voice #1, in the range 0 to
+; ; 4095. See S!
+; PWIDTH_STORE_NFA:
+; 	.byte	$87,"PWIDTH",$A1
+; 	.word	SINIT_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: PWIDTH@ [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- n1 )
-; Manual: Returns the PULSE width register value for voice #1, in the range 0
-; to 4095. See S!
-PWIDTH_FETCH_NFA:
-	.byte	$87,"PWIDTH",$C0
-	.word	PWIDTH_STORE_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: PWIDTH@ [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- n1 )
+; ; Manual: Returns the PULSE width register value for voice #1, in the range 0
+; ; to 4095. See S!
+; PWIDTH_FETCH_NFA:
+; 	.byte	$87,"PWIDTH",$C0
+; 	.word	PWIDTH_STORE_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: FREQ! [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: Sets the frequency value for the currently selected voice. This is
-; the compliment of FREQ@. n1 is in the range 0 to 65,535. See S!
-FREQ_STORE_NFA:
-	.byte	$85,"FREQ",$A1
-	.word	PWIDTH_FETCH_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: FREQ! [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: Sets the frequency value for the currently selected voice. This is
+; ; the compliment of FREQ@. n1 is in the range 0 to 65,535. See S!
+; FREQ_STORE_NFA:
+; 	.byte	$85,"FREQ",$A1
+; 	.word	PWIDTH_FETCH_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: FREQ@ [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- n1 )
-; Manual: Returns the frequency value from the currently selected voice. This
-; is the compliment of FREQ! See S!
-FREQ_FETCH_NFA:
-	.byte	$85,"FREQ",$C0
-	.word	FREQ_STORE_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: FREQ@ [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- n1 )
+; ; Manual: Returns the frequency value from the currently selected voice. This
+; ; is the compliment of FREQ! See S!
+; FREQ_FETCH_NFA:
+; 	.byte	$85,"FREQ",$C0
+; 	.word	FREQ_STORE_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: TRIANGLE [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: Sets the currently selected voice to generate a triangle wave. This
-; is one of several types of waveforms that can be generated. See also
-; SQUARE, NOISE, SAWTOOTH. See S!
-TRIANGLE_NFA:
-	.byte	$88,"TRIANGL",$C5
-	.word	FREQ_FETCH_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: TRIANGLE [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: Sets the currently selected voice to generate a triangle wave. This
+; ; is one of several types of waveforms that can be generated. See also
+; ; SQUARE, NOISE, SAWTOOTH. See S!
+; TRIANGLE_NFA:
+; 	.byte	$88,"TRIANGL",$C5
+; 	.word	FREQ_FETCH_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: GATE1 [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual: Enables the currently selected voice, that is, turns it ON. See S!
-GATE1_NFA:
-	.byte	$85,"GATE",$B1
-	.word	TRIANGLE_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: GATE1 [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual: Enables the currently selected voice, that is, turns it ON. See S!
+; GATE1_NFA:
+; 	.byte	$85,"GATE",$B1
+; 	.word	TRIANGLE_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: GATE0 [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: Disables the currently selected voice, that is, turns it OFF. See
-; S!.
-GATE0_NFA:
-	.byte	$85,"GATE",$B0
-	.word	GATE1_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: GATE0 [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: Disables the currently selected voice, that is, turns it OFF. See
+; ; S!.
+; GATE0_NFA:
+; 	.byte	$85,"GATE",$B0
+; 	.word	GATE1_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: SAWTOOTH [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: Sets the current voice to generate a SAWTOOTH wave form. One of a
-; group of four words, which select the basic waveform for a selected voice.
-; See also NOISE, SQUARE, TRIANGLE. See S!
-SAWTOOTH_NFA:
-	.byte	$88,"SAWTOOT",$C8
-	.word	GATE0_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: SAWTOOTH [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: Sets the current voice to generate a SAWTOOTH wave form. One of a
+; ; group of four words, which select the basic waveform for a selected voice.
+; ; See also NOISE, SQUARE, TRIANGLE. See S!
+; SAWTOOTH_NFA:
+; 	.byte	$88,"SAWTOOT",$C8
+; 	.word	GATE0_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: SYNC1 [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: When this word is executed, oscillator #1 will be hard synchronized
-; with voice #3. See S!
-SYNC1_NFA:
-	.byte	$85,"SYNC",$B1
-	.word	SAWTOOTH_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: SYNC1 [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: When this word is executed, oscillator #1 will be hard synchronized
+; ; with voice #3. See S!
+; SYNC1_NFA:
+; 	.byte	$85,"SYNC",$B1
+; 	.word	SAWTOOTH_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: SYNC0 [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: When this word is executed, oscillator #1 is not hard synchronized
-; with voice #3, and each oscillator can be programmed independently. This is
-; the normal condition. See S!
-SYNC0_NFA:
-	.byte	$85,"SYNC",$B0
-	.word	SYNC1_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: SYNC0 [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: When this word is executed, oscillator #1 is not hard synchronized
+; ; with voice #3, and each oscillator can be programmed independently. This is
+; ; the normal condition. See S!
+; SYNC0_NFA:
+; 	.byte	$85,"SYNC",$B0
+; 	.word	SYNC1_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: SQUARE [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: Sets the currently selected voice to generate a square wave. This
-; is one of several types of waveforms that can be generated. See also
-; TRIANGLE, SAWTOOTH, and NOISE. See S1
-SQUARE_NFA:
-	.byte	$86,"SQUAR",$C5
-	.word	SYNC0_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: SQUARE [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: Sets the currently selected voice to generate a square wave. This
+; ; is one of several types of waveforms that can be generated. See also
+; ; TRIANGLE, SAWTOOTH, and NOISE. See S1
+; SQUARE_NFA:
+; 	.byte	$86,"SQUAR",$C5
+; 	.word	SYNC0_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: RING1 [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Implementation: Enable ring modulation in the current voice shadow
-; (control-register bit 2). S! commits it to hardware.
-RING1_NFA:
-	.byte	$85,"RING",$B1
-	.word	SQUARE_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: RING1 [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Implementation: Enable ring modulation in the current voice shadow
+; ; (control-register bit 2). S! commits it to hardware.
+; RING1_NFA:
+; 	.byte	$85,"RING",$B1
+; 	.word	SQUARE_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: RING0 [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Implementation: Disable ring modulation in the current voice shadow
-; (control-register bit 2). S! commits it to hardware.
-RING0_NFA:
-	.byte	$85,"RING",$B0
-	.word	RING1_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: RING0 [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Implementation: Disable ring modulation in the current voice shadow
+; ; (control-register bit 2). S! commits it to hardware.
+; RING0_NFA:
+; 	.byte	$85,"RING",$B0
+; 	.word	RING1_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: NOISE [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: Sets the currently selected voice to generate noise. This is 136
-; one of four basic signals the SID chip can generate. See also TRIANGLE,
-; SAWTOOTH, SQUARE. See S!
-NOISE_NFA:
-	.byte	$85,"NOIS",$C5
-	.word	RING0_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: NOISE [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: Sets the currently selected voice to generate noise. This is 136
+; ; one of four basic signals the SID chip can generate. See also TRIANGLE,
+; ; SAWTOOTH, SQUARE. See S!
+; NOISE_NFA:
+; 	.byte	$85,"NOIS",$C5
+; 	.word	RING0_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: TEST1 [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: A sound control word, which can be used to synchronize oscillator
-; #1 to external events. If this word is executed, oscillator #1 will stop
-; output, until a TESTO is executed. Normally used for testing. See S!
-TEST1_NFA:
-	.byte	$85,"TEST",$B1
-	.word	NOISE_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: TEST1 [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: A sound control word, which can be used to synchronize oscillator
+; ; #1 to external events. If this word is executed, oscillator #1 will stop
+; ; output, until a TESTO is executed. Normally used for testing. See S!
+; TEST1_NFA:
+; 	.byte	$85,"TEST",$B1
+; 	.word	NOISE_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: TEST0 [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: A sound control word, which can be used to synchronize oscillator
-; #1 to external events. If this word is executed, oscillator #1 will be
-; enabled-the normal condition. Normally used for testing. See S!
-TEST0_NFA:
-	.byte	$85,"TEST",$B0
-	.word	TEST1_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: TEST0 [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: A sound control word, which can be used to synchronize oscillator
+; ; #1 to external events. If this word is executed, oscillator #1 will be
+; ; enabled-the normal condition. Normally used for testing. See S!
+; TEST0_NFA:
+; 	.byte	$85,"TEST",$B0
+; 	.word	TEST1_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: VOICE1 [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: Sets the current voice to be manipulated by the sound control words
-; to VOICE1, by setting the value of the CURVOICE system variable to the
-; offset into the SID sound register area. See S!
-VOICE1_NFA:
-	.byte	$86,"VOICE",$B1
-	.word	TEST0_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: VOICE1 [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: Sets the current voice to be manipulated by the sound control words
+; ; to VOICE1, by setting the value of the CURVOICE system variable to the
+; ; offset into the SID sound register area. See S!
+; VOICE1_NFA:
+; 	.byte	$86,"VOICE",$B1
+; 	.word	TEST0_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: VOICE2 [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: Sets the current voice to be manipulated by the sound control words
-; to VOICE2, by setting the value of the CURVOICE system variable to the
-; offset into the SID sound register area. See S!
-VOICE2_NFA:
-	.byte	$86,"VOICE",$B2
-	.word	VOICE1_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: VOICE2 [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: Sets the current voice to be manipulated by the sound control words
+; ; to VOICE2, by setting the value of the CURVOICE system variable to the
+; ; offset into the SID sound register area. See S!
+; VOICE2_NFA:
+; 	.byte	$86,"VOICE",$B2
+; 	.word	VOICE1_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: VOICE3 [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: Sets the current voice to be manipulated by the sound control words
-; to VOICE3, by setting the value of the CURVOICE system variable to the
-; offset into the SID sound register area. See S!
-VOICE3_NFA:
-	.byte	$86,"VOICE",$B3
-	.word	VOICE2_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: VOICE3 [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: Sets the current voice to be manipulated by the sound control words
+; ; to VOICE3, by setting the value of the CURVOICE system variable to the
+; ; offset into the SID sound register area. See S!
+; VOICE3_NFA:
+; 	.byte	$86,"VOICE",$B3
+; 	.word	VOICE2_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: REGSET [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual: A low level primitive, used by the sound system. Not a user word.
-REGSET_NFA:
-	.byte	$86,"REGSE",$D4
-	.word	WFORM_NFA	; LFA: previous name field in this vocabulary chain
-REGSET:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: REGSET [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual: A low level primitive, used by the sound system. Not a user word.
+; REGSET_NFA:
+; 	.byte	$86,"REGSE",$D4
+; 	.word	WFORM_NFA	; LFA: previous name field in this vocabulary chain
+; REGSET:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: REGREAD [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual: A low level primitive, used by the sound system. Not a user word.
-; 140
-REGRED_NFA:
-	.byte	$87,"REGREA",$C4
-	.word	REGSET_NFA	; LFA: previous name field in this vocabulary chain
-REGRED:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: REGREAD [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual: A low level primitive, used by the sound system. Not a user word.
+; ; 140
+; REGRED_NFA:
+; 	.byte	$87,"REGREA",$C4
+; 	.word	REGSET_NFA	; LFA: previous name field in this vocabulary chain
+; REGRED:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: ATTACK! [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: Sets the attack register value for the currently selected voice, in
-; the range 0 to 15. See S!
-ATTACK_STORE_NFA:
-	.byte	$87,"ATTACK",$A1
-	.word	VOICE3_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: ATTACK! [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: Sets the attack register value for the currently selected voice, in
+; ; the range 0 to 15. See S!
+; ATTACK_STORE_NFA:
+; 	.byte	$87,"ATTACK",$A1
+; 	.word	VOICE3_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: ATTACK@ [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- n1 )
-; Manual: Returns the attack register value for the currently selected voice,
-; in the range from 0 to 15. See S!
-ATTACK_FETCH_NFA:
-	.byte	$87,"ATTACK",$C0
-	.word	ATTACK_STORE_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: ATTACK@ [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- n1 )
+; ; Manual: Returns the attack register value for the currently selected voice,
+; ; in the range from 0 to 15. See S!
+; ATTACK_FETCH_NFA:
+; 	.byte	$87,"ATTACK",$C0
+; 	.word	ATTACK_STORE_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: DECAY! [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: Set the decay register value for the currently selected voice in
-; the SID chip to value n1, in the range 0 to 15. See S!
-DECAY_STORE_NFA:
-	.byte	$86,"DECAY",$A1
-	.word	ATTACK_FETCH_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: DECAY! [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: Set the decay register value for the currently selected voice in
+; ; the SID chip to value n1, in the range 0 to 15. See S!
+; DECAY_STORE_NFA:
+; 	.byte	$86,"DECAY",$A1
+; 	.word	ATTACK_FETCH_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: DECAY@ [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- n1 )
-; Manual: Return the decay register value for the currently selected voice,
-; in the range 0 to 15, See S!
-DECAY_FETCH_NFA:
-	.byte	$86,"DECAY",$C0
-	.word	DECAY_STORE_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: DECAY@ [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- n1 )
+; ; Manual: Return the decay register value for the currently selected voice,
+; ; in the range 0 to 15, See S!
+; DECAY_FETCH_NFA:
+; 	.byte	$86,"DECAY",$C0
+; 	.word	DECAY_STORE_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: SUSTAIN! [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: Sets the sustain register value for the currently selected voice.
-; See S!
-SUSTAIN_STORE_NFA:
-	.byte	$88,"SUSTAIN",$A1
-	.word	DECAY_FETCH_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: SUSTAIN! [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: Sets the sustain register value for the currently selected voice.
+; ; See S!
+; SUSTAIN_STORE_NFA:
+; 	.byte	$88,"SUSTAIN",$A1
+; 	.word	DECAY_FETCH_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: SUSTAIN@ [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- n1 )
-; Manual: Returns the value of the sustain register for the currently
-; selected voice. See S!
-SUSTAIN_FETCH_NFA:
-	.byte	$88,"SUSTAIN",$C0
-	.word	SUSTAIN_STORE_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: SUSTAIN@ [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- n1 )
+; ; Manual: Returns the value of the sustain register for the currently
+; ; selected voice. See S!
+; SUSTAIN_FETCH_NFA:
+; 	.byte	$88,"SUSTAIN",$C0
+; 	.word	SUSTAIN_STORE_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: RELEASE! [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: Sets the release register value for the currently selected voice.
-; See S!
-RELEASE_STORE_NFA:
-	.byte	$88,"RELEASE",$A1
-	.word	SUSTAIN_FETCH_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: RELEASE! [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: Sets the release register value for the currently selected voice.
+; ; See S!
+; RELEASE_STORE_NFA:
+; 	.byte	$88,"RELEASE",$A1
+; 	.word	SUSTAIN_FETCH_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: RELEASE@ [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- n1 )
-; Manual: Reads the release register value for the currently selected voice.
-; See S!
-RELEASE_FETCH_NFA:
-	.byte	$88,"RELEASE",$C0
-	.word	RELEASE_STORE_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: RELEASE@ [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- n1 )
+; ; Manual: Reads the release register value for the currently selected voice.
+; ; See S!
+; RELEASE_FETCH_NFA:
+; 	.byte	$88,"RELEASE",$C0
+; 	.word	RELEASE_STORE_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: FILTER! [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: Sets the filter center/cutoff frequency to the value specified as
-; n1, in the range 0 to 2047. See S!
-FILTER_STORE_NFA:
-	.byte	$87,"FILTER",$A1
-	.word	RELEASE_FETCH_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: FILTER! [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: Sets the filter center/cutoff frequency to the value specified as
+; ; n1, in the range 0 to 2047. See S!
+; FILTER_STORE_NFA:
+; 	.byte	$87,"FILTER",$A1
+; 	.word	RELEASE_FETCH_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: RESONANCE! [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: Sets the RESONANCE register value for the filter, lower values
-; reduce filter effect, and higher values increase filter effect. N1 is in
-; the range 0 to 15.
-RESONANCE_STORE_NFA:
-	.byte	$8A,"RESONANCE",$A1
-	.word	FILTER_STORE_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: RESONANCE! [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: Sets the RESONANCE register value for the filter, lower values
+; ; reduce filter effect, and higher values increase filter effect. N1 is in
+; ; the range 0 to 15.
+; RESONANCE_STORE_NFA:
+; 	.byte	$8A,"RESONANCE",$A1
+; 	.word	FILTER_STORE_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: RESONANCE@ [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- n1 )
-; Manual: Returns the current value of the filter, RESONANCE register
-; setting, in the range 0 to 15.
-RESONANCE_FETCH_NFA:
-	.byte	$8A,"RESONANCE",$C0
-	.word	RESONANCE_STORE_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: RESONANCE@ [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- n1 )
+; ; Manual: Returns the current value of the filter, RESONANCE register
+; ; setting, in the range 0 to 15.
+; RESONANCE_FETCH_NFA:
+; 	.byte	$8A,"RESONANCE",$C0
+; 	.word	RESONANCE_STORE_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: FSELECT! [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: Sets the filter select register, to cause the filter to be
-; effective on the voices specified by the bits of value n1. The bit values
-; for each voice are as follows: voice#1=01, voice#2=02, voice#3=04,
-; external=08 Any or all of these values can be ORed together to create the
-; value n1 passed to FSELECT! See S!.
-FSELECT_STORE_NFA:
-	.byte	$88,"FSELECT",$A1
-	.word	RESONANCE_FETCH_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: FSELECT! [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: Sets the filter select register, to cause the filter to be
+; ; effective on the voices specified by the bits of value n1. The bit values
+; ; for each voice are as follows: voice#1=01, voice#2=02, voice#3=04,
+; ; external=08 Any or all of these values can be ORed together to create the
+; ; value n1 passed to FSELECT! See S!.
+; FSELECT_STORE_NFA:
+; 	.byte	$88,"FSELECT",$A1
+; 	.word	RESONANCE_FETCH_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: FSELECT@ [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- n1 )
-; Manual: Returns the filter select register, which holds the value n1 ---
-; the voices specified to be filtered. The bit values for each voice are as
-; follows: voice#l=01, voice#2=02, voice#3=04, external=08 These values can
-; be 0Red together to create n1. See S!.
-FSELECT_FETCH_NFA:
-	.byte	$88,"FSELECT",$C0
-	.word	FSELECT_STORE_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: FSELECT@ [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- n1 )
+; ; Manual: Returns the filter select register, which holds the value n1 ---
+; ; the voices specified to be filtered. The bit values for each voice are as
+; ; follows: voice#l=01, voice#2=02, voice#3=04, external=08 These values can
+; ; be 0Red together to create n1. See S!.
+; FSELECT_FETCH_NFA:
+; 	.byte	$88,"FSELECT",$C0
+; 	.word	FSELECT_STORE_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: FMODE! [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: Sets the filter mode register value to select the type of filtering
-; desired. Each of the low 4 bits of the value n1 are a type of filter action
-; as follows: 128 low-pass=01, band-pass=02, high-pass=04 and voice #3 off=08
-; Any of the first three filter types can be selected, or 0Red together, to
-; form a more complex filter action. The last bit, VOICE #3 OFF, is used to
-; remove voice #3 from the output without turning it off internally. This
-; allows oscillator #3 to be used to modulate the other voices, without its
-; output appearing directly in the output of the sound chip. See S!
-FMODE_STORE_NFA:
-	.byte	$86,"FMODE",$A1
-	.word	FSELECT_FETCH_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: FMODE! [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: Sets the filter mode register value to select the type of filtering
+; ; desired. Each of the low 4 bits of the value n1 are a type of filter action
+; ; as follows: 128 low-pass=01, band-pass=02, high-pass=04 and voice #3 off=08
+; ; Any of the first three filter types can be selected, or 0Red together, to
+; ; form a more complex filter action. The last bit, VOICE #3 OFF, is used to
+; ; remove voice #3 from the output without turning it off internally. This
+; ; allows oscillator #3 to be used to modulate the other voices, without its
+; ; output appearing directly in the output of the sound chip. See S!
+; FMODE_STORE_NFA:
+; 	.byte	$86,"FMODE",$A1
+; 	.word	FSELECT_FETCH_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: FMODE@ [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- n1 )
-; Manual: Returns the filter mode register value, indicating the type of
-; filter currently selected. See FMODE! for further information about the
-; value returned as n1. See S!
-FMODE_FETCH_NFA:
-	.byte	$86,"FMODE",$C0
-	.word	FMODE_STORE_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: FMODE@ [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- n1 )
+; ; Manual: Returns the filter mode register value, indicating the type of
+; ; filter currently selected. See FMODE! for further information about the
+; ; value returned as n1. See S!
+; FMODE_FETCH_NFA:
+; 	.byte	$86,"FMODE",$C0
+; 	.word	FMODE_STORE_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: VOLUME! [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: Sets the current value of the volume register to value n1 in the
-; range 0 to 15 in the SID sound generator chip. See S!
-VOLUME_STORE_NFA:
-	.byte	$87,"VOLUME",$A1
-	.word	FMODE_FETCH_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: VOLUME! [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: Sets the current value of the volume register to value n1 in the
+; ; range 0 to 15 in the SID sound generator chip. See S!
+; VOLUME_STORE_NFA:
+; 	.byte	$87,"VOLUME",$A1
+; 	.word	FMODE_FETCH_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: VOLUME@ [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- n1 )
-; Manual: Fetches the current value of the volume register in the SID sound
-; generator chip. See S!
-VOLUME_FETCH_NFA:
-	.byte	$87,"VOLUME",$C0
-	.word	VOLUME_STORE_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: VOLUME@ [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- n1 )
+; ; Manual: Fetches the current value of the volume register in the SID sound
+; ; generator chip. See S!
+; VOLUME_FETCH_NFA:
+; 	.byte	$87,"VOLUME",$C0
+; 	.word	VOLUME_STORE_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: OSC3@ [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- n1 )
-; Manual: Returns the output of the waveform for oscillator #3 as a number n1
-; in the range 0 to 255.
-OSC3_FETCH_NFA:
-	.byte	$85,"OSC3",$C0
-	.word	VOLUME_FETCH_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: OSC3@ [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- n1 )
+; ; Manual: Returns the output of the waveform for oscillator #3 as a number n1
+; ; in the range 0 to 255.
+; OSC3_FETCH_NFA:
+; 	.byte	$85,"OSC3",$C0
+; 	.word	VOLUME_FETCH_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: ENV3@ [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- n1 )
-; Manual: Returns the value of the oscillator #3 ENVELOPE generator, in the
-; range 0 to 255.
-ENV3_FETCH_NFA:
-	.byte	$85,"ENV3",$C0
-	.word	OSC3_FETCH_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: ENV3@ [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- n1 )
+; ; Manual: Returns the value of the oscillator #3 ENVELOPE generator, in the
+; ; range 0 to 255.
+; ENV3_FETCH_NFA:
+; 	.byte	$85,"ENV3",$C0
+; 	.word	OSC3_FETCH_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: SPOBJ [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- a1 )
-; Manual: This is a system variable used In the creation of a sprite data
-; definition, after a sprite edit has been completed. Not a user word.
-SPOBJ_NFA:
-	.byte	$85,"SPOB",$CA
-	.word	REGRED_NFA	; LFA: previous name field in this vocabulary chain
-SPOBJ:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: SPOBJ [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- a1 )
+; ; Manual: This is a system variable used In the creation of a sprite data
+; ; definition, after a sprite edit has been completed. Not a user word.
+; SPOBJ_NFA:
+; 	.byte	$85,"SPOB",$CA
+; 	.word	REGRED_NFA	; LFA: previous name field in this vocabulary chain
+; SPOBJ:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: SPINDX [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- a1 )
-; Manual: This is a system variable used in the creation of a sprite data
-; definition after a sprite edit has been completed. Not a user word.
-SPINDX_NFA:
-	.byte	$86,"SPIND",$D8
-	.word	SPOBJ_NFA	; LFA: previous name field in this vocabulary chain
-SPINDX:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: SPINDX [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- a1 )
+; ; Manual: This is a system variable used in the creation of a sprite data
+; ; definition after a sprite edit has been completed. Not a user word.
+; SPINDX_NFA:
+; 	.byte	$86,"SPIND",$D8
+; 	.word	SPOBJ_NFA	; LFA: previous name field in this vocabulary chain
+; SPINDX:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: SPBYT [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- a1 )
-; Manual: This is a system variable used in the creation of a sprite data
-; definition after a sprite edit has been completed. Not a user word.
-SPBYT_NFA:
-	.byte	$85,"SPBY",$D4
-	.word	SPINDX_NFA	; LFA: previous name field in this vocabulary chain
-SPBYT:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: SPBYT [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- a1 )
+; ; Manual: This is a system variable used in the creation of a sprite data
+; ; definition after a sprite edit has been completed. Not a user word.
+; SPBYT_NFA:
+; 	.byte	$85,"SPBY",$D4
+; 	.word	SPINDX_NFA	; LFA: previous name field in this vocabulary chain
+; SPBYT:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: SCPTR [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- a1 )
-; Manual: A system variable, used in the creation of a sprite definition. Not
-; a user word.
-SCPTR_NFA:
-	.byte	$85,"SCPT",$D2
-	.word	SPBYT_NFA	; LFA: previous name field in this vocabulary chain
-SCPTR:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: SCPTR [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- a1 )
+; ; Manual: A system variable, used in the creation of a sprite definition. Not
+; ; a user word.
+; SCPTR_NFA:
+; 	.byte	$85,"SCPT",$D2
+; 	.word	SPBYT_NFA	; LFA: previous name field in this vocabulary chain
+; SCPTR:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: SPBIT [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: A system sprite word used to read bytes from the screen in the
-; process of building a sprite data definition. Not a user word.
-SPBIT_NFA:
-	.byte	$85,"SPBI",$D4
-	.word	SCPTR_NFA	; LFA: previous name field in this vocabulary chain
-; Sprite conversion worker: use SPOBJ/SPINDX/SPBYT/SCPTR user variables to
-; accumulate bitmap data. Sprite storage has three bytes per row and 21 rows
-; (63 payload bytes per 64-byte sprite slot).
-SPBIT:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: SPBIT [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: A system sprite word used to read bytes from the screen in the
+; ; process of building a sprite data definition. Not a user word.
+; SPBIT_NFA:
+; 	.byte	$85,"SPBI",$D4
+; 	.word	SCPTR_NFA	; LFA: previous name field in this vocabulary chain
+; ; Sprite conversion worker: use SPOBJ/SPINDX/SPBYT/SCPTR user variables to
+; ; accumulate bitmap data. Sprite storage has three bytes per row and 21 rows
+; ; (63 payload bytes per 64-byte sprite slot).
+; SPBIT:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: SPGET [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: A system sprite word used to read bytes from the screen in the
-; process of building a sprite data definition. Not a user word.
-SPGET_NFA:
-	.byte	$85,"SPGE",$D4
-	.word	SPBIT_NFA	; LFA: previous name field in this vocabulary chain
-SPGET:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: SPGET [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: A system sprite word used to read bytes from the screen in the
+; ; process of building a sprite data definition. Not a user word.
+; SPGET_NFA:
+; 	.byte	$85,"SPGE",$D4
+; 	.word	SPBIT_NFA	; LFA: previous name field in this vocabulary chain
+; SPGET:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: SPRITE [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: Builds the sprite data definition from the characters on the 144
-; screen In the sprite definition area within the sprite editor border. This
-; word is automatically executed by the sprite editor when the <RETURN> key
-; is pressed upon completion of a sprite edit.
-SPRITE_NFA:
-	.byte	$86,"SPRIT",$C5
-	.word	SPGET_NFA	; LFA: previous name field in this vocabulary chain
-SPRITE:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: SPRITE [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: Builds the sprite data definition from the characters on the 144
+; ; screen In the sprite definition area within the sprite editor border. This
+; ; word is automatically executed by the sprite editor when the <RETURN> key
+; ; is pressed upon completion of a sprite edit.
+; SPRITE_NFA:
+; 	.byte	$86,"SPRIT",$C5
+; 	.word	SPGET_NFA	; LFA: previous name field in this vocabulary chain
+; SPRITE:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: MASK [SYSTEM].
@@ -9467,7 +9468,8 @@ SPRITE:
 ; 10, 20, 40, 80.
 MASK_NFA:
 	.byte	$84,"MAS",$CB
-	.word	SPRITE_NFA	; LFA: previous name field in this vocabulary chain
+;	.word	SPRITE_NFA	; LFA: previous name field in this vocabulary chain
+	.word	PCONT_NFA	; LFA: previous name field in this vocabulary chain
 MASK:
 	.word	DOVAR	; CFA: variable; push the parameter-field address
 	.byte	$01,$02,$04,$08
@@ -9549,313 +9551,313 @@ MASKQ:
 
 ;	COLOR
 
-; ---------------------------------------------------------------------------
-; Dictionary: COLOR [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1/n2 --- )
-; Manual: Sets the color n1 for sprite number n2. The color numbers are the
-; same as shown on page 139 of the Commodore 64 Users Manual. 117
-COLOR_NFA:
-	.byte	$85,"COLO",$D2
-	.word	ENV3_FETCH_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: COLOR [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1/n2 --- )
+; ; Manual: Sets the color n1 for sprite number n2. The color numbers are the
+; ; same as shown on page 139 of the Commodore 64 Users Manual. 117
+; COLOR_NFA:
+; 	.byte	$85,"COLO",$D2
+; 	.word	ENV3_FETCH_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: SHOW [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: Turns on the sprite specified by n1 and makes it visible on the
-; screen. N1 is in the range 0 to 7.
-SHOW_NFA:
-	.byte	$84,"SHO",$D7
-	.word	COLOR_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: SHOW [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: Turns on the sprite specified by n1 and makes it visible on the
+; ; screen. N1 is in the range 0 to 7.
+; SHOW_NFA:
+; 	.byte	$84,"SHO",$D7
+; 	.word	COLOR_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: HIDE [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: Causes the sprite specified by n1 to be hidden from the screen
-; view. See also SHOW.
-HIDE_NFA:
-	.byte	$84,"HID",$C5
-	.word	SHOW_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: HIDE [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: Causes the sprite specified by n1 to be hidden from the screen
+; ; view. See also SHOW.
+; HIDE_NFA:
+; 	.byte	$84,"HID",$C5
+; 	.word	SHOW_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: XY [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1/n2/n3 --- )
-; Manual: Moves sprite n3 to screen position x=n1 and y=n2. This is the fast
-; version which only has access to the first 255 X locations on the screen.
-; Before XY can be used, the word CXY must have been used at least once to
-; initialize the most significant bit of the sprite position. n1 is in the
-; range 0 to 255, and n2 is in the range 0 to 159. n3 is the sprite number
-; and must be in the range 0 to 7.
-XY_NFA:
-	.byte	$82,"X",$D9
-	.word	HIDE_NFA	; LFA: previous name field in this vocabulary chain
-XY:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: XY [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1/n2/n3 --- )
+; ; Manual: Moves sprite n3 to screen position x=n1 and y=n2. This is the fast
+; ; version which only has access to the first 255 X locations on the screen.
+; ; Before XY can be used, the word CXY must have been used at least once to
+; ; initialize the most significant bit of the sprite position. n1 is in the
+; ; range 0 to 255, and n2 is in the range 0 to 159. n3 is the sprite number
+; ; and must be in the range 0 to 7.
+; XY_NFA:
+; 	.byte	$82,"X",$D9
+; 	.word	HIDE_NFA	; LFA: previous name field in this vocabulary chain
+; XY:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: CXY [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1/n2/n3 --- )
-; Manual: This is the sprite position control word, which allows any sprite
-; n3 to be placed at any address on the screen at n1=x and n2=y. This slower
-; version of XY allows full screen placement of a sprite. See XY.
-CXY_NFA:
-	.byte	$83,"CX",$D9
-	.word	XY_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: CXY [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1/n2/n3 --- )
+; ; Manual: This is the sprite position control word, which allows any sprite
+; ; n3 to be placed at any address on the screen at n1=x and n2=y. This slower
+; ; version of XY allows full screen placement of a sprite. See XY.
+; CXY_NFA:
+; 	.byte	$83,"CX",$D9
+; 	.word	XY_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: MULTI [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: Selects multi-color mode for sprite n1. Don't forget to set MCLR1
-; and MCLR2 first.
-MULTI_NFA:
-	.byte	$85,"MULT",$C9
-	.word	CXY_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: MULTI [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: Selects multi-color mode for sprite n1. Don't forget to set MCLR1
+; ; and MCLR2 first.
+; MULTI_NFA:
+; 	.byte	$85,"MULT",$C9
+; 	.word	CXY_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: HIRES [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: Causes the sprite specified by n1 to be set in high resolution
-; mode. This is the default mode, where each sprite has a foreground and a
-; background color. See also MULTI, for use of the multi-color sprite mode.
-; Pronounced "hi rez."
-HIRES_NFA:
-	.byte	$85,"HIRE",$D3
-	.word	MULTI_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: HIRES [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: Causes the sprite specified by n1 to be set in high resolution
+; ; mode. This is the default mode, where each sprite has a foreground and a
+; ; background color. See also MULTI, for use of the multi-color sprite mode.
+; ; Pronounced "hi rez."
+; HIRES_NFA:
+; 	.byte	$85,"HIRE",$D3
+; 	.word	MULTI_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: XPAND [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( f1/f2/n1 --- )
-; Manual: A sprite control word, which allows sprite n1 to be expanded in
-; either vertical or horizontal directions, or both. The boolean flag f1 is
-; the X direction expand flag, and flag f2 is the Y direction expand flag.
-; Example "1 0 3 XPAND" will expand sprite 3 in the X direction, but not the
-; Y direction.
-XPAND_NFA:
-	.byte	$85,"XPAN",$C4
-	.word	HIRES_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: XPAND [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( f1/f2/n1 --- )
+; ; Manual: A sprite control word, which allows sprite n1 to be expanded in
+; ; either vertical or horizontal directions, or both. The boolean flag f1 is
+; ; the X direction expand flag, and flag f2 is the Y direction expand flag.
+; ; Example "1 0 3 XPAND" will expand sprite 3 in the X direction, but not the
+; ; Y direction.
+; XPAND_NFA:
+; 	.byte	$85,"XPAN",$C4
+; 	.word	HIRES_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: MCLR1 [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Implementation: ( color -- ) Set the VIC-II shared sprite multicolor-1
-; register.
-MCLR1_NFA:
-	.byte	$85,"MCLR",$B1
-	.word	XPAND_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: MCLR1 [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Implementation: ( color -- ) Set the VIC-II shared sprite multicolor-1
+; ; register.
+; MCLR1_NFA:
+; 	.byte	$85,"MCLR",$B1
+; 	.word	XPAND_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: MCLR2 [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Implementation: ( color -- ) Set the VIC-II shared sprite multicolor-2
-; register.
-MCLR2_NFA:
-	.byte	$85,"MCLR",$B2
-	.word	MCLR1_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: MCLR2 [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Implementation: ( color -- ) Set the VIC-II shared sprite multicolor-2
+; ; register.
+; MCLR2_NFA:
+; 	.byte	$85,"MCLR",$B2
+; 	.word	MCLR1_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: SB [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Stack (from code): ( -- block-number )
-; Original C64 manual: A system constant, #30 hex in this system, which specifies the 64
-; byte block where the sprite data definitions start; $40 hex=64 decimal, and
-; $30 times $40 is $0C00, the start of the sprite definition area.
-SB_NFA:
-	.byte	$82,"S",$C2
-	.word	MASKQ_NFA	; LFA: previous name field in this vocabulary chain
-SB:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: SB [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Stack (from code): ( -- block-number )
+; ; Original C64 manual: A system constant, #30 hex in this system, which specifies the 64
+; ; byte block where the sprite data definitions start; $40 hex=64 decimal, and
+; ; $30 times $40 is $0C00, the start of the sprite definition area.
+; SB_NFA:
+; 	.byte	$82,"S",$C2
+; 	.word	MASKQ_NFA	; LFA: previous name field in this vocabulary chain
+; SB:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: SBLK [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- a1 )
-; Manual: This is a system constant which returns the address a1 of an array
-; which contains the sprite data block pointer bytes. This array is located
-; at $07F8, just beyond the end of the display screen.
-SBLK_NFA:
-	.byte	$84,"SBL",$CB
-	.word	SB_NFA	; LFA: previous name field in this vocabulary chain
-SBLK:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: SBLK [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- a1 )
+; ; Manual: This is a system constant which returns the address a1 of an array
+; ; which contains the sprite data block pointer bytes. This array is located
+; ; at $07F8, just beyond the end of the display screen.
+; SBLK_NFA:
+; 	.byte	$84,"SBL",$CB
+; 	.word	SB_NFA	; LFA: previous name field in this vocabulary chain
+; SBLK:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: SPBASE [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: Initializes the array SBLK to contain the proper pointers to the
-; sprite data definition areas. Automatically executed when a new sprite is
-; defined, or when a sprite is read from mass storage.
-SPBASE_NFA:
-	.byte	$86,"SPBAS",$C5
-	.word	SBLK_NFA	; LFA: previous name field in this vocabulary chain
-; Initialize the eight default-screen sprite pointers at $07F8 to consecutive
-; 64-byte sprite blocks beginning at SB. These pointers depend on the VIC
-; screen/bank configuration.
-SPBASE:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: SPBASE [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: Initializes the array SBLK to contain the proper pointers to the
+; ; sprite data definition areas. Automatically executed when a new sprite is
+; ; defined, or when a sprite is read from mass storage.
+; SPBASE_NFA:
+; 	.byte	$86,"SPBAS",$C5
+; 	.word	SBLK_NFA	; LFA: previous name field in this vocabulary chain
+; ; Initialize the eight default-screen sprite pointers at $07F8 to consecutive
+; ; 64-byte sprite blocks beginning at SB. These pointers depend on the VIC
+; ; screen/bank configuration.
+; SPBASE:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: CUR [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1/n2 --- )
-; Manual: This is another sprite system primitive, but one which might be
-; useful to some people. It allows you to specify the location on the screen
-; where the cursor will be 119 positioned, by performing the system call
-; which positions the cursor. The parameters are n1 = the X position, and n2
-; = the Y position for the new cursor location.
-CUR_NFA:
-	.byte	$83,"CU",$D2
-	.word	SPBASE_NFA	; LFA: previous name field in this vocabulary chain
-CUR:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: CUR [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1/n2 --- )
+; ; Manual: This is another sprite system primitive, but one which might be
+; ; useful to some people. It allows you to specify the location on the screen
+; ; where the cursor will be 119 positioned, by performing the system call
+; ; which positions the cursor. The parameters are n1 = the X position, and n2
+; ; = the Y position for the new cursor location.
+; CUR_NFA:
+; 	.byte	$83,"CU",$D2
+; 	.word	SPBASE_NFA	; LFA: previous name field in this vocabulary chain
+; CUR:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: VDG [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: A system sprite editor primitive used to draw a vertical line on
-; the screen at column n1. Not a user word.
-VDG_NFA:
-	.byte	$83,"VD",$C7
-	.word	CUR_NFA	; LFA: previous name field in this vocabulary chain
-VDG:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: VDG [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: A system sprite editor primitive used to draw a vertical line on
+; ; the screen at column n1. Not a user word.
+; VDG_NFA:
+; 	.byte	$83,"VD",$C7
+; 	.word	CUR_NFA	; LFA: previous name field in this vocabulary chain
+; VDG:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: BDG [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: This is another system sprite primitive. It draws a horizontal line
-; on the screen as a line specified by n1, 26 characters long, to make the
-; top and bottom of the borders of the sprite editor. This is not a user
-; word.
-BDG_NFA:
-	.byte	$83,"BD",$C7
-	.word	VDG_NFA	; LFA: previous name field in this vocabulary chain
-BDG:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: BDG [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: This is another system sprite primitive. It draws a horizontal line
+; ; on the screen as a line specified by n1, 26 characters long, to make the
+; ; top and bottom of the borders of the sprite editor. This is not a user
+; ; word.
+; BDG_NFA:
+; 	.byte	$83,"BD",$C7
+; 	.word	VDG_NFA	; LFA: previous name field in this vocabulary chain
+; BDG:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: -SPOBJ [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- n1/a1 )
-; Manual: Converts the sprite number n1 to the address a1 of the data
-; definition area for that sprite. Also leaves a copy of the sprite number on
-; the stack as n1. This is a low level sprite manipulation word, normally
-; used only by the system.
-DSPOBJ_NFA:
-	.byte	$86,"-SPOB",$CA
-	.word	BDG_NFA	; LFA: previous name field in this vocabulary chain
-DSPOBJ:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: -SPOBJ [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- n1/a1 )
+; ; Manual: Converts the sprite number n1 to the address a1 of the data
+; ; definition area for that sprite. Also leaves a copy of the sprite number on
+; ; the stack as n1. This is a low level sprite manipulation word, normally
+; ; used only by the system.
+; DSPOBJ_NFA:
+; 	.byte	$86,"-SPOB",$CA
+; 	.word	BDG_NFA	; LFA: previous name field in this vocabulary chain
+; DSPOBJ:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: RBYT [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: A system primitive, used to read a byte of the sprite currently
-; selected and about to be edited. A "*" is shown on the screen for each bit
-; of the byte read, which was non zero. Probably not a useful user word.
-RBYT_NFA:
-	.byte	$84,"RBY",$D4
-	.word	DSPOBJ_NFA	; LFA: previous name field in this vocabulary chain
-RBYT:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: RBYT [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: A system primitive, used to read a byte of the sprite currently
+; ; selected and about to be edited. A "*" is shown on the screen for each bit
+; ; of the byte read, which was non zero. Probably not a useful user word.
+; RBYT_NFA:
+; 	.byte	$84,"RBY",$D4
+; 	.word	DSPOBJ_NFA	; LFA: previous name field in this vocabulary chain
+; RBYT:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: SPEDIT [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: Enters the sprite edit mode with sprite n1. Shows the current form
-; of the selected sprite. SPEDIT is terminated by pressing <RETURN>.
-SPEDIT_NFA:
-	.byte	$86,"SPEDI",$D4
-	.word	MCLR2_NFA	; LFA: previous name field in this vocabulary chain
-; Interactive sprite editor: display the editing guide, initialize
-; sprite/cursor state and key-repeat behavior, process 21 rows of three
-; bytes, then wait for RETURN and rebuild the sprite data.
-SPEDIT:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: SPEDIT [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: Enters the sprite edit mode with sprite n1. Shows the current form
+; ; of the selected sprite. SPEDIT is terminated by pressing <RETURN>.
+; SPEDIT_NFA:
+; 	.byte	$86,"SPEDI",$D4
+; 	.word	MCLR2_NFA	; LFA: previous name field in this vocabulary chain
+; ; Interactive sprite editor: display the editing guide, initialize
+; ; sprite/cursor state and key-repeat behavior, process 21 rows of three
+; ; bytes, then wait for RETURN and rebuild the sprite data.
+; SPEDIT:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: NEWSPRITE [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: Enters the sprite editor, with sprite n1 cleared. You now use the
-; cursor movement keys and the star (*) symbol to draw your sprite on the
-; screen within the box shown. Pairs of symbols in the form "**", "_*", "*_"
-; or "__" are used to select the specific color in multi-color mode.
-NEWSPRITE_NFA:
-	.byte	$89,"NEWSPRIT",$C5
-	.word	SPEDIT_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: NEWSPRITE [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: Enters the sprite editor, with sprite n1 cleared. You now use the
+; ; cursor movement keys and the star (*) symbol to draw your sprite on the
+; ; screen within the box shown. Pairs of symbols in the form "**", "_*", "*_"
+; ; or "__" are used to select the specific color in multi-color mode.
+; NEWSPRITE_NFA:
+; 	.byte	$89,"NEWSPRIT",$C5
+; 	.word	SPEDIT_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: SCRN? [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- n2 )
-; Manual: A system primitive, which converts the sprite number n1 to the mass
-; storage screen which contains, or will contain, the data statements for
-; that sprite. Each sprite is assigned a particular location on a mass
-; storage screen. Eight (8) sprites can be stored in two screens. Sprites 0
-; to 3 are always located in screen one (1), and sprites 4 through 7 are
-; always located in screen two (2). Each sprite is 142 assigned four (4)
-; lines of its first screen to hold the ASCII decimal values associated with
-; that sprite. Sprite 0 is located on line 0 through 3 of screen 1, sprite 1
-; is located on fines 4 through 7 of screen 1, and so on. See also SPWRITE
-; and SPREAD.
-SCRNQ_NFA:
-	.byte	$85,"SCRN",$BF
-	.word	RBYT_NFA	; LFA: previous name field in this vocabulary chain
-; Split a sprite index (clamped to at most 7) using /MOD by four: return the
-; slot within a screen and screen number 1 or 2. SPWRITE/SPREAD use 256 text
-; bytes per serialized sprite.
-SCRNQ:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: SCRN? [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- n2 )
+; ; Manual: A system primitive, which converts the sprite number n1 to the mass
+; ; storage screen which contains, or will contain, the data statements for
+; ; that sprite. Each sprite is assigned a particular location on a mass
+; ; storage screen. Eight (8) sprites can be stored in two screens. Sprites 0
+; ; to 3 are always located in screen one (1), and sprites 4 through 7 are
+; ; always located in screen two (2). Each sprite is 142 assigned four (4)
+; ; lines of its first screen to hold the ASCII decimal values associated with
+; ; that sprite. Sprite 0 is located on line 0 through 3 of screen 1, sprite 1
+; ; is located on fines 4 through 7 of screen 1, and so on. See also SPWRITE
+; ; and SPREAD.
+; SCRNQ_NFA:
+; 	.byte	$85,"SCRN",$BF
+; 	.word	RBYT_NFA	; LFA: previous name field in this vocabulary chain
+; ; Split a sprite index (clamped to at most 7) using /MOD by four: return the
+; ; slot within a screen and screen number 1 or 2. SPWRITE/SPREAD use 256 text
+; ; bytes per serialized sprite.
+; SCRNQ:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: SPWRITE [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: Writes sprite n1 out of the FORTH screen, either screen 1 or 2,
-; from the sprite data area where it may be written to or read from. Sprites
-; 0 to 3 are on screen 1, and sprites 4 through 7 are on screen 2. Each
-; sprite has four lines, and its data is maintained in ASCII decimal in the
-; screen. See SPREAD.
-SPWRITE_NFA:
-	.byte	$87,"SPWRIT",$C5
-	.word	NEWSPRITE_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: SPWRITE [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: Writes sprite n1 out of the FORTH screen, either screen 1 or 2,
+; ; from the sprite data area where it may be written to or read from. Sprites
+; ; 0 to 3 are on screen 1, and sprites 4 through 7 are on screen 2. Each
+; ; sprite has four lines, and its data is maintained in ASCII decimal in the
+; ; screen. See SPREAD.
+; SPWRITE_NFA:
+; 	.byte	$87,"SPWRIT",$C5
+; 	.word	NEWSPRITE_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: SPREAD [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: Reads sprite n1 from the FORTH screen 1 or 2, into the sprite data
-; area for the sprite specified. Each sprite has a designated area where it
-; may be written to or read from. Sprites 0 to 3 are on screen 1, and sprites
-; 4 through 7 are on screen 2. Each sprite has four lines, and its data is
-; maintained in ASCII decimal in the screen. See SPWRITE.
-SPREAD_NFA:
-	.byte	$86,"SPREA",$C4
-	.word	SPWRITE_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: SPREAD [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: Reads sprite n1 from the FORTH screen 1 or 2, into the sprite data
+; ; area for the sprite specified. Each sprite has a designated area where it
+; ; may be written to or read from. Sprites 0 to 3 are on screen 1, and sprites
+; ; 4 through 7 are on screen 2. Each sprite has four lines, and its data is
+; ; maintained in ASCII decimal in the screen. See SPWRITE.
+; SPREAD_NFA:
+; 	.byte	$86,"SPREA",$C4
+; 	.word	SPWRITE_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 .include "forth_words.inc"

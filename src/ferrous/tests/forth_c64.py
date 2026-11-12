@@ -46,7 +46,7 @@ def dictionary_entries():
             key = name[1], name[2]
             if key in entries:
                 raise ValueError(f"duplicate dictionary entry: {key}")
-            entries[key] = cfa, "; IMNOTWOPR: unavailable;" in block
+            entries[key] = cfa, bool(re.search(r"^; IMNOTWOPR: unavailable;", block, re.M))
     return entries
 
 
@@ -99,6 +99,30 @@ def direct_c64_accesses(source):
 
 
 class ForthPortTests(unittest.TestCase):
+    def test_dictionary_chains_terminate(self):
+        # Reproduce reset_dictionary's RAM vocabulary descriptors. SYSTEM,
+        # ASSEMBLER and EDITOR inherit FORTH through these mutable links.
+        memory = bytearray(0x10000)
+        memory[0xC000:] = ROM
+        start = LABELS["FORTH_NFA"]
+        end = LABELS["VOCABULARY_LATEST_TABLE"]
+        ram = 0x0840  # RAMVOC; assembler constants are not exported in forth.lbl.
+        memory[ram:ram + end - start] = memory[start:end]
+        for vocabulary in ("FORTH", "SYSTEM", "ASSEMBLER", "EDITOR"):
+            with self.subTest(vocabulary=vocabulary):
+                nfa = cell(LABELS[vocabulary + "_LATEST"])
+                seen = set()
+                while nfa:
+                    self.assertNotIn(nfa, seen, f"Dictionary loop at ${nfa:04X}")
+                    seen.add(nfa)
+                    self.assertTrue(memory[nfa] & 0x80,
+                                    f"Invalid header at ${nfa:04X}")
+                    length = memory[nfa] & 0x1F
+                    self.assertGreater(length, 0)
+                    self.assertTrue(memory[nfa + length] & 0x80)
+                    lfa = nfa + 1 + length
+                    nfa = int.from_bytes(memory[lfa:lfa + 2], "little")
+
     def run_monitor(self, commands, *, stops=None):
         result = subprocess.run(
             [str(EXECUTABLE), "--profile", str(PROFILE),
@@ -155,7 +179,6 @@ class ForthPortTests(unittest.TestCase):
             ("BORDER", "FORTH"), ("UPORT", "FORTH"),
             ("OPEN", "SYSTEM"), ("CHRIN", "SYSTEM"), ("SETNAM", "SYSTEM"),
             ("DISK", "FORTH"), ("FILE", "FORTH"), (">RAM", "SYSTEM"),
-            ("S!", "FORTH"), ("VOICE1", "FORTH"), ("SPEDIT", "FORTH"),
             ("EDIT", "FORTH"), ("V", "EDITOR"),
         }
         self.assertTrue(expected <= stubs.keys())
