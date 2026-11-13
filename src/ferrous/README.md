@@ -68,6 +68,41 @@ Run the monitor emulator tests after building:
 python3 tests/monitor.py ../joshua/build/gcc14/joshua
 ```
 
+## System diagnostics
+
+Build with `make sysdiag` and load `sysdiag.bin` (Joshua profile:
+`../joshua/profiles/sysdiag.profile`). Select **5. I2C SCAN** and press Enter
+to probe 7-bit addresses `$08` through `$77` on VIA port B (PB7 = SDA,
+PB6 = SCL). External pull-ups are required; the driver assumes a 1 MHz CPU.
+Each responding device is printed to the serial TTY, for example:
+
+```text
+I2C SCAN (7-BIT $08-$77)
+FOUND $3C
+FOUND $68
+I2C SCAN COMPLETE
+```
+
+An empty scan prints `NO I2C DEVICES FOUND`; a START/STOP clock timeout prints
+`I2C SCAN FAILED: SCL TIMEOUT`. The diagnostic then returns to the menu.
+Joshua without an attached I2C target reports no devices; the tests inject
+responses to exercise reporting and do not validate physical bus timing.
+
+Assembly callers pass a reporting callback address to `i2c_scan_bus` in
+A (low byte) and X (high byte), or `$0000` to omit reporting. After each
+acknowledged probe and successful STOP, the callback receives the 7-bit address
+in A and returns with `RTS`. It may clobber A/X/Y and flags, must balance the
+stack, and must not recursively scan the bus. The callback pointer is private
+to the kernel; no additional exports are required.
+
+Run the diagnostics and I2C tests after building all ROMs:
+
+```sh
+make all
+python3 tests/sysdiag.py ../joshua/build/gcc14/joshua -v
+python3 tests/i2c.py ../joshua/build/gcc14/joshua -v
+```
+
 ## Forth port
 
 The dedicated [Forth README](README_FORTH.md) covers the interactive serial

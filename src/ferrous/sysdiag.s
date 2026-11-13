@@ -4,8 +4,10 @@
 .import acia_init
 .import print_text
 .import print_chr
+.import print_newline
 .import read_text
 .import input_buffer
+.import i2c_scan_bus
 
 .segment "ZEROPAGE"
 mem_test_addr:	.res	2	; Current address (little endian).
@@ -14,6 +16,7 @@ mem_test_addr:	.res	2	; Current address (little endian).
 mem_test_start:	.res	2	; Inclusive start/end, preserved by the loop.
 mem_test_end:	.res	2
 hex_value:	.res	2	; Scratch value used while parsing input.
+i2c_found_count: .res 1
 
 .segment "PROGRAM_CODE"
 reset:
@@ -219,12 +222,61 @@ option_4:
 	jsr	print_text
 	rts
 
+do_i2c_scan:
+	stz	i2c_found_count
+	lda	#<i2c_scan_text
+	ldx	#>i2c_scan_text
+	jsr	print_text
+	lda	#<i2c_device_found
+	ldx	#>i2c_device_found
+	jsr	i2c_scan_bus
+	bcs	i2c_scan_failed
+	lda	i2c_found_count
+	beq	i2c_scan_empty
+	lda	#<i2c_scan_done_text
+	ldx	#>i2c_scan_done_text
+	jmp	print_text
+i2c_scan_empty:
+	lda	#<i2c_scan_empty_text
+	ldx	#>i2c_scan_empty_text
+	jmp	print_text
+i2c_scan_failed:
+	lda	#<i2c_scan_failed_text
+	ldx	#>i2c_scan_failed_text
+	jmp	print_text
+
+; Scanner callback: A is the responding 7-bit address, not the wire byte.
+i2c_device_found:
+	inc	i2c_found_count
+	pha
+	lda	#<i2c_found_text
+	ldx	#>i2c_found_text
+	jsr	print_text
+	pla
+	jsr	print_hex_byte
+	jmp	print_newline
+
+; Print A as two uppercase hexadecimal digits; clobbers A/X and flags.
+print_hex_byte:
+	pha
+	lsr
+	lsr
+	lsr
+	lsr
+	jsr	print_hex_nibble
+	pla
+	and	#$0F
+print_hex_nibble:
+	tax
+	lda	hex_digits,x
+	jmp	print_chr
+
 .segment "RODATA"
 
 ; To add an option, add its handler, table entry and menu label.
 ; Single-digit selections support up to nine options.
 option_handlers:
-	.word	do_mem_test, option_2, option_3, option_4
+	.word	do_mem_test, option_2, option_3, option_4, do_i2c_scan
 MENU_COUNT = (* - option_handlers) / 2
 .assert MENU_COUNT >= 1 .and MENU_COUNT <= 9, error, "Menu requires 1..9 options"
 
@@ -235,6 +287,7 @@ menu_text:
 	.byte	"2. VIA 2", $0D, $0A
 	.byte	"3. ACIA", $0D, $0A
 	.byte	"4. PSG", $0D, $0A
+	.byte	"5. I2C SCAN", $0D, $0A
 	.byte   $0D, $0A,0
 prompt:
 	.asciiz	"Select an option and press Enter: "
@@ -248,6 +301,18 @@ option_3_text:
 	.byte	"option 3", $0D, $0A, 0
 option_4_text:
 	.byte	"option 4", $0D, $0A, 0
+i2c_scan_text:
+	.byte	"I2C SCAN (7-BIT $08-$77)", $0D, $0A, 0
+i2c_found_text:
+	.asciiz	"FOUND $"
+i2c_scan_done_text:
+	.byte	"I2C SCAN COMPLETE", $0D, $0A, 0
+i2c_scan_empty_text:
+	.byte	"NO I2C DEVICES FOUND", $0D, $0A, 0
+i2c_scan_failed_text:
+	.byte	"I2C SCAN FAILED: SCL TIMEOUT", $0D, $0A, 0
+hex_digits:
+	.byte	"0123456789ABCDEF"
 
 done_text:
 	.byte	$0D, $0A, "DONE", $0D, $0A,0
