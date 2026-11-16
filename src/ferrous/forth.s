@@ -4,6 +4,10 @@
 ; Based/Inspired on/by 64FORTH By Tom Zimmer
 ; ============================================================================
 
+; C64-only dictionary definitions are commented out below for reference.
+; Active vocabulary links bypass them; they are neither listed nor searchable.
+; Private error tokens remain for legacy vectors and block-input guards.
+;
 ; LABEL CONVENTIONS
 ;   <word>_NFA names a dictionary header; reuse the existing CFA stem when
 ;   present (QSTAC_NFA / QSTAC). ASM_ and EDITOR_ distinguish words without
@@ -147,86 +151,86 @@ VWORDS:
 ; a zero byte. PKEY scans CTBL, executes a matching action and retries when
 ; it returns zero. $94 appears twice; the earlier matching action can consume
 ; it. Codes $85/$86/$87/$88 are F1/F3/F5/F7; $89/$8A/$8B/$8C are F2/F4/F6/F8.
-EDITOR_KEY_TABLE:
-	.byte	$94		    ; 
-	.word	EDITOR_MOVE
+; EDITOR_KEY_TABLE:
+; 	.byte	$94		    ;
+; 	.word	EDITOR_MOVE
 
-	.byte	$85		    ; F1
-	.word	EDITOR_KEY_F1
+; 	.byte	$85		    ; F1
+; 	.word	EDITOR_KEY_F1
 
-	.byte	$86		    ; F3
-	.word	EDITOR_KEY_F3
+; 	.byte	$86		    ; F3
+; 	.word	EDITOR_KEY_F3
 
-	.byte	$87		    ; F5
-	.word	EDITOR_KEY_F5
+; 	.byte	$87		    ; F5
+; 	.word	EDITOR_KEY_F5
 
-	.byte	$1D		    ; RIGHT
-	.word	EDITOR_KEY_RIGHT
+; 	.byte	$1D		    ; RIGHT
+; 	.word	EDITOR_KEY_RIGHT
 
-	.byte	$9D		    ; LEFT
-	.word	EDITOR_KEY_LEFT
+; 	.byte	$9D		    ; LEFT
+; 	.word	EDITOR_KEY_LEFT
 
-	.byte	$11		    ; DOWN
-	.word	EDITOR_KEY_DOWN
+; 	.byte	$11		    ; DOWN
+; 	.word	EDITOR_KEY_DOWN
 
-	.byte	$91		    ; UP
-	.word	EDITOR_KEY_UP
+; 	.byte	$91		    ; UP
+; 	.word	EDITOR_KEY_UP
 
-	.byte	$13		    ; CTL-S
-	.word	TOP
+; 	.byte	$13		    ; CTL-S
+; 	.word	TOP
 
-	.byte	$89		    ; F2
-	.word	NN
+; 	.byte	$89		    ; F2
+; 	.word	NN
 
-	.byte	$8A		    ; F4
-	.word	BB
+; 	.byte	$8A		    ; F4
+; 	.word	BB
 
-	.byte	$88		    ; F7
-	.word	PFF
+; 	.byte	$88		    ; F7
+; 	.word	PFF
 
-	.byte	$8C		    ; F8
-	.word	EDITOR_KEY_F8
+; 	.byte	$8C		    ; F8
+; 	.word	EDITOR_KEY_F8
 
-	.byte	$94		    ; 
-	.word	EDITOR_MOVE
+; 	.byte	$94		    ;
+; 	.word	EDITOR_MOVE
 
-	.byte	$8B		    ; F6
-	.word	EDITOR_KEY_F6
+; 	.byte	$8B		    ; F6
+; 	.word	EDITOR_KEY_F6
 
-	.byte	$B0		    ; CBM-A
-	.word	EDITOR_KEY_F3
+; 	.byte	$B0		    ; CBM-A
+; 	.word	EDITOR_KEY_F3
 
-	.byte	$AE		    ; CBM-S
-	.word	EDITOR_KEY_LEFT
+; 	.byte	$AE		    ; CBM-S
+; 	.word	EDITOR_KEY_LEFT
 
-	.byte	$AC		    ; CBM-D
-	.word	EDITOR_KEY_RIGHT
+; 	.byte	$AC		    ; CBM-D
+; 	.word	EDITOR_KEY_RIGHT
 
-	.byte	$BB		    ; CBM-B
-	.word	EDITOR_KEY_F1
+; 	.byte	$BB		    ; CBM-B
+; 	.word	EDITOR_KEY_F1
 
-	.byte	$B1		    ; CBM-E
-	.word	EDITOR_KEY_UP
+; 	.byte	$B1		    ; CBM-E
+; 	.word	EDITOR_KEY_UP
 
-	.byte	$B2		    ; CBM-R
-	.word	BB
+; 	.byte	$B2		    ; CBM-R
+; 	.word	BB
 
-	.byte	$BD		    ; CBM-X
-	.word	EDITOR_KEY_DOWN
+; 	.byte	$BD		    ; CBM-X
+; 	.word	EDITOR_KEY_DOWN
 
-	.byte	$BC		    ; CBM-C
-	.word	NN
+; 	.byte	$BC		    ; CBM-C
+; 	.word	NN
 
-	.byte	$A5		    ; CBM-G
-	.word	EDITOR_KEY_CBM_G
+; 	.byte	$A5		    ; CBM-G
+; 	.word	EDITOR_KEY_CBM_G
 
-	.byte	$AD		    ; CBM-Z
-	.word	EDITOR_KEY_CBM_Z
+; 	.byte	$AD		    ; CBM-Z
+; 	.word	EDITOR_KEY_CBM_Z
 
-	.byte	$B7		    ; CBM-Y
-	.word	EDITOR_KEY_CBM_Y
+; 	.byte	$B7		    ; CBM-Y
+; 	.word	EDITOR_KEY_CBM_Y
 
-	.byte	0
+; 	.byte	0
 
 ; Default capture table: RETURN ($8D, shifted RETURN) invokes the
 ; copyright-message thread. Zero ends the table.
@@ -1012,26 +1016,26 @@ CMOVE_COPY_BYTE:
 	inc	N+3
 	jmp	CMOVE_CHECK_COUNT
 
-; ----------------------------------------------------------------------------
-; Dictionary: SMOVE [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( a1/a2 --- a1/a2 )
-; Manual: This word moves 40 characters from address a1 to 143 address a2,
-; and modifies the date during the move, from ASCII to the Commodore
-; equivalent value to show properly on the screen. Address a1 and a2 are
-; returned unmodified. Address a2 is normally on the Commodore 64's screen,
-; in the range 1024 to 2040, and address a1 is normally somewhere within the
-; FORTH screen buffer. When this word is used in a DO LOOP, a full 24 line
-; screen can be moved from anywhere in memory, to the screen in less than 50
-; milli-seconds. Pronounced "screen move."
-SMOVE_NFA:
-	.byte	$85,"SMOV",$C5
-	.word	CMOVE_NFA	; LFA: previous name field in this vocabulary chain
-; Display helper: copy exactly 40 bytes backwards, subtracting 64 from
-; character values >=64 to form screen codes. Restoring XSAVE means the two
-; address arguments remain on the data stack.
-SMOVE:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ----------------------------------------------------------------------------
+; ; Dictionary: SMOVE [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( a1/a2 --- a1/a2 )
+; ; Manual: This word moves 40 characters from address a1 to 143 address a2,
+; ; and modifies the date during the move, from ASCII to the Commodore
+; ; equivalent value to show properly on the screen. Address a1 and a2 are
+; ; returned unmodified. Address a2 is normally on the Commodore 64's screen,
+; ; in the range 1024 to 2040, and address a1 is normally somewhere within the
+; ; FORTH screen buffer. When this word is used in a DO LOOP, a full 24 line
+; ; screen can be moved from anywhere in memory, to the screen in less than 50
+; ; milli-seconds. Pronounced "screen move."
+; SMOVE_NFA:
+; 	.byte	$85,"SMOV",$C5
+; 	.word	CMOVE_NFA	; LFA: previous name field in this vocabulary chain
+; ; Display helper: copy exactly 40 bytes backwards, subtracting 64 from
+; ; character values >=64 to form screen codes. Restoring XSAVE means the two
+; ; address arguments remain on the data stack.
+; SMOVE:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: U* [FORTH].
@@ -1039,7 +1043,8 @@ SMOVE:
 ; Manual: Leaves the unsigned double number product of two unsigned numbers.
 USTAR_NFA:
 	.byte	$82,"U",$AA
-	.word	SMOVE_NFA	; LFA: previous name field in this vocabulary chain
+	.word	CMOVE_NFA	; LFA: previous name field in this vocabulary chain
+	; .word	SMOVE_NFA	; LFA: previous name field in this vocabulary chain
 ; Unsigned 16x16 multiply producing a 32-bit result in the two input cells.
 ; Sixteen shift/add iterations; N holds a saved multiplicand. The high result
 ; cell is at the top of stack.
@@ -2240,26 +2245,27 @@ DCHAN:
 	.word	DOUSE		; CFA: user variable; push UP + unsigned offset byte
 	.byte	$C4			; User offset $00C4; initial address $0A04
 
-; ---------------------------------------------------------------------------
-; Dictionary: CURVOICE [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- a1 )
-; Manual: A user variable, which holds the number of the current voice on
-; which the sound control words are working. This is used to simplify and
-; reduce the stack operations that have to be done when working with the
-; complex sound system in the SID chip.
-CURVOC_NFA:
-	.byte	$88,"CURVOIC",$C5
-	.word	DCHAN_NFA		; LFA: previous name field in this vocabulary chain
-CURVOC:
-	.word	NO_C64		; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: CURVOICE [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- a1 )
+; ; Manual: A user variable, which holds the number of the current voice on
+; ; which the sound control words are working. This is used to simplify and
+; ; reduce the stack operations that have to be done when working with the
+; ; complex sound system in the SID chip.
+; CURVOC_NFA:
+; 	.byte	$88,"CURVOIC",$C5
+; 	.word	DCHAN_NFA		; LFA: previous name field in this vocabulary chain
+; CURVOC:
+; 	.word	NO_C64		; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: IFLAG [FORTH].
 ; Implementation: ( -- addr ) Address of the editor insert/overwrite flag.
 IFLAG_NFA:
 	.byte	$85,"IFLA",$C7
-	.word	CURVOC_NFA		; LFA: previous name field in this vocabulary chain
+	.word	DCHAN_NFA		; LFA: previous name field in this vocabulary chain
+	; .word	CURVOC_NFA		; LFA: previous name field in this vocabulary chain
 IFLAG:
 	.word	DOUSE		; CFA: user variable; push UP + unsigned offset byte
 	.byte	$D4			; User offset $00D4; initial address $0A14
@@ -3189,7 +3195,7 @@ WORD:
 	.word	ZBRAN,$C	; Pop flag; if zero branch to $8EA3 (offset +12 from operand cell)
 	.word	BLK
 	.word	AT
-	.word	BLOCK
+	.word	C64_ERROR	; Block input unavailable; private error token
 	.word	BRAN,6	; Jump to $8EA7 (offset +6 from operand cell)
 	.word	TIB
 	.word	AT
@@ -4129,51 +4135,51 @@ MSLM:
 	.word	SEMIS	; Return to caller thread
 
 ; ---------------------------------------------------------------------------
-; Dictionary: BLOCK [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- a1 )
-; Manual: This word is a FORTH mass storage primitive, which returns the
-; address a1 of screen n1. If a disk file is open, the screen will be read
-; into memory if required, before returning the address. The range of screens
-; accessible is limited by the range 1 through the value specified in
-; variable BMAX. BMAX is initialized to 16. As a result, no disk file can be
-; larger than 16k, unless you change the value in BMAX to some number greater
-; than 16. Only 16 continuous screens can be held in memory at one time, so
-; additional time overhead will occur if you frequently access screens which
-; are exactly 16 apart, that is, screens 1 and 17, or 2 and 18, etc. Once a
-; screen is read in from mass storage, it remains in memory until it is
-; over-written by a screen 16 or higher or 16 lower than it, or en
-; EMPTYBUFFERS is performed. [See full entry in 64FORTH.TXT.]
-BLOCK_NFA:
-	.byte	$85,"BLOC",$CB
-	.word	MSLM_NFA	; LFA: previous name field in this vocabulary chain
-BLOCK:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: BLOCK [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- a1 )
+; ; Manual: This word is a FORTH mass storage primitive, which returns the
+; ; address a1 of screen n1. If a disk file is open, the screen will be read
+; ; into memory if required, before returning the address. The range of screens
+; ; accessible is limited by the range 1 through the value specified in
+; ; variable BMAX. BMAX is initialized to 16. As a result, no disk file can be
+; ; larger than 16k, unless you change the value in BMAX to some number greater
+; ; than 16. Only 16 continuous screens can be held in memory at one time, so
+; ; additional time overhead will occur if you frequently access screens which
+; ; are exactly 16 apart, that is, screens 1 and 17, or 2 and 18, etc. Once a
+; ; screen is read in from mass storage, it remains in memory until it is
+; ; over-written by a screen 16 or higher or 16 lower than it, or en
+; ; EMPTYBUFFERS is performed. [See full entry in 64FORTH.TXT.]
+; BLOCK_NFA:
+; 	.byte	$85,"BLOC",$CB
+; 	.word	MSLM_NFA	; LFA: previous name field in this vocabulary chain
+; BLOCK:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: (LINE) [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 n2 --- a count )
-; Manual: Converts the line number n1 and the screen n2 to the disk buffers
-; address containing the data. A count of 64 indicates the full fine text
-; length.
-PLINE_NFA:
-	.byte	$86,"(LINE",$A9
-	.word	BLOCK_NFA	; LFA: previous name field in this vocabulary chain
-PLINE:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: (LINE) [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 n2 --- a count )
+; ; Manual: Converts the line number n1 and the screen n2 to the disk buffers
+; ; address containing the data. A count of 64 indicates the full fine text
+; ; length.
+; PLINE_NFA:
+; 	.byte	$86,"(LINE",$A9
+; 	.word	BLOCK_NFA	; LFA: previous name field in this vocabulary chain
+; PLINE:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: .LINE [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1/n2 --- )
-; Manual: Prints on the terminal device, a line of text from the disk or
-; cassette by its line and screen numbers. Trailing blanks are suppressed.
-DLINE_NFA:
-	.byte	$85,".LIN",$C5
-	.word	PLINE_NFA	; LFA: previous name field in this vocabulary chain
-DLINE:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: .LINE [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1/n2 --- )
+; ; Manual: Prints on the terminal device, a line of text from the disk or
+; ; cassette by its line and screen numbers. Trailing blanks are suppressed.
+; DLINE_NFA:
+; 	.byte	$85,".LIN",$C5
+; 	.word	PLINE_NFA	; LFA: previous name field in this vocabulary chain
+; DLINE:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: MESSAGE [FORTH].
@@ -4182,7 +4188,8 @@ DLINE:
 ; 64FORTH prints the error messages from ROM memory, and not from disk.
 MESS_NFA:
 	.byte	$87,"MESSAG",$C5
-	.word	DLINE_NFA	; LFA: previous name field in this vocabulary chain
+	.word	MSLM_NFA	; LFA: previous name field in this vocabulary chain
+	; .word	DLINE_NFA	; LFA: previous name field in this vocabulary chain
 MESS:
 	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
 	.word	CLIT	; Push following inline byte, zero-extended
@@ -4200,16 +4207,16 @@ MESS:
 	.word	SEMIS	; Return to caller thread
 
 ; ---------------------------------------------------------------------------
-; Dictionary: LOAD [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n --- )
-; Manual: Begins interpretation of screen n. Loading will terminate at the
-; end of screen or at ;S. See ;S and -->
-LOAD_NFA:
-	.byte	$84,"LOA",$C4
-	.word	MESS_NFA	; LFA: previous name field in this vocabulary chain
-LOAD:
-    .word NO_C64
+; ; Dictionary: LOAD [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n --- )
+; ; Manual: Begins interpretation of screen n. Loading will terminate at the
+; ; end of screen or at ;S. See ;S and -->
+; LOAD_NFA:
+; 	.byte	$84,"LOA",$C4
+; 	.word	MESS_NFA	; LFA: previous name field in this vocabulary chain
+; LOAD:
+;     .word NO_C64
 SERIAL_EMIT:
     .word *+2
     REQUIRE_CELLS 1
@@ -4227,7 +4234,7 @@ SERIAL_EMIT:
 ; is given. Pronounced "tick."
 TICK_NFA:
 	.byte	$C1,$A7
-	.word	LOAD_NFA	; LFA: previous name field in this vocabulary chain
+	.word	MESS_NFA	; LFA: previous name field in this vocabulary chain
 TICK:
 	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
 	.word	DFIND
@@ -4688,17 +4695,17 @@ QUES:
 	.word	DOT
 	.word	SEMIS	; Return to caller thread
 
-; ----------------------------------------------------------------------------
-; Dictionary: LIST [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n --- )
-; Manual: Displays the ASCII text of screen n on the selected output device.
-; SCR contains the screen number during and after this process.
-LIST_NFA:
-	.byte	$84,"LIS",$D4
-	.word	QUES_NFA	; LFA: previous name field in this vocabulary chain
-LIST:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ----------------------------------------------------------------------------
+; ; Dictionary: LIST [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n --- )
+; ; Manual: Displays the ASCII text of screen n on the selected output device.
+; ; SCR contains the screen number during and after this process.
+; LIST_NFA:
+; 	.byte	$84,"LIS",$D4
+; 	.word	QUES_NFA	; LFA: previous name field in this vocabulary chain
+; LIST:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: VLIST [FORTH].
@@ -4707,7 +4714,8 @@ LIST:
 ; and any key will continue the scrolling.
 VLIST_NFA:
 	.byte	$85,"VLIS",$D4
-	.word	LIST_NFA	; LFA: previous name field in this vocabulary chain
+	.word	QUES_NFA	; LFA: previous name field in this vocabulary chain
+	; .word	LIST_NFA	; LFA: previous name field in this vocabulary chain
 VLIST:
 	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
 	.word	CONT
@@ -4733,40 +4741,40 @@ VLIST:
 	.word	DROP
 	.word	SEMIS	; Return to caller thread
 
-; ----------------------------------------------------------------------------
-; Dictionary: READS [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1/n2 --- )
-; Manual: Used to READ a group of screens from cassette, into screen n1 for a
-; count of n2 screens. Cannot be made to read screens from disk, since each
-; file must have a unique name.
-READS_NFA:
-	.byte	$85,"READ",$D3
-	.word	VLIST_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ----------------------------------------------------------------------------
+; ; Dictionary: READS [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1/n2 --- )
+; ; Manual: Used to READ a group of screens from cassette, into screen n1 for a
+; ; count of n2 screens. Cannot be made to read screens from disk, since each
+; ; file must have a unique name.
+; READS_NFA:
+; 	.byte	$85,"READ",$D3
+; 	.word	VLIST_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: WRITES [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1/n2 --- )
-; Manual: Screens n1 through n1 + n2 will be written to cassette.
-WRITES_NFA:
-	.byte	$86,"WRITE",$D3
-	.word	READS_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: WRITES [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1/n2 --- )
+; ; Manual: Screens n1 through n1 + n2 will be written to cassette.
+; WRITES_NFA:
+; 	.byte	$86,"WRITE",$D3
+; 	.word	READS_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
-; ---------------------------------------------------------------------------
-; Dictionary: LOADS [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: A mass storage word, used to load from cassette a sequence of
-; screens into screen butter one, and then a one (1) load is performed. This
-; is mainly a hold over from VICFORTH, and was used to minimize the number of
-; buffers required to load a program from cassette.
-LOADS_NFA:
-	.byte	$85,"LOAD",$D3
-	.word	WRITES_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; ---------------------------------------------------------------------------
+; ; Dictionary: LOADS [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: A mass storage word, used to load from cassette a sequence of
+; ; screens into screen butter one, and then a one (1) load is performed. This
+; ; is mainly a hold over from VICFORTH, and was used to minimize the number of
+; ; buffers required to load a program from cassette.
+; LOADS_NFA:
+; 	.byte	$85,"LOAD",$D3
+; 	.word	WRITES_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: EM [FORTH].
@@ -4779,48 +4787,49 @@ LOADS_NFA:
 ; 64FORTH uses all higher memory locations.
 EM_NFA:
 	.byte	$82,"E",$CD
-	.word	LOADS_NFA	; LFA: previous name field in this vocabulary chain
+	.word	VLIST_NFA	; LFA: previous name field in this vocabulary chain
+	; .word	LOADS_NFA	; LFA: previous name field in this vocabulary chain
 EM:
     .word DOCON
     .word memory_limit
 
 ; ---------------------------------------------------------------------------
-; Dictionary: THRU [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1/n2 --- )
-; Manual: Loads screen n1 THRU screen n2. If a disk file is open, the screens
-; will automatically be read in from disk. If used on a cassette based
-; system, the screens must be READ into the screen buffers before the THRU
-; word can be used.
-THRU_NFA:
-	.byte	$84,"THR",$D5
-	.word	EM_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: THRU [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1/n2 --- )
+; ; Manual: Loads screen n1 THRU screen n2. If a disk file is open, the screens
+; ; will automatically be read in from disk. If used on a cassette based
+; ; system, the screens must be READ into the screen buffers before the THRU
+; ; word can be used.
+; THRU_NFA:
+; 	.byte	$84,"THR",$D5
+; 	.word	EM_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: SETNAM [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( a1/n1 --- )
-; Manual: A KERNAL system call, used to set the system filename to the string
-; at address a1, for length n1 characters.
-SETNAM_NFA:
-	.byte	$86,"SETNA",$CD
-	.word	$84C	; LFA: previous name field in this vocabulary chain
-SETNAM:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: SETNAM [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( a1/n1 --- )
+; ; Manual: A KERNAL system call, used to set the system filename to the string
+; ; at address a1, for length n1 characters.
+; SETNAM_NFA:
+; 	.byte	$86,"SETNA",$CD
+; 	.word	$84C	; LFA: previous name field in this vocabulary chain
+; SETNAM:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: NAME [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- (text) )
-; Manual: Accepts A the string of text following, delimited by an up arrow
-; "^", into the FN buffer, and performs a system call to the SETNAM KERNEL
-; routine.
-NAME_NFA:
-	.byte	$84,"NAM",$C5
-	.word	THRU_NFA	; LFA: previous name field in this vocabulary chain
-NAME:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: NAME [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- (text) )
+; ; Manual: Accepts A the string of text following, delimited by an up arrow
+; ; "^", into the FN buffer, and performs a system call to the SETNAM KERNEL
+; ; routine.
+; NAME_NFA:
+; 	.byte	$84,"NAM",$C5
+; 	.word	THRU_NFA	; LFA: previous name field in this vocabulary chain
+; NAME:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: TAB [FORTH].
@@ -4829,7 +4838,7 @@ NAME:
 ; several other words requiring output formatting.
 TAB_NFA:
 	.byte	$83,"TA",$C2
-	.word	NAME_NFA	; LFA: previous name field in this vocabulary chain
+	.word	EM_NFA	; LFA: previous name field in this vocabulary chain
 TAB:
 	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
 	.word	CLIT	; Push following inline byte, zero-extended
@@ -4878,16 +4887,16 @@ TEXT:
 	.word	SEMIS	; Return to caller thread
 
 ; ----------------------------------------------------------------------------
-; Dictionary: LINE [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- a1 )
-; Manual: Returns address all of line n1 in current edit screen as specified
-; by variable SCR.
-LINE_NFA:
-	.byte	$84,"LIN",$C5
-	.word	TEXT_NFA	; LFA: previous name field in this vocabulary chain
-LINE:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: LINE [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- a1 )
+; ; Manual: Returns address all of line n1 in current edit screen as specified
+; ; by variable SCR.
+; LINE_NFA:
+; 	.byte	$84,"LIN",$C5
+; 	.word	TEXT_NFA	; LFA: previous name field in this vocabulary chain
+; LINE:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: 2DUP [FORTH].
@@ -4896,7 +4905,7 @@ LINE:
 ; Pronounced "two dup."
 TDUP_NFA:
 	.byte	$84,"2DU",$D0
-	.word	LINE_NFA	; LFA: previous name field in this vocabulary chain
+	.word	TEXT_NFA	; LFA: previous name field in this vocabulary chain
 TDUP:
 	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
 	.word	OVER
@@ -4992,29 +5001,29 @@ DUMP_NFA:
 ; ---------------------------------------------------------------------------
 ; SCREEN / LINE EDITOR
 ; ---------------------------------------------------------------------------
-; Dictionary: #LOCATE [EDITOR].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- n1/n2 )
-; Manual: An editor primitive which returns the cursor line as n1 and the
-; character position on the line as n2.
-NLOCAT_NFA:
-	.byte	$87,"#LOCAT",$C5
-	.word	$84C	; LFA: previous name field in this vocabulary chain
-NLOCAT:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: #LOCATE [EDITOR].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- n1/n2 )
+; ; Manual: An editor primitive which returns the cursor line as n1 and the
+; ; character position on the line as n2.
+; NLOCAT_NFA:
+; 	.byte	$87,"#LOCAT",$C5
+; 	.word	$84C	; LFA: previous name field in this vocabulary chain
+; NLOCAT:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: BMOV [EDITOR].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( a1 --- )
-; Manual: An editor primitive, (that moves the contents of PAD for C/L
-; characters to address a1) if PAD contains text other than a null in the
-; first character position (pad+1), otherwise, nothing is done.
-BMOV_NFA:
-	.byte	$84,"BMO",$D6
-	.word	NLOCAT_NFA	; LFA: previous name field in this vocabulary chain
-BMOV:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: BMOV [EDITOR].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( a1 --- )
+; ; Manual: An editor primitive, (that moves the contents of PAD for C/L
+; ; characters to address a1) if PAD contains text other than a null in the
+; ; first character position (pad+1), otherwise, nothing is done.
+; BMOV_NFA:
+; 	.byte	$84,"BMO",$D6
+; 	.word	NLOCAT_NFA	; LFA: previous name field in this vocabulary chain
+; BMOV:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: PADF [EDITOR].
@@ -5023,7 +5032,7 @@ BMOV:
 ; text searched for the find buffer.
 PADF_NFA:
 	.byte	$84,"PAD",$C6
-	.word	BMOV_NFA	; LFA: previous name field in this vocabulary chain
+	.word	$84C	; LFA: previous name field in this vocabulary chain
 PADF:
 	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
 	.word	PAD
@@ -5049,206 +5058,207 @@ PADI:
 	.word	SEMIS	; Return to caller thread
 
 ; ----------------------------------------------------------------------------
-; Dictionary: !CUR [EDITOR].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: Moves edit cursor to character position 0 in current edit screen if
-; n1 is in the range 0 to B/BUF-1. !CUR will only change the current cursor
-; position if 0 is within the valid range. Causes the current edit window
-; around the cursor to be viewed in the upper 16 lines of the display.
-STOCUR_NFA:
-	.byte	$84,"!CU",$D2
-	.word	PADI_NFA	; LFA: previous name field in this vocabulary chain
-STOCUR:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: !CUR [EDITOR].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: Moves edit cursor to character position 0 in current edit screen if
+; ; n1 is in the range 0 to B/BUF-1. !CUR will only change the current cursor
+; ; position if 0 is within the valid range. Causes the current edit window
+; ; around the cursor to be viewed in the upper 16 lines of the display.
+; STOCUR_NFA:
+; 	.byte	$84,"!CU",$D2
+; 	.word	PADI_NFA	; LFA: previous name field in this vocabulary chain
+; STOCUR:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: L# [EDITOR].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- n1 )
-; Manual: An editor primitive, which returns the fine number of the line
-; which currently contains the cursor.
-LNUM_NFA:
-	.byte	$82,"L",$A3
-	.word	STOCUR_NFA	; LFA: previous name field in this vocabulary chain
-LNUM:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: L# [EDITOR].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- n1 )
+; ; Manual: An editor primitive, which returns the fine number of the line
+; ; which currently contains the cursor.
+; LNUM_NFA:
+; 	.byte	$82,"L",$A3
+; 	.word	STOCUR_NFA	; LFA: previous name field in this vocabulary chain
+; LNUM:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: #LEAD [EDITOR].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- a1/n1 )
-; Manual: An editor primitive, which returns the address of the cursor line
-; as a1, and the number of characters before the cursor on the line as n1.
-NLEAD_NFA:
-	.byte	$85,"#LEA",$C4
-	.word	LNUM_NFA	; LFA: previous name field in this vocabulary chain
-NLEAD:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: #LEAD [EDITOR].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- a1/n1 )
+; ; Manual: An editor primitive, which returns the address of the cursor line
+; ; as a1, and the number of characters before the cursor on the line as n1.
+; NLEAD_NFA:
+; 	.byte	$85,"#LEA",$C4
+; 	.word	LNUM_NFA	; LFA: previous name field in this vocabulary chain
+; NLEAD:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: #LAG [EDITOR].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- a1/n1 )
-; Manual: An editor primitive, which returns the address of the cursor as a1,
-; and the number of characters remaining on the following the cursor as n1.
-NLAG_NFA:
-	.byte	$84,"#LA",$C7
-	.word	NLEAD_NFA	; LFA: previous name field in this vocabulary chain
-NLAG:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: #LAG [EDITOR].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- a1/n1 )
+; ; Manual: An editor primitive, which returns the address of the cursor as a1,
+; ; and the number of characters remaining on the following the cursor as n1.
+; NLAG_NFA:
+; 	.byte	$84,"#LA",$C7
+; 	.word	NLEAD_NFA	; LFA: previous name field in this vocabulary chain
+; NLAG:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: -MOVE [EDITOR].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( a1/n1 --- )
-; Manual: Moves c/l characters of text from address a1 to line n1 of current
-; edit screen. The screen is updated.
-DMOVE_NFA:
-	.byte	$85,"-MOV",$C5
-	.word	NLAG_NFA	; LFA: previous name field in this vocabulary chain
-DMOVE:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: -MOVE [EDITOR].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( a1/n1 --- )
+; ; Manual: Moves c/l characters of text from address a1 to line n1 of current
+; ; edit screen. The screen is updated.
+; DMOVE_NFA:
+; 	.byte	$85,"-MOV",$C5
+; 	.word	NLAG_NFA	; LFA: previous name field in this vocabulary chain
+; DMOVE:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: H [EDITOR].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: An editor word, which causes a copy of the line currently
-; containing the cursor to be moved to the insert buffer PADI. The text can
-; later be reinserted with "U", or "I" or "P".
-HH_NFA:
-	.byte	$81,$C8
-	.word	DMOVE_NFA	; LFA: previous name field in this vocabulary chain
-HH:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: H [EDITOR].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: An editor word, which causes a copy of the line currently
+; ; containing the cursor to be moved to the insert buffer PADI. The text can
+; ; later be reinserted with "U", or "I" or "P".
+; HH_NFA:
+; 	.byte	$81,$C8
+; 	.word	DMOVE_NFA	; LFA: previous name field in this vocabulary chain
+; HH:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: K [EDITOR].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: An editor word, which erases or "KILLS" the current cursor line.
-; The line is filled with blanks, but no text compression occurs.
-KK_NFA:
-	.byte	$81,$CB
-	.word	HH_NFA	; LFA: previous name field in this vocabulary chain
-KK:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: K [EDITOR].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: An editor word, which erases or "KILLS" the current cursor line.
+; ; The line is filled with blanks, but no text compression occurs.
+; KK_NFA:
+; 	.byte	$81,$CB
+; 	.word	HH_NFA	; LFA: previous name field in this vocabulary chain
+; KK:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: S [EDITOR].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: An editor word, causes all lines from the current cursor line down
-; to be SPREAD down, by one line. Line 15 will be lost, and the current
-; cursor line will become blank.
-SS_NFA:
-	.byte	$81,$D3
-	.word	KK_NFA	; LFA: previous name field in this vocabulary chain
-SS:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: S [EDITOR].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: An editor word, causes all lines from the current cursor line down
+; ; to be SPREAD down, by one line. Line 15 will be lost, and the current
+; ; cursor line will become blank.
+; SS_NFA:
+; 	.byte	$81,$D3
+; 	.word	KK_NFA	; LFA: previous name field in this vocabulary chain
+; SS:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: X [EDITOR].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: An editor word which deletes the current cursor line, placing it in
-; PADI--the insert buffer. All lower lines are moved up to fill the space.
-; The text may be put back into the edit screen, with U <RETURN>, after
-; moving the cursor to the desired line.
-XX_NFA:
-	.byte	$81,$D8
-	.word	SS_NFA	; LFA: previous name field in this vocabulary chain
-XX:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: X [EDITOR].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: An editor word which deletes the current cursor line, placing it in
+; ; PADI--the insert buffer. All lower lines are moved up to fill the space.
+; ; The text may be put back into the edit screen, with U <RETURN>, after
+; ; moving the cursor to the desired line.
+; XX_NFA:
+; 	.byte	$81,$D8
+; 	.word	SS_NFA	; LFA: previous name field in this vocabulary chain
+; XX:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: C [EDITOR].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: An editor primitive, used to move the cursor a RELATIVE amount
-; within the current edit screen. The signed value n1 is added to the current
-; cursor location, and If the value is within the current screen, the cursor
-; location is updated to the new value. Otherwise the cursor location is
-; unchanged. 115
-CC_NFA:
-	.byte	$81,$C3
-	.word	XX_NFA	; LFA: previous name field in this vocabulary chain
-CC:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: C [EDITOR].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: An editor primitive, used to move the cursor a RELATIVE amount
+; ; within the current edit screen. The signed value n1 is added to the current
+; ; cursor location, and If the value is within the current screen, the cursor
+; ; location is updated to the new value. Otherwise the cursor location is
+; ; unchanged. 115
+; CC_NFA:
+; 	.byte	$81,$C3
+; 	.word	XX_NFA	; LFA: previous name field in this vocabulary chain
+; CC:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: T [EDITOR].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: An editor word, moves the cursor to the beginning of line n11 on
-; the current edit screen. N1 is in the range 0 to 15.
-TT_NFA:
-	.byte	$81,$D4
-	.word	CC_NFA	; LFA: previous name field in this vocabulary chain
-TT:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: T [EDITOR].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: An editor word, moves the cursor to the beginning of line n11 on
+; ; the current edit screen. N1 is in the range 0 to 15.
+; TT_NFA:
+; 	.byte	$81,$D4
+; 	.word	CC_NFA	; LFA: previous name field in this vocabulary chain
+; TT:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: GTEXT [EDITOR].
-; Manual stack: ( --- )
-; Manual: An editor primitive. accepts text from the input stream, until a
-; delimiting "^" is encountered, or the (RETURN) key is pressed. The text is
-; placed at address a1, for a length of 65 characters.
-GTEXT_NFA:
-	.byte	$85,"GTEX",$D4
-	.word	TT_NFA	; LFA: previous name field in this vocabulary chain
-GTEXT:
-	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
-	.word	CLIT	; Push following inline byte, zero-extended
-	.byte	"^"
-	.word	TEXT
-	.word	BMOV
-	.word	SEMIS	; Return to caller thread
+; ; Dictionary: GTEXT [EDITOR].
+; ; Disabled: depends on the unavailable C64 BMOV word.
+; ; Manual stack: ( --- )
+; ; Manual: An editor primitive. accepts text from the input stream, until a
+; ; delimiting "^" is encountered, or the (RETURN) key is pressed. The text is
+; ; placed at address a1, for a length of 65 characters.
+; GTEXT_NFA:
+; 	.byte	$85,"GTEX",$D4
+; 	.word	PADI_NFA	; LFA: previous name field in this vocabulary chain
+; GTEXT:
+; 	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
+; 	.word	CLIT	; Push following inline byte, zero-extended
+; 	.byte	"^"
+; 	.word	TEXT
+; 	.word	BMOV
+; 	.word	SEMIS	; Return to caller thread
 
 ; ----------------------------------------------------------------------------
-; Dictionary: P [EDITOR].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Implementation: Editor: parse the following text into PADI, then replace
-; the current line using PP.
-PP_NFA:
-	.byte	$81,$D0
-	.word	GTEXT_NFA	; LFA: previous name field in this vocabulary chain
-PP:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: P [EDITOR].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Implementation: Editor: parse the following text into PADI, then replace
+; ; the current line using PP.
+; PP_NFA:
+; 	.byte	$81,$D0
+; 	.word	GTEXT_NFA	; LFA: previous name field in this vocabulary chain
+; PP:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: U [EDITOR].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- (text) )
-; Manual: An editor word which places the (text) following U under the
-; current cursor line. (text) is optional.
-UU_NFA:
-	.byte	$81,$D5
-	.word	PP_NFA	; LFA: previous name field in this vocabulary chain
-UU:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: U [EDITOR].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- (text) )
+; ; Manual: An editor word which places the (text) following U under the
+; ; current cursor line. (text) is optional.
+; UU_NFA:
+; 	.byte	$81,$D5
+; 	.word	PP_NFA	; LFA: previous name field in this vocabulary chain
+; UU:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: TOP [EDITOR].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual: Sends the cursor to the top left corner of the screen--the home
-; position.
-TOP_NFA:
-	.byte	$83,"TO",$D0
-	.word	UU_NFA	; LFA: previous name field in this vocabulary chain
-TOP:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: TOP [EDITOR].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual: Sends the cursor to the top left corner of the screen--the home
+; ; position.
+; TOP_NFA:
+; 	.byte	$83,"TO",$D0
+; 	.word	UU_NFA	; LFA: previous name field in this vocabulary chain
+; TOP:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: COPY [EDITOR].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1/n2 --- )
-; Manual: Copies screen n1 to screen n2, thereby creating a duplicate screen.
-EDITOR_COPY_NFA:
-	.byte	$84,"COP",$D9
-	.word	TOP_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: COPY [EDITOR].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1/n2 --- )
+; ; Manual: Copies screen n1 to screen n2, thereby creating a duplicate screen.
+; EDITOR_COPY_NFA:
+; 	.byte	$84,"COP",$D9
+; 	.word	TOP_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: MATCH [EDITOR].
@@ -5257,7 +5267,7 @@ EDITOR_COPY_NFA:
 ; cursor-advance count; 1LINE uses that count to update R#.
 MATCH_NFA:
 	.byte	$85,"MATC",$C8
-	.word	EDITOR_COPY_NFA	; LFA: previous name field in this vocabulary chain
+	.word	PADI_NFA	; LFA: previous name field in this vocabulary chain
 MATCH:
 	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
 	.word	TOR
@@ -5295,161 +5305,161 @@ MATCH:
 	.word	SEMIS	; Return to caller thread
 
 ; ----------------------------------------------------------------------------
-; Dictionary: 1LINE [EDITOR].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Implementation: ( -- found ) Search from the cursor to the end of its line
-; for PADF text, update R# by the returned advance, and leave the match flag.
-ONELIN_NFA:
-	.byte	$85,"1LIN",$C5
-	.word	MATCH_NFA	; LFA: previous name field in this vocabulary chain
-ONELIN:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: 1LINE [EDITOR].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Implementation: ( -- found ) Search from the cursor to the end of its line
+; ; for PADF text, update R# by the returned advance, and leave the match flag.
+; ONELIN_NFA:
+; 	.byte	$85,"1LIN",$C5
+; 	.word	MATCH_NFA	; LFA: previous name field in this vocabulary chain
+; ONELIN:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: (F) [EDITOR].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: This is a low level editor primitive, which searches for the next
-; occurence of the text in the PADF buffer. Not normally used by the user,
-; but could be useful if the editor was being expanded with additional
-; commands.
-PFF_NFA:
-	.byte	$83,"(F",$A9
-	.word	ONELIN_NFA	; LFA: previous name field in this vocabulary chain
-PFF:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: (F) [EDITOR].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: This is a low level editor primitive, which searches for the next
+; ; occurence of the text in the PADF buffer. Not normally used by the user,
+; ; but could be useful if the editor was being expanded with additional
+; ; commands.
+; PFF_NFA:
+; 	.byte	$83,"(F",$A9
+; 	.word	ONELIN_NFA	; LFA: previous name field in this vocabulary chain
+; PFF:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: DEL [EDITOR].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: An editor primitive, which deletes n1 characters before the cursor;
-; clips at the beginning of the screen, to prevent deleting off the screen.
-; Text to the right of the cursor on the current line will be moved left to
-; fill the space of the deleted characters.
-DEL_NFA:
-	.byte	$83,"DE",$CC
-	.word	PFF_NFA	; LFA: previous name field in this vocabulary chain
-DEL:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: DEL [EDITOR].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: An editor primitive, which deletes n1 characters before the cursor;
+; ; clips at the beginning of the screen, to prevent deleting off the screen.
+; ; Text to the right of the cursor on the current line will be moved left to
+; ; fill the space of the deleted characters.
+; DEL_NFA:
+; 	.byte	$83,"DE",$CC
+; 	.word	PFF_NFA	; LFA: previous name field in this vocabulary chain
+; DEL:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: F [EDITOR].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- (text)
-; Manual: An editor word which finds the first occurence of (text) following
-; an "F" command. Starts at the current cursor location. (text) is optional,
-; and "F (return)" will find the next occurence of the last text searched
-; for.
-FF_NFA:
-	.byte	$81,$C6
-	.word	DEL_NFA	; LFA: previous name field in this vocabulary chain
-FF:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: F [EDITOR].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- (text)
+; ; Manual: An editor word which finds the first occurence of (text) following
+; ; an "F" command. Starts at the current cursor location. (text) is optional,
+; ; and "F (return)" will find the next occurence of the last text searched
+; ; for.
+; FF_NFA:
+; 	.byte	$81,$C6
+; 	.word	DEL_NFA	; LFA: previous name field in this vocabulary chain
+; FF:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: E [EDITOR].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: An editor word, used after an "F" command, to ERASE the text just
-; found. Deletes characters for the length of the text in the find buffer.
-EE_NFA:
-	.byte	$81,$C5
-	.word	FF_NFA	; LFA: previous name field in this vocabulary chain
-EE:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: E [EDITOR].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: An editor word, used after an "F" command, to ERASE the text just
+; ; found. Deletes characters for the length of the text in the find buffer.
+; EE_NFA:
+; 	.byte	$81,$C5
+; 	.word	FF_NFA	; LFA: previous name field in this vocabulary chain
+; EE:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: D [EDITOR].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- (text) )
-; Manual: Deletes the first occurence of (text) following the D command and
-; then searches from the edit cursor until the end of the screen. (text) is
-; optional, and if omitted, will cause D to delete the same string as used
-; previously.
-EDITOR_D_NFA:
-	.byte	$81,$C4
-	.word	EE_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: D [EDITOR].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- (text) )
+; ; Manual: Deletes the first occurence of (text) following the D command and
+; ; then searches from the edit cursor until the end of the screen. (text) is
+; ; optional, and if omitted, will cause D to delete the same string as used
+; ; previously.
+; EDITOR_D_NFA:
+; 	.byte	$81,$C4
+; 	.word	EE_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: TILL [EDITOR].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Implementation: Editor: read a search string, locate it on the current
-; line, and delete the span from the old cursor to the resulting cursor.
-; PFF handles a failed search.
-EDITOR_TILL_NFA:
-	.byte	$84,"TIL",$CC
-	.word	EDITOR_D_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: TILL [EDITOR].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Implementation: Editor: read a search string, locate it on the current
+; ; line, and delete the span from the old cursor to the resulting cursor.
+; ; PFF handles a failed search.
+; EDITOR_TILL_NFA:
+; 	.byte	$84,"TIL",$CC
+; 	.word	EDITOR_D_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: (I) [EDITOR].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: A low level editor primitive, which inserts the character string
-; held in PADI, into the next text screen at the current location specified
-; by the contents of R#. Potentially useful for future expansion of the
-; editor.
-PII_NFA:
-	.byte	$83,"(I",$A9
-	.word	EDITOR_TILL_NFA	; LFA: previous name field in this vocabulary chain
-PII:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: (I) [EDITOR].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: A low level editor primitive, which inserts the character string
+; ; held in PADI, into the next text screen at the current location specified
+; ; by the contents of R#. Potentially useful for future expansion of the
+; ; editor.
+; PII_NFA:
+; 	.byte	$83,"(I",$A9
+; 	.word	EDITOR_TILL_NFA	; LFA: previous name field in this vocabulary chain
+; PII:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: I [EDITOR].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- (text) )
-; Manual: An editor word, causes (text) to be inserted at the current
-; location of the cursor, with all text following the cursor being moved over
-; to make room. Text on the cursor line too long for the line after the
-; insert will be LOST. (text) is optional, and use of "I" without following
-; text, causes the current contents of PADI the insert buffer to be inserted.
-II_NFA:
-	.byte	$81,$C9
-	.word	PII_NFA	; LFA: previous name field in this vocabulary chain
-II:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: I [EDITOR].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- (text) )
+; ; Manual: An editor word, causes (text) to be inserted at the current
+; ; location of the cursor, with all text following the cursor being moved over
+; ; to make room. Text on the cursor line too long for the line after the
+; ; insert will be LOST. (text) is optional, and use of "I" without following
+; ; text, causes the current contents of PADI the insert buffer to be inserted.
+; II_NFA:
+; 	.byte	$81,$C9
+; 	.word	PII_NFA	; LFA: previous name field in this vocabulary chain
+; II:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: R [EDITOR].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- (text) )
-; Manual: An editor command, replaces the string just found with the "F"
-; command with the (text) following "R" command. (text) is optional, and if
-; omitted, will cause a replace with the last text used in the replace
-; command.
-EDITOR_R_NFA:
-	.byte	$81,$D2
-	.word	II_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: R [EDITOR].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- (text) )
+; ; Manual: An editor command, replaces the string just found with the "F"
+; ; command with the (text) following "R" command. (text) is optional, and if
+; ; omitted, will cause a replace with the last text used in the replace
+; ; command.
+; EDITOR_R_NFA:
+; 	.byte	$81,$D2
+; 	.word	II_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: N [EDITOR].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- a1 ) (assembling)
-; Manual: Used in a code-definition in the form: N1 - sta, or n2 = )Y adc, A
-; constant which leaves the address of a 9 byte workspace in z-page. Within a
-; single code definition, free use may be made over the range N-1 through
-; N-7.
-NN_NFA:
-	.byte	$81,$CE
-	.word	EDITOR_R_NFA	; LFA: previous name field in this vocabulary chain
-NN:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: N [EDITOR].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- a1 ) (assembling)
+; ; Manual: Used in a code-definition in the form: N1 - sta, or n2 = )Y adc, A
+; ; constant which leaves the address of a 9 byte workspace in z-page. Within a
+; ; single code definition, free use may be made over the range N-1 through
+; ; N-7.
+; NN_NFA:
+; 	.byte	$81,$CE
+; 	.word	EDITOR_R_NFA	; LFA: previous name field in this vocabulary chain
+; NN:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: B [EDITOR].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: An editor operation, which causes the edit to be moved to the
-; previous screen. Pronounced "back." 112
-BB_NFA:
-	.byte	$81,$C2
-	.word	NN_NFA	; LFA: previous name field in this vocabulary chain
-BB:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: B [EDITOR].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: An editor operation, which causes the edit to be moved to the
+; ; previous screen. Pronounced "back." 112
+; BB_NFA:
+; 	.byte	$81,$C2
+; 	.word	NN_NFA	; LFA: previous name field in this vocabulary chain
+; BB:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: +SCR [EDITOR].
@@ -5459,7 +5469,7 @@ BB:
 ; BMAX.
 PSCR_NFA:
 	.byte	$84,"+SC",$D2
-	.word	BB_NFA	; LFA: previous name field in this vocabulary chain
+	.word	MATCH_NFA	; LFA: previous name field in this vocabulary chain
 PSCR:
 	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
 	.word	SCR
@@ -5475,63 +5485,63 @@ PSCR:
 	.word	SEMIS	; Return to caller thread
 
 ; ----------------------------------------------------------------------------
-; Dictionary: WIPE [EDITOR].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: An editor word that causes the current editor screen to be cleared
-; to blanks.
-EDITOR_WIPE_NFA:
-	.byte	$84,"WIP",$C5
-	.word	PSCR_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: WIPE [EDITOR].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: An editor word that causes the current editor screen to be cleared
+; ; to blanks.
+; EDITOR_WIPE_NFA:
+; 	.byte	$84,"WIP",$C5
+; 	.word	PSCR_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: M [EDITOR].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1/n2 --- )
-; Manual: An editor line MOVE word used to move the line currently containing
-; the cursor to screen n1, under line n2.
-EDITOR_M_NFA:
-	.byte	$81,$CD
-	.word	EDITOR_WIPE_NFA	; LFA: previous name field in this vocabulary chain
-EDITOR_MOVE:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: M [EDITOR].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1/n2 --- )
+; ; Manual: An editor line MOVE word used to move the line currently containing
+; ; the cursor to screen n1, under line n2.
+; EDITOR_M_NFA:
+; 	.byte	$81,$CD
+; 	.word	EDITOR_WIPE_NFA	; LFA: previous name field in this vocabulary chain
+; EDITOR_MOVE:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: V [EDITOR].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: Causes a VIEW of the current edit screen, around the currently
-; specified cursor location. 149
-VV_NFA:
-	.byte	$81,$D6
-	.word	EDITOR_M_NFA	; LFA: previous name field in this vocabulary chain
-VV:
-EDITOR_KEY_F1:
-EDITOR_KEY_F3:
-EDITOR_KEY_F5:
-EDITOR_KEY_RIGHT:
-EDITOR_KEY_LEFT:
-EDITOR_KEY_DOWN:
-EDITOR_KEY_UP:
-EDITOR_KEY_F8:
-EDITOR_KEY_F6:
-EDITOR_KEY_CBM_Y:
-EDITOR_KEY_CBM_Z:
-EDITOR_KEY_CBM_G:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: V [EDITOR].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: Causes a VIEW of the current edit screen, around the currently
+; ; specified cursor location. 149
+; VV_NFA:
+; 	.byte	$81,$D6
+; 	.word	EDITOR_M_NFA	; LFA: previous name field in this vocabulary chain
+; VV:
+; EDITOR_KEY_F1:
+; EDITOR_KEY_F3:
+; EDITOR_KEY_F5:
+; EDITOR_KEY_RIGHT:
+; EDITOR_KEY_LEFT:
+; EDITOR_KEY_DOWN:
+; EDITOR_KEY_UP:
+; EDITOR_KEY_F8:
+; EDITOR_KEY_F6:
+; EDITOR_KEY_CBM_Y:
+; EDITOR_KEY_CBM_Z:
+; EDITOR_KEY_CBM_G:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: EDIT [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: Enters the split screen editor, on screen n1. The EDITOR is
-; selected, and the editor capture table is enabled. See the EDITOR
-; documentation, for further information on editor commands.
-EDIT_NFA:
-	.byte	$84,"EDI",$D4
-	.word	DUMP_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: EDIT [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: Enters the split screen editor, on screen n1. The EDITOR is
+; ; selected, and the editor capture table is enabled. See the EDITOR
+; ; documentation, for further information on editor commands.
+; EDIT_NFA:
+; 	.byte	$84,"EDI",$D4
+; 	.word	DUMP_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: ASCII [FORTH]; immediate (executes during compilation).
@@ -5540,7 +5550,7 @@ EDIT_NFA:
 ; the first character of the word on the data stack.
 ASCII_NFA:
 	.byte	$C5,"ASCI",$C9
-	.word	EDIT_NFA	; LFA: previous name field in this vocabulary chain
+	.word	DUMP_NFA	; LFA: previous name field in this vocabulary chain
 	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
 	.word	BL
 	.word	WORD
@@ -5567,7 +5577,7 @@ ASCII_NFA:
 ; ASSEMBLER variable N.
 SYS_NFA:
 	.byte	$83,"SY",$D3
-	.word	SETNAM_NFA	; LFA: previous name field in this vocabulary chain
+	.word	$84C	; LFA: previous name field in this vocabulary chain
 ; MACHINE-CODE BRIDGE. Stack input is (carry A X Y address), with address on
 ; top. Only low bytes supply registers; the optional carry cell is inspected
 ; but retained. Save Forth X, call through SYS_TRAMPOLINE, then replace low bytes of
@@ -5611,44 +5621,44 @@ SYS_TRAMPOLINE:
 	jmp	(NXTMP)
 
 ; ----------------------------------------------------------------------------
-; Dictionary: READ [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: Used to read a screen from cassette, into screen number n1. Will
-; read screen from cassette with names, by specifying a name with the NAME
-; command prior to READ. The variables D# and F# are used to determine which
-; device and file number are used to read from. Therefore, it is possible to
-; read files from disk.
-READ_NFA:
-	.byte	$84,"REA",$C4
-	.word	ASCII_NFA	; LFA: previous name field in this vocabulary chain
-READ:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: READ [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: Used to read a screen from cassette, into screen number n1. Will
+; ; read screen from cassette with names, by specifying a name with the NAME
+; ; command prior to READ. The variables D# and F# are used to determine which
+; ; device and file number are used to read from. Therefore, it is possible to
+; ; read files from disk.
+; READ_NFA:
+; 	.byte	$84,"REA",$C4
+; 	.word	ASCII_NFA	; LFA: previous name field in this vocabulary chain
+; READ:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: FSET [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: A low level file control word which performs a SETLFS system call
-; with the current values of D# and F#. Used by READ and WRITE. 129
-FSET_NFA:
-	.byte	$84,"FSE",$D4
-	.word	SYS_NFA	; LFA: previous name field in this vocabulary chain
-FSET:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: FSET [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: A low level file control word which performs a SETLFS system call
+; ; with the current values of D# and F#. Used by READ and WRITE. 129
+; FSET_NFA:
+; 	.byte	$84,"FSE",$D4
+; 	.word	SYS_NFA	; LFA: previous name field in this vocabulary chain
+; FSET:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: SETLFS [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1/n2/n3 --- )
-; Manual: A KERNAL system call, sets the logical file with file number n1,
-; device number n2, and secondary command n3 into the KERNEL operating
-; system.
-SETLFS_NFA:
-	.byte	$86,"SETLF",$D3
-	.word	FSET_NFA	; LFA: previous name field in this vocabulary chain
-SETLFS:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: SETLFS [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1/n2/n3 --- )
+; ; Manual: A KERNAL system call, sets the logical file with file number n1,
+; ; device number n2, and secondary command n3 into the KERNEL operating
+; ; system.
+; SETLFS_NFA:
+; 	.byte	$86,"SETLF",$D3
+; 	.word	FSET_NFA	; LFA: previous name field in this vocabulary chain
+; SETLFS:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: 3DROP [FORTH].
@@ -5657,7 +5667,7 @@ SETLFS:
 ; stack. Used by several system call words.
 THDROP_NFA:
 	.byte	$85,"3DRO",$D0
-	.word	READ_NFA	; LFA: previous name field in this vocabulary chain
+	.word	ASCII_NFA	; LFA: previous name field in this vocabulary chain
 THDROP:
 	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
 	.word	TDROP
@@ -5665,181 +5675,181 @@ THDROP:
 	.word	SEMIS	; Return to caller thread
 
 ; ----------------------------------------------------------------------------
-; Dictionary: OPEN [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: A KERNEL system call, which opens a channel as previously specified
-; with the SETNAM and SETLFS commands.
-OPEN_NFA:
-	.byte	$84,"OPE",$CE
-	.word	SETLFS_NFA	; LFA: previous name field in this vocabulary chain
-OPEN:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: OPEN [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: A KERNEL system call, which opens a channel as previously specified
+; ; with the SETNAM and SETLFS commands.
+; OPEN_NFA:
+; 	.byte	$84,"OPE",$CE
+; 	.word	SETLFS_NFA	; LFA: previous name field in this vocabulary chain
+; OPEN:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: SLOAD [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( a1 --- )
-; Manual: A KERNEL system call, which loads the file specified by currently
-; selected file name from the currently selected device into memory starting
-; at address a1. This word is used after performing a NAME and SETLFS
-; operation.
-SLOAD_NFA:
-	.byte	$85,"SLOA",$C4
-	.word	OPEN_NFA	; LFA: previous name field in this vocabulary chain
-SLOAD:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: SLOAD [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( a1 --- )
+; ; Manual: A KERNEL system call, which loads the file specified by currently
+; ; selected file name from the currently selected device into memory starting
+; ; at address a1. This word is used after performing a NAME and SETLFS
+; ; operation.
+; SLOAD_NFA:
+; 	.byte	$85,"SLOA",$C4
+; 	.word	OPEN_NFA	; LFA: previous name field in this vocabulary chain
+; SLOAD:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: SAVE [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( a1/n1 --- )
-; Manual: Saves the data or program starting at address a1, for a length of
-; n1 bytes, to the currently open mass storage device.
-SAVE_NFA:
-	.byte	$84,"SAV",$C5
-	.word	SLOAD_NFA	; LFA: previous name field in this vocabulary chain
-SAVE:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: SAVE [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( a1/n1 --- )
+; ; Manual: Saves the data or program starting at address a1, for a length of
+; ; n1 bytes, to the currently open mass storage device.
+; SAVE_NFA:
+; 	.byte	$84,"SAV",$C5
+; 	.word	SLOAD_NFA	; LFA: previous name field in this vocabulary chain
+; SAVE:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: WRITE [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: Writes screen n1 to the current device as specified by D# and F#.
-; The written screen will be sent to cassette by default.
-WRITE_NFA:
-	.byte	$85,"WRIT",$C5
-	.word	THDROP_NFA	; LFA: previous name field in this vocabulary chain
-WRITE:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: WRITE [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: Writes screen n1 to the current device as specified by D# and F#.
+; ; The written screen will be sent to cassette by default.
+; WRITE_NFA:
+; 	.byte	$85,"WRIT",$C5
+; 	.word	THDROP_NFA	; LFA: previous name field in this vocabulary chain
+; WRITE:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: CHKOUT [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: A KERNEL system call, which redirects character output to the
-; channel specified as n1. The channel n1 must already be opened.
-CHKOUT_NFA:
-	.byte	$86,"CHKOU",$D4
-	.word	SAVE_NFA	; LFA: previous name field in this vocabulary chain
-CHKOUT:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: CHKOUT [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: A KERNEL system call, which redirects character output to the
+; ; channel specified as n1. The channel n1 must already be opened.
+; CHKOUT_NFA:
+; 	.byte	$86,"CHKOU",$D4
+; 	.word	SAVE_NFA	; LFA: previous name field in this vocabulary chain
+; CHKOUT:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: CLALL [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: A SYSTEM primitive, used to clear all channels, in the Commodore
-; KERNEL to their default values. See the Commodore Programmers Reference
-; Manual.
-CLALL_NFA:
-	.byte	$85,"CLAL",$CC
-	.word	CHKOUT_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: CLALL [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: A SYSTEM primitive, used to clear all channels, in the Commodore
+; ; KERNEL to their default values. See the Commodore Programmers Reference
+; ; Manual.
+; CLALL_NFA:
+; 	.byte	$85,"CLAL",$CC
+; 	.word	CHKOUT_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: CHRIN [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- n1 )
-; Manual: A KERNEL system call, which obtains a line of characters from the
-; currently open character input channel, normally the keyboard. This routine
-; waits for a line of input to be entered terminated by a carriage return;
-; after a line of text has been entered, each call to CHRIN will return one
-; character of the line entered. Note: CHRIN allows the use of the Commodore
-; screen editor.
-CHRIN_NFA:
-	.byte	$85,"CHRI",$CE
-	.word	CLALL_NFA	; LFA: previous name field in this vocabulary chain
-CHRIN:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: CHRIN [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- n1 )
+; ; Manual: A KERNEL system call, which obtains a line of characters from the
+; ; currently open character input channel, normally the keyboard. This routine
+; ; waits for a line of input to be entered terminated by a carriage return;
+; ; after a line of text has been entered, each call to CHRIN will return one
+; ; character of the line entered. Note: CHRIN allows the use of the Commodore
+; ; screen editor.
+; CHRIN_NFA:
+; 	.byte	$85,"CHRI",$CE
+; 	.word	CLALL_NFA	; LFA: previous name field in this vocabulary chain
+; CHRIN:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: BGROUND [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: Selects background color for the screen, using the standard values
-; for Commodore colors in the range 0 to 15.
-BGROUND_NFA:
-	.byte	$87,"BGROUN",$C4
-	.word	WRITE_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: BGROUND [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: Selects background color for the screen, using the standard values
+; ; for Commodore colors in the range 0 to 15.
+; BGROUND_NFA:
+; 	.byte	$87,"BGROUN",$C4
+; 	.word	WRITE_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: BORDER [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: Selects the screen BORDER color. N1 is a value between 0 and 15,
-; for the colors as shown on page 139 of the Commodore 64 Users Guide.
-BORDR_NFA:
-	.byte	$86,"BORDE",$D2
-	.word	BGROUND_NFA	; LFA: previous name field in this vocabulary chain
-BORDR:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: BORDER [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: Selects the screen BORDER color. N1 is a value between 0 and 15,
+; ; for the colors as shown on page 139 of the Commodore 64 Users Guide.
+; BORDR_NFA:
+; 	.byte	$86,"BORDE",$D2
+; 	.word	BGROUND_NFA	; LFA: previous name field in this vocabulary chain
+; BORDR:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: UPORT [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- a1 )
-; Manual: Returns the address of the user port In the Commodore 64 computer.
-; Address a1 is the data port address.
-UPORT_NFA:
-	.byte	$85,"UPOR",$D4
-	.word	BORDR_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: UPORT [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- a1 )
+; ; Manual: Returns the address of the user port In the Commodore 64 computer.
+; ; Address a1 is the data port address.
+; UPORT_NFA:
+; 	.byte	$85,"UPOR",$D4
+; 	.word	BORDR_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: DISK [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: This word selects the disk device for further mass storage
-; operations by setting variable D# to the device specified by variable DR#,
-; which is the actual drive number plus 8 (eight). This word is performed
-; automatically by "FILE" operations. 121
-DISK_NFA:
-	.byte	$84,"DIS",$CB
-	.word	UPORT_NFA	; LFA: previous name field in this vocabulary chain
-DISK:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: DISK [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: This word selects the disk device for further mass storage
+; ; operations by setting variable D# to the device specified by variable DR#,
+; ; which is the actual drive number plus 8 (eight). This word is performed
+; ; automatically by "FILE" operations. 121
+; DISK_NFA:
+; 	.byte	$84,"DIS",$CB
+; 	.word	UPORT_NFA	; LFA: previous name field in this vocabulary chain
+; DISK:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: CASSETTE [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: Selects the cassette for all further mass storage operations. This
-; is the default mode, so it is not normally necessary to switch to CASSETTE.
-; When a disk file has been opened and then closed, operation is
-; automatically switched back to cassette.
-CASSET_NFA:
-	.byte	$88,"CASSETT",$C5
-	.word	DISK_NFA	; LFA: previous name field in this vocabulary chain
-CASSET:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: CASSETTE [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: Selects the cassette for all further mass storage operations. This
+; ; is the default mode, so it is not normally necessary to switch to CASSETTE.
+; ; When a disk file has been opened and then closed, operation is
+; ; automatically switched back to cassette.
+; CASSET_NFA:
+; 	.byte	$88,"CASSETT",$C5
+; 	.word	DISK_NFA	; LFA: previous name field in this vocabulary chain
+; CASSET:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: TALK [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: A KERNEL system call, which commands a device in the range of 0 to
-; 31 to TALK on the serial bus. 146
-TALK_NFA:
-	.byte	$84,"TAL",$CB
-	.word	CHRIN_NFA	; LFA: previous name field in this vocabulary chain
-TALK:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: TALK [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: A KERNEL system call, which commands a device in the range of 0 to
+; ; 31 to TALK on the serial bus. 146
+; TALK_NFA:
+; 	.byte	$84,"TAL",$CB
+; 	.word	CHRIN_NFA	; LFA: previous name field in this vocabulary chain
+; TALK:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: TKSA [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: A KERNEL system call, which sends byte value n1 in the range 0 to
-; 31 as a secondary address command on the serial bus. This command is
-; normally used after a TALK command to a device.
-TKSA_NFA:
-	.byte	$84,"TKS",$C1
-	.word	TALK_NFA	; LFA: previous name field in this vocabulary chain
-TKSA:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: TKSA [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: A KERNEL system call, which sends byte value n1 in the range 0 to
+; ; 31 as a secondary address command on the serial bus. This command is
+; ; normally used after a TALK command to a device.
+; TKSA_NFA:
+; 	.byte	$84,"TKS",$C1
+; 	.word	TALK_NFA	; LFA: previous name field in this vocabulary chain
+; TKSA:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: 0.0 [SYSTEM].
@@ -5848,7 +5858,7 @@ TKSA:
 ; value zero, used in several system calls.
 DZERO_NFA:
 	.byte	$83,"0.",$B0
-	.word	TKSA_NFA	; LFA: previous name field in this vocabulary chain
+	.word	SYS_NFA	; LFA: previous name field in this vocabulary chain
 DZERO:
 	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
 	.word	ZERO
@@ -5856,138 +5866,138 @@ DZERO:
 	.word	SEMIS	; Return to caller thread
 
 ; ----------------------------------------------------------------------------
-; Dictionary: UNTLK [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Implementation: ( -- ) Call KERNAL UNTLK to end the serial TALK condition;
-; discard returned register cells.
-UNTLK_NFA:
-	.byte	$85,"UNTL",$CB
-	.word	DZERO_NFA	; LFA: previous name field in this vocabulary chain
-UNTLK:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: UNTLK [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Implementation: ( -- ) Call KERNAL UNTLK to end the serial TALK condition;
+; ; discard returned register cells.
+; UNTLK_NFA:
+; 	.byte	$85,"UNTL",$CB
+; 	.word	DZERO_NFA	; LFA: previous name field in this vocabulary chain
+; UNTLK:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: UNLSN [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: A KERNEL system call, which tells all devices on the serial bus
-; which were previously listening, to stop listening. Pronounced "unlisten."
-UNLSN_NFA:
-	.byte	$85,"UNLS",$CE
-	.word	UNTLK_NFA	; LFA: previous name field in this vocabulary chain
-UNLSN:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: UNLSN [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: A KERNEL system call, which tells all devices on the serial bus
+; ; which were previously listening, to stop listening. Pronounced "unlisten."
+; UNLSN_NFA:
+; 	.byte	$85,"UNLS",$CE
+; 	.word	UNTLK_NFA	; LFA: previous name field in this vocabulary chain
+; UNLSN:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: ACPTR [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Implementation: ( -- byte ) Call KERNAL ACPTR and keep the returned A cell,
-; dropping X/Y.
-ACPTR_NFA:
-	.byte	$85,"ACPT",$D2
-	.word	UNLSN_NFA	; LFA: previous name field in this vocabulary chain
-ACPTR:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: ACPTR [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Implementation: ( -- byte ) Call KERNAL ACPTR and keep the returned A cell,
+; ; dropping X/Y.
+; ACPTR_NFA:
+; 	.byte	$85,"ACPT",$D2
+; 	.word	UNLSN_NFA	; LFA: previous name field in this vocabulary chain
+; ACPTR:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: LISTEN [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: Sends a command to cause device address n1 to listen for data on
-; the serial bus.
-LISTEN_NFA:
-	.byte	$86,"LISTE",$CE
-	.word	ACPTR_NFA	; LFA: previous name field in this vocabulary chain
-LISTEN:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: LISTEN [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: Sends a command to cause device address n1 to listen for data on
+; ; the serial bus.
+; LISTEN_NFA:
+; 	.byte	$86,"LISTE",$CE
+; 	.word	ACPTR_NFA	; LFA: previous name field in this vocabulary chain
+; LISTEN:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: CIOUT [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: A KERNEL system call, which sends a character n1 out of the serial
-; bus. 116
-CIOUT_NFA:
-	.byte	$85,"CIOU",$D4
-	.word	LISTEN_NFA	; LFA: previous name field in this vocabulary chain
-CIOUT:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: CIOUT [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: A KERNEL system call, which sends a character n1 out of the serial
+; ; bus. 116
+; CIOUT_NFA:
+; 	.byte	$85,"CIOU",$D4
+; 	.word	LISTEN_NFA	; LFA: previous name field in this vocabulary chain
+; CIOUT:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: SECOND [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: A KERNEL system call, which sends the secondary address on the
-; serial bus, normally sent after the LISTEN command. See also SLSN and
-; LISTEN.
-SECOND_NFA:
-	.byte	$86,"SECON",$C4
-	.word	CIOUT_NFA	; LFA: previous name field in this vocabulary chain
-SECOND:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: SECOND [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: A KERNEL system call, which sends the secondary address on the
+; ; serial bus, normally sent after the LISTEN command. See also SLSN and
+; ; LISTEN.
+; SECOND_NFA:
+; 	.byte	$86,"SECON",$C4
+; 	.word	CIOUT_NFA	; LFA: previous name field in this vocabulary chain
+; SECOND:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: STYPE [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( a1/n1 --- )
-; Manual: Sends n1 characters from address a1, out the serial bus. STYPE must
-; be used after telling a device to listen. This is a low level primitive
-; used by the system.
-STYPE_NFA:
-	.byte	$85,"STYP",$C5
-	.word	SECOND_NFA	; LFA: previous name field in this vocabulary chain
-STYPE:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: STYPE [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( a1/n1 --- )
+; ; Manual: Sends n1 characters from address a1, out the serial bus. STYPE must
+; ; be used after telling a device to listen. This is a low level primitive
+; ; used by the system.
+; STYPE_NFA:
+; 	.byte	$85,"STYP",$C5
+; 	.word	SECOND_NFA	; LFA: previous name field in this vocabulary chain
+; STYPE:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: DTLK [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: Sends a secondary address n l after telling the disk to talk.
-; Pronounced "disk talk." 123
-DTLK_NFA:
-	.byte	$84,"DTL",$CB
-	.word	STYPE_NFA	; LFA: previous name field in this vocabulary chain
-DTLK:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: DTLK [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: Sends a secondary address n l after telling the disk to talk.
+; ; Pronounced "disk talk." 123
+; DTLK_NFA:
+; 	.byte	$84,"DTL",$CB
+; 	.word	STYPE_NFA	; LFA: previous name field in this vocabulary chain
+; DTLK:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: DLSN [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: Sends a secondary address to the disk, after telling the disk to
-; LISTEN. Pronounced "disk listen."
-DLSN_NFA:
-	.byte	$84,"DLS",$CE
-	.word	DTLK_NFA	; LFA: previous name field in this vocabulary chain
-DLSN:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: DLSN [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: Sends a secondary address to the disk, after telling the disk to
+; ; LISTEN. Pronounced "disk listen."
+; DLSN_NFA:
+; 	.byte	$84,"DLS",$CE
+; 	.word	DTLK_NFA	; LFA: previous name field in this vocabulary chain
+; DLSN:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: ?DERR [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: This word is very similar to ?D, but only prints a message to the
-; terminal if there was a disk error. If no error has occurred, then
-; operation continues after ?DERR. If an error condition was detected,
-; execution is aborted.
-QDERR_NFA:
-	.byte	$85,"?DER",$D2
-	.word	CASSET_NFA	; LFA: previous name field in this vocabulary chain
-QDERR:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: ?DERR [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: This word is very similar to ?D, but only prints a message to the
+; ; terminal if there was a disk error. If no error has occurred, then
+; ; operation continues after ?DERR. If an error condition was detected,
+; ; execution is aborted.
+; QDERR_NFA:
+; 	.byte	$85,"?DER",$D2
+; 	.word	CASSET_NFA	; LFA: previous name field in this vocabulary chain
+; QDERR:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: ?D [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: This is a short word used to determine status of the disk, and to
-; clear any error condition that might occur while disk operations are
-; performed.
-QDISK_NFA:
-	.byte	$82,"?",$C4
-	.word	QDERR_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: ?D [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: This is a short word used to determine status of the disk, and to
+; ; clear any error condition that might occur while disk operations are
+; ; performed.
+; QDISK_NFA:
+; 	.byte	$82,"?",$C4
+; 	.word	QDERR_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: --> [FORTH]; immediate (executes during compilation).
@@ -5995,7 +6005,7 @@ QDISK_NFA:
 ; "next-screen." 106
 NEXT_SCREEN_NFA:
 	.byte	$C3,"--",$BE
-	.word	QDISK_NFA	; LFA: previous name field in this vocabulary chain
+	.word	THDROP_NFA	; LFA: previous name field in this vocabulary chain
 	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
 	.word	ONE
 	.word	BLK
@@ -6069,448 +6079,449 @@ UARROW:
 	.word	SEMIS	; Return to caller thread
 
 ; ----------------------------------------------------------------------------
-; Dictionary: DRIVE [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: Selects drive n1 as the currently active disk drive, by setting
-; user variable DR# to the drive number plus 8. See also DRIVE? and DR#.
-DRIVE_NFA:
-	.byte	$85,"DRIV",$C5
-	.word	UARROW_NFA	; LFA: previous name field in this vocabulary chain
-DRIVE:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: DRIVE [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: Selects drive n1 as the currently active disk drive, by setting
+; ; user variable DR# to the drive number plus 8. See also DRIVE? and DR#.
+; DRIVE_NFA:
+; 	.byte	$85,"DRIV",$C5
+; 	.word	UARROW_NFA	; LFA: previous name field in this vocabulary chain
+; DRIVE:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: DRIVE? [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- n1 )
-; Manual: Returns the drive number of the currently active disk drive;
-; defaults to device 8 drive 0. See also DRIVE and DR#.
-DRIVE_QUERY_NFA:
-	.byte	$86,"DRIVE",$BF
-	.word	DRIVE_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: DRIVE? [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- n1 )
+; ; Manual: Returns the drive number of the currently active disk drive;
+; ; defaults to device 8 drive 0. See also DRIVE and DR#.
+; DRIVE_QUERY_NFA:
+; 	.byte	$86,"DRIVE",$BF
+; 	.word	DRIVE_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: DTYPE [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1/a1/n2 --- )
-; Manual: Sends the character string at address a1, for length n2 to channel
-; n1 in the serial bus. Pronounced "disk type."
-DTYPE_NFA:
-	.byte	$85,"DTYP",$C5
-	.word	DLSN_NFA	; LFA: previous name field in this vocabulary chain
-DTYPE:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: DTYPE [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1/a1/n2 --- )
+; ; Manual: Sends the character string at address a1, for length n2 to channel
+; ; n1 in the serial bus. Pronounced "disk type."
+; DTYPE_NFA:
+; 	.byte	$85,"DTYP",$C5
+; 	.word	DLSN_NFA	; LFA: previous name field in this vocabulary chain
+; DTYPE:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: /CMD [FORTH]; immediate (executes during compilation).
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- t )
-; Manual: Sends the text string 't' to channel n1 on the serial bus. This is
-; a lower level word than CMD, which always sends a command string to the
-; disk drive.
-SCMD_NFA:
-	.byte	$C4,"/CM",$C4
-	.word	DRIVE_QUERY_NFA	; LFA: previous name field in this vocabulary chain
-SCMD:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: /CMD [FORTH]; immediate (executes during compilation).
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- t )
+; ; Manual: Sends the text string 't' to channel n1 on the serial bus. This is
+; ; a lower level word than CMD, which always sends a command string to the
+; ; disk drive.
+; SCMD_NFA:
+; 	.byte	$C4,"/CM",$C4
+; 	.word	DRIVE_QUERY_NFA	; LFA: previous name field in this vocabulary chain
+; SCMD:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: CMD [FORTH]; immediate (executes during compilation).
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- t )
-; Manual: A utility word, used to send command lines to the disk. The
-; sequence "CMD I ( return )" would cause the disk to be initialized. This
-; word can be used in a definition, or on a line with multiple commands. But
-; when this is done, the command string must be terminated with an up arrow
-; "^" as shown in the following example: : INIT CMD ^ ; This definition
-; initializes the current disk drive, and must not be used while a disk file
-; is open.
-CMD_NFA:
-	.byte	$C3,"CM",$C4
-	.word	SCMD_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: CMD [FORTH]; immediate (executes during compilation).
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- t )
+; ; Manual: A utility word, used to send command lines to the disk. The
+; ; sequence "CMD I ( return )" would cause the disk to be initialized. This
+; ; word can be used in a definition, or on a line with multiple commands. But
+; ; when this is done, the command string must be terminated with an up arrow
+; ; "^" as shown in the following example: : INIT CMD ^ ; This definition
+; ; initializes the current disk drive, and must not be used while a disk file
+; ; is open.
+; CMD_NFA:
+; 	.byte	$C3,"CM",$C4
+; 	.word	SCMD_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: (FILE) [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- t )
-; Manual: This is a low level word used by FILE, which opens the file
-; specified by text 't'. (FILE) does not empty the screens out of memory
-; before opening the new file. This word is used mostly when copying screens
-; from cassette to disk, or when copying screens from one disk file to
-; another.
-PFILE_NFA:
-	.byte	$86,"(FILE",$A9
-	.word	CMD_NFA	; LFA: previous name field in this vocabulary chain
-PFILE:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: (FILE) [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- t )
+; ; Manual: This is a low level word used by FILE, which opens the file
+; ; specified by text 't'. (FILE) does not empty the screens out of memory
+; ; before opening the new file. This word is used mostly when copying screens
+; ; from cassette to disk, or when copying screens from one disk file to
+; ; another.
+; PFILE_NFA:
+; 	.byte	$86,"(FILE",$A9
+; 	.word	CMD_NFA	; LFA: previous name field in this vocabulary chain
+; PFILE:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: ^FILE [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( a1/n1 --- )
-; Manual: This word opens the file name string at address a1, for character
-; length n1, after first closing any file that is currently open. The text
-; string should not be placed at HERE, because HERE is used for other
-; processing. The variable FN is recommended as the optimum location for file
-; name storage.
-UFILE_NFA:
-	.byte	$85,"^FIL",$C5
-	.word	PFILE_NFA	; LFA: previous name field in this vocabulary chain
-UFILE:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: ^FILE [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( a1/n1 --- )
+; ; Manual: This word opens the file name string at address a1, for character
+; ; length n1, after first closing any file that is currently open. The text
+; ; string should not be placed at HERE, because HERE is used for other
+; ; processing. The variable FN is recommended as the optimum location for file
+; ; name storage.
+; UFILE_NFA:
+; 	.byte	$85,"^FIL",$C5
+; 	.word	PFILE_NFA	; LFA: previous name field in this vocabulary chain
+; UFILE:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: (^FILE) [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( a1/n1 --- )
-; Manual: Similar to (FILE), but requires an address a1 of the text string
-; for the file to open, and n1 the length of the name. The file is opened,
-; but memory Is not cleared before opening the file. See also ^FILE (FILE)
-; FILE. 104
-PUFIL_NFA:
-	.byte	$87,"(^FILE",$A9
-	.word	UFILE_NFA	; LFA: previous name field in this vocabulary chain
-PUFIL:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: (^FILE) [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( a1/n1 --- )
+; ; Manual: Similar to (FILE), but requires an address a1 of the text string
+; ; for the file to open, and n1 the length of the name. The file is opened,
+; ; but memory Is not cleared before opening the file. See also ^FILE (FILE)
+; ; FILE. 104
+; PUFIL_NFA:
+; 	.byte	$87,"(^FILE",$A9
+; 	.word	UFILE_NFA	; LFA: previous name field in this vocabulary chain
+; PUFIL:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: FILE [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- t )
-; Manual: Closes any file currently open, and opens the file specified by
-; text 't' on the currently specified disk drive. Any updated screen in
-; memory will be flushed to the previously open file before it is closed. A
-; user variable called BMAX contains the highest numbered screen that can be
-; accessed. If you wish to manipulate a disk file larger than 16k bytes, you
-; will have to change the value of BMAX to a larger number. The largest
-; single file that may be created is 90k bytes. This is due to a limitation
-; of the Commodore DOS.
-FILE_NFA:
-	.byte	$84,"FIL",$C5
-	.word	PUFIL_NFA	; LFA: previous name field in this vocabulary chain
-FILE:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: FILE [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- t )
+; ; Manual: Closes any file currently open, and opens the file specified by
+; ; text 't' on the currently specified disk drive. Any updated screen in
+; ; memory will be flushed to the previously open file before it is closed. A
+; ; user variable called BMAX contains the highest numbered screen that can be
+; ; accessed. If you wish to manipulate a disk file larger than 16k bytes, you
+; ; will have to change the value of BMAX to a larger number. The largest
+; ; single file that may be created is 90k bytes. This is due to a limitation
+; ; of the Commodore DOS.
+; FILE_NFA:
+; 	.byte	$84,"FIL",$C5
+; 	.word	PUFIL_NFA	; LFA: previous name field in this vocabulary chain
+; FILE:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: (FCLOSE) [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: This is a low level word used by FCLOSE, which closes the currently
-; open disk file without emptying the memory buffer contents. Useful mostly
-; for transferring screens from cassette to disk, and when copying screens
-; from one file to another with the utility FCOPY.
-PFCLOS_NFA:
-	.byte	$88,"(FCLOSE",$A9
-	.word	FILE_NFA	; LFA: previous name field in this vocabulary chain
-PFCLOS:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: (FCLOSE) [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: This is a low level word used by FCLOSE, which closes the currently
+; ; open disk file without emptying the memory buffer contents. Useful mostly
+; ; for transferring screens from cassette to disk, and when copying screens
+; ; from one file to another with the utility FCOPY.
+; PFCLOS_NFA:
+; 	.byte	$88,"(FCLOSE",$A9
+; 	.word	FILE_NFA	; LFA: previous name field in this vocabulary chain
+; PFCLOS:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: FCLOSE [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: Closes the current disk file and clears all screen buffers to
-; blanks. If you need to close a file without clearing the screen buffers,
-; use (FCLOSE). 127
-FCLOSE_NFA:
-	.byte	$86,"FCLOS",$C5
-	.word	PFCLOS_NFA	; LFA: previous name field in this vocabulary chain
-FCLOSE:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: FCLOSE [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: Closes the current disk file and clears all screen buffers to
+; ; blanks. If you need to close a file without clearing the screen buffers,
+; ; use (FCLOSE). 127
+; FCLOSE_NFA:
+; 	.byte	$86,"FCLOS",$C5
+; 	.word	PFCLOS_NFA	; LFA: previous name field in this vocabulary chain
+; FCLOSE:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: POS [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: Sets the position of the relative fife pointer to record n1.
-; 64FORTH uses 129 byte records.
-POS_NFA:
-	.byte	$83,"PO",$D3
-	.word	DTYPE_NFA	; LFA: previous name field in this vocabulary chain
-POS:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: POS [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: Sets the position of the relative fife pointer to record n1.
+; ; 64FORTH uses 129 byte records.
+; POS_NFA:
+; 	.byte	$83,"PO",$D3
+; 	.word	DTYPE_NFA	; LFA: previous name field in this vocabulary chain
+; POS:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: SLSN [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: A system primitive, which commands the disk drive to listen with a
-; secondary address of n1. Pronounced "secondary listen."
-SLSN_NFA:
-	.byte	$84,"SLS",$CE
-	.word	POS_NFA	; LFA: previous name field in this vocabulary chain
-SLSN:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: SLSN [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: A system primitive, which commands the disk drive to listen with a
+; ; secondary address of n1. Pronounced "secondary listen."
+; SLSN_NFA:
+; 	.byte	$84,"SLS",$CE
+; 	.word	POS_NFA	; LFA: previous name field in this vocabulary chain
+; SLSN:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: RECWRITE [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( a1/n1 --- )
-; Manual: Writes a record to the currently open disk file, from address a1,
-; for length n1 bytes, and terminates the write with a carriage return (13
-; decimal). Caution is recommended in the use of this word; normally a POS is
-; performed before a RECWRITE. n1 is always 128 in 64FORTH.
-RECWRT_NFA:
-	.byte	$88,"RECWRIT",$C5
-	.word	SLSN_NFA	; LFA: previous name field in this vocabulary chain
-RECWRT:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: RECWRITE [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( a1/n1 --- )
+; ; Manual: Writes a record to the currently open disk file, from address a1,
+; ; for length n1 bytes, and terminates the write with a carriage return (13
+; ; decimal). Caution is recommended in the use of this word; normally a POS is
+; ; performed before a RECWRITE. n1 is always 128 in 64FORTH.
+; RECWRT_NFA:
+; 	.byte	$88,"RECWRIT",$C5
+; 	.word	SLSN_NFA	; LFA: previous name field in this vocabulary chain
+; RECWRT:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: RECREAD [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( a1 --- a2 )
-; Manual: Reads a record from the currently open disk file, into address a1,
-; and returns address a2, which is address a1 plus length of the normal read.
-; Caution is recommended in the use of this word. Normally a POS is performed
-; before a RECREAD.
-RECREA_NFA:
-	.byte	$87,"RECREA",$C4
-	.word	RECWRT_NFA	; LFA: previous name field in this vocabulary chain
-RECREA:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: RECREAD [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( a1 --- a2 )
+; ; Manual: Reads a record from the currently open disk file, into address a1,
+; ; and returns address a2, which is address a1 plus length of the normal read.
+; ; Caution is recommended in the use of this word. Normally a POS is performed
+; ; before a RECREAD.
+; RECREA_NFA:
+; 	.byte	$87,"RECREA",$C4
+; 	.word	RECWRT_NFA	; LFA: previous name field in this vocabulary chain
+; RECREA:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: BLKWRITE [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( a1/n1 --- )
-; Manual: This is a disk block primitive, which writes block n1 to disk from
-; address a1, to the currently open RELATIVE disk file. A disk error will be
-; reported the first time a write is performed to a previously non-existent
-; screen. However, this error should be ignored if it is a non-existent
-; record error.
-BLKWRT_NFA:
-	.byte	$88,"BLKWRIT",$C5
-	.word	RECREA_NFA	; LFA: previous name field in this vocabulary chain
-BLKWRT:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: BLKWRITE [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( a1/n1 --- )
+; ; Manual: This is a disk block primitive, which writes block n1 to disk from
+; ; address a1, to the currently open RELATIVE disk file. A disk error will be
+; ; reported the first time a write is performed to a previously non-existent
+; ; screen. However, this error should be ignored if it is a non-existent
+; ; record error.
+; BLKWRT_NFA:
+; 	.byte	$88,"BLKWRIT",$C5
+; 	.word	RECREA_NFA	; LFA: previous name field in this vocabulary chain
+; BLKWRT:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: BLKREAD [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( a1/n1 --- )
-; Manual: The disk storage primitive which reads block n1 into address a1
-; from the currently open RELATIVE file. A disk error will be reported when
-; reading or writing the first time to a newly created screen in a disk file.
-; This error should be ignored, as it is a peculiarity of the Commodore Disk
-; Operating System.
-BLKRD_NFA:
-	.byte	$87,"BLKREA",$C4
-	.word	BLKWRT_NFA	; LFA: previous name field in this vocabulary chain
-BLKRD:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: BLKREAD [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( a1/n1 --- )
+; ; Manual: The disk storage primitive which reads block n1 into address a1
+; ; from the currently open RELATIVE file. A disk error will be reported when
+; ; reading or writing the first time to a newly created screen in a disk file.
+; ; This error should be ignored, as it is a peculiarity of the Commodore Disk
+; ; Operating System.
+; BLKRD_NFA:
+; 	.byte	$87,"BLKREA",$C4
+; 	.word	BLKWRT_NFA	; LFA: previous name field in this vocabulary chain
+; BLKRD:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: R/W [SYSTEM].
-; Manual stack: ( a blk f --- )
-; Manual: The fig-FORTH standard disk read-write linkage. A (address)
-; specifies the source or destination block buffer; blk is the sequential
-; number of the referenced block; and f 139 is a flag for f=0 write and f=1
-; read. R/W determines the location on mass storage, performs the read-write
-; and performs any error checking. This is a vectored word.
-RSLW_NFA:
-	.byte	$83,"R/",$D7
-	.word	BLKRD_NFA	; LFA: previous name field in this vocabulary chain
-RSLW:
-	.word	DOVEC	; CFA: vectored word; dispatch through UP+$32+offset
-	.byte	22	; Vector byte offset 22 from I/O (UP+$32)
+; ; Dictionary: R/W [SYSTEM].
+; ; Manual stack: ( a blk f --- )
+; ; Manual: The fig-FORTH standard disk read-write linkage. A (address)
+; ; specifies the source or destination block buffer; blk is the sequential
+; ; number of the referenced block; and f 139 is a flag for f=0 write and f=1
+; ; read. R/W determines the location on mass storage, performs the read-write
+; ; and performs any error checking. This is a vectored word.
+; RSLW_NFA:
+; 	.byte	$83,"R/",$D7
+; 	.word	BLKRD_NFA	; LFA: previous name field in this vocabulary chain
+; RSLW:
+; 	.word	DOVEC	; CFA: vectored word; dispatch through UP+$32+offset
+; 	.byte	22	; Vector byte offset 22 from I/O (UP+$32)
 
+; Private default storage vector; no public R/W dictionary entry.
 PRSLW:
 	.word	NO_C64	; C64 storage backend unavailable
 
 ; ---------------------------------------------------------------------------
-; Dictionary: UPDATE [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual: Marks the most recently referenced block as altered. The block will
-; subsequently be transferred automatically to disk should its buffer be
-; required for storage of a different block.
-UPDATE_NFA:
-	.byte	$86,"UPDAT",$C5
-	.word	FCLOSE_NFA	; LFA: previous name field in this vocabulary chain
-UPDATE:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: UPDATE [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual: Marks the most recently referenced block as altered. The block will
+; ; subsequently be transferred automatically to disk should its buffer be
+; ; required for storage of a different block.
+; UPDATE_NFA:
+; 	.byte	$86,"UPDAT",$C5
+; 	.word	FCLOSE_NFA	; LFA: previous name field in this vocabulary chain
+; UPDATE:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: EMPTY-BUFFERS [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual: Mark all block-buffers as empty, not necessarily affecting the
-; contents. Updated blocks are not written to the disk. This is also an
-; initialization procedure before first use of the disk.
-MTBUF_NFA:
-	.byte	$8D,"EMPTY-BUFFER",$D3
-	.word	UPDATE_NFA	; LFA: previous name field in this vocabulary chain
-MTBUF:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: EMPTY-BUFFERS [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual: Mark all block-buffers as empty, not necessarily affecting the
+; ; contents. Updated blocks are not written to the disk. This is also an
+; ; initialization procedure before first use of the disk.
+; MTBUF_NFA:
+; 	.byte	$8D,"EMPTY-BUFFER",$D3
+; 	.word	UPDATE_NFA	; LFA: previous name field in this vocabulary chain
+; MTBUF:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: >RAM [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: This is a system primitive, which uncovers the ram under the KERNEL
-; and I/O from $D000 to $FFFF. Virtual buffer operations can then be
-; performed to this area. This word is only used by the system, and MUST NOT
-; be used from the keyboard, since NO I/O can be performed while the 110
-; KERNEL is switched out. The logical reverse of this word is RAM>, which
-; restores the KERNEL and I/O to the memory map.
-TORAM_NFA:
-	.byte	$84,">RA",$CD
-	.word	RSLW_NFA	; LFA: previous name field in this vocabulary chain
-; Banking entry: write $7F to CIA1IC to disable its IRQ sources, then $34 to
-; the 6510 port via ONE C!. This exposes RAM under ROM/I/O. The copied
-; interpreter in underlying RAM makes continued execution possible.
-TORAM:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: >RAM [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: This is a system primitive, which uncovers the ram under the KERNEL
+; ; and I/O from $D000 to $FFFF. Virtual buffer operations can then be
+; ; performed to this area. This word is only used by the system, and MUST NOT
+; ; be used from the keyboard, since NO I/O can be performed while the 110
+; ; KERNEL is switched out. The logical reverse of this word is RAM>, which
+; ; restores the KERNEL and I/O to the memory map.
+; TORAM_NFA:
+; 	.byte	$84,">RA",$CD
+; 	.word	RSLW_NFA	; LFA: previous name field in this vocabulary chain
+; ; Banking entry: write $7F to CIA1IC to disable its IRQ sources, then $34 to
+; ; the 6510 port via ONE C!. This exposes RAM under ROM/I/O. The copied
+; ; interpreter in underlying RAM makes continued execution possible.
+; TORAM:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: RAM> [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: Selects the KERNEL and I/O back into the system, pronounced RAM
-; FROM. See also >RAM.
-FRAM_NFA:
-	.byte	$84,"RAM",$BE
-	.word	TORAM_NFA	; LFA: previous name field in this vocabulary chain
-; Banking exit: write $37 to the 6510 port to restore cartridge/KERNAL/I/O
-; mapping, then enable CIA 1 timer A IRQs with $81. This restores fixed
-; defaults, not a previously saved bank/IRQ mask. The original $A765 location is the documented
-; soft-load patch byte.
-FRAM:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: RAM> [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: Selects the KERNEL and I/O back into the system, pronounced RAM
+; ; FROM. See also >RAM.
+; FRAM_NFA:
+; 	.byte	$84,"RAM",$BE
+; 	.word	TORAM_NFA	; LFA: previous name field in this vocabulary chain
+; ; Banking exit: write $37 to the 6510 port to restore cartridge/KERNAL/I/O
+; ; mapping, then enable CIA 1 timer A IRQs with $81. This restores fixed
+; ; defaults, not a previously saved bank/IRQ mask. The original $A765 location is the documented
+; ; soft-load patch byte.
+; FRAM:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: >BUF [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( a1/n1 --- )
-; Manual: This is one of the buffer deblocking primitives. Its function is to
-; send the 1k block of data at address a1, to the screen buffer specified by
-; n1, in upper memory. A modulus operation is performed on the values n1, to
-; determine into which buffer the data is to be placed. There are currently
-; 16 virtual buffers in high memory, and a modulus 16 operations is performed
-; to determine the buffer location for use. If the buffer already contains
-; data from a different block (as in block 1 and block 17, which both modulus
-; to screen buffer 1), then the contents of the old screen 1 in this case
-; must be written out to disk before the new screen, 17, can be moved to the
-; buffer. This operation is done by GBLOCK, and must be performed before >BUF
-; is executed. See also BUF> GBLOCK.
-TOBUF_NFA:
-	.byte	$84,">BU",$C6
-	.word	FRAM_NFA	; LFA: previous name field in this vocabulary chain
-TOBUF:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: >BUF [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( a1/n1 --- )
+; ; Manual: This is one of the buffer deblocking primitives. Its function is to
+; ; send the 1k block of data at address a1, to the screen buffer specified by
+; ; n1, in upper memory. A modulus operation is performed on the values n1, to
+; ; determine into which buffer the data is to be placed. There are currently
+; ; 16 virtual buffers in high memory, and a modulus 16 operations is performed
+; ; to determine the buffer location for use. If the buffer already contains
+; ; data from a different block (as in block 1 and block 17, which both modulus
+; ; to screen buffer 1), then the contents of the old screen 1 in this case
+; ; must be written out to disk before the new screen, 17, can be moved to the
+; ; buffer. This operation is done by GBLOCK, and must be performed before >BUF
+; ; is executed. See also BUF> GBLOCK.
+; TOBUF_NFA:
+; 	.byte	$84,">BU",$C6
+; 	.word	FRAM_NFA	; LFA: previous name field in this vocabulary chain
+; TOBUF:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: BUF> [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( a1/n1 --- )
-; Manual: Moves the data for screen n1 from the virtual screen buffer to
-; address a1, used by GBLOCK to perform SCREEN DEBLOCKING.
-FBUF_NFA:
-	.byte	$84,"BUF",$BE
-	.word	TOBUF_NFA	; LFA: previous name field in this vocabulary chain
-FBUF:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: BUF> [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( a1/n1 --- )
+; ; Manual: Moves the data for screen n1 from the virtual screen buffer to
+; ; address a1, used by GBLOCK to perform SCREEN DEBLOCKING.
+; FBUF_NFA:
+; 	.byte	$84,"BUF",$BE
+; 	.word	TOBUF_NFA	; LFA: previous name field in this vocabulary chain
+; FBUF:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: BUFADD [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- a1 )
-; Manual: This word calculates the address of the buffer which should hold
-; the screen specified as n1, and returns the buffer address as a1.
-BUFAD_NFA:
-	.byte	$86,"BUFAD",$C4
-	.word	FBUF_NFA	; LFA: previous name field in this vocabulary chain
-; Backing slot address = $C000 + 1024*((max((block & $7FFF)-1,0)) & 15).
-; Strip the dirty flag before indexing. Sixteen slots wrap cyclically; PTRADD
-; indexes the parallel 16-cell tag table.
-BUFAD:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: BUFADD [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- a1 )
+; ; Manual: This word calculates the address of the buffer which should hold
+; ; the screen specified as n1, and returns the buffer address as a1.
+; BUFAD_NFA:
+; 	.byte	$86,"BUFAD",$C4
+; 	.word	FBUF_NFA	; LFA: previous name field in this vocabulary chain
+; ; Backing slot address = $C000 + 1024*((max((block & $7FFF)-1,0)) & 15).
+; ; Strip the dirty flag before indexing. Sixteen slots wrap cyclically; PTRADD
+; ; indexes the parallel 16-cell tag table.
+; BUFAD:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: PTRADD [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- a1 )
-; Manual: A system primitive, which accepts the value n1, a screen and
-; returns the address a1 which is the address inside of the BLKTBL array
-; which specifies which screens are currently in memory. 138
-PTRADD_NFA:
-	.byte	$86,"PTRAD",$C4
-	.word	BUFAD_NFA	; LFA: previous name field in this vocabulary chain
-PTRADD:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: PTRADD [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- a1 )
+; ; Manual: A system primitive, which accepts the value n1, a screen and
+; ; returns the address a1 which is the address inside of the BLKTBL array
+; ; which specifies which screens are currently in memory. 138
+; PTRADD_NFA:
+; 	.byte	$86,"PTRAD",$C4
+; 	.word	BUFAD_NFA	; LFA: previous name field in this vocabulary chain
+; PTRADD:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: CURBLK [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- n1 )
-; Manual: Returns the non-updated screen number of the screen most recently
-; addressed with BLOCK. Used by the virtual disk interface.
-CURBLK_NFA:
-	.byte	$86,"CURBL",$CB
-	.word	PTRADD_NFA	; LFA: previous name field in this vocabulary chain
-CURBLK:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: CURBLK [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- n1 )
+; ; Manual: Returns the non-updated screen number of the screen most recently
+; ; addressed with BLOCK. Used by the virtual disk interface.
+; CURBLK_NFA:
+; 	.byte	$86,"CURBL",$CB
+; 	.word	PTRADD_NFA	; LFA: previous name field in this vocabulary chain
+; CURBLK:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: COMBUF [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- a1 )
-; Manual: This is the buffer used to send and receive screen data to and from
-; the disk drive. This buffer is 1024 bytes long, and is in NON-PAGED memory.
-COMBUF_NFA:
-	.byte	$86,"COMBU",$C6
-	.word	CURBLK_NFA	; LFA: previous name field in this vocabulary chain
-COMBUF:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: COMBUF [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- a1 )
+; ; Manual: This is the buffer used to send and receive screen data to and from
+; ; the disk drive. This buffer is 1024 bytes long, and is in NON-PAGED memory.
+; COMBUF_NFA:
+; 	.byte	$86,"COMBU",$C6
+; 	.word	CURBLK_NFA	; LFA: previous name field in this vocabulary chain
+; COMBUF:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: BLKTBL [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- a1 )
-; Manual: This is a system array variable, which points to the beginning of
-; the table indicating the screens that are currently in the memory buffers.
-; This array is 32 decimal bytes long.
-BLKTBL_NFA:
-	.byte	$86,"BLKTB",$CC
-	.word	COMBUF_NFA	; LFA: previous name field in this vocabulary chain
-BLKTBL:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: BLKTBL [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- a1 )
+; ; Manual: This is a system array variable, which points to the beginning of
+; ; the table indicating the screens that are currently in the memory buffers.
+; ; This array is 32 decimal bytes long.
+; BLKTBL_NFA:
+; 	.byte	$86,"BLKTB",$CC
+; 	.word	COMBUF_NFA	; LFA: previous name field in this vocabulary chain
+; BLKTBL:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: FLUSH [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: This system uses the intelligent version of flush. After a screen
-; is written to disk, it is left in memory also, to prevent a screen reread,
-; although its UPDATE bit is cleared.
-FLUSH_NFA:
-	.byte	$85,"FLUS",$C8
-	.word	MTBUF_NFA	; LFA: previous name field in this vocabulary chain
-; Write back dirty active-screen data to its backing slot, then scan all
-; sixteen slot tags. Bit 15 marks modified data; GBLOCK writes the
-; corresponding block through R/W and the tag is cleared afterward.
-FLUSH:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: FLUSH [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: This system uses the intelligent version of flush. After a screen
+; ; is written to disk, it is left in memory also, to prevent a screen reread,
+; ; although its UPDATE bit is cleared.
+; FLUSH_NFA:
+; 	.byte	$85,"FLUS",$C8
+; 	.word	MTBUF_NFA	; LFA: previous name field in this vocabulary chain
+; ; Write back dirty active-screen data to its backing slot, then scan all
+; ; sixteen slot tags. Bit 15 marks modified data; GBLOCK writes the
+; ; corresponding block through R/W and the tag is cleared afterward.
+; FLUSH:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: GBLOCK [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: This is the main disk interface word in this version of FORTH. It
-; performs the screen buffer deblocking, and reads the requested screen n1
-; into the user disk buffer from disk of the virtual screen buffers in high
-; memory. It also takes care of writing any needed screens to disk as
-; required.
-GBLOCK_NFA:
-	.byte	$86,"GBLOC",$CB
-	.word	BLKTBL_NFA	; LFA: previous name field in this vocabulary chain
-; Select the active screen: if its block differs, preserve the old buffer,
-; consult the direct-mapped slot tag, and either copy the cached slot or read
-; from the device. Maintain the active header and trailing zero cell.
-GBLOCK:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: GBLOCK [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: This is the main disk interface word in this version of FORTH. It
+; ; performs the screen buffer deblocking, and reads the requested screen n1
+; ; into the user disk buffer from disk of the virtual screen buffers in high
+; ; memory. It also takes care of writing any needed screens to disk as
+; ; required.
+; GBLOCK_NFA:
+; 	.byte	$86,"GBLOC",$CB
+; 	.word	BLKTBL_NFA	; LFA: previous name field in this vocabulary chain
+; ; Select the active screen: if its block differs, preserve the old buffer,
+; ; consult the direct-mapped slot tag, and either copy the cached slot or read
+; ; from the device. Maintain the active header and trailing zero cell.
+; GBLOCK:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: FORTH [FORTH]; immediate (executes during compilation).
@@ -6561,8 +6572,8 @@ ASSEMBLER_LATEST:
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: EDITOR [FORTH]; immediate (executes during compilation).
-; Implementation: Select the EDITOR dictionary through DOVOC. EDIT also
-; installs the editor key-capture table.
+; Implementation: Select the remaining EDITOR helpers through DOVOC. The
+; C64 EDIT word and editor key-capture table are retained only as comments.
 EDITOR_NFA:
 	.byte	$C6,"EDITO",$D2
 	.word	$865	; LFA: previous name field in this vocabulary chain
@@ -6571,7 +6582,7 @@ EDITOR:
 	.word	DOVOC
 	.word	$A081
 EDITOR_LATEST:
-	.word	VV_NFA
+	.word	PSCR_NFA
 	.word	$879
 
 VOCABULARY_LATEST_TABLE:
@@ -6586,48 +6597,48 @@ VOCABULARY_LATEST_TABLE:
 ; caller.
 NOOP_NFA:
 	.byte	$84,"NOO",$D0
-	.word	FLUSH_NFA	; LFA: previous name field in this vocabulary chain
+	.word	UARROW_NFA	; LFA: previous name field in this vocabulary chain
 	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
 	.word	SEMIS	; Return to caller thread
 
 ; ---------------------------------------------------------------------------
-; Dictionary: DLOAD [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- t )
-; Manual: Allows you to load your pre-compiled FORTH dictionary from cassette
-; or disk. Used as follows: DLOAD <t> <RETURN> will load a pre-compiled
-; dictionary from the cassette file named <t>. To load from disk, preceed the
-; word DLOAD with the word DISK as follows: DISK DLOAD <t> <RETURN> Any disk
-; file currently open should be closed before performing DLOAD.
-DLOAD_NFA:
-	.byte	$85,"DLOA",$C4
-	.word	$87B	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: DLOAD [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- t )
+; ; Manual: Allows you to load your pre-compiled FORTH dictionary from cassette
+; ; or disk. Used as follows: DLOAD <t> <RETURN> will load a pre-compiled
+; ; dictionary from the cassette file named <t>. To load from disk, preceed the
+; ; word DLOAD with the word DISK as follows: DISK DLOAD <t> <RETURN> Any disk
+; ; file currently open should be closed before performing DLOAD.
+; DLOAD_NFA:
+; 	.byte	$85,"DLOA",$C4
+; 	.word	$87B	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: DSAVE [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- t )
-; Manual: Saves your compiled dictionary to cassette or disk. Used as
-; follows: DSAVE <t> <RETURN> will save a pre-compiled dictionary from the
-; cassette file named <t>. To save from disk, preceed the word DSAVE with the
-; word DISK as follows: DISK DSAVE <t> <RETURN> Any disk file currently open
-; should be closed before performing DSAVE.
-DSAVE_NFA:
-	.byte	$85,"DSAV",$C5
-	.word	DLOAD_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: DSAVE [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- t )
+; ; Manual: Saves your compiled dictionary to cassette or disk. Used as
+; ; follows: DSAVE <t> <RETURN> will save a pre-compiled dictionary from the
+; ; cassette file named <t>. To save from disk, preceed the word DSAVE with the
+; ; word DISK as follows: DISK DSAVE <t> <RETURN> Any disk file currently open
+; ; should be closed before performing DSAVE.
+; DSAVE_NFA:
+; 	.byte	$85,"DSAV",$C5
+; 	.word	DLOAD_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: FLOAD [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- <t> )
-; Manual: Opens file <t> on current disk drive and loads screen 1. Screen 1
-; is expected to load the rest of the file.
-FLOAD_NFA:
-	.byte	$85,"FLOA",$C4
-	.word	DSAVE_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: FLOAD [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- <t> )
+; ; Manual: Opens file <t> on current disk drive and loads screen 1. Screen 1
+; ; is expected to load the rest of the file.
+; FLOAD_NFA:
+; 	.byte	$85,"FLOA",$C4
+; 	.word	DSAVE_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: .FREE [FORTH].
@@ -6636,92 +6647,92 @@ FLOAD_NFA:
 ; space.
 DOTFREE_NFA:
 	.byte	$85,".FRE",$C5
-	.word	FLOAD_NFA	; LFA: previous name field in this vocabulary chain
+	.word	$87B	; LFA: previous name field in this vocabulary chain
     .word DOCOL
     .word EM,AT,HERE,SUBB
     .word LIT,DICT_WORKSPACE,SUBB,DOT,SEMIS
 
 ; ---------------------------------------------------------------------------
-; Dictionary: TRIAD [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( scr --- )
-; Manual: Displays on the selected output device the three screens which
-; include that numbered screen, beginning with a screen evenly divisible by
-; three. Output is suitable for source text records. The screens to be
-; printed must already be in memory.
-TRIAD_NFA:
-	.byte	$85
-	.byte	"TRIA",$C4
-	.word	DOTFREE_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: TRIAD [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( scr --- )
+; ; Manual: Displays on the selected output device the three screens which
+; ; include that numbered screen, beginning with a screen evenly divisible by
+; ; three. Output is suitable for source text records. The screens to be
+; ; printed must already be in memory.
+; TRIAD_NFA:
+; 	.byte	$85
+; 	.byte	"TRIA",$C4
+; 	.word	DOTFREE_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: CLOSE [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: A KERNEL system call, which closes the channel n1 specified to the
-; Commodore operating system.
-CLOSE_NFA:
-	.byte	$85,"CLOS",$C5
-	.word	GBLOCK_NFA	; LFA: previous name field in this vocabulary chain
-CLOSE:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: CLOSE [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: A KERNEL system call, which closes the channel n1 specified to the
+; ; Commodore operating system.
+; CLOSE_NFA:
+; 	.byte	$85,"CLOS",$C5
+; 	.word	GBLOCK_NFA	; LFA: previous name field in this vocabulary chain
+; CLOSE:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: PROFF [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: Restores character output to the video screen, and turns off the
-; serial bus printer channel.
-PROFF_NFA:
-	.byte	$85,"PROF",$C6
-	.word	CLOSE_NFA	; LFA: previous name field in this vocabulary chain
-PROFF:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: PROFF [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: Restores character output to the video screen, and turns off the
+; ; serial bus printer channel.
+; PROFF_NFA:
+; 	.byte	$85,"PROF",$C6
+; 	.word	CLOSE_NFA	; LFA: previous name field in this vocabulary chain
+; PROFF:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: CHKIN [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( n1 --- )
-; Manual: A KERNEL system call, which redirects character input to the
-; channel specified as n1. The channel n1 must already be open.
-CHKIN_NFA:
-	.byte	$85,"CHKI",$CE
-	.word	PROFF_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: CHKIN [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( n1 --- )
+; ; Manual: A KERNEL system call, which redirects character input to the
+; ; channel specified as n1. The channel n1 must already be open.
+; CHKIN_NFA:
+; 	.byte	$85,"CHKI",$CE
+; 	.word	PROFF_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: PRON [SYSTEM].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- )
-; Manual: Opens the serial bus printer channel, and directs all character
-; output to that channel. If no printer is connected, the computer may HANG.
-PRON_NFA:
-	.byte	$84,"PRO",$CE
-	.word	CHKIN_NFA	; LFA: previous name field in this vocabulary chain
-PRON:
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: PRON [SYSTEM].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- )
+; ; Manual: Opens the serial bus printer channel, and directs all character
+; ; output to that channel. If no printer is connected, the computer may HANG.
+; PRON_NFA:
+; 	.byte	$84,"PRO",$CE
+; 	.word	CHKIN_NFA	; LFA: previous name field in this vocabulary chain
+; PRON:
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: TRY [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Implementation: ( -- ) Interpret the screen currently held in SCR by
-; executing LOAD.
-TRY_NFA:
-	.byte	$83,"TR",$D9
-	.word	TRIAD_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: TRY [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Implementation: ( -- ) Interpret the screen currently held in SCR by
+; ; executing LOAD.
+; TRY_NFA:
+; 	.byte	$83,"TR",$D9
+; 	.word	TRIAD_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
-; Dictionary: PRINT [FORTH].
-; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
-; Original C64 manual stack: ( --- (text) )
-; Manual: Sends all character output from the following command line as
-; specified by (text) to the serial bus printer.
-PRINT_NFA:
-	.byte	$85,"PRIN",$D4
-	.word	TRY_NFA	; LFA: previous name field in this vocabulary chain
-	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; ; Dictionary: PRINT [FORTH].
+; ; IMNOTWOPR: unavailable; reports NO C64 and returns to the serial prompt.
+; ; Original C64 manual stack: ( --- (text) )
+; ; Manual: Sends all character output from the following command line as
+; ; specified by (text) to the serial bus printer.
+; PRINT_NFA:
+; 	.byte	$85,"PRIN",$D4
+; 	.word	TRY_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: FORGET [FORTH].
@@ -6731,7 +6742,7 @@ PRINT_NFA:
 ; currently the same. See FENCE.
 FORG_NFA:
 	.byte	$86,"FORGE",$D4
-	.word	PRINT_NFA	; LFA: previous name field in this vocabulary chain
+	.word	DOTFREE_NFA	; LFA: previous name field in this vocabulary chain
 FORG:
 	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
 	.word	TICK
@@ -8117,6 +8128,9 @@ DOTS:
 
 ; ===========================================================================
 ; FORTH SINGLE-STEPPER and DECOMPILER
+; Tracer execution words and their private helpers are commented out because
+; their return stack depends on the unavailable C64 BLKTBL word.
+; Independent inspection and decompiler words remain active.
 ; ===========================================================================
 
 ; ---------------------------------------------------------------------------
@@ -8125,7 +8139,7 @@ DOTS:
 ; word. 126
 ERP_NFA:
 	.byte	$83,"ER",$D0
-	.word	PRON_NFA	; LFA: previous name field in this vocabulary chain
+	.word	DZERO_NFA	; LFA: previous name field in this vocabulary chain
 ERP:
 	.word	DOUSE	; CFA: user variable; push UP + unsigned offset byte
 	.word	$CC	; User offset $00CC; initial address $0A0C
@@ -8142,20 +8156,21 @@ EIP:
 	.word	$CE	; User offset $00CE; initial address $0A0E
 
 ; ---------------------------------------------------------------------------
-; Dictionary: ERP! [SYSTEM].
-; Manual: One of a group of EMULATION words, used by the DEBUGGER. Not a user
-; word.
-ERPSTO_NFA:
-	.byte	$84,"ERP",$A1
-	.word	EIP_NFA	; LFA: previous name field in this vocabulary chain
-ERPSTO:
-	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
-	.word	BLKTBL
-	.word	TWO
-	.word	SUBB
-	.word	ERP
-	.word	STORE
-	.word	SEMIS	; Return to caller thread
+; ; Dictionary: ERP! [SYSTEM].
+; ; Disabled: tracer return stack depends on the C64 BLKTBL word.
+; ; Manual: One of a group of EMULATION words, used by the DEBUGGER. Not a user
+; ; word.
+; ERPSTO_NFA:
+; 	.byte	$84,"ERP",$A1
+; 	.word	EIP_NFA	; LFA: previous name field in this vocabulary chain
+; ERPSTO:
+; 	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
+; 	.word	BLKTBL
+; 	.word	TWO
+; 	.word	SUBB
+; 	.word	ERP
+; 	.word	STORE
+; 	.word	SEMIS	; Return to caller thread
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: E>R [SYSTEM].
@@ -8163,7 +8178,7 @@ ERPSTO:
 ; word.
 ETOR_NFA:
 	.byte	$83,"E>",$D2
-	.word	ERPSTO_NFA	; LFA: previous name field in this vocabulary chain
+	.word	EIP_NFA	; LFA: previous name field in this vocabulary chain
 ETOR:
 	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
 	.word	ERP
@@ -8175,34 +8190,35 @@ ETOR:
 	.word	SEMIS	; Return to caller thread
 
 ; ---------------------------------------------------------------------------
-; Dictionary: ER> [SYSTEM].
-; Manual: One of a group of EMULATION words, used by the DEBUGGER. Not a user
-; word.
-ERFROM_NFA:
-	.byte	$83,"ER",$BE
-	.word	ETOR_NFA	; LFA: previous name field in this vocabulary chain
-ERFROM:
-	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
-	.word	TWO
-	.word	ERP
-	.word	PSTOR
-	.word	ERP
-	.word	AT
-	.word	BLKTBL
-	.word	TWO
-	.word	SUBB
-	.word	GREAT
-	.word	ZBRAN,$16	; Pop flag; if zero branch to $B25E (offset +22 from operand cell)
-	.word	ERPSTO
-	.word	PDOTQ	; Print counted inline text; resume after its payload
-	.byte	11
-	.byte	"RSTK EMPTY "
-	.word	SPSTO
-	.word	QUIT
-	.word	ERP
-	.word	AT
-	.word	AT
-	.word	SEMIS	; Return to caller thread
+; ; Dictionary: ER> [SYSTEM].
+; ; Disabled: tracer return stack depends on the C64 BLKTBL word.
+; ; Manual: One of a group of EMULATION words, used by the DEBUGGER. Not a user
+; ; word.
+; ERFROM_NFA:
+; 	.byte	$83,"ER",$BE
+; 	.word	ETOR_NFA	; LFA: previous name field in this vocabulary chain
+; ERFROM:
+; 	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
+; 	.word	TWO
+; 	.word	ERP
+; 	.word	PSTOR
+; 	.word	ERP
+; 	.word	AT
+; 	.word	BLKTBL
+; 	.word	TWO
+; 	.word	SUBB
+; 	.word	GREAT
+; 	.word	ZBRAN,$16	; Pop flag; if zero branch to $B25E (offset +22 from operand cell)
+; 	.word	ERPSTO
+; 	.word	PDOTQ	; Print counted inline text; resume after its payload
+; 	.byte	11
+; 	.byte	"RSTK EMPTY "
+; 	.word	SPSTO
+; 	.word	QUIT
+; 	.word	ERP
+; 	.word	AT
+; 	.word	AT
+; 	.word	SEMIS	; Return to caller thread
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: EIP+ [SYSTEM].
@@ -8210,7 +8226,7 @@ ERFROM:
 ; word.
 EIPPL_NFA:
 	.byte	$84,"EIP",$AB
-	.word	ERFROM_NFA	; LFA: previous name field in this vocabulary chain
+	.word	ETOR_NFA	; LFA: previous name field in this vocabulary chain
 EIPPL:
 	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
 	.word	TWO
@@ -8303,46 +8319,46 @@ EPDO:
 	.word	ETOR
 	.word	SEMIS	; Return to caller thread
 
-EPPLOO:
-	.word	DOCOL
-	.word	ERFROM
-	.word	OVER
-	.word	PLUS
-	.word	ERFROM
-	.word	TDUP
-	.word	ETOR
-	.word	ETOR
-	.word	ROT
-	.word	ZLESS
-	.word	ZBRAN,6	; Pop flag; if zero branch to $B310 (offset +6 from operand cell)
-	.word	SWAP
-	.word	ONEP
-	.word	LESS
-	.word	ZBRAN,8	; Pop flag; if zero branch to $B31C (offset +8 from operand cell)
-	.word	EBR
-	.word	BRAN,$C	; Jump to $B326 (offset +12 from operand cell)
-	.word	ERFROM
-	.word	DROP
-	.word	ERFROM
-	.word	DROP
-	.word	EIPPL
-	.word	SEMIS	; Return to caller thread
+; EPPLOO:
+; 	.word	DOCOL
+; 	.word	ERFROM
+; 	.word	OVER
+; 	.word	PLUS
+; 	.word	ERFROM
+; 	.word	TDUP
+; 	.word	ETOR
+; 	.word	ETOR
+; 	.word	ROT
+; 	.word	ZLESS
+; 	.word	ZBRAN,6	; Pop flag; if zero branch to $B310 (offset +6 from operand cell)
+; 	.word	SWAP
+; 	.word	ONEP
+; 	.word	LESS
+; 	.word	ZBRAN,8	; Pop flag; if zero branch to $B31C (offset +8 from operand cell)
+; 	.word	EBR
+; 	.word	BRAN,$C	; Jump to $B326 (offset +12 from operand cell)
+; 	.word	ERFROM
+; 	.word	DROP
+; 	.word	ERFROM
+; 	.word	DROP
+; 	.word	EIPPL
+; 	.word	SEMIS	; Return to caller thread
 
-EPLOOP:
-	.word	DOCOL
-	.word	ONE
-	.word	EPPLOO
-	.word	SEMIS	; Return to caller thread
+; EPLOOP:
+; 	.word	DOCOL
+; 	.word	ONE
+; 	.word	EPPLOO
+; 	.word	SEMIS	; Return to caller thread
 
-ELEAV:
-	.word	DOCOL
-	.word	ERFROM
-	.word	DROP
-	.word	ERFROM
-	.word	DROP
-	.word	EI
-	.word	ETOR
-	.word	SEMIS	; Return to caller thread
+; ELEAV:
+; 	.word	DOCOL
+; 	.word	ERFROM
+; 	.word	DROP
+; 	.word	ERFROM
+; 	.word	DROP
+; 	.word	EI
+; 	.word	ETOR
+; 	.word	SEMIS	; Return to caller thread
 
 ECOMP:
 	.word	DOCOL
@@ -8361,90 +8377,90 @@ ECOMP:
 ; original-CFA / emulation-CFA pairs. CND uses these to emulate words that
 ; alter IP or the return stack. This is a Forth thread emulator, not a 6502
 ; CPU emulator.
-EMULATION_CFA_TABLE:
-	.byte	16
+; EMULATION_CFA_TABLE:
+; 	.byte	16
 
-	.word	BRAN
-	.word	EBR
+; 	.word	BRAN
+; 	.word	EBR
 
-	.word	I
-	.word	EI
+; 	.word	I
+; 	.word	EI
 
-	.word	R
-	.word	EI
+; 	.word	R
+; 	.word	EI
 
-	.word	RPSTO
-	.word	ERPSTO
+; 	.word	RPSTO
+; 	.word	ERPSTO
 
-	.word	TOR
-	.word	ETOR
+; 	.word	TOR
+; 	.word	ETOR
 
-	.word	RFROM
-	.word	ERFROM
+; 	.word	RFROM
+; 	.word	ERFROM
 
-	.word	COMP
-	.word	ECOMP	; Inline CFA operand consumed by COMPILE
+; 	.word	COMP
+; 	.word	ECOMP	; Inline CFA operand consumed by COMPILE
 
-	.word	LEAVE
-	.word	ELEAV
+; 	.word	LEAVE
+; 	.word	ELEAV
 
-	.word	PLOOP
-	.word	EPLOOP
+; 	.word	PLOOP
+; 	.word	EPLOOP
 
-	.word	PPLOO
-	.word	EPPLOO
+; 	.word	PPLOO
+; 	.word	EPPLOO
 
-	.word	PDO
-	.word	EPDO
+; 	.word	PDO
+; 	.word	EPDO
 
-	.word	PDOTQ	; Print counted inline text; resume after its payload
-	.word	EPDOTQ
+; 	.word	PDOTQ	; Print counted inline text; resume after its payload
+; 	.word	EPDOTQ
 
-	.word	ALIT
-	.word	EALIT
+; 	.word	ALIT
+; 	.word	EALIT
 
-	.word	CLIT	; Push following inline byte, zero-extended
-	.word	ECLIT
+; 	.word	CLIT	; Push following inline byte, zero-extended
+; 	.word	ECLIT
 
-	.word	LIT	; Push following inline 16-bit cell
-	.word	ELIT	; Inline literal value, not a call
+; 	.word	LIT	; Push following inline 16-bit cell
+; 	.word	ELIT	; Inline literal value, not a call
 
-	.word	ZBRAN
-	.word	EZBRAN
+; 	.word	ZBRAN
+; 	.word	EZBRAN
 
 ; ---------------------------------------------------------------------------
-; Dictionary: CND [SYSTEM].
-; Manual stack: ( a1 --- a2 )
-; Manual: This is an emulator primitive, which converts the address of a
-; selected group of emulated words from their real code field address of the
-; emulation word that is their equivalent. Not a user word.
-CND_NFA:
-	.byte	$83,"CN",$C4
-	.word	EI_NFA	; LFA: previous name field in this vocabulary chain
-CND:
-	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
-	.word	LIT,EMULATION_CFA_TABLE
-	.word	COUNT
-	.word	LIT,4
-	.word	STAR
-	.word	ZERO
-	.word	PDO
-	.word	TDUP
-	.word	I
-	.word	PLUS
-	.word	AT
-	.word	EQUAL
-	.word	ZBRAN,$E	; Pop flag; if zero branch to $B3C9 (offset +14 from operand cell)
-	.word	I
-	.word	PLUS
-	.word	TWOP
-	.word	AT
-	.word	SWAP
-	.word	LEAVE
-	.word	LIT,4
-	.word	PPLOO,$FFE0	; Add stack increment; if continuing branch to $B3AF (offset -32 from operand cell)
-	.word	DROP
-	.word	SEMIS	; Return to caller thread
+; ; Dictionary: CND [SYSTEM].
+; ; Manual stack: ( a1 --- a2 )
+; ; Manual: This is an emulator primitive, which converts the address of a
+; ; selected group of emulated words from their real code field address of the
+; ; emulation word that is their equivalent. Not a user word.
+; CND_NFA:
+; 	.byte	$83,"CN",$C4
+; 	.word	EI_NFA	; LFA: previous name field in this vocabulary chain
+; CND:
+; 	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
+; 	.word	LIT,EMULATION_CFA_TABLE
+; 	.word	COUNT
+; 	.word	LIT,4
+; 	.word	STAR
+; 	.word	ZERO
+; 	.word	PDO
+; 	.word	TDUP
+; 	.word	I
+; 	.word	PLUS
+; 	.word	AT
+; 	.word	EQUAL
+; 	.word	ZBRAN,$E	; Pop flag; if zero branch to $B3C9 (offset +14 from operand cell)
+; 	.word	I
+; 	.word	PLUS
+; 	.word	TWOP
+; 	.word	AT
+; 	.word	SWAP
+; 	.word	LEAVE
+; 	.word	LIT,4
+; 	.word	PPLOO,$FFE0	; Add stack increment; if continuing branch to $B3AF (offset -32 from operand cell)
+; 	.word	DROP
+; 	.word	SEMIS	; Return to caller thread
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: ERR [SYSTEM].
@@ -8454,7 +8470,7 @@ CND:
 ; actually made to trace these words.
 ERR_NFA:
 	.byte	$83,"ER",$D2
-	.word	CND_NFA	; LFA: previous name field in this vocabulary chain
+	.word	EI_NFA	; LFA: previous name field in this vocabulary chain
 ERR:
 	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
 	.word	PDOTQ	; Print counted inline text; resume after its payload
@@ -8490,162 +8506,162 @@ TCONT:
 	.word	$D2	; User offset $00D2; initial address $0A12
 
 ; ---------------------------------------------------------------------------
-; Dictionary: (STEP) [SYSTEM].
-; Manual stack: ( --- )
-; Manual: Performs a single step through the currently selected TRACE word.
-; This is the function to which STEP is vectored, when a high level word is
-; being traced. Not normally used by the user.
-PSTEP_NFA:
-	.byte	$86,"(STEP",$A9
-	.word	TCONT_NFA	; LFA: previous name field in this vocabulary chain
-PSTEP:
-	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
-	.word	EIP
-	.word	AT
-	.word	AT
-	.word	DUP
-	.word	TWOP
-	.word	NFA
-	.word	IDDOT
-	.word	DUP
-	.word	LIT,SEMIS
-	.word	SUBB
-	.word	ZBRAN,$15	; Pop flag; if zero branch to $B43A (offset +21 from operand cell)
-	.word	EIPPL
-	.word	CND
-	.word	EXEC
-	.word	TAB
-	.word	PDOTQ	; Print counted inline text; resume after its payload
-	.byte	2
-	.byte	">>"
-	.word	DOTS
-	.word	BRAN,$F	; Jump to $B447 (offset +15 from operand cell)
-	.word	DROP
-	.word	PDOTQ	; Print counted inline text; resume after its payload
-	.byte	8
-	.byte	"DEF END "
-	.word	CR
-	.word	SEMIS	; Return to caller thread
+; ; Dictionary: (STEP) [SYSTEM].
+; ; Manual stack: ( --- )
+; ; Manual: Performs a single step through the currently selected TRACE word.
+; ; This is the function to which STEP is vectored, when a high level word is
+; ; being traced. Not normally used by the user.
+; PSTEP_NFA:
+; 	.byte	$86,"(STEP",$A9
+; 	.word	TCONT_NFA	; LFA: previous name field in this vocabulary chain
+; PSTEP:
+; 	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
+; 	.word	EIP
+; 	.word	AT
+; 	.word	AT
+; 	.word	DUP
+; 	.word	TWOP
+; 	.word	NFA
+; 	.word	IDDOT
+; 	.word	DUP
+; 	.word	LIT,SEMIS
+; 	.word	SUBB
+; 	.word	ZBRAN,$15	; Pop flag; if zero branch to $B43A (offset +21 from operand cell)
+; 	.word	EIPPL
+; 	.word	CND
+; 	.word	EXEC
+; 	.word	TAB
+; 	.word	PDOTQ	; Print counted inline text; resume after its payload
+; 	.byte	2
+; 	.byte	">>"
+; 	.word	DOTS
+; 	.word	BRAN,$F	; Jump to $B447 (offset +15 from operand cell)
+; 	.word	DROP
+; 	.word	PDOTQ	; Print counted inline text; resume after its payload
+; 	.byte	8
+; 	.byte	"DEF END "
+; 	.word	CR
+; 	.word	SEMIS	; Return to caller thread
 
 ; ---------------------------------------------------------------------------
-; Dictionary: (CONT) [SYSTEM].
-; Manual stack: ( --- )
-; Manual: Performs a continuous emulation through the currently selected
-; TRACE word. This is the low level operation to which CONT gets vectored
-; when a high level FORTH word is TRACED. This word is not normally used by
-; the user at the keyboard.
-PCONT_NFA:
-	.byte	$86,"(CONT",$A9
-	.word	PSTEP_NFA	; LFA: previous name field in this vocabulary chain
-	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
-PCONT:
-	.word	CR
-	.word	PSTEP
-	.word	EIP
-	.word	AT
-	.word	AT
-	.word	LIT,SEMIS
-	.word	EQUAL
-	.word	QTER
-	.word	ORR
-	.word	ZBRAN,$FFEC	; Pop flag; if zero branch to $B458 (offset -20 from operand cell)
-	.word	SEMIS	; Return to caller thread
+; ; Dictionary: (CONT) [SYSTEM].
+; ; Manual stack: ( --- )
+; ; Manual: Performs a continuous emulation through the currently selected
+; ; TRACE word. This is the low level operation to which CONT gets vectored
+; ; when a high level FORTH word is TRACED. This word is not normally used by
+; ; the user at the keyboard.
+; PCONT_NFA:
+; 	.byte	$86,"(CONT",$A9
+; 	.word	PSTEP_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
+; PCONT:
+; 	.word	CR
+; 	.word	PSTEP
+; 	.word	EIP
+; 	.word	AT
+; 	.word	AT
+; 	.word	LIT,SEMIS
+; 	.word	EQUAL
+; 	.word	QTER
+; 	.word	ORR
+; 	.word	ZBRAN,$FFEC	; Pop flag; if zero branch to $B458 (offset -20 from operand cell)
+; 	.word	SEMIS	; Return to caller thread
 
 ; ---------------------------------------------------------------------------
-; Dictionary: STEP [FORTH].
-; Manual stack: ( --- )
-; Manual: Performs a TRACE single step, after a trace has been stopped, or a
-; word has been selected for emulation with the EMULATE word.
-STEP_NFA:
-	.byte	$84,"STE",$D0
-	.word	DOTS_NFA	; LFA: previous name field in this vocabulary chain
-	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
-	.word	TSTEP
-	.word	AT
-	.word	EXEC
-	.word	SEMIS	; Return to caller thread
+; ; Dictionary: STEP [FORTH].
+; ; Manual stack: ( --- )
+; ; Manual: Performs a TRACE single step, after a trace has been stopped, or a
+; ; word has been selected for emulation with the EMULATE word.
+; STEP_NFA:
+; 	.byte	$84,"STE",$D0
+; 	.word	DOTS_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
+; 	.word	TSTEP
+; 	.word	AT
+; 	.word	EXEC
+; 	.word	SEMIS	; Return to caller thread
 
 ; ---------------------------------------------------------------------------
-; Dictionary: CONT [FORTH].
-; Manual stack: ( --- )
-; Manual: This is a vectored word which causes all of a definition to be
-; traced after a trace has been interpreted, or an EMULATE command has been
-; issued. As the trace scrolls up the screen, it can be interrupted at any
-; time, by pressing any character key. To continue after interruption, simply
-; enter CONT followed by a carriage return.
-CONTT_NFA:
-	.byte	$84,"CON",$D4
-	.word	STEP_NFA	; LFA: previous name field in this vocabulary chain
-CONTT:
-	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
-	.word	TCONT
-	.word	AT
-	.word	EXEC
-	.word	SEMIS	; Return to caller thread
+; ; Dictionary: CONT [FORTH].
+; ; Manual stack: ( --- )
+; ; Manual: This is a vectored word which causes all of a definition to be
+; ; traced after a trace has been interpreted, or an EMULATE command has been
+; ; issued. As the trace scrolls up the screen, it can be interrupted at any
+; ; time, by pressing any character key. To continue after interruption, simply
+; ; enter CONT followed by a carriage return.
+; CONTT_NFA:
+; 	.byte	$84,"CON",$D4
+; 	.word	STEP_NFA	; LFA: previous name field in this vocabulary chain
+; CONTT:
+; 	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
+; 	.word	TCONT
+; 	.word	AT
+; 	.word	EXEC
+; 	.word	SEMIS	; Return to caller thread
 
 ; ---------------------------------------------------------------------------
-; Dictionary: EMULATE [FORTH].
-; Manual stack: ( --- t )
-; Manual: Selects the word following EMULATE as the word to be traced by the
-; select debugger. Revectors 'CONT and 'STEP to (CONT) and (STEP) if the word
-; Is a high level word; otherwise vectors them to an error message routine.
-; 125
-EMULAT_NFA:
-	.byte	$87,"EMULAT",$C5
-	.word	CONTT_NFA	; LFA: previous name field in this vocabulary chain
-; Tracer engine: initialize EIP and emulated return-stack state, classify the
-; next CFA with CND, and run either its special emulation handler or its
-; normal behavior. STEP and CONT control advancement through these Forth
-; tokens.
-EMULAT:
-	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
-	.word	TICK
-	.word	CFA
-	.word	DUP
-	.word	EIP
-	.word	STORE
-	.word	AT
-	.word	LIT,HEX
-	.word	AT
-	.word	SUBB
-	.word	ZBRAN,$27	; Pop flag; if zero branch to $B4DB (offset +39 from operand cell)
-	.word	CR
-	.word	PDOTQ	; Print counted inline text; resume after its payload
-	.byte	12
-	.byte	"CODE DEF !! "
-	.word	LIT,ERR+2
-	.word	CFA
-	.word	DUP
-	.word	TSTEP
-	.word	STORE
-	.word	TCONT
-	.word	STORE
-	.word	BRAN,$1A	; Jump to $B4F3 (offset +26 from operand cell)
-	.word	EIPPL
-	.word	ERPSTO
-	.word	LIT,PSTEP+2
-	.word	CFA
-	.word	TSTEP
-	.word	STORE
-	.word	LIT,PCONT
-	.word	CFA
-	.word	TCONT
-	.word	STORE
-	.word	SEMIS	; Return to caller thread
+; ; Dictionary: EMULATE [FORTH].
+; ; Manual stack: ( --- t )
+; ; Manual: Selects the word following EMULATE as the word to be traced by the
+; ; select debugger. Revectors 'CONT and 'STEP to (CONT) and (STEP) if the word
+; ; Is a high level word; otherwise vectors them to an error message routine.
+; ; 125
+; EMULAT_NFA:
+; 	.byte	$87,"EMULAT",$C5
+; 	.word	CONTT_NFA	; LFA: previous name field in this vocabulary chain
+; ; Tracer engine: initialize EIP and emulated return-stack state, classify the
+; ; next CFA with CND, and run either its special emulation handler or its
+; ; normal behavior. STEP and CONT control advancement through these Forth
+; ; tokens.
+; EMULAT:
+; 	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
+; 	.word	TICK
+; 	.word	CFA
+; 	.word	DUP
+; 	.word	EIP
+; 	.word	STORE
+; 	.word	AT
+; 	.word	LIT,HEX
+; 	.word	AT
+; 	.word	SUBB
+; 	.word	ZBRAN,$27	; Pop flag; if zero branch to $B4DB (offset +39 from operand cell)
+; 	.word	CR
+; 	.word	PDOTQ	; Print counted inline text; resume after its payload
+; 	.byte	12
+; 	.byte	"CODE DEF !! "
+; 	.word	LIT,ERR+2
+; 	.word	CFA
+; 	.word	DUP
+; 	.word	TSTEP
+; 	.word	STORE
+; 	.word	TCONT
+; 	.word	STORE
+; 	.word	BRAN,$1A	; Jump to $B4F3 (offset +26 from operand cell)
+; 	.word	EIPPL
+; 	.word	ERPSTO
+; 	.word	LIT,PSTEP+2
+; 	.word	CFA
+; 	.word	TSTEP
+; 	.word	STORE
+; 	.word	LIT,PCONT
+; 	.word	CFA
+; 	.word	TCONT
+; 	.word	STORE
+; 	.word	SEMIS	; Return to caller thread
 
 ; ---------------------------------------------------------------------------
-; Dictionary: TRACE [FORTH].
-; Manual stack: ( --- t )
-; Manual: Lists the lines of a definition of the word following TRACE.
-; Performs the trace in the continuous mode, with vertical scrolling and
-; stack output at each step.
-TRACE_NFA:
-	.byte	$85,"TRAC",$C5
-	.word	EMULAT_NFA	; LFA: previous name field in this vocabulary chain
-	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
-	.word	EMULAT
-	.word	CONTT
-	.word	SEMIS	; Return to caller thread
+; ; Dictionary: TRACE [FORTH].
+; ; Manual stack: ( --- t )
+; ; Manual: Lists the lines of a definition of the word following TRACE.
+; ; Performs the trace in the continuous mode, with vertical scrolling and
+; ; stack output at each step.
+; TRACE_NFA:
+; 	.byte	$85,"TRAC",$C5
+; 	.word	EMULAT_NFA	; LFA: previous name field in this vocabulary chain
+; 	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
+; 	.word	EMULAT
+; 	.word	CONTT
+; 	.word	SEMIS	; Return to caller thread
 
 ;	PICK
 
@@ -8655,7 +8671,7 @@ TRACE_NFA:
 ; (1) PICK is equivalent to DUP, and two (2) PICK is equivalent to OVER, etc.
 PICK_NFA:
 	.byte	$84,"PIC",$CB
-	.word	TRACE_NFA	; LFA: previous name field in this vocabulary chain
+	.word	DOTS_NFA	; LFA: previous name field in this vocabulary chain
 PICK:
 	.word	DOCOL	; CFA: colon definition; parameter field is a Forth thread
 	.word	TWO
@@ -9469,7 +9485,7 @@ SOURCE_NFA:
 MASK_NFA:
 	.byte	$84,"MAS",$CB
 ;	.word	SPRITE_NFA	; LFA: previous name field in this vocabulary chain
-	.word	PCONT_NFA	; LFA: previous name field in this vocabulary chain
+	.word	TCONT_NFA	; LFA: previous name field in this vocabulary chain
 MASK:
 	.word	DOVAR	; CFA: variable; push the parameter-field address
 	.byte	$01,$02,$04,$08

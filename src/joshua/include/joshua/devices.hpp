@@ -1,5 +1,6 @@
 #pragma once
 #include "joshua/memory.hpp"
+#include "joshua/i2c.hpp"
 #include "joshua/serial.hpp"
 #include <array>
 #include <deque>
@@ -11,6 +12,8 @@ namespace joshua
     {
         friend class StateCodec;
     public:
+        explicit Via(std::vector<Byte> i2cTargets = {});
+        bool hasI2cTargets() const { return i2c_.enabled(); }
         Byte peek(Word offset) const override;
         Byte read(Word offset) override;
         void write(Word offset, Byte value) override;
@@ -21,6 +24,7 @@ namespace joshua
         void setPortB(Byte value);
 
     private:
+        I2cBus i2c_;
         std::array<Byte, 16> registers_{};
         Word t1_ = 0xffff, t2_ = 0xffff, latch1_ = 0xffff;
         Byte latch2Low_ = 0xff, ifr_ = 0, ier_ = 0;
@@ -28,6 +32,8 @@ namespace joshua
         bool armed1_ = false, armed2_ = false, pb7_ = true;
         bool delay1_ = false, delay2_ = false, reload1_ = false;
         void count2();
+        Byte portB() const;
+        void updateI2c();
     };
 
     // Byte endpoint with emulated frame duration; the N variant's TDRE is always set.

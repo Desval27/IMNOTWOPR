@@ -2,6 +2,7 @@
 """CLI, profile, serial and monitor integration checks. No third-party modules."""
 import os
 import pathlib
+import re
 import subprocess
 import sys
 import tempfile
@@ -23,6 +24,66 @@ class Integration(unittest.TestCase):
                                  "--profile", "profiles/echo.profile", "--cycles", "20000", "--unthrottled")
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertEqual(result.stdout, b">Hello\r\n")
+
+    def test_i2c_configuration(self):
+        commands = ["io write 8000 00"]
+        for address in (0x3c, 0x50, 0x68):
+            commands += ["io write 8002 00", "io write 8002 80", "io write 8002 C0"]
+            for bit in range(7, -1, -1):
+                sda = 0 if (address << 1) & (1 << bit) else 0x80
+                commands += [f"io write 8002 {sda | 0x40:02X}",
+                             f"io write 8002 {sda:02X}", f"io write 8002 {sda | 0x40:02X}"]
+            commands += ["io write 8002 40", "io write 8002 00", "io read 8000",
+                         "io write 8002 40", "io write 8002 C0", "io write 8002 80",
+                         "io write 8002 00"]
+        script = "\n".join(commands + ["quit"]) + "\n"
+        with tempfile.TemporaryDirectory() as directory:
+            profile = pathlib.Path(directory, "i2c.profile")
+            profile.write_text("i2c-target = $68\ni2c-target = $3C\n")
+            cases = [
+                (("--profile", str(profile)), [b"7F", b"FF", b"7F"]),
+                (("--profile", str(profile), "--i2c-target", "50"), [b"FF", b"7F", b"FF"]),
+                (("--i2c-target", "50", "--profile", str(profile)), [b"FF", b"7F", b"FF"]),
+                (("--profile", str(profile), "--i2c-target", "none"), [b"FF"] * 3),
+                (("--i2c-target", "3c", "--i2c-target", "68"), [b"7F", b"FF", b"7F"]),
+                (("--i2c-target", "3c", "--i2c-target", "none", "--i2c-target", "50"),
+                 [b"FF", b"7F", b"FF"]),
+            ]
+            for args, expected in cases:
+                with self.subTest(args=args):
+                    result = self.run_script(script, *args)
+                    self.assertEqual(result.returncode, 0, result.stderr)
+                    self.assertEqual(re.findall(rb"^joshua> ([0-9A-F]{2})$", result.stderr, re.M), expected)
+            profile.write_text("i2c-target = $07\n")
+            result = self.run_script("quit\n", "--profile", str(profile))
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn(b"i2c.profile:1:", result.stderr)
+        for args in (("--i2c-target", "07"), ("--i2c-target", "78"), ("--i2c-target", "100"),
+                     ("--i2c-target", "invalid"), ("--i2c-target", "3c", "--i2c-target", "3c"),
+                     ("--via", "none", "--i2c-target", "3c")):
+            with self.subTest(args=args):
+                result = self.run_script("quit\n", *args)
+                self.assertNotEqual(result.returncode, 0)
+
+    def test_i2c_snapshot_validation(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = pathlib.Path(directory)
+            result = self.run_script("save-state saved.jss\nquit\n", "--i2c-target", "3c", directory=directory)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            saved = root.joinpath("saved.jss").read_bytes()
+            # The last six bytes hold phase, bit count, shift byte and three booleans.
+            for offset, value in ((-6, 255), (-5, 9), (-3, 2), (-1, 1)):
+                with self.subTest(offset=offset):
+                    payload = bytearray(saved[20:])
+                    payload[offset] = value
+                    root.joinpath("bad.jss").write_bytes(
+                        saved[:16] + zlib.crc32(payload).to_bytes(4, "little") + payload)
+                    result = self.run_script(
+                        "save-state before.jss\nload-state bad.jss\nsave-state after.jss\nquit\n",
+                        "--i2c-target", "3c", directory=directory)
+                    self.assertNotEqual(result.returncode, 0)
+                    self.assertEqual(root.joinpath("before.jss").read_bytes(),
+                                     root.joinpath("after.jss").read_bytes())
 
     def test_load_save_and_invalid_ranges(self):
         with tempfile.TemporaryDirectory() as directory:

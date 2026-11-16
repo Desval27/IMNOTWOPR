@@ -71,6 +71,18 @@ struct Settings
             if (!config.clockHz)
                 throw std::runtime_error("clock-hz must be positive");
         }
+        else if (key == "i2c-target")
+        {
+            if (seen.insert(key).second || value == "none")
+                config.i2cTargets.clear();
+            if (value != "none")
+            {
+                auto address = static_cast<Byte>(number(value, 0x77));
+                if (address < 0x08)
+                    throw std::runtime_error("i2c-target must be a 7-bit address in $08..$77");
+                config.i2cTargets.push_back(address);
+            }
+        }
         else if (key == "serial-baud")
             config.serial.baud = number(value, 4'000'000, 10);
         else if (key == "serial-data-bits")
@@ -145,6 +157,7 @@ Config parseArguments(int argc, char **argv)
                                                        "--ram",
                                                        "--rom",
                                                        "--via",
+                                                       "--i2c-target",
                                                        "--acia",
                                                        "--clock-hz",
                                                        "--escape",
@@ -211,6 +224,8 @@ Usage: joshua [options]
   --ram BASE:SIZE[:FILE]    Replace RAM mappings; repeat to add regions
   --rom BASE:SIZE[:FILE]    Replace ROM mappings; repeat to add regions
   --via BASE               Map 16 VIA registers
+  --i2c-target ADDRESS     Attach a dummy write-address responder on PB7/PB6
+                           Repeat for addresses $08..$77; 'none' clears targets
   --acia BASE              Map 4 ACIA registers
                            Use 'none' to omit RAM, ROM, VIA or ACIA
   --clock-hz HZ            CPU clock in decimal (default 1000000)

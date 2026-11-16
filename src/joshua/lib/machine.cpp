@@ -7,6 +7,8 @@ namespace joshua
 {
 Machine::Machine(const Config &config) : cpu(bus), consoleOutput(config.consoleNewline), clockHz_(config.clockHz)
 {
+    if (!config.via && !config.i2cTargets.empty())
+        throw std::runtime_error("i2c-target requires a VIA");
     auto add = [&](const auto &regions, bool rom) {
         unsigned index = 0;
         for (const auto &region : regions)
@@ -27,7 +29,7 @@ Machine::Machine(const Config &config) : cpu(bus), consoleOutput(config.consoleN
     add(config.rom, true);
     if (config.via)
     {
-        via = std::make_shared<Via>();
+        via = std::make_shared<Via>(config.i2cTargets);
         bus.map({"VIA", *config.via, 16, via});
     }
     if (config.acia)

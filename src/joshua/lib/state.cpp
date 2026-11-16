@@ -13,7 +13,7 @@ namespace joshua
 namespace
 {
 constexpr std::array<Byte, 8> magic{'J', 'O', 'S', 'H', 'U', 'A', '\r', '\n'};
-constexpr std::uint32_t version = 1;
+constexpr std::uint32_t version = 2;
 constexpr std::size_t maxPayload = 16 * 1024 * 1024;
 
 // Explicit little-endian fields, never object representations or host pointers.
@@ -70,7 +70,7 @@ struct Reader
         T actual;
         (*this)(actual);
         if (actual != expected)
-            throw std::runtime_error("state memory map or clock does not match this machine");
+            throw std::runtime_error("state memory map, clock or I2C targets do not match this machine");
     }
     void queue(std::deque<Byte> &bytes)
     {
@@ -100,6 +100,29 @@ std::uint32_t checksum(std::span<const Byte> bytes)
 // directions share the field list so new state cannot be restored via I/O writes.
 class StateCodec
 {
+    template <class Archive> static void i2c(Archive &ar, I2cBus &bus)
+    {
+        // Configuration is checked, not replaced, just like mapped peripherals.
+        ar.expect(static_cast<Byte>(bus.addresses_.size()));
+        for (auto address : bus.addresses_)
+            ar.expect(address);
+        auto phase = static_cast<Byte>(bus.phase_);
+        ar(phase);
+        ar(bus.bits_);
+        ar(bus.byte_);
+        ar(bus.scl_);
+        ar(bus.sda_);
+        ar(bus.pullSdaLow_);
+        if constexpr (std::same_as<Archive, Reader>)
+        {
+            if (phase > static_cast<Byte>(I2cBus::Phase::ignore) || bus.bits_ > 8 ||
+                (bus.pullSdaLow_ && (phase != static_cast<Byte>(I2cBus::Phase::acknowledge) ||
+                                     bus.bits_ != 8 || bus.sda_ || (bus.byte_ & 1) ||
+                                     !std::binary_search(bus.addresses_.begin(), bus.addresses_.end(), bus.byte_ >> 1))))
+                throw std::runtime_error("invalid state I2C transaction");
+            bus.phase_ = static_cast<I2cBus::Phase>(phase);
+        }
+    }
     static auto aciaMembers(Acia &a)
     {
         return std::tie(a.clockHz_, a.peer_, a.command_, a.control_, a.received_, a.transmit_, a.incoming_, a.full_,
@@ -176,7 +199,7 @@ class StateCodec
             return 3;
         throw std::runtime_error("unsupported device in state file: " + mapping.name);
     }
-    template <class Archive, class M> static void fields(Archive &ar, M &m)
+    template <class Archive, class M> static void fields(Archive &ar, M &m, std::uint32_t format)
     {
         ar.expect(m.clockHz_);
         ar.expect(static_cast<std::uint32_t>(m.bus.mappings_.size()));
@@ -227,16 +250,24 @@ class StateCodec
                 ar(address);
                 ar(enabled);
             }
+        for (const auto &mapping : m.bus.mappings_)
+            if (auto v = dynamic_cast<Via *>(mapping.device.get()))
+            {
+                if (format >= 2)
+                    i2c(ar, v->i2c_);
+                else if (v->hasI2cTargets())
+                    throw std::runtime_error("state I2C targets do not match this machine");
+            }
     }
 
   public:
-    static std::vector<Byte> encode(const Machine &machine)
+    static std::vector<Byte> encode(const Machine &machine, std::uint32_t format)
     {
         Writer writer;
-        fields(writer, machine);
+        fields(writer, machine, format);
         return std::move(writer.data);
     }
-    static void decode(Machine &machine, std::span<const Byte> data)
+    static void decode(Machine &machine, std::span<const Byte> data, std::uint32_t format)
     {
         // Clone devices before parsing. A malformed or incompatible snapshot must
         // leave every live byte, latch and host callback unchanged.
@@ -260,7 +291,7 @@ class StateCodec
                 kind(mapping); // Report unsupported devices before decoding.
         }
         Reader reader{data};
-        fields(reader, staged);
+        fields(reader, staged, format);
         if (!reader.data.empty())
             throw std::runtime_error("unexpected trailing state data");
 
@@ -295,11 +326,13 @@ class StateCodec
 
 void Machine::saveState(const std::filesystem::path &file) const
 {
-    auto payload = StateCodec::encode(*this);
+    // Keep the original format for machines without attached I2C targets.
+    const std::uint32_t format = via && via->hasI2cTargets() ? version : 1;
+    auto payload = StateCodec::encode(*this, format);
     Writer header;
     for (auto byte : magic)
         header(byte);
-    header(version);
+    header(format);
     header(static_cast<std::uint32_t>(payload.size()));
     header(checksum(payload));
 
@@ -348,7 +381,7 @@ void Machine::loadState(const std::filesystem::path &file)
     reader(format);
     reader(size);
     reader(crc);
-    if (format != version)
+    if (format != 1 && format != version)
         throw std::runtime_error("unsupported state file version: " + std::to_string(format));
     if (size > maxPayload)
         throw std::runtime_error("state exceeds 16 MiB limit");
@@ -359,6 +392,6 @@ void Machine::loadState(const std::filesystem::path &file)
         throw std::runtime_error("unexpected trailing state data or read error");
     if (checksum(payload) != crc)
         throw std::runtime_error("state file checksum mismatch");
-    StateCodec::decode(*this, payload);
+    StateCodec::decode(*this, payload, format);
 }
 } // namespace joshua

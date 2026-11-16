@@ -7,7 +7,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_library(joshua_core
-    lib/memory.cpp lib/devices.cpp lib/cpu.cpp lib/instruction.cpp
+    lib/memory.cpp lib/devices.cpp lib/i2c.cpp lib/cpu.cpp lib/instruction.cpp
     lib/config.cpp lib/state.cpp lib/machine.cpp lib/monitor.cpp lib/serial.cpp)
 target_include_directories(joshua_core PUBLIC include)
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
@@ -25,6 +25,9 @@ if(BUILD_TESTING)
     add_executable(joshua_state_tests tests/state.cpp)
     target_link_libraries(joshua_state_tests PRIVATE joshua_core)
     add_test(NAME state COMMAND joshua_state_tests)
+    add_executable(joshua_i2c_tests tests/i2c.cpp)
+    target_link_libraries(joshua_i2c_tests PRIVATE joshua_core)
+    add_test(NAME i2c COMMAND joshua_i2c_tests)
     add_test(NAME cli_help COMMAND joshua --help)
     add_executable(joshua_vectors tests/vectors.cpp)
     target_link_libraries(joshua_vectors PRIVATE joshua_core)

@@ -76,6 +76,62 @@ Quote `$` on shells that expand it, or omit the prefix. Addresses, sizes and mon
 The escape byte is intercepted immediately; use monitor `send 1D` when the guest
 needs a literal Ctrl-]. `--help` lists all options.
 
+### Dummy I2C devices
+
+Joshua can attach address-only I²C targets to the VIA's **PB7 (SDA)** and
+**PB6 (SCL)** pins. The firmware runs its normal bit-banging code: output latches
+stay low, DDR=1 pulls a line low, and DDR=0 releases it to a simulated pull-up.
+Targets decode the pin transitions and acknowledge their configured write
+address on the ninth clock. No firmware patches or scan breakpoints are needed.
+
+From the repository root, build the diagnostics ROM with the external cc65 tools
+and start the supplied example:
+
+```sh
+make -C src/ferrous sysdiag
+src/joshua/build/gcc14/joshua --profile src/joshua/profiles/sysdiag-i2c.profile --run
+```
+
+Select **5. I2C SCAN**. The ROM should report:
+
+```text
+I2C SCAN (7-BIT $08-$77)
+FOUND $3C
+FOUND $50
+FOUND $68
+I2C SCAN COMPLETE
+```
+
+The [example profile](profiles/sysdiag-i2c.profile) maps the VIA at `$B000` and
+ACIA at `$B010`, as required by sysdiag. Configure targets in any VIA-enabled
+profile with repeated entries:
+
+```ini
+i2c-target = $3C
+i2c-target = $50
+i2c-target = $68
+```
+
+Alternatively, add `--i2c-target 3C --i2c-target 50 --i2c-target 68` on the command
+line. The first CLI target replaces the profile's entire target list regardless
+of the position of `--profile`; subsequent entries add targets. `--i2c-target none`
+clears the list. Addresses are unshifted 7-bit values in `$08..$77`; duplicates,
+reserved addresses and targets without a VIA are rejected. No targets are attached
+by default. Reset retains the configured addresses and releases any target ACK.
+
+These targets support **discovery only**: they NACK read addresses and payload
+bytes, and expose no registers or storage. The model supports repeated START and
+STOP, but does not provide target clock stretching, multi-controller arbitration,
+analog rise times or electrical contention checks. It validates firmware/bus
+logic, not physical hardware timing. Snapshot restore requires the same target
+addresses and preserves partial addresses and active ACKs.
+
+Run the ROM scan regressions after building Joshua and sysdiag:
+
+```sh
+python3 src/ferrous/tests/sysdiag.py src/joshua/build/gcc14/joshua SysdiagTests -v
+```
+
 ## Monitor
 
 Joshua starts paused unless `--run` is specified. CPU status appears above each interactive prompt. Memory views show hexadecimal bytes and printable ASCII.
@@ -110,7 +166,7 @@ run C000
 | `load FILE ADDRESS` | Load a raw binary |
 | `save FILE ADDRESS COUNT` | Save a raw binary, replacing the named file |
 | `save-state FILE` | Save the full machine state, replacing the named file |
-| `load-state FILE` | Restore a snapshot with a matching memory map and clock |
+| `load-state FILE` | Restore a snapshot with matching memory map, clock and I2C targets |
 | `map` | Show the machine's configured mappings |
 | `io read ADDRESS` | Read through the real bus, including register side effects |
 | `io write ADDRESS BYTE` | Write through the real bus |
@@ -145,14 +201,15 @@ run
 ```
 
 Snapshots include CPU registers, WAI/STP and pending NMI state, all RAM and ROM
-bytes, the bus cycle count, VIA registers/timers/inputs, ACIA registers and pending
+bytes, the bus cycle count, VIA registers/timers/inputs and any I2C transaction,
+ACIA registers and pending
 serial frames/queues, console serial and newline settings, and enabled/disabled
 breakpoints. Save/load does not advance emulated time or access I/O registers.
 Loading leaves execution paused; `run` resumes from the restored PC (a restored
 STP still requires reset).
 
 To restore after restarting Joshua, start with the same profile or equivalent
-RAM/ROM regions, device addresses and CPU clock, then `load-state FILE`. The file
+RAM/ROM regions, device addresses, I2C target addresses and CPU clock, then `load-state FILE`. The file
 contains memory contents, including ROM patches; it does not change the configured
 memory map. Filenames are relative to the working directory; quote spaces.
 
@@ -165,6 +222,10 @@ limits are host settings and are not saved. Loading resets `mem N`/`dis N` to th
 restored PC and clears the previous breakpoint-resume bypass. Previously printed
 serial output is not undone. Raw binary `save` and `load` remain available for
 memory images.
+
+Machines with I2C targets write version 2 snapshots. Machines without targets
+continue to read and write version 1; their existing snapshots remain compatible.
+Older Joshua builds cannot load version 2 snapshots.
 
 ## Serial I/O and automation
 

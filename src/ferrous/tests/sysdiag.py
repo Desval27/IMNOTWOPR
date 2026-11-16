@@ -2,8 +2,8 @@
 """Serial menu and I2C scan checks; build sysdiag first.
 
 Usage: python3 tests/sysdiag.py PATH/TO/joshua -v
-The responding-device tests inject SDA/SCL through RAM-backed VIA registers;
-they exercise the ROM and real serial output, not an electrical I2C target.
+Tests cover Joshua's attached I2C targets through the real VIA model, as well as
+RAM-injected SDA/SCL for independent firmware checks and timeout injection.
 """
 import pathlib
 import re
@@ -15,6 +15,7 @@ import unittest
 EXECUTABLE = pathlib.Path(sys.argv.pop(1)).resolve()
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 PROFILE = ROOT.parent / "joshua/profiles/sysdiag.profile"
+I2C_PROFILE = ROOT.parent / "joshua/profiles/sysdiag-i2c.profile"
 LABELS = {}
 for line in (ROOT / "sysdiag.lbl").read_text().splitlines():
     _, address, name = line.split()
@@ -106,13 +107,12 @@ class MemoryRangeTests(unittest.TestCase):
 
 
 class SysdiagTests(unittest.TestCase):
-    def run_menu(self, commands, *, simulated=False):
+    def run_menu(self, commands, *, simulated=False, targets=(), profile=PROFILE):
         result = subprocess.run(
-            [str(EXECUTABLE), "--ram", "0:B010" if simulated else "0:B000",
-             "--via", "none" if simulated else "B000", "--acia", "B010",
-             "--rom", f"C000:4000:{ROOT / 'sysdiag.bin'}", "--clock-hz", "1000000",
-             "--serial-baud", "19200", "--console-newline", "raw",
-             "--cycles", "1000000", "--unthrottled"],
+            [str(EXECUTABLE), "--profile", str(profile), "--console-newline", "raw",
+             *(["--ram", "0:B010", "--via", "none"] if simulated else []),
+             "--cycles", "1000000", "--unthrottled",
+             *[arg for address in targets for arg in ("--i2c-target", f"{address:02X}")]],
             input=("\n".join([f"break {READ:04X}", "run", *commands, "regs", "quit"])
                    + "\n").encode(), capture_output=True, timeout=30)
         self.assertEqual(result.returncode, 0, result.stderr.decode())
@@ -148,6 +148,22 @@ class SysdiagTests(unittest.TestCase):
         self.assertEqual(output.count(b"FOUND $"), 4)
         self.assertEqual(output.count(b"NO I2C DEVICES FOUND\r\n"), 1)
         self.assertEqual(output.count(b"SYSTEM DIAGNOSTICS\r\n"), 3)
+
+    def test_scan_with_via_targets_repeats_and_survives_reset(self):
+        output = self.run_menu(["send 35 0D", "run", "send 35 0D", "run",
+                                "reset", "run", "send 35 0D", "run"],
+                               profile=I2C_PROFILE)
+        found = (b"FOUND $3C\r\nFOUND $50\r\nFOUND $68\r\n"
+                 b"I2C SCAN COMPLETE\r\n")
+        self.assertEqual(output.count(found), 3)
+        self.assertEqual(output.count(b"FOUND $"), 9)
+        self.assertNotIn(b"NO I2C DEVICES", output)
+        self.assertNotIn(b"FAILED", output)
+
+    def test_scan_with_via_targets_at_range_boundaries(self):
+        output = self.run_menu(["send 35 0D", "run"], targets=(0x08, 0x77))
+        self.assertIn(b"FOUND $08\r\nFOUND $77\r\nI2C SCAN COMPLETE\r\n", output)
+        self.assertEqual(output.count(b"FOUND $"), 2)
 
     def test_stuck_clock_reports_error_and_returns_to_menu(self):
         # RAM-backed SCL remains low after initialization.

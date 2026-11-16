@@ -18,6 +18,7 @@ flowchart TD
     Bus --> RAM
     Bus --> ROM
     Bus --> VIA[W65C22 VIA]
+    VIA --> I2C[Digital I2C bus and address-only targets]
     Bus --> ACIA[W65C51N ACIA]
     App --> Terminal[POSIX or Windows terminal]
     Terminal --> ACIA
@@ -79,7 +80,9 @@ load/save operates only on memory bytes.
 `StateCodec` has private access to CPU/device latches and serial queues, keeping
 serialization separate from normal bus accesses. The format uses an eight-byte
 `JOSHUA\r\n` signature followed by little-endian uint32 version, payload length and
-CRC32 fields. Version 1 stores explicit fixed-width fields, not C++ object layouts.
+CRC32 fields. Both versions store explicit fixed-width fields, not C++ object layouts.
+Version 2 appends I2C target addresses and transaction state, requiring the same
+address set when loading. Machines without targets retain the version 1 format.
 The payload is limited to 16 MiB and includes the map types/bases/sizes and clock
 for compatibility checks. Mapping order must also match.
 
@@ -91,6 +94,25 @@ run-loop settings are outside the snapshot. Saving closes a temporary sibling fi
 before renaming it over the destination. The state tests compare subsequent CPU
 bus traces, peripheral behavior and snapshot bytes after restore, and integration
 tests cover restoration in a fresh process and rejection without mutation.
+
+## I2C attachment
+
+`Via` owns an `I2cBus` by value. There are no back-pointers or callbacks, so snapshot
+staging copies the complete bus without sharing mutable state with the live VIA.
+Configured addresses are sorted once, making profile ordering irrelevant to snapshots.
+
+VIA writes, external port-input changes and timer ticks update the bus using PB7
+and PB6 levels derived from output latches, DDRB, timer PB7 output and external
+inputs. A digital wired-AND combines controller and target low drives; released
+inputs default high. `peek` only reads the resolved levels and never advances the
+protocol. Other port bits retain their existing behavior.
+
+The bus recognizes START/STOP while SCL is high, samples address bits on rising
+edges, asserts ACK after the eighth falling edge and releases it after the ninth.
+Only configured write addresses are acknowledged. Subsequent payload bytes and
+read addresses are NACKed until another START. The decoder has no ROM addresses,
+CPU-PC hooks or host-time dependencies. This first model implements discovery;
+register devices, clock stretching and arbitration remain future work.
 
 ## Configuration decisions
 

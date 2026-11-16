@@ -58,12 +58,15 @@ instruction boundaries. No pin-level cycle-accuracy claim is made.
 | --- | --- | --- |
 | RAM/ROM | Arbitrary non-overlapping regions, protection, debugger patching, raw images | Aliases, overlays and bank switching |
 | W65C22 | Port data/direction, T1 one-shot/free-run/PB7, T2 interval/PB6 pulse count, IFR/IER, read acknowledgements | Shift register operation, input latching, CA/CB handshakes, physical pin timing |
+| I2C targets | Optional PB7 SDA / PB6 SCL attachment, digital pull-ups/low drives, START/STOP/repeated START, 7-bit write-address ACK, reset and snapshots | Register/data transfers, target clock stretching, arbitration, analog timing and contention |
 | W65C51N | Data/status/command/control, emulated frame durations, RX full/overrun/IRQ, always-set TDRE, premature TX overwrite | Bit-level framing/errors, echo, parity, TX break/IRQ, dynamic CTS/DCD/DSR and programmable reference clock |
 
 VIA shift/input-latch activation and nonzero PCR modes currently raise an explicit
 error. ACIA echo, parity enable, transmitter IRQ and break modes also raise an
 error. VIA inputs default high and can be supplied through the core's port APIs;
-there is no external hardware attached to those ports in the console application.
+the console application can attach address-only I2C targets with `--i2c-target`.
+These targets NACK read addresses and payload bytes; they do not emulate any
+particular sensor, EEPROM or RTC.
 
 The UART assumes a 1.8432 MHz reference and connected modem lines. Frames have
 5–8 data bits and the configured stop-bit duration. When the control register
@@ -87,11 +90,19 @@ support process tracing). It covers:
 - All 256 opcode encodings through assembly/disassembly round trips.
 - ROM protection, unmapped reads, overlap/range rejection and atomic failed edits.
 - VIA timer IRQs, free-run reloads and non-destructive inspection.
+- I2C ACK timing, address selection/NACKs, repeated START, unrelated port bits,
+  reset, profile/CLI selection and snapshot continuation at every transaction edge.
 - ACIA receive, status acknowledgement, timed transmit and overwrite behavior.
 - Monitor commands, breakpoint editing and resuming past an execution breakpoint.
 - File round trips, relative profile images and CLI precedence in either order.
 - Serial echo through the actual application.
 - Linux pseudo-terminal entry/exit, Ctrl-C delivery and terminal restoration.
+
+The separate `src/ferrous/tests/sysdiag.py` `SysdiagTests` suite runs the ROM's
+menu scan through the VIA with targets at `$3C/$50/$68` and `$08/$77`, including
+repeated scans and reset. It also retains RAM-injected firmware tests for ACK/NACK
+and stuck-SCL handling. Run it as documented in the [README](../README.md#dummy-i2c-devices);
+CTest does not build or depend on the external ferrous ROM toolchain.
 
 The Windows/UCRT64 build and native console behavior remain unverified on a
 Windows host. The C++ core has no POSIX dependency; terminal implementations are

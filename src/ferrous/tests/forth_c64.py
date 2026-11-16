@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Serial-shell and retained C64-word checks; build with make forth first.
+"""Serial-shell and disabled C64-word checks; build with make forth first.
 
 Usage: python3 tests/forth_c64.py PATH/TO/joshua
 """
@@ -33,7 +33,7 @@ def cell(address):
 
 
 def dictionary_entries():
-    """Return each documented word's CFA and whether it is marked unavailable."""
+    """Return each active documented word's CFA and header label."""
     entries = {}
     for source in SOURCES.values():
         for block in re.split(r"(?=^; Dictionary: )", source, flags=re.M):
@@ -46,7 +46,7 @@ def dictionary_entries():
             key = name[1], name[2]
             if key in entries:
                 raise ValueError(f"duplicate dictionary entry: {key}")
-            entries[key] = cfa, bool(re.search(r"^; IMNOTWOPR: unavailable;", block, re.M))
+            entries[key] = cfa, header
     return entries
 
 
@@ -99,7 +99,7 @@ def direct_c64_accesses(source):
 
 
 class ForthPortTests(unittest.TestCase):
-    def test_dictionary_chains_terminate(self):
+    def test_dictionary_chains_reach_all_active_words(self):
         # Reproduce reset_dictionary's RAM vocabulary descriptors. SYSTEM,
         # ASSEMBLER and EDITOR inherit FORTH through these mutable links.
         memory = bytearray(0x10000)
@@ -122,6 +122,13 @@ class ForthPortTests(unittest.TestCase):
                     self.assertTrue(memory[nfa + length] & 0x80)
                     lfa = nfa + 1 + length
                     nfa = int.from_bytes(memory[lfa:lfa + 2], "little")
+                for (name, owner), (_, header) in dictionary_entries().items():
+                    if owner != vocabulary:
+                        continue
+                    address = LABELS[header]
+                    if start <= address < end:
+                        address += ram - start
+                    self.assertIn(address, seen, f"Unreachable {owner} word: {name}")
 
     def run_monitor(self, commands, *, stops=None):
         result = subprocess.run(
@@ -172,29 +179,51 @@ class ForthPortTests(unittest.TestCase):
             expected += line.encode() + b"\r\n" + message + b"\r\n\r\n" + PROMPT
         self.assertEqual(self.run_monitor(commands).stdout, expected)
 
-    def test_all_retained_stubs_report_and_recover(self):
+    def test_c64_words_are_commented_out_and_unlinked(self):
         entries = dictionary_entries()
-        stubs = {key: cfa for key, (cfa, unavailable) in entries.items() if unavailable}
+        for key, (cfa, _) in entries.items():
+            self.assertNotEqual(cell(cfa), LABELS["NO_C64"], key)
+        disabled = {}
+        for block in re.split(r"(?=^; (?:; )?Dictionary: )", SOURCES[ROOT / "forth.s"], flags=re.M):
+            name = re.match(r"; ; Dictionary: (.*?) \[([^]]+)\]", block)
+            if name:
+                header = re.search(r"^; (\w+_NFA):", block, re.M)[1]
+                disabled[name[1], name[2]] = header
+                self.assertNotIn(header, LABELS, name[1])
         expected = {
-            ("BORDER", "FORTH"), ("UPORT", "FORTH"),
+            ("BORDER", "FORTH"), ("UPORT", "FORTH"), ("BLOCK", "FORTH"),
             ("OPEN", "SYSTEM"), ("CHRIN", "SYSTEM"), ("SETNAM", "SYSTEM"),
             ("DISK", "FORTH"), ("FILE", "FORTH"), (">RAM", "SYSTEM"),
-            ("EDIT", "FORTH"), ("V", "EDITOR"),
+            ("EDIT", "FORTH"), ("V", "EDITOR"), ("R/W", "SYSTEM"),
+            ("GTEXT", "EDITOR"), ("ERP!", "SYSTEM"), ("ER>", "SYSTEM"),
+            ("EMULATE", "FORTH"), ("TRACE", "FORTH"),
         }
-        self.assertTrue(expected <= stubs.keys())
-        # Check classification in both directions instead of freezing a stub count.
-        self.assertEqual(set(stubs), {key for key, (cfa, _) in entries.items()
-                                     if cell(cfa) == LABELS["NO_C64"]})
-        for name in ("COLD", "ABORT", "EMPTY", "EM", "KEY", "?TERMINAL", "EMIT"):
-            self.assertNotIn((name, "FORTH"), stubs)
-        cfas = list(stubs.values()) + [LABELS["PRSLW"]]
-        self.assertEqual(cell(LABELS["PRSLW"]), LABELS["NO_C64"])
+        self.assertTrue(expected <= disabled.keys())
+        self.assertFalse(disabled.keys() & entries.keys())
 
+        # Lookup must reject removed words and recover in every affected vocabulary.
+        commands = ["run"]
+        expected_output = BANNER + PROMPT
+        for vocabulary, names in (("FORTH", ("SMOVE", "BLOCK", "BORDER", "TRACE")),
+                                  ("SYSTEM", ("OPEN", "R/W", "ERP!")),
+                                  ("EDITOR", ("V", "GTEXT"))):
+            commands += forth_line(vocabulary)
+            expected_output += vocabulary.encode() + b"\r\n\r\nok> "
+            for name in names:
+                commands += forth_line(name)
+                expected_output += name.encode() + b"\r\n\r\n? WHAT\r\nok> "
+            commands += forth_line("2 3 + .")
+            expected_output += b"2 3 + .\r\n5 \r\nok> "
+        self.assertEqual(self.run_monitor(commands).stdout, expected_output)
+
+    def test_private_c64_error_tokens_report_and_recover(self):
+        # The vector layout and WORD's guarded block-input path retain private
+        # error tokens, without publishing unsupported dictionary entries.
+        cfas = [LABELS["PRSLW"], LABELS["C64_ERROR"]]
+        for cfa in cfas:
+            self.assertEqual(cell(cfa), LABELS["NO_C64"])
         with tempfile.TemporaryDirectory() as directory:
             canaries = pathlib.Path(directory, "canaries.bin")
-            # Initialize the board/serial hardware, then invoke every retained
-            # stub with an empty stack and invalid UP. Recovery must restore UP
-            # and return to the real input loop without touching C64 keyboard RAM.
             commands = [f"break {WAIT:04X}", "run", "write C5 " + " ".join(["A5"] * 16)]
             for cfa in cfas:
                 commands += [f"write 800 {cfa & 255:02X} {cfa >> 8:02X}",

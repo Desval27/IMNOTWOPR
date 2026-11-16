@@ -184,6 +184,7 @@
         {
           "td_allow_use_two_tracks": true,
           "td_curve_segcount": 0,
+          "td_enabled": false,
           "td_height_ratio": 1.0,
           "td_length_ratio": 0.5,
           "td_maxheight": 2.0,
@@ -195,6 +196,7 @@
         {
           "td_allow_use_two_tracks": true,
           "td_curve_segcount": 0,
+          "td_enabled": false,
           "td_height_ratio": 1.0,
           "td_length_ratio": 0.5,
           "td_maxheight": 2.0,
@@ -206,6 +208,7 @@
         {
           "td_allow_use_two_tracks": true,
           "td_curve_segcount": 0,
+          "td_enabled": false,
           "td_height_ratio": 1.0,
           "td_length_ratio": 0.5,
           "td_maxheight": 2.0,
@@ -518,7 +521,7 @@
     "classes": [
       {
         "bus_width": 12,
-        "clearance": 0.2,
+        "clearance": 0.127,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
@@ -529,10 +532,10 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 2147483647,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.25,
+        "track_width": 0.127,
         "tuning_profile": "",
-        "via_diameter": 0.8,
-        "via_drill": 0.4,
+        "via_diameter": 0.6096,
+        "via_drill": 0.3048,
         "wire_width": 6
       }
     ],
@@ -643,33 +646,20 @@
     "bus_aliases": {
       "CONTROL": [
         "BE",
-        "/CPU_GRANT",
-        "/VALID",
+        "#CPU_GRANT",
+        "#VALID",
         "PHI2",
         "R/W",
         "SYNC",
-        "VPB",
-        "MLB",
-        "/RESET",
-        "/IRQ",
-        "/NMI",
+        "#VP",
+        "#ML",
+        "#RESET",
+        "#IRQ",
+        "#NMI",
         "READY",
-        "LOCAL_RAM",
-        "/LOCAL_RAM"
-      ],
-      "Control": [
-        "BE",
-        "~{CPU_GRANT}",
-        "~{VALID}",
-        "PHI2",
-        "R~{W}",
-        "SYNC",
-        "VPB",
-        "MLB",
-        "~{RESET}",
-        "~{IRQ}",
-        "~{NMI}",
-        "READY"
+        "!LOCAL_RAM",
+        "#LOCAL_RAM",
+        "!CPU_GRANT"
       ]
     },
     "connection_grid_size": 50.0,
@@ -733,7 +723,7 @@
         "uuid": "e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
       }
     ],
-    "used_designators": "#FLG1-2,#PWR1-25,C1-10,J1-4,JP1,MH1,R1-4,RN1-2,U1-12,Y1",
+    "used_designators": "#FLG1-2,#PWR1-36,C1-14,D1-2,J1-4,JP1,MH1,R1-9,RN1-2,SW1-2,U1-15,Y1",
     "variants": []
   },
   "sheets": [
@@ -742,7 +732,14 @@
       "CPU"
     ]
   ],
-  "text_variables": {},
+  "text_variables": {
+    "COMPANY_NAME": "THE HOUSE OF GALAHAD",
+    "MODULE_DESCRIPTION": "CPU MODULE",
+    "MODULE_NAME": "CPU",
+    "PART_NUMBER": "75-1101-01",
+    "PCB_TAG": "DO NOT FOLD, SPINDLE OR MUTILATE",
+    "PROJECT_NAME": "IMNOTWOPR"
+  },
   "tuning_profiles": {
     "meta": {
       "version": 0

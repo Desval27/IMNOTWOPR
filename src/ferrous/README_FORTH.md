@@ -6,7 +6,7 @@ interprets commands, compiles new definitions into RAM, and recovers from errors
 through the serial shell.
 
 **Current status:** the serial port runs in the [Joshua emulator](../joshua/README.md).
-The eight port regression tests pass. C64-specific storage, graphics, sound,
+The ten port regression tests pass. C64-specific storage, graphics, sound,
 and peripheral operations remain unavailable. Physical-board operation and the
 full inherited word set have not been validated by these tests.
 
@@ -81,7 +81,7 @@ Useful starting words:
 | Word or command | Purpose |
 | --- | --- |
 | `HELP` | Show examples and console controls |
-| `WORDS` | List names in the current vocabulary; names may include unavailable C64 words |
+| `WORDS` | List active names in the current vocabulary |
 | `.S` / `DEPTH` | Inspect the data stack / obtain its depth |
 | `HEX` / `DECIMAL` | Change the numeric base |
 | `: NAME ... ;` | Compile a new word in RAM |
@@ -101,37 +101,39 @@ Word lookup normalizes input names to uppercase. The port follows its inherited
 | Startup and recovery | Cold initialization, warm restart, stack reset, error reporting, and rollback of an unfinished definition are implemented |
 | RAM dictionary | Checked allocation, user variables, writable vocabulary descriptors, and the `EM` memory-limit variable are implemented |
 | Core Forth words | Arithmetic, stack, memory, formatting, and compiler words are retained; the regression suite covers a subset |
-| Assembler and inspection tools | The inherited assembler vocabulary, `SYS` bridge, tracer, and decompiler remain in the source; full behavior is not covered by the port tests |
-| Disk, cassette, files, printer, and IEC bus | Unavailable; retained words report `NO C64` |
-| VIC display, sprites, cursor, and screen editor | Unavailable; retained words report `NO C64` |
-| SID sound, voice, and register operations | Unavailable; retained words report `NO C64` |
-| C64 banking and dependent block/cache operations | Unavailable; the default `R/W` backend also reports `NO C64` |
+| Assembler and inspection tools | The inherited assembler vocabulary, `SYS` bridge, and independent inspection/decompiler words remain active; the C64-dependent tracer is commented out |
+| Disk, cassette, files, printer, and IEC bus | Unavailable; definitions are preserved as comments and excluded from lookup |
+| VIC display, sprites, cursor, and screen editor | Unavailable; definitions are preserved as comments and excluded from lookup |
+| SID sound, voice, and register operations | Unavailable; definitions are preserved as comments and excluded from lookup |
+| C64 banking and dependent block/cache operations | Unavailable; public words are commented out, including `R/W` |
 
-The source retains **540 original named dictionary entries** and adds six words
-in [`forth_words.inc`](lib/forth_words.inc): `THEN`, `NEGATE`, `RECURSE`, `WORDS`,
-`HELP`, and `BYE`. **191 original entries** are explicit unsupported-word stubs.
-An entry having a non-stub implementation does not establish that all of its
-inherited dependencies work on IMNOTWOPR.
+The source preserves the original definitions and manual notes. **202 original
+entries** are commented out, including all explicit `NO C64` stubs, the vectored
+`R/W` word, and editor/tracer words that depend on those stubs. **338 original
+entries** remain active, alongside the serial convenience words in
+[`forth_words.inc`](lib/forth_words.inc). Vocabulary links bypass the disabled
+headers, so `WORDS` omits them and lookup treats them as unknown.
 
-Examples of unavailable words include `BORDER`, `UPORT`, `OPEN`, `DISK`, `FILE`,
-`LOAD`, `SAVE`, `TALK`, `LISTEN`, `CIOUT`, `EDIT`, `SPEDIT`, and `VOICE1`. Some are
-in the `SYSTEM` or `EDITOR` vocabulary rather than the default `FORTH` vocabulary.
-IEC bus words are separate from the working ACIA terminal interface.
-
-An unsupported word returns to the interactive prompt:
+Examples of disabled words include `BORDER`, `UPORT`, `OPEN`, `DISK`, `FILE`,
+`LOAD`, `SAVE`, `TALK`, `LISTEN`, `CIOUT`, `EDIT`, `SPEDIT`, and `VOICE1`.
+`GTEXT`, `ERP!`, `ER>`, and the tracer execution words are also disabled because
+they depend on the unavailable editor or block-storage routines. Independent
+helpers in `SYSTEM` and `EDITOR` remain available.
 
 ```text
 ok> BORDER
 
-? NO C64
+? WHAT
 ok>
 ```
 
-The shared handler resets execution state and rolls back an unfinished
-definition. It does not resume the unsupported operation. Completed definitions
-remain available. Error 26 is `NO C64`; subsequent messages cover stack overflow,
+The private storage-vector error token and the legacy parser's block-input guard
+still report `NO C64`; neither introduces a visible dictionary entry. Error 26
+remains `NO C64` for compatibility. Subsequent messages cover stack overflow,
 serial input overflow, return-stack overflow, break, division by zero, and input
-that is too long. `MESSAGE` derives its bounds from the error table.
+that is too long. `MESSAGE` derives its bounds from the error table. Error
+recovery resets execution state and rolls back an unfinished definition while
+retaining completed definitions.
 
 ## Console and restart behavior
 
@@ -215,12 +217,14 @@ python3 src/ferrous/tests/forth_c64.py src/joshua/build/gcc14/joshua -v
 Use the corresponding executable path for another Joshua build. The suite reads
 `forth.bin` and `forth.lbl`, so rebuild after changing assembly sources.
 
-As checked on **2026-11-07**, all **eight tests pass**. Coverage includes:
+As checked on **2026-11-13**, all **ten tests pass**. Coverage includes:
 
 - ROM size, reset/interrupt vectors, error-table entries, and `MESSAGE` bounds.
-- Every retained unsupported dictionary entry, plus the legacy `R/W` backend,
-  with an empty stack and invalid user pointer; prompt recovery and subsequent
-  arithmetic are checked.
+- All four vocabulary chains terminate and reach every active documented word.
+- Disabled headers are absent from the ROM; representative removed words fail
+  lookup in `FORTH`, `SYSTEM`, and `EDITOR`, followed by working arithmetic.
+- Private C64 error tokens recover with an empty stack and invalid user pointer,
+  without touching C64 keyboard RAM.
 - Cold entry points, warm preservation of compiled words, and cold removal of them.
 - Blocking `KEY`, empty-queue `?TERMINAL`, and serial `EMIT`.
 - Linked board I/O addresses and a source guard against direct C64 I/O accesses

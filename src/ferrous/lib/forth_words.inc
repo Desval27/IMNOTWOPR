@@ -127,7 +127,7 @@ help_text:
     .byte "2 3 + .    : DOUBLE 2 * ;    7 DOUBLE .",13,10
     .byte "0 VARIABLE N    42 N !    N @ .",13,10
     .byte ".S WORDS HEX DECIMAL  |  Ctrl-C/ABORT recover; COLD clears definitions.",13,10
-    .byte "C64 devices report NO C64. BYE returns to Joshua's monitor.",13,10
+    .byte "C64 device words are disabled. BYE returns to Joshua's monitor.",13,10
 help_end:
     .word SEMIS
 

@@ -17,6 +17,7 @@ namespace joshua
         std::vector<RegionConfig> ram{{0x0000, 0x8000, {}}};
         std::vector<RegionConfig> rom{{0xc000, 0x4000, {}}};
         std::optional<Word> via = 0x8000, acia = 0x8010, pc;
+        std::vector<Byte> i2cTargets;
         std::uint32_t clockHz = 1'000'000;
         SerialSettings serial;
         ConsoleNewline consoleNewline = ConsoleNewline::raw;

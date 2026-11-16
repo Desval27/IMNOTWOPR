@@ -175,6 +175,95 @@ void stoppedAndWaiting(const std::filesystem::path &directory)
     flat.loadState(file);
     check(flat.bus.peek(0xffff) == 0x42, "flat map without peripherals did not restore");
 }
+
+void i2cTransactions(const std::filesystem::path &directory)
+{
+    Config config;
+    config.i2cTargets = {0x68, 0x3c};
+    Machine machine(config);
+    auto checkpoint = directory / "i2c.state";
+    auto actual = directory / "i2c-actual.state";
+    auto expected = directory / "i2c-expected.state";
+    std::vector<Byte> edges;
+    auto lines = [&](bool scl, bool sda) {
+        edges.push_back((scl ? 0 : 0x40) | (sda ? 0 : 0x80));
+    };
+    auto probe = [&](Byte address, bool stop) {
+        lines(false, true);
+        lines(true, true);
+        lines(true, false);
+        lines(false, false);
+        for (int bit = 7; bit >= 0; --bit)
+        {
+            bool sda = (address << 1) & (1 << bit);
+            lines(false, sda);
+            lines(true, sda);
+            lines(false, sda);
+        }
+        lines(false, true);
+        lines(true, true);
+        lines(false, true);
+        if (stop)
+        {
+            lines(false, false);
+            lines(true, false);
+            lines(true, true);
+        }
+    };
+    probe(0x3c, false);
+    probe(0x68, true); // Repeated START, then STOP.
+    probe(0x50, true); // NACK.
+    auto replay = [&](Machine &m, std::size_t begin, std::size_t end) {
+        std::vector<Byte> pins;
+        for (std::size_t i = begin; i < end; ++i)
+        {
+            m.bus.write(*config.via + 2, edges[i]);
+            pins.push_back(m.bus.peek(*config.via));
+        }
+        return pins;
+    };
+    // Restore in a fresh machine at every edge, including partial addresses,
+    // active ACK, ignored payload and the STOP/START boundaries.
+    for (std::size_t split = 0; split <= edges.size(); ++split)
+    {
+        machine.reset();
+        replay(machine, 0, split);
+        machine.saveState(checkpoint);
+        auto pins = replay(machine, split, edges.size());
+        machine.saveState(expected);
+        auto reordered = config;
+        reordered.i2cTargets = {0x3c, 0x68};
+        Machine restored(reordered);
+        restored.loadState(checkpoint);
+        // Debugger inspection must not advance the state machine.
+        for (unsigned i = 0; i < 10; ++i)
+            restored.bus.peek(*config.via);
+        restored.saveState(actual);
+        check(readBinary(actual) == readBinary(checkpoint), "I2C snapshot/peek changed state");
+        check(replay(restored, split, edges.size()) == pins, "restored I2C pin trace differs");
+        restored.saveState(actual);
+        check(readBinary(actual) == readBinary(expected), "continued I2C state differs");
+    }
+    check(readBinary(checkpoint)[8] == 2, "I2C snapshot did not use version 2");
+    for (const auto &targets : {std::vector<Byte>{}, std::vector<Byte>{0x3c, 0x50}, std::vector<Byte>{0x3c}})
+    {
+        auto otherConfig = config;
+        otherConfig.i2cTargets = targets;
+        Machine other(otherConfig);
+        other.saveState(expected);
+        rejects([&] { other.loadState(checkpoint); });
+        other.saveState(actual);
+        check(readBinary(actual) == readBinary(expected), "I2C mismatch load mutated machine");
+    }
+    Machine legacy(Config{});
+    legacy.saveState(checkpoint);
+    check(readBinary(checkpoint)[8] == 1, "non-I2C snapshot changed format");
+    legacy.loadState(checkpoint);
+    machine.saveState(expected);
+    rejects([&] { machine.loadState(checkpoint); });
+    machine.saveState(actual);
+    check(readBinary(actual) == readBinary(expected), "legacy mismatch load mutated I2C machine");
+}
 } // namespace
 
 int main()
@@ -184,6 +273,7 @@ int main()
         TemporaryDirectory directory;
         roundTrip(directory.path);
         stoppedAndWaiting(directory.path);
+        i2cTransactions(directory.path);
         std::cout << "State checks passed.\n";
     }
     catch (const std::exception &error)

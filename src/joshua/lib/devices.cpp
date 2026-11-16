@@ -2,17 +2,42 @@
 #include <algorithm>
 #include <cmath>
 #include <stdexcept>
+#include <utility>
 
 namespace joshua
 {
+Via::Via(std::vector<Byte> i2cTargets) : i2c_(std::move(i2cTargets)) {}
+
+Byte Via::portB() const
+{
+    Byte value = (registers_[0] & registers_[2]) | (inputB_ & ~registers_[2]);
+    if (registers_[11] & 0x80)
+        value = (value & 0x7f) | (pb7_ ? 0x80 : 0);
+    return value;
+}
+
+void Via::updateI2c()
+{
+    if (i2c_.enabled())
+    {
+        // External low inputs and controller low outputs both hold the bus low.
+        const Byte pins = portB() & inputB_;
+        i2c_.update(pins & 0x40, pins & 0x80);
+    }
+}
+
 Byte Via::peek(Word offset) const
 {
     switch (offset & 15)
     {
     case 0: {
-        Byte value = (registers_[0] & registers_[2]) | (inputB_ & ~registers_[2]);
-        if (registers_[11] & 0x80)
-            value = (value & 0x7f) | (pb7_ ? 0x80 : 0);
+        Byte value = portB();
+        if (i2c_.enabled())
+        {
+            value &= inputB_ | 0x3f;
+            if (i2c_.sdaLow())
+                value &= ~0x80;
+        }
         return value;
     }
     case 1:
@@ -128,6 +153,7 @@ void Via::write(Word offset, Byte value)
         registers_[offset & 15] = value;
         break;
     }
+    updateI2c();
 }
 void Via::count2()
 {
@@ -142,6 +168,7 @@ void Via::setPortB(Byte value)
     if ((registers_[11] & 0x20) && (inputB_ & 0x40) && !(value & 0x40))
         count2();
     inputB_ = value;
+    updateI2c();
 }
 void Via::tick()
 {
@@ -171,6 +198,7 @@ void Via::tick()
         delay2_ = false;
     else if (!(registers_[11] & 0x20))
         count2();
+    updateI2c();
 }
 void Via::reset()
 {
@@ -180,6 +208,7 @@ void Via::reset()
     ifr_ = ier_ = 0;
     armed1_ = armed2_ = delay1_ = delay2_ = reload1_ = false;
     pb7_ = true;
+    i2c_.reset(inputB_ & 0x40, inputB_ & 0x80);
 }
 
 Acia::Acia(std::uint32_t clockHz, SerialSettings peer) : clockHz_(clockHz), peer_(peer)
