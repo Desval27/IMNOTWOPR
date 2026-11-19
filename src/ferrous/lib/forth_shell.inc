@@ -21,11 +21,11 @@ error_length:       .res 1
 .segment "PROGRAM_CODE"
 
 ; Unsupported dictionary entries are native CFAs, not colon definitions.
-NO_C64:
-    lda #26
+NOT_IMPLEMENTED:
+    lda #26             
     jmp shell_error
-C64_ERROR:
-    .word NO_C64
+NOT_IMPLEMENTED_ERROR:
+    .word NOT_IMPLEMENTED
 
 shell_nmi:
     rti

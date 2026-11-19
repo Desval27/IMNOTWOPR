@@ -10688,12 +10688,6 @@
 		(uuid "ae72b687-e776-4e44-9fa2-f75abd0b9e08")
 	)
 	(junction
-		(at 157.48 53.34)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "af8e7099-b57f-41a8-9d61-8904943ebf9a")
-	)
-	(junction
 		(at 388.62 201.93)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -24111,7 +24105,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Button_Switch_THT:SW_DIP_SPSTx03_Slide_6.7x9.18mm_W7.62mm_P2.54mm_LowProfile"
+		(property "Footprint" "IMNOTWOPR:SW_DIP_SPSTx03"
 			(at 388.62 232.41 0)
 			(hide yes)
 			(show_name no)
@@ -25140,7 +25134,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Button_Switch_THT:SW_DIP_SPSTx03_Slide_6.7x9.18mm_W7.62mm_P2.54mm_LowProfile"
+		(property "Footprint" "IMNOTWOPR:SW_DIP_SPSTx03"
 			(at 388.62 300.99 0)
 			(hide yes)
 			(show_name no)
@@ -29349,7 +29343,7 @@
 				)
 			)
 		)
-		(property "Legend" "LEGEND"
+		(property "Legend" "GRANT LED"
 			(at 491.49 265.43 0)
 			(hide yes)
 			(show_name no)

@@ -1035,7 +1035,7 @@ CMOVE_COPY_BYTE:
 ; ; character values >=64 to form screen codes. Restoring XSAVE means the two
 ; ; address arguments remain on the data stack.
 ; SMOVE:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: U* [FORTH].
@@ -2257,7 +2257,7 @@ DCHAN:
 ; 	.byte	$88,"CURVOIC",$C5
 ; 	.word	DCHAN_NFA		; LFA: previous name field in this vocabulary chain
 ; CURVOC:
-; 	.word	NO_C64		; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED ; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: IFLAG [FORTH].
@@ -2650,7 +2650,7 @@ QCOMP:
 	.word	AT
 	.word	ZEQU
 	.word	CLIT		; Push following inline byte, zero-extended
-	.byte	$11
+	.byte	$11			; ERR_COMPILE_ONLY
 	.word	QERR
 	.word	SEMIS		; Return to caller thread
 
@@ -2666,7 +2666,7 @@ QEXEC:
 	.word	AT
 	.word	CLIT		; Push following inline byte, zero-extended
 	.byte	$12
-	.word	QERR
+	.word	QERR		; ERR_EXECUTE_ONLY
 	.word	SEMIS		; Return to caller thread
 
 ; ---------------------------------------------------------------------------
@@ -2681,7 +2681,7 @@ QPAIR:
 	.word	SUBB
 	.word	CLIT		; Push following inline byte, zero-extended
 	.byte	$13
-	.word	QERR
+	.word	QERR		; ERR_CONDITIONALS
 	.word	SEMIS		; Return to caller thread
 
 ; ---------------------------------------------------------------------------
@@ -2699,7 +2699,7 @@ QCSP:
 	.word	SUBB
 	.word	CLIT		; Push following inline byte, zero-extended
 	.byte	$14
-	.word	QERR
+	.word	QERR		; ERR_INCOMPLETE_DEFINITION	
 	.word	SEMIS		; Return to caller thread
 
 ; ---------------------------------------------------------------------------
@@ -2715,7 +2715,7 @@ QLOAD:
 	.word	ZEQU
 	.word	CLIT		; Push following inline byte, zero-extended
 	.byte	$16
-	.word	QERR
+	.word	QERR		; ERR_LOADING_ONLY
 	.word	SEMIS		; Return to caller thread
 
 ; ---------------------------------------------------------------------------
@@ -3195,7 +3195,7 @@ WORD:
 	.word	ZBRAN,$C	; Pop flag; if zero branch to $8EA3 (offset +12 from operand cell)
 	.word	BLK
 	.word	AT
-	.word	C64_ERROR	; Block input unavailable; private error token
+	.word	NOT_IMPLEMENTED_ERROR ; Block input unavailable; private error token
 	.word	BRAN,6	; Jump to $8EA7 (offset +6 from operand cell)
 	.word	TIB
 	.word	AT
@@ -3381,34 +3381,34 @@ PERROR:
 ; selects one by index; these .word values are addresses, not executable
 ; threads.
 ERROR_TABLE:
-	.word	ERR_WHAT
-	.word	ERR_STACK_EMPTY
-	.word	ERR_OUT_OF_MEMORY
-	.word	ERR_BAD_ADDR_MODE
-	.word	ERR_UNKNOWN
-	.word	ERR_UNKNOWN
-	.word	ERR_UNKNOWN
-	.word	ERR_UNKNOWN
-	.word	ERR_BLOCK_RANGE
-	.word	ERR_UNKNOWN
-	.word	ERR_UNKNOWN
-	.word	ERR_UNKNOWN
-	.word	ERR_UNKNOWN
-	.word	ERR_UNKNOWN
-	.word	ERR_UNKNOWN
-	.word	ERR_UNKNOWN
-	.word	ERR_UNKNOWN
-	.word	ERR_COMPILE_ONLY
-	.word	ERR_EXECUTE_ONLY
-	.word	ERR_CONDITIONALS
-	.word	ERR_INCOMPLETE_DEFINITION
-	.word	ERR_PROTECTED_WORD
-	.word	ERR_LOADING_ONLY
-	.word	ERR_UNKNOWN
-	.word	ERR_SPECIFY_VOCABULARY
-	.word	ERR_UNKNOWN
-ERR_NO_C64_SLOT:
-    .word   ERR_NO_C64
+	.word	ERR_WHAT							; $00	0
+	.word	ERR_STACK_EMPTY						; $01	1
+	.word	ERR_OUT_OF_MEMORY					; $02	2
+	.word	ERR_BAD_ADDR_MODE					; $03	3
+	.word	ERR_UNKNOWN							; $04	4
+	.word	ERR_UNKNOWN							; $05	5
+	.word	ERR_UNKNOWN							; $06	6
+	.word	ERR_UNKNOWN							; $07	7
+	.word	ERR_BLOCK_RANGE						; $08	8
+	.word	ERR_UNKNOWN							; $09   9
+	.word	ERR_UNKNOWN							; $0A  	10
+	.word	ERR_UNKNOWN							; $0B	11
+	.word	ERR_UNKNOWN							; $0C	12
+	.word	ERR_UNKNOWN							; $0D	13
+	.word	ERR_UNKNOWN							; $0E	14
+	.word	ERR_UNKNOWN							; $0F	15
+	.word	ERR_UNKNOWN							; $10	16
+	.word	ERR_COMPILE_ONLY					; $11	17
+	.word	ERR_EXECUTE_ONLY					; $12	18
+	.word	ERR_CONDITIONALS					; $13	19
+	.word	ERR_INCOMPLETE_DEFINITION			; $14	20
+	.word	ERR_PROTECTED_WORD					; $15	21
+	.word	ERR_LOADING_ONLY					; $16	22
+	.word	ERR_UNKNOWN							; $17	23
+	.word	ERR_SPECIFY_VOCABULARY				; $18	24
+	.word	ERR_UNKNOWN							; $19	25
+ERR_NOT_IMPLEMENTED_SLOT:	
+    .word   ERR_NOT_IMPLEMENTED					; $1B	26
     .word ERR_STACK_FULL, ERR_RX_FULL, ERR_RETURN_FULL, ERR_BREAK, ERR_DIV_ZERO, ERR_LINE_LONG
 ERROR_TABLE_END:
 
@@ -3451,9 +3451,9 @@ ERR_LOADING_ONLY:
 ERR_SPECIFY_VOCABULARY:
 	.byte	22
 	.byte	"SPECIFY THE VOCABULARY"
-ERR_NO_C64:
+ERR_NOT_IMPLEMENTED:
     .byte   6
-    .byte   "NO C64"
+    .byte   ">NOPE<"
 
 ERR_STACK_FULL:
     .byte 10,"STACK FULL"
@@ -3614,7 +3614,7 @@ QSTAC:
 	.byte	TOS
 	.word	SWAP
 	.word	ULESS
-	.word	ONE
+	.word	ONE		;
 	.word	QERR
 	.word	EM
 	.word	AT
@@ -4154,7 +4154,7 @@ MSLM:
 ; 	.byte	$85,"BLOC",$CB
 ; 	.word	MSLM_NFA	; LFA: previous name field in this vocabulary chain
 ; BLOCK:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: (LINE) [FORTH].
@@ -4167,7 +4167,7 @@ MSLM:
 ; 	.byte	$86,"(LINE",$A9
 ; 	.word	BLOCK_NFA	; LFA: previous name field in this vocabulary chain
 ; PLINE:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: .LINE [FORTH].
@@ -4179,7 +4179,7 @@ MSLM:
 ; 	.byte	$85,".LIN",$C5
 ; 	.word	PLINE_NFA	; LFA: previous name field in this vocabulary chain
 ; DLINE:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: MESSAGE [FORTH].
@@ -4216,7 +4216,7 @@ MESS:
 ; 	.byte	$84,"LOA",$C4
 ; 	.word	MESS_NFA	; LFA: previous name field in this vocabulary chain
 ; LOAD:
-;     .word NO_C64
+;     .word NOT_IMPLEMENTED
 SERIAL_EMIT:
     .word *+2
     REQUIRE_CELLS 1
@@ -4705,7 +4705,7 @@ QUES:
 ; 	.byte	$84,"LIS",$D4
 ; 	.word	QUES_NFA	; LFA: previous name field in this vocabulary chain
 ; LIST:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: VLIST [FORTH].
@@ -4751,7 +4751,7 @@ VLIST:
 ; READS_NFA:
 ; 	.byte	$85,"READ",$D3
 ; 	.word	VLIST_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: WRITES [FORTH].
@@ -4761,7 +4761,7 @@ VLIST:
 ; WRITES_NFA:
 ; 	.byte	$86,"WRITE",$D3
 ; 	.word	READS_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: LOADS [FORTH].
@@ -4774,7 +4774,7 @@ VLIST:
 ; LOADS_NFA:
 ; 	.byte	$85,"LOAD",$D3
 ; 	.word	WRITES_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: EM [FORTH].
@@ -4804,7 +4804,7 @@ EM:
 ; THRU_NFA:
 ; 	.byte	$84,"THR",$D5
 ; 	.word	EM_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: SETNAM [SYSTEM].
@@ -4816,7 +4816,7 @@ EM:
 ; 	.byte	$86,"SETNA",$CD
 ; 	.word	$84C	; LFA: previous name field in this vocabulary chain
 ; SETNAM:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: NAME [FORTH].
@@ -4829,7 +4829,7 @@ EM:
 ; 	.byte	$84,"NAM",$C5
 ; 	.word	THRU_NFA	; LFA: previous name field in this vocabulary chain
 ; NAME:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: TAB [FORTH].
@@ -4896,7 +4896,7 @@ TEXT:
 ; 	.byte	$84,"LIN",$C5
 ; 	.word	TEXT_NFA	; LFA: previous name field in this vocabulary chain
 ; LINE:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: 2DUP [FORTH].
@@ -5010,7 +5010,7 @@ DUMP_NFA:
 ; 	.byte	$87,"#LOCAT",$C5
 ; 	.word	$84C	; LFA: previous name field in this vocabulary chain
 ; NLOCAT:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: BMOV [EDITOR].
@@ -5023,7 +5023,7 @@ DUMP_NFA:
 ; 	.byte	$84,"BMO",$D6
 ; 	.word	NLOCAT_NFA	; LFA: previous name field in this vocabulary chain
 ; BMOV:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: PADF [EDITOR].
@@ -5069,7 +5069,7 @@ PADI:
 ; 	.byte	$84,"!CU",$D2
 ; 	.word	PADI_NFA	; LFA: previous name field in this vocabulary chain
 ; STOCUR:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: L# [EDITOR].
@@ -5081,7 +5081,7 @@ PADI:
 ; 	.byte	$82,"L",$A3
 ; 	.word	STOCUR_NFA	; LFA: previous name field in this vocabulary chain
 ; LNUM:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: #LEAD [EDITOR].
@@ -5093,7 +5093,7 @@ PADI:
 ; 	.byte	$85,"#LEA",$C4
 ; 	.word	LNUM_NFA	; LFA: previous name field in this vocabulary chain
 ; NLEAD:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: #LAG [EDITOR].
@@ -5105,7 +5105,7 @@ PADI:
 ; 	.byte	$84,"#LA",$C7
 ; 	.word	NLEAD_NFA	; LFA: previous name field in this vocabulary chain
 ; NLAG:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: -MOVE [EDITOR].
@@ -5117,7 +5117,7 @@ PADI:
 ; 	.byte	$85,"-MOV",$C5
 ; 	.word	NLAG_NFA	; LFA: previous name field in this vocabulary chain
 ; DMOVE:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: H [EDITOR].
@@ -5130,7 +5130,7 @@ PADI:
 ; 	.byte	$81,$C8
 ; 	.word	DMOVE_NFA	; LFA: previous name field in this vocabulary chain
 ; HH:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: K [EDITOR].
@@ -5142,7 +5142,7 @@ PADI:
 ; 	.byte	$81,$CB
 ; 	.word	HH_NFA	; LFA: previous name field in this vocabulary chain
 ; KK:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: S [EDITOR].
@@ -5155,7 +5155,7 @@ PADI:
 ; 	.byte	$81,$D3
 ; 	.word	KK_NFA	; LFA: previous name field in this vocabulary chain
 ; SS:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: X [EDITOR].
@@ -5169,7 +5169,7 @@ PADI:
 ; 	.byte	$81,$D8
 ; 	.word	SS_NFA	; LFA: previous name field in this vocabulary chain
 ; XX:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: C [EDITOR].
@@ -5184,7 +5184,7 @@ PADI:
 ; 	.byte	$81,$C3
 ; 	.word	XX_NFA	; LFA: previous name field in this vocabulary chain
 ; CC:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: T [EDITOR].
@@ -5196,7 +5196,7 @@ PADI:
 ; 	.byte	$81,$D4
 ; 	.word	CC_NFA	; LFA: previous name field in this vocabulary chain
 ; TT:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: GTEXT [EDITOR].
@@ -5225,7 +5225,7 @@ PADI:
 ; 	.byte	$81,$D0
 ; 	.word	GTEXT_NFA	; LFA: previous name field in this vocabulary chain
 ; PP:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: U [EDITOR].
@@ -5237,7 +5237,7 @@ PADI:
 ; 	.byte	$81,$D5
 ; 	.word	PP_NFA	; LFA: previous name field in this vocabulary chain
 ; UU:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: TOP [EDITOR].
@@ -5248,7 +5248,7 @@ PADI:
 ; 	.byte	$83,"TO",$D0
 ; 	.word	UU_NFA	; LFA: previous name field in this vocabulary chain
 ; TOP:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: COPY [EDITOR].
@@ -5258,7 +5258,7 @@ PADI:
 ; EDITOR_COPY_NFA:
 ; 	.byte	$84,"COP",$D9
 ; 	.word	TOP_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: MATCH [EDITOR].
@@ -5313,7 +5313,7 @@ MATCH:
 ; 	.byte	$85,"1LIN",$C5
 ; 	.word	MATCH_NFA	; LFA: previous name field in this vocabulary chain
 ; ONELIN:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: (F) [EDITOR].
@@ -5327,7 +5327,7 @@ MATCH:
 ; 	.byte	$83,"(F",$A9
 ; 	.word	ONELIN_NFA	; LFA: previous name field in this vocabulary chain
 ; PFF:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: DEL [EDITOR].
@@ -5341,7 +5341,7 @@ MATCH:
 ; 	.byte	$83,"DE",$CC
 ; 	.word	PFF_NFA	; LFA: previous name field in this vocabulary chain
 ; DEL:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: F [EDITOR].
@@ -5355,7 +5355,7 @@ MATCH:
 ; 	.byte	$81,$C6
 ; 	.word	DEL_NFA	; LFA: previous name field in this vocabulary chain
 ; FF:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: E [EDITOR].
@@ -5367,7 +5367,7 @@ MATCH:
 ; 	.byte	$81,$C5
 ; 	.word	FF_NFA	; LFA: previous name field in this vocabulary chain
 ; EE:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: D [EDITOR].
@@ -5380,7 +5380,7 @@ MATCH:
 ; EDITOR_D_NFA:
 ; 	.byte	$81,$C4
 ; 	.word	EE_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: TILL [EDITOR].
@@ -5391,7 +5391,7 @@ MATCH:
 ; EDITOR_TILL_NFA:
 ; 	.byte	$84,"TIL",$CC
 ; 	.word	EDITOR_D_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: (I) [EDITOR].
@@ -5405,7 +5405,7 @@ MATCH:
 ; 	.byte	$83,"(I",$A9
 ; 	.word	EDITOR_TILL_NFA	; LFA: previous name field in this vocabulary chain
 ; PII:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: I [EDITOR].
@@ -5420,7 +5420,7 @@ MATCH:
 ; 	.byte	$81,$C9
 ; 	.word	PII_NFA	; LFA: previous name field in this vocabulary chain
 ; II:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: R [EDITOR].
@@ -5433,7 +5433,7 @@ MATCH:
 ; EDITOR_R_NFA:
 ; 	.byte	$81,$D2
 ; 	.word	II_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: N [EDITOR].
@@ -5447,7 +5447,7 @@ MATCH:
 ; 	.byte	$81,$CE
 ; 	.word	EDITOR_R_NFA	; LFA: previous name field in this vocabulary chain
 ; NN:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: B [EDITOR].
@@ -5459,7 +5459,7 @@ MATCH:
 ; 	.byte	$81,$C2
 ; 	.word	NN_NFA	; LFA: previous name field in this vocabulary chain
 ; BB:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: +SCR [EDITOR].
@@ -5493,7 +5493,7 @@ PSCR:
 ; EDITOR_WIPE_NFA:
 ; 	.byte	$84,"WIP",$C5
 ; 	.word	PSCR_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: M [EDITOR].
@@ -5505,7 +5505,7 @@ PSCR:
 ; 	.byte	$81,$CD
 ; 	.word	EDITOR_WIPE_NFA	; LFA: previous name field in this vocabulary chain
 ; EDITOR_MOVE:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: V [EDITOR].
@@ -5529,7 +5529,7 @@ PSCR:
 ; EDITOR_KEY_CBM_Y:
 ; EDITOR_KEY_CBM_Z:
 ; EDITOR_KEY_CBM_G:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: EDIT [FORTH].
@@ -5541,7 +5541,7 @@ PSCR:
 ; EDIT_NFA:
 ; 	.byte	$84,"EDI",$D4
 ; 	.word	DUMP_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: ASCII [FORTH]; immediate (executes during compilation).
@@ -5633,7 +5633,7 @@ SYS_TRAMPOLINE:
 ; 	.byte	$84,"REA",$C4
 ; 	.word	ASCII_NFA	; LFA: previous name field in this vocabulary chain
 ; READ:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: FSET [SYSTEM].
@@ -5645,7 +5645,7 @@ SYS_TRAMPOLINE:
 ; 	.byte	$84,"FSE",$D4
 ; 	.word	SYS_NFA	; LFA: previous name field in this vocabulary chain
 ; FSET:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: SETLFS [SYSTEM].
@@ -5658,7 +5658,7 @@ SYS_TRAMPOLINE:
 ; 	.byte	$86,"SETLF",$D3
 ; 	.word	FSET_NFA	; LFA: previous name field in this vocabulary chain
 ; SETLFS:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: 3DROP [FORTH].
@@ -5684,7 +5684,7 @@ THDROP:
 ; 	.byte	$84,"OPE",$CE
 ; 	.word	SETLFS_NFA	; LFA: previous name field in this vocabulary chain
 ; OPEN:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: SLOAD [SYSTEM].
@@ -5698,7 +5698,7 @@ THDROP:
 ; 	.byte	$85,"SLOA",$C4
 ; 	.word	OPEN_NFA	; LFA: previous name field in this vocabulary chain
 ; SLOAD:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: SAVE [SYSTEM].
@@ -5710,7 +5710,7 @@ THDROP:
 ; 	.byte	$84,"SAV",$C5
 ; 	.word	SLOAD_NFA	; LFA: previous name field in this vocabulary chain
 ; SAVE:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: WRITE [FORTH].
@@ -5722,7 +5722,7 @@ THDROP:
 ; 	.byte	$85,"WRIT",$C5
 ; 	.word	THDROP_NFA	; LFA: previous name field in this vocabulary chain
 ; WRITE:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: CHKOUT [SYSTEM].
@@ -5734,7 +5734,7 @@ THDROP:
 ; 	.byte	$86,"CHKOU",$D4
 ; 	.word	SAVE_NFA	; LFA: previous name field in this vocabulary chain
 ; CHKOUT:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: CLALL [SYSTEM].
@@ -5746,7 +5746,7 @@ THDROP:
 ; CLALL_NFA:
 ; 	.byte	$85,"CLAL",$CC
 ; 	.word	CHKOUT_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: CHRIN [SYSTEM].
@@ -5762,7 +5762,7 @@ THDROP:
 ; 	.byte	$85,"CHRI",$CE
 ; 	.word	CLALL_NFA	; LFA: previous name field in this vocabulary chain
 ; CHRIN:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: BGROUND [FORTH].
@@ -5773,7 +5773,7 @@ THDROP:
 ; BGROUND_NFA:
 ; 	.byte	$87,"BGROUN",$C4
 ; 	.word	WRITE_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: BORDER [FORTH].
@@ -5785,7 +5785,7 @@ THDROP:
 ; 	.byte	$86,"BORDE",$D2
 ; 	.word	BGROUND_NFA	; LFA: previous name field in this vocabulary chain
 ; BORDR:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: UPORT [FORTH].
@@ -5796,7 +5796,7 @@ THDROP:
 ; UPORT_NFA:
 ; 	.byte	$85,"UPOR",$D4
 ; 	.word	BORDR_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: DISK [FORTH].
@@ -5810,7 +5810,7 @@ THDROP:
 ; 	.byte	$84,"DIS",$CB
 ; 	.word	UPORT_NFA	; LFA: previous name field in this vocabulary chain
 ; DISK:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: CASSETTE [FORTH].
@@ -5824,7 +5824,7 @@ THDROP:
 ; 	.byte	$88,"CASSETT",$C5
 ; 	.word	DISK_NFA	; LFA: previous name field in this vocabulary chain
 ; CASSET:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: TALK [SYSTEM].
@@ -5836,7 +5836,7 @@ THDROP:
 ; 	.byte	$84,"TAL",$CB
 ; 	.word	CHRIN_NFA	; LFA: previous name field in this vocabulary chain
 ; TALK:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: TKSA [SYSTEM].
@@ -5849,7 +5849,7 @@ THDROP:
 ; 	.byte	$84,"TKS",$C1
 ; 	.word	TALK_NFA	; LFA: previous name field in this vocabulary chain
 ; TKSA:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: 0.0 [SYSTEM].
@@ -5874,7 +5874,7 @@ DZERO:
 ; 	.byte	$85,"UNTL",$CB
 ; 	.word	DZERO_NFA	; LFA: previous name field in this vocabulary chain
 ; UNTLK:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: UNLSN [SYSTEM].
@@ -5886,7 +5886,7 @@ DZERO:
 ; 	.byte	$85,"UNLS",$CE
 ; 	.word	UNTLK_NFA	; LFA: previous name field in this vocabulary chain
 ; UNLSN:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: ACPTR [SYSTEM].
@@ -5897,7 +5897,7 @@ DZERO:
 ; 	.byte	$85,"ACPT",$D2
 ; 	.word	UNLSN_NFA	; LFA: previous name field in this vocabulary chain
 ; ACPTR:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: LISTEN [SYSTEM].
@@ -5909,7 +5909,7 @@ DZERO:
 ; 	.byte	$86,"LISTE",$CE
 ; 	.word	ACPTR_NFA	; LFA: previous name field in this vocabulary chain
 ; LISTEN:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: CIOUT [SYSTEM].
@@ -5921,7 +5921,7 @@ DZERO:
 ; 	.byte	$85,"CIOU",$D4
 ; 	.word	LISTEN_NFA	; LFA: previous name field in this vocabulary chain
 ; CIOUT:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: SECOND [SYSTEM].
@@ -5934,7 +5934,7 @@ DZERO:
 ; 	.byte	$86,"SECON",$C4
 ; 	.word	CIOUT_NFA	; LFA: previous name field in this vocabulary chain
 ; SECOND:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: STYPE [SYSTEM].
@@ -5947,7 +5947,7 @@ DZERO:
 ; 	.byte	$85,"STYP",$C5
 ; 	.word	SECOND_NFA	; LFA: previous name field in this vocabulary chain
 ; STYPE:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: DTLK [SYSTEM].
@@ -5959,7 +5959,7 @@ DZERO:
 ; 	.byte	$84,"DTL",$CB
 ; 	.word	STYPE_NFA	; LFA: previous name field in this vocabulary chain
 ; DTLK:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: DLSN [SYSTEM].
@@ -5971,7 +5971,7 @@ DZERO:
 ; 	.byte	$84,"DLS",$CE
 ; 	.word	DTLK_NFA	; LFA: previous name field in this vocabulary chain
 ; DLSN:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: ?DERR [FORTH].
@@ -5985,7 +5985,7 @@ DZERO:
 ; 	.byte	$85,"?DER",$D2
 ; 	.word	CASSET_NFA	; LFA: previous name field in this vocabulary chain
 ; QDERR:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: ?D [FORTH].
@@ -5997,7 +5997,7 @@ DZERO:
 ; QDISK_NFA:
 ; 	.byte	$82,"?",$C4
 ; 	.word	QDERR_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: --> [FORTH]; immediate (executes during compilation).
@@ -6088,7 +6088,7 @@ UARROW:
 ; 	.byte	$85,"DRIV",$C5
 ; 	.word	UARROW_NFA	; LFA: previous name field in this vocabulary chain
 ; DRIVE:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: DRIVE? [FORTH].
@@ -6099,7 +6099,7 @@ UARROW:
 ; DRIVE_QUERY_NFA:
 ; 	.byte	$86,"DRIVE",$BF
 ; 	.word	DRIVE_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: DTYPE [SYSTEM].
@@ -6111,7 +6111,7 @@ UARROW:
 ; 	.byte	$85,"DTYP",$C5
 ; 	.word	DLSN_NFA	; LFA: previous name field in this vocabulary chain
 ; DTYPE:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: /CMD [FORTH]; immediate (executes during compilation).
@@ -6124,7 +6124,7 @@ UARROW:
 ; 	.byte	$C4,"/CM",$C4
 ; 	.word	DRIVE_QUERY_NFA	; LFA: previous name field in this vocabulary chain
 ; SCMD:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: CMD [FORTH]; immediate (executes during compilation).
@@ -6140,7 +6140,7 @@ UARROW:
 ; CMD_NFA:
 ; 	.byte	$C3,"CM",$C4
 ; 	.word	SCMD_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: (FILE) [FORTH].
@@ -6155,7 +6155,7 @@ UARROW:
 ; 	.byte	$86,"(FILE",$A9
 ; 	.word	CMD_NFA	; LFA: previous name field in this vocabulary chain
 ; PFILE:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: ^FILE [FORTH].
@@ -6170,7 +6170,7 @@ UARROW:
 ; 	.byte	$85,"^FIL",$C5
 ; 	.word	PFILE_NFA	; LFA: previous name field in this vocabulary chain
 ; UFILE:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: (^FILE) [FORTH].
@@ -6184,7 +6184,7 @@ UARROW:
 ; 	.byte	$87,"(^FILE",$A9
 ; 	.word	UFILE_NFA	; LFA: previous name field in this vocabulary chain
 ; PUFIL:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: FILE [FORTH].
@@ -6202,7 +6202,7 @@ UARROW:
 ; 	.byte	$84,"FIL",$C5
 ; 	.word	PUFIL_NFA	; LFA: previous name field in this vocabulary chain
 ; FILE:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: (FCLOSE) [FORTH].
@@ -6216,7 +6216,7 @@ UARROW:
 ; 	.byte	$88,"(FCLOSE",$A9
 ; 	.word	FILE_NFA	; LFA: previous name field in this vocabulary chain
 ; PFCLOS:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: FCLOSE [FORTH].
@@ -6229,7 +6229,7 @@ UARROW:
 ; 	.byte	$86,"FCLOS",$C5
 ; 	.word	PFCLOS_NFA	; LFA: previous name field in this vocabulary chain
 ; FCLOSE:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: POS [SYSTEM].
@@ -6241,7 +6241,7 @@ UARROW:
 ; 	.byte	$83,"PO",$D3
 ; 	.word	DTYPE_NFA	; LFA: previous name field in this vocabulary chain
 ; POS:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: SLSN [SYSTEM].
@@ -6253,7 +6253,7 @@ UARROW:
 ; 	.byte	$84,"SLS",$CE
 ; 	.word	POS_NFA	; LFA: previous name field in this vocabulary chain
 ; SLSN:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: RECWRITE [SYSTEM].
@@ -6267,7 +6267,7 @@ UARROW:
 ; 	.byte	$88,"RECWRIT",$C5
 ; 	.word	SLSN_NFA	; LFA: previous name field in this vocabulary chain
 ; RECWRT:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: RECREAD [SYSTEM].
@@ -6281,7 +6281,7 @@ UARROW:
 ; 	.byte	$87,"RECREA",$C4
 ; 	.word	RECWRT_NFA	; LFA: previous name field in this vocabulary chain
 ; RECREA:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: BLKWRITE [SYSTEM].
@@ -6296,7 +6296,7 @@ UARROW:
 ; 	.byte	$88,"BLKWRIT",$C5
 ; 	.word	RECREA_NFA	; LFA: previous name field in this vocabulary chain
 ; BLKWRT:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: BLKREAD [SYSTEM].
@@ -6311,7 +6311,7 @@ UARROW:
 ; 	.byte	$87,"BLKREA",$C4
 ; 	.word	BLKWRT_NFA	; LFA: previous name field in this vocabulary chain
 ; BLKRD:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: R/W [SYSTEM].
@@ -6330,7 +6330,7 @@ UARROW:
 
 ; Private default storage vector; no public R/W dictionary entry.
 PRSLW:
-	.word	NO_C64	; C64 storage backend unavailable
+	.word	NOT_IMPLEMENTED	; C64 storage backend unavailable
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: UPDATE [FORTH].
@@ -6342,7 +6342,7 @@ PRSLW:
 ; 	.byte	$86,"UPDAT",$C5
 ; 	.word	FCLOSE_NFA	; LFA: previous name field in this vocabulary chain
 ; UPDATE:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: EMPTY-BUFFERS [FORTH].
@@ -6354,7 +6354,7 @@ PRSLW:
 ; 	.byte	$8D,"EMPTY-BUFFER",$D3
 ; 	.word	UPDATE_NFA	; LFA: previous name field in this vocabulary chain
 ; MTBUF:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: >RAM [SYSTEM].
@@ -6373,7 +6373,7 @@ PRSLW:
 ; ; the 6510 port via ONE C!. This exposes RAM under ROM/I/O. The copied
 ; ; interpreter in underlying RAM makes continued execution possible.
 ; TORAM:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: RAM> [SYSTEM].
@@ -6389,7 +6389,7 @@ PRSLW:
 ; ; defaults, not a previously saved bank/IRQ mask. The original $A765 location is the documented
 ; ; soft-load patch byte.
 ; FRAM:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: >BUF [SYSTEM].
@@ -6410,7 +6410,7 @@ PRSLW:
 ; 	.byte	$84,">BU",$C6
 ; 	.word	FRAM_NFA	; LFA: previous name field in this vocabulary chain
 ; TOBUF:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: BUF> [SYSTEM].
@@ -6422,7 +6422,7 @@ PRSLW:
 ; 	.byte	$84,"BUF",$BE
 ; 	.word	TOBUF_NFA	; LFA: previous name field in this vocabulary chain
 ; FBUF:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: BUFADD [SYSTEM].
@@ -6437,7 +6437,7 @@ PRSLW:
 ; ; Strip the dirty flag before indexing. Sixteen slots wrap cyclically; PTRADD
 ; ; indexes the parallel 16-cell tag table.
 ; BUFAD:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: PTRADD [SYSTEM].
@@ -6450,7 +6450,7 @@ PRSLW:
 ; 	.byte	$86,"PTRAD",$C4
 ; 	.word	BUFAD_NFA	; LFA: previous name field in this vocabulary chain
 ; PTRADD:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: CURBLK [SYSTEM].
@@ -6462,7 +6462,7 @@ PRSLW:
 ; 	.byte	$86,"CURBL",$CB
 ; 	.word	PTRADD_NFA	; LFA: previous name field in this vocabulary chain
 ; CURBLK:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: COMBUF [SYSTEM].
@@ -6474,7 +6474,7 @@ PRSLW:
 ; 	.byte	$86,"COMBU",$C6
 ; 	.word	CURBLK_NFA	; LFA: previous name field in this vocabulary chain
 ; COMBUF:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: BLKTBL [SYSTEM].
@@ -6487,7 +6487,7 @@ PRSLW:
 ; 	.byte	$86,"BLKTB",$CC
 ; 	.word	COMBUF_NFA	; LFA: previous name field in this vocabulary chain
 ; BLKTBL:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: FLUSH [FORTH].
@@ -6503,7 +6503,7 @@ PRSLW:
 ; ; sixteen slot tags. Bit 15 marks modified data; GBLOCK writes the
 ; ; corresponding block through R/W and the tag is cleared afterward.
 ; FLUSH:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: GBLOCK [SYSTEM].
@@ -6521,7 +6521,7 @@ PRSLW:
 ; ; consult the direct-mapped slot tag, and either copy the cached slot or read
 ; ; from the device. Maintain the active header and trailing zero cell.
 ; GBLOCK:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: FORTH [FORTH]; immediate (executes during compilation).
@@ -6613,7 +6613,7 @@ NOOP_NFA:
 ; DLOAD_NFA:
 ; 	.byte	$85,"DLOA",$C4
 ; 	.word	$87B	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: DSAVE [FORTH].
@@ -6627,7 +6627,7 @@ NOOP_NFA:
 ; DSAVE_NFA:
 ; 	.byte	$85,"DSAV",$C5
 ; 	.word	DLOAD_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: FLOAD [FORTH].
@@ -6638,7 +6638,7 @@ NOOP_NFA:
 ; FLOAD_NFA:
 ; 	.byte	$85,"FLOA",$C4
 ; 	.word	DSAVE_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: .FREE [FORTH].
@@ -6664,7 +6664,7 @@ DOTFREE_NFA:
 ; 	.byte	$85
 ; 	.byte	"TRIA",$C4
 ; 	.word	DOTFREE_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: CLOSE [SYSTEM].
@@ -6676,7 +6676,7 @@ DOTFREE_NFA:
 ; 	.byte	$85,"CLOS",$C5
 ; 	.word	GBLOCK_NFA	; LFA: previous name field in this vocabulary chain
 ; CLOSE:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: PROFF [SYSTEM].
@@ -6688,7 +6688,7 @@ DOTFREE_NFA:
 ; 	.byte	$85,"PROF",$C6
 ; 	.word	CLOSE_NFA	; LFA: previous name field in this vocabulary chain
 ; PROFF:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: CHKIN [SYSTEM].
@@ -6699,7 +6699,7 @@ DOTFREE_NFA:
 ; CHKIN_NFA:
 ; 	.byte	$85,"CHKI",$CE
 ; 	.word	PROFF_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: PRON [SYSTEM].
@@ -6711,7 +6711,7 @@ DOTFREE_NFA:
 ; 	.byte	$84,"PRO",$CE
 ; 	.word	CHKIN_NFA	; LFA: previous name field in this vocabulary chain
 ; PRON:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: TRY [FORTH].
@@ -6721,7 +6721,7 @@ DOTFREE_NFA:
 ; TRY_NFA:
 ; 	.byte	$83,"TR",$D9
 ; 	.word	TRIAD_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; ; Dictionary: PRINT [FORTH].
@@ -6732,7 +6732,7 @@ DOTFREE_NFA:
 ; PRINT_NFA:
 ; 	.byte	$85,"PRIN",$D4
 ; 	.word	TRY_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: FORGET [FORTH].
@@ -6751,8 +6751,8 @@ FORG:
 	.word	FENCE
 	.word	AT
 	.word	LESS
-	.word	LIT	; Push following inline 16-bit cell
-	.word	$15	; Inline literal value, not a call
+	.word	LIT			; Push following inline 16-bit cell
+	.word	$15			; Inline literal value, not a call  ERR_PROTECTED_WORD
 	.word	QERR
 	.word	TOR
 	.word	VOCL
@@ -8865,7 +8865,7 @@ SOURCE_NFA:
 ; ; SID hardware; setters alone do not necessarily change the sound
 ; ; immediately.
 ; MSREG:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: SBASE [SYSTEM].
@@ -8877,7 +8877,7 @@ SOURCE_NFA:
 ; 	.byte	$85,"SBAS",$C5
 ; 	.word	MSREG_NFA	; LFA: previous name field in this vocabulary chain
 ; SBASE:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: CV [SYSTEM].
@@ -8889,7 +8889,7 @@ SOURCE_NFA:
 ; 	.byte	$82,"C",$D6
 ; 	.word	SBASE_NFA	; LFA: previous name field in this vocabulary chain
 ; CV:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: WFORM [SYSTEM].
@@ -8899,7 +8899,7 @@ SOURCE_NFA:
 ; WFORM_NFA:
 ; 	.byte	$85,"WFOR",$CD
 ; 	.word	CV_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: S! [FORTH].
@@ -8915,7 +8915,7 @@ SOURCE_NFA:
 ; 	.byte	$82,"S",$A1
 ; 	.word	SOURCE_NFA	; LFA: previous name field in this vocabulary chain
 ; SSTOR:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: SINIT [FORTH].
@@ -8926,7 +8926,7 @@ SOURCE_NFA:
 ; SINIT_NFA:
 ; 	.byte	$85,"SINI",$D4
 ; 	.word	SSTOR_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: PWIDTH! [FORTH].
@@ -8937,7 +8937,7 @@ SOURCE_NFA:
 ; PWIDTH_STORE_NFA:
 ; 	.byte	$87,"PWIDTH",$A1
 ; 	.word	SINIT_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: PWIDTH@ [FORTH].
@@ -8948,7 +8948,7 @@ SOURCE_NFA:
 ; PWIDTH_FETCH_NFA:
 ; 	.byte	$87,"PWIDTH",$C0
 ; 	.word	PWIDTH_STORE_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: FREQ! [FORTH].
@@ -8959,7 +8959,7 @@ SOURCE_NFA:
 ; FREQ_STORE_NFA:
 ; 	.byte	$85,"FREQ",$A1
 ; 	.word	PWIDTH_FETCH_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: FREQ@ [FORTH].
@@ -8970,7 +8970,7 @@ SOURCE_NFA:
 ; FREQ_FETCH_NFA:
 ; 	.byte	$85,"FREQ",$C0
 ; 	.word	FREQ_STORE_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: TRIANGLE [FORTH].
@@ -8982,7 +8982,7 @@ SOURCE_NFA:
 ; TRIANGLE_NFA:
 ; 	.byte	$88,"TRIANGL",$C5
 ; 	.word	FREQ_FETCH_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: GATE1 [FORTH].
@@ -8991,7 +8991,7 @@ SOURCE_NFA:
 ; GATE1_NFA:
 ; 	.byte	$85,"GATE",$B1
 ; 	.word	TRIANGLE_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: GATE0 [FORTH].
@@ -9002,7 +9002,7 @@ SOURCE_NFA:
 ; GATE0_NFA:
 ; 	.byte	$85,"GATE",$B0
 ; 	.word	GATE1_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: SAWTOOTH [FORTH].
@@ -9014,7 +9014,7 @@ SOURCE_NFA:
 ; SAWTOOTH_NFA:
 ; 	.byte	$88,"SAWTOOT",$C8
 ; 	.word	GATE0_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: SYNC1 [FORTH].
@@ -9025,7 +9025,7 @@ SOURCE_NFA:
 ; SYNC1_NFA:
 ; 	.byte	$85,"SYNC",$B1
 ; 	.word	SAWTOOTH_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: SYNC0 [FORTH].
@@ -9037,7 +9037,7 @@ SOURCE_NFA:
 ; SYNC0_NFA:
 ; 	.byte	$85,"SYNC",$B0
 ; 	.word	SYNC1_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: SQUARE [FORTH].
@@ -9049,7 +9049,7 @@ SOURCE_NFA:
 ; SQUARE_NFA:
 ; 	.byte	$86,"SQUAR",$C5
 ; 	.word	SYNC0_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: RING1 [FORTH].
@@ -9059,7 +9059,7 @@ SOURCE_NFA:
 ; RING1_NFA:
 ; 	.byte	$85,"RING",$B1
 ; 	.word	SQUARE_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: RING0 [FORTH].
@@ -9069,7 +9069,7 @@ SOURCE_NFA:
 ; RING0_NFA:
 ; 	.byte	$85,"RING",$B0
 ; 	.word	RING1_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: NOISE [FORTH].
@@ -9081,7 +9081,7 @@ SOURCE_NFA:
 ; NOISE_NFA:
 ; 	.byte	$85,"NOIS",$C5
 ; 	.word	RING0_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: TEST1 [FORTH].
@@ -9093,7 +9093,7 @@ SOURCE_NFA:
 ; TEST1_NFA:
 ; 	.byte	$85,"TEST",$B1
 ; 	.word	NOISE_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: TEST0 [FORTH].
@@ -9105,7 +9105,7 @@ SOURCE_NFA:
 ; TEST0_NFA:
 ; 	.byte	$85,"TEST",$B0
 ; 	.word	TEST1_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: VOICE1 [FORTH].
@@ -9117,7 +9117,7 @@ SOURCE_NFA:
 ; VOICE1_NFA:
 ; 	.byte	$86,"VOICE",$B1
 ; 	.word	TEST0_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: VOICE2 [FORTH].
@@ -9129,7 +9129,7 @@ SOURCE_NFA:
 ; VOICE2_NFA:
 ; 	.byte	$86,"VOICE",$B2
 ; 	.word	VOICE1_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: VOICE3 [FORTH].
@@ -9141,7 +9141,7 @@ SOURCE_NFA:
 ; VOICE3_NFA:
 ; 	.byte	$86,"VOICE",$B3
 ; 	.word	VOICE2_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: REGSET [SYSTEM].
@@ -9151,7 +9151,7 @@ SOURCE_NFA:
 ; 	.byte	$86,"REGSE",$D4
 ; 	.word	WFORM_NFA	; LFA: previous name field in this vocabulary chain
 ; REGSET:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: REGREAD [SYSTEM].
@@ -9162,7 +9162,7 @@ SOURCE_NFA:
 ; 	.byte	$87,"REGREA",$C4
 ; 	.word	REGSET_NFA	; LFA: previous name field in this vocabulary chain
 ; REGRED:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: ATTACK! [FORTH].
@@ -9173,7 +9173,7 @@ SOURCE_NFA:
 ; ATTACK_STORE_NFA:
 ; 	.byte	$87,"ATTACK",$A1
 ; 	.word	VOICE3_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: ATTACK@ [FORTH].
@@ -9184,7 +9184,7 @@ SOURCE_NFA:
 ; ATTACK_FETCH_NFA:
 ; 	.byte	$87,"ATTACK",$C0
 ; 	.word	ATTACK_STORE_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: DECAY! [FORTH].
@@ -9195,7 +9195,7 @@ SOURCE_NFA:
 ; DECAY_STORE_NFA:
 ; 	.byte	$86,"DECAY",$A1
 ; 	.word	ATTACK_FETCH_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: DECAY@ [FORTH].
@@ -9206,7 +9206,7 @@ SOURCE_NFA:
 ; DECAY_FETCH_NFA:
 ; 	.byte	$86,"DECAY",$C0
 ; 	.word	DECAY_STORE_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: SUSTAIN! [FORTH].
@@ -9217,7 +9217,7 @@ SOURCE_NFA:
 ; SUSTAIN_STORE_NFA:
 ; 	.byte	$88,"SUSTAIN",$A1
 ; 	.word	DECAY_FETCH_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: SUSTAIN@ [FORTH].
@@ -9228,7 +9228,7 @@ SOURCE_NFA:
 ; SUSTAIN_FETCH_NFA:
 ; 	.byte	$88,"SUSTAIN",$C0
 ; 	.word	SUSTAIN_STORE_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: RELEASE! [FORTH].
@@ -9239,7 +9239,7 @@ SOURCE_NFA:
 ; RELEASE_STORE_NFA:
 ; 	.byte	$88,"RELEASE",$A1
 ; 	.word	SUSTAIN_FETCH_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: RELEASE@ [FORTH].
@@ -9250,7 +9250,7 @@ SOURCE_NFA:
 ; RELEASE_FETCH_NFA:
 ; 	.byte	$88,"RELEASE",$C0
 ; 	.word	RELEASE_STORE_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: FILTER! [FORTH].
@@ -9261,7 +9261,7 @@ SOURCE_NFA:
 ; FILTER_STORE_NFA:
 ; 	.byte	$87,"FILTER",$A1
 ; 	.word	RELEASE_FETCH_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: RESONANCE! [FORTH].
@@ -9273,7 +9273,7 @@ SOURCE_NFA:
 ; RESONANCE_STORE_NFA:
 ; 	.byte	$8A,"RESONANCE",$A1
 ; 	.word	FILTER_STORE_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: RESONANCE@ [FORTH].
@@ -9284,7 +9284,7 @@ SOURCE_NFA:
 ; RESONANCE_FETCH_NFA:
 ; 	.byte	$8A,"RESONANCE",$C0
 ; 	.word	RESONANCE_STORE_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: FSELECT! [FORTH].
@@ -9298,7 +9298,7 @@ SOURCE_NFA:
 ; FSELECT_STORE_NFA:
 ; 	.byte	$88,"FSELECT",$A1
 ; 	.word	RESONANCE_FETCH_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: FSELECT@ [FORTH].
@@ -9311,7 +9311,7 @@ SOURCE_NFA:
 ; FSELECT_FETCH_NFA:
 ; 	.byte	$88,"FSELECT",$C0
 ; 	.word	FSELECT_STORE_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: FMODE! [FORTH].
@@ -9328,7 +9328,7 @@ SOURCE_NFA:
 ; FMODE_STORE_NFA:
 ; 	.byte	$86,"FMODE",$A1
 ; 	.word	FSELECT_FETCH_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: FMODE@ [FORTH].
@@ -9340,7 +9340,7 @@ SOURCE_NFA:
 ; FMODE_FETCH_NFA:
 ; 	.byte	$86,"FMODE",$C0
 ; 	.word	FMODE_STORE_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: VOLUME! [FORTH].
@@ -9351,7 +9351,7 @@ SOURCE_NFA:
 ; VOLUME_STORE_NFA:
 ; 	.byte	$87,"VOLUME",$A1
 ; 	.word	FMODE_FETCH_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: VOLUME@ [FORTH].
@@ -9362,7 +9362,7 @@ SOURCE_NFA:
 ; VOLUME_FETCH_NFA:
 ; 	.byte	$87,"VOLUME",$C0
 ; 	.word	VOLUME_STORE_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: OSC3@ [FORTH].
@@ -9373,7 +9373,7 @@ SOURCE_NFA:
 ; OSC3_FETCH_NFA:
 ; 	.byte	$85,"OSC3",$C0
 ; 	.word	VOLUME_FETCH_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: ENV3@ [FORTH].
@@ -9384,7 +9384,7 @@ SOURCE_NFA:
 ; ENV3_FETCH_NFA:
 ; 	.byte	$85,"ENV3",$C0
 ; 	.word	OSC3_FETCH_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: SPOBJ [SYSTEM].
@@ -9396,7 +9396,7 @@ SOURCE_NFA:
 ; 	.byte	$85,"SPOB",$CA
 ; 	.word	REGRED_NFA	; LFA: previous name field in this vocabulary chain
 ; SPOBJ:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: SPINDX [SYSTEM].
@@ -9408,7 +9408,7 @@ SOURCE_NFA:
 ; 	.byte	$86,"SPIND",$D8
 ; 	.word	SPOBJ_NFA	; LFA: previous name field in this vocabulary chain
 ; SPINDX:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: SPBYT [SYSTEM].
@@ -9420,7 +9420,7 @@ SOURCE_NFA:
 ; 	.byte	$85,"SPBY",$D4
 ; 	.word	SPINDX_NFA	; LFA: previous name field in this vocabulary chain
 ; SPBYT:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: SCPTR [SYSTEM].
@@ -9432,7 +9432,7 @@ SOURCE_NFA:
 ; 	.byte	$85,"SCPT",$D2
 ; 	.word	SPBYT_NFA	; LFA: previous name field in this vocabulary chain
 ; SCPTR:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: SPBIT [SYSTEM].
@@ -9447,7 +9447,7 @@ SOURCE_NFA:
 ; ; accumulate bitmap data. Sprite storage has three bytes per row and 21 rows
 ; ; (63 payload bytes per 64-byte sprite slot).
 ; SPBIT:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: SPGET [SYSTEM].
@@ -9459,7 +9459,7 @@ SOURCE_NFA:
 ; 	.byte	$85,"SPGE",$D4
 ; 	.word	SPBIT_NFA	; LFA: previous name field in this vocabulary chain
 ; SPGET:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: SPRITE [SYSTEM].
@@ -9473,7 +9473,7 @@ SOURCE_NFA:
 ; 	.byte	$86,"SPRIT",$C5
 ; 	.word	SPGET_NFA	; LFA: previous name field in this vocabulary chain
 ; SPRITE:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 ; Dictionary: MASK [SYSTEM].
@@ -9576,7 +9576,7 @@ MASKQ:
 ; COLOR_NFA:
 ; 	.byte	$85,"COLO",$D2
 ; 	.word	ENV3_FETCH_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: SHOW [FORTH].
@@ -9587,7 +9587,7 @@ MASKQ:
 ; SHOW_NFA:
 ; 	.byte	$84,"SHO",$D7
 ; 	.word	COLOR_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: HIDE [FORTH].
@@ -9598,7 +9598,7 @@ MASKQ:
 ; HIDE_NFA:
 ; 	.byte	$84,"HID",$C5
 ; 	.word	SHOW_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: XY [FORTH].
@@ -9614,7 +9614,7 @@ MASKQ:
 ; 	.byte	$82,"X",$D9
 ; 	.word	HIDE_NFA	; LFA: previous name field in this vocabulary chain
 ; XY:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: CXY [FORTH].
@@ -9626,7 +9626,7 @@ MASKQ:
 ; CXY_NFA:
 ; 	.byte	$83,"CX",$D9
 ; 	.word	XY_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: MULTI [FORTH].
@@ -9637,7 +9637,7 @@ MASKQ:
 ; MULTI_NFA:
 ; 	.byte	$85,"MULT",$C9
 ; 	.word	CXY_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: HIRES [FORTH].
@@ -9650,7 +9650,7 @@ MASKQ:
 ; HIRES_NFA:
 ; 	.byte	$85,"HIRE",$D3
 ; 	.word	MULTI_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: XPAND [FORTH].
@@ -9664,7 +9664,7 @@ MASKQ:
 ; XPAND_NFA:
 ; 	.byte	$85,"XPAN",$C4
 ; 	.word	HIRES_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: MCLR1 [FORTH].
@@ -9674,7 +9674,7 @@ MASKQ:
 ; MCLR1_NFA:
 ; 	.byte	$85,"MCLR",$B1
 ; 	.word	XPAND_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: MCLR2 [FORTH].
@@ -9684,7 +9684,7 @@ MASKQ:
 ; MCLR2_NFA:
 ; 	.byte	$85,"MCLR",$B2
 ; 	.word	MCLR1_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: SB [SYSTEM].
@@ -9697,7 +9697,7 @@ MASKQ:
 ; 	.byte	$82,"S",$C2
 ; 	.word	MASKQ_NFA	; LFA: previous name field in this vocabulary chain
 ; SB:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: SBLK [SYSTEM].
@@ -9710,7 +9710,7 @@ MASKQ:
 ; 	.byte	$84,"SBL",$CB
 ; 	.word	SB_NFA	; LFA: previous name field in this vocabulary chain
 ; SBLK:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: SPBASE [SYSTEM].
@@ -9726,7 +9726,7 @@ MASKQ:
 ; ; 64-byte sprite blocks beginning at SB. These pointers depend on the VIC
 ; ; screen/bank configuration.
 ; SPBASE:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: CUR [SYSTEM].
@@ -9741,7 +9741,7 @@ MASKQ:
 ; 	.byte	$83,"CU",$D2
 ; 	.word	SPBASE_NFA	; LFA: previous name field in this vocabulary chain
 ; CUR:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: VDG [SYSTEM].
@@ -9753,7 +9753,7 @@ MASKQ:
 ; 	.byte	$83,"VD",$C7
 ; 	.word	CUR_NFA	; LFA: previous name field in this vocabulary chain
 ; VDG:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: BDG [SYSTEM].
@@ -9767,7 +9767,7 @@ MASKQ:
 ; 	.byte	$83,"BD",$C7
 ; 	.word	VDG_NFA	; LFA: previous name field in this vocabulary chain
 ; BDG:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: -SPOBJ [SYSTEM].
@@ -9781,7 +9781,7 @@ MASKQ:
 ; 	.byte	$86,"-SPOB",$CA
 ; 	.word	BDG_NFA	; LFA: previous name field in this vocabulary chain
 ; DSPOBJ:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: RBYT [SYSTEM].
@@ -9794,7 +9794,7 @@ MASKQ:
 ; 	.byte	$84,"RBY",$D4
 ; 	.word	DSPOBJ_NFA	; LFA: previous name field in this vocabulary chain
 ; RBYT:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: SPEDIT [FORTH].
@@ -9809,7 +9809,7 @@ MASKQ:
 ; ; sprite/cursor state and key-repeat behavior, process 21 rows of three
 ; ; bytes, then wait for RETURN and rebuild the sprite data.
 ; SPEDIT:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: NEWSPRITE [FORTH].
@@ -9822,7 +9822,7 @@ MASKQ:
 ; NEWSPRITE_NFA:
 ; 	.byte	$89,"NEWSPRIT",$C5
 ; 	.word	SPEDIT_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: SCRN? [SYSTEM].
@@ -9845,7 +9845,7 @@ MASKQ:
 ; ; slot within a screen and screen number 1 or 2. SPWRITE/SPREAD use 256 text
 ; ; bytes per serialized sprite.
 ; SCRNQ:
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: SPWRITE [FORTH].
@@ -9859,7 +9859,7 @@ MASKQ:
 ; SPWRITE_NFA:
 ; 	.byte	$87,"SPWRIT",$C5
 ; 	.word	NEWSPRITE_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ; ---------------------------------------------------------------------------
 ; ; Dictionary: SPREAD [FORTH].
@@ -9873,7 +9873,7 @@ MASKQ:
 ; SPREAD_NFA:
 ; 	.byte	$86,"SPREA",$C4
 ; 	.word	SPWRITE_NFA	; LFA: previous name field in this vocabulary chain
-; 	.word	NO_C64	; CFA: unsupported C64 word; report NO C64
+; 	.word	NOT_IMPLEMENTED	; CFA: unsupported C64 word; report NO C64
 
 ; ---------------------------------------------------------------------------
 .include "forth_words.inc"

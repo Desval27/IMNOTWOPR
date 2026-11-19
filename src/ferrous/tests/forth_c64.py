@@ -130,10 +130,10 @@ class ForthPortTests(unittest.TestCase):
                         address += ram - start
                     self.assertIn(address, seen, f"Unreachable {owner} word: {name}")
 
-    def run_monitor(self, commands, *, stops=None):
+    def run_monitor(self, commands, *, stops=None, cycles=1000000):
         result = subprocess.run(
             [str(EXECUTABLE), "--profile", str(PROFILE),
-             "--console-newline", "raw", "--cycles", "1000000", "--unthrottled"],
+             "--console-newline", "raw", "--cycles", str(cycles), "--unthrottled"],
             input=("\n".join(commands + ["quit"]) + "\n").encode(),
             capture_output=True, timeout=60)
         self.assertEqual(result.returncode, 0, result.stderr.decode())
@@ -151,9 +151,9 @@ class ForthPortTests(unittest.TestCase):
         self.assertEqual((end - table) % 2, 0)
         count = (end - table) // 2
         self.assertLessEqual(count, 256)
-        # Error 26 remains the unsupported-C64 error; newer errors follow it.
-        self.assertEqual(LABELS["ERR_NO_C64_SLOT"] - table, 26 * 2)
-        for index, name in enumerate(("ERR_NO_C64", "ERR_STACK_FULL", "ERR_RX_FULL",
+        # Error 26 is the not-implemented error; newer errors follow it.
+        self.assertEqual(LABELS["ERR_NOT_IMPLEMENTED_SLOT"] - table, 26 * 2)
+        for index, name in enumerate(("ERR_NOT_IMPLEMENTED", "ERR_STACK_FULL", "ERR_RX_FULL",
                                       "ERR_RETURN_FULL", "ERR_BREAK", "ERR_DIV_ZERO", "ERR_LINE_LONG"), 26):
             self.assertEqual(cell(table + index * 2), LABELS[name])
         for index in range(count):
@@ -182,7 +182,7 @@ class ForthPortTests(unittest.TestCase):
     def test_c64_words_are_commented_out_and_unlinked(self):
         entries = dictionary_entries()
         for key, (cfa, _) in entries.items():
-            self.assertNotEqual(cell(cfa), LABELS["NO_C64"], key)
+            self.assertNotEqual(cell(cfa), LABELS["NOT_IMPLEMENTED"], key)
         disabled = {}
         for block in re.split(r"(?=^; (?:; )?Dictionary: )", SOURCES[ROOT / "forth.s"], flags=re.M):
             name = re.match(r"; ; Dictionary: (.*?) \[([^]]+)\]", block)
@@ -216,12 +216,12 @@ class ForthPortTests(unittest.TestCase):
             expected_output += b"2 3 + .\r\n5 \r\nok> "
         self.assertEqual(self.run_monitor(commands).stdout, expected_output)
 
-    def test_private_c64_error_tokens_report_and_recover(self):
+    def test_private_not_implemented_error_tokens_report_and_recover(self):
         # The vector layout and WORD's guarded block-input path retain private
         # error tokens, without publishing unsupported dictionary entries.
-        cfas = [LABELS["PRSLW"], LABELS["C64_ERROR"]]
+        cfas = [LABELS["PRSLW"], LABELS["NOT_IMPLEMENTED_ERROR"]]
         for cfa in cfas:
-            self.assertEqual(cell(cfa), LABELS["NO_C64"])
+            self.assertEqual(cell(cfa), LABELS["NOT_IMPLEMENTED"])
         with tempfile.TemporaryDirectory() as directory:
             canaries = pathlib.Path(directory, "canaries.bin")
             commands = [f"break {WAIT:04X}", "run", "write C5 " + " ".join(["A5"] * 16)]
@@ -233,7 +233,7 @@ class ForthPortTests(unittest.TestCase):
             commands += forth_line("2 3 + .")
             result = self.run_monitor(commands)
             self.assertEqual(result.stderr.count(f"Breakpoint at ${WAIT:04X}.".encode()), len(cfas) + 1)
-            self.assertEqual(result.stdout, BANNER + PROMPT + b"\r\n? NO C64\r\nok> " * len(cfas)
+            self.assertEqual(result.stdout, BANNER + PROMPT + b"\r\n? >NOPE<\r\nok> " * len(cfas)
                              + b"2 3 + .\r\n5 \r\nok> ")
             self.assertEqual(canaries.read_bytes(), b"\xA5" * 16)
 
@@ -257,7 +257,7 @@ class ForthPortTests(unittest.TestCase):
 
     def test_serial_key_terminal_and_emit(self):
         commands = ["run"] + forth_line("?TERMINAL .") + forth_line("KEY EMIT")
-        # KEY must block until another byte arrives; it must not report NO C64.
+        # KEY must block until another byte arrives; it must not report >NOPE<.
         commands += [send(b"Z"), "run"] + forth_line("65 EMIT")
         result = self.run_monitor(commands)
         self.assertEqual(result.stdout, BANNER + PROMPT + b"?TERMINAL .\r\n0 \r\nok> "
@@ -267,6 +267,32 @@ class ForthPortTests(unittest.TestCase):
         for name, address in (("via_portb", 0xB000), ("acia_data", 0xB010),
                               ("acia_status", 0xB011), ("acia_cmd", 0xB012), ("acia_ctrl", 0xB013)):
             self.assertEqual(LABELS[name], address)
+
+    def test_dumpx_rows_empty_count_and_base_restoration(self):
+        data = bytes(range(32))
+        commands = ["write 3003 " + " ".join(f"{byte:02X}" for byte in data), "run"]
+        expected = BANNER + PROMPT
+        # Boundary counts exercise both conditionals and the backward loop,
+        # including an unaligned starting address and a partial final row.
+        for count in (0, 1, 8, 9, 16, 17, 32):
+            line = f"77 12291 {count} DUMPX BASE @ . . DEPTH ."
+            commands += forth_line(line)
+            expected += line.encode() + b"\r\n"
+            for offset in range(0, count, 16):
+                expected += f"\r\n{0x3003 + offset:04X} : ".encode()
+                for index, byte in enumerate(data[offset:min(offset + 16, count)]):
+                    if index == 8:
+                        expected += b" - "
+                    expected += f"{byte:02X} ".encode()
+            if count:
+                expected += b"\r\n"
+            expected += b"10 77 0 \r\nok> "
+        # Also preserve a nondecimal caller's base, with no leaked loop frame.
+        line = "HEX 3003 1 DUMPX BASE @ . DECIMAL"
+        commands += forth_line(line)
+        expected += line.encode() + b"\r\n\r\n3003 : 00 \r\n10 \r\nok> "
+        result = self.run_monitor(commands, cycles=3000000)
+        self.assertEqual(result.stdout, expected)
 
     def test_no_direct_c64_io_or_kernal_calls(self):
         # Keep the guard meaningful even after historical equate declarations
