@@ -37,6 +37,7 @@ All modules and panels are currently a work in progress and only a few have been
 - [PXX Panel](panels/PXX/README.md) (Tested)
 - [CLX PCB](modules/CLX/README.md) Clock+ Card
 - [CLX Panel](panels/CLX/README.md)
+- [CPU PCB](modules/CPU/README.md) CPU + Local RAM Card
 - [P9V PCB](modules/P9V/README.md) 9V Power Supply
 - [P9V Panel](panels/P9V/README.md)
 - [XXX PCB](modules/XXX/README.md) Bus Terminator/Configuration Card
